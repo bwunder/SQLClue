@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="SQLRunbook">
+      <rd:DataSourceID>02148ba5-3c62-49ac-addd-cfa5e599924d</rd:DataSourceID>
+      <DataSourceReference>SQLRunbook</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="Category">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Category</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Categories</DataSetName>
+          <ValueField>Name</ValueField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Topic">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Topic</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DocumentId">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>DocumentId</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="OriginalLogin">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>OriginalLogin</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DrillThroughAction">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>DrillThroughAction</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>341b9087-d6c5-4073-b4cf-b1f3a7345a1a</rd:ReportID>
+  <DataSets>
+    <DataSet Name="Categories">
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Notes">
+          <DataField>Notes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TopicCount">
+          <DataField>TopicCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RatingTally">
+          <DataField>RatingTally</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RatingCount">
+          <DataField>RatingCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RecCreatedDt">
+          <DataField>RecCreatedDt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RecCreatedUser">
+          <DataField>RecCreatedUser</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>SQLRunbook</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>SQLRunbook.pCategorySelectAll</CommandText>
+      </Query>
+    </DataSet>
+    <DataSet Name="TopicsForCategory">
+      <Fields>
+        <Field Name="Id">
+          <DataField>Id</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Notes">
+          <DataField>Notes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocumentCount">
+          <DataField>DocumentCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RatingTally">
+          <DataField>RatingTally</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RatingCount">
+          <DataField>RatingCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Owner">
+          <DataField>Owner</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RecCreatedDt">
+          <DataField>RecCreatedDt</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RecCreatedUser">
+          <DataField>RecCreatedUser</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>SQLRunbook</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>SQLRunbook.pTopicSelectByCategory</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@Category">
+            <Value>=Parameters!Category.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code>Public Function RatingColor (ByVal Rating as Integer) As String
+                        Select Case Rating
+                            Case 1
+                                RatingColor = "Green"
+                            Case 2
+                                RatingColor = "Lime"
+                            Case 3
+                                RatingColor = "GreenYellow"
+                            Case 4
+                                RatingColor = "Yellow"
+                            Case 5
+                                RatingColor = "Orange"
+                            Case 6
+                                RatingColor = "Red"
+                            Case 7
+                                RatingColor = "Black"
+                            Case Else
+                                RatingColor = "White"
+                        End Select
+End Function</Code>
+  <Width>7in</Width>
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox2">
+        <rd:DefaultName>textbox2</rd:DefaultName>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.125in</Height>
+        <Value />
+      </Textbox>
+      <List Name="list1">
+        <DataSetName>Categories</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox4">
+            <rd:DefaultName>textbox4</rd:DefaultName>
+            <Width>0.875in</Width>
+            <Style>
+              <Color>SlateGray</Color>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Left>Solid</Left>
+                <Top>Solid</Top>
+              </BorderStyle>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>9pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>12</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>Category</Value>
+          </Textbox>
+          <Rectangle Name="rectangle2">
+            <ZIndex>11</ZIndex>
+            <Visibility>
+              <ToggleItem>TopicCount</ToggleItem>
+            </Visibility>
+            <ReportItems>
+              <Subreport Name="SQLRunbookCategory_Subreport_SQLRunbookTopicsByCategoryId">
+                <Parameters>
+                  <Parameter Name="Category">
+                    <Value>=Parameters!Category.Value</Value>
+                  </Parameter>
+                </Parameters>
+                <Top>0.0675in</Top>
+                <ReportName>SQLRunbookTopicsByCategoryName</ReportName>
+                <Width>6.75in</Width>
+                <Left>0.125in</Left>
+                <Height>0.25in</Height>
+              </Subreport>
+            </ReportItems>
+            <Top>0.75in</Top>
+          </Rectangle>
+          <Textbox Name="RecCreatedUser">
+            <rd:DefaultName>RecCreatedUser</rd:DefaultName>
+            <Top>0.25in</Top>
+            <Action>
+              <Drillthrough>
+                <ReportName>SQLRunbookCatalog</ReportName>
+                <Parameters>
+                  <Parameter Name="OriginalLogin">
+                    <Value>=Fields!RecCreatedUser.Value</Value>
+                  </Parameter>
+                </Parameters>
+              </Drillthrough>
+            </Action>
+            <Width>1.75in</Width>
+            <Style>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontSize>8pt</FontSize>
+              <TextDecoration>Underline</TextDecoration>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>10</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>3.75in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!RecCreatedUser.Value</Value>
+          </Textbox>
+          <Textbox Name="RecCreatedDt">
+            <rd:DefaultName>RecCreatedDt</rd:DefaultName>
+            <Top>0.25in</Top>
+            <Width>1.5in</Width>
+            <Style>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontSize>8pt</FontSize>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>9</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1.875in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!RecCreatedDt.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox8">
+            <Top>0.25in</Top>
+            <Width>0.875in</Width>
+            <Style>
+              <Color>SlateGray</Color>
+              <BackgroundColor>WhiteSmoke</BackgroundColor>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>8</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>1in</Left>
+            <Height>0.25in</Height>
+            <Value>Created On</Value>
+          </Textbox>
+          <Textbox Name="textbox5">
+            <Top>0.25in</Top>
+            <Width>0.375in</Width>
+            <Style>
+              <Color>SlateGray</Color>
+              <BackgroundColor>WhiteSmoke</BackgroundColor>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>7</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>3.375in</Left>
+            <Height>0.25in</Height>
+            <Value> By</Value>
+          </Textbox>
+          <Textbox Name="TopicCount">
+            <rd:DefaultName>TopicCount</rd:DefaultName>
+            <Top>0.25in</Top>
+            <ToggleImage>
+              <InitialState>true</InitialState>
+            </ToggleImage>
+            <Style>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontSize>8pt</FontSize>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>6</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>6.375in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!TopicCount.Value</Value>
+          </Textbox>
+          <Textbox Name="Name">
+            <rd:DefaultName>Name</rd:DefaultName>
+            <Style>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Top>Solid</Top>
+                <Bottom>Solid</Bottom>
+              </BorderStyle>
+              <FontSize>9pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>5</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.875in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!Name.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox7">
+            <Top>0.25in</Top>
+            <Width>0.875in</Width>
+            <Style>
+              <Color>SlateGray</Color>
+              <BackgroundColor>WhiteSmoke</BackgroundColor>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>4</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>5.5in</Left>
+            <Height>0.25in</Height>
+            <Value>Topic Count</Value>
+          </Textbox>
+          <Textbox Name="textbox1">
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.25in</Top>
+            <Width>0.375in</Width>
+            <Style>
+              <Color>SlateGray</Color>
+              <BackgroundColor>WhiteSmoke</BackgroundColor>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Height>0.25in</Height>
+            <Value>Id</Value>
+          </Textbox>
+          <Textbox Name="Id">
+            <rd:DefaultName>Id</rd:DefaultName>
+            <Top>0.25in</Top>
+            <Width>0.625in</Width>
+            <Style>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontSize>8pt</FontSize>
+              <TextAlign>Center</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.375in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!Id.Value</Value>
+          </Textbox>
+          <Textbox Name="Notes">
+            <rd:DefaultName>Notes</rd:DefaultName>
+            <Top>0.5in</Top>
+            <Style>
+              <BorderColor>
+                <Default>SlateGray</Default>
+              </BorderColor>
+              <BorderStyle>
+                <Default>Solid</Default>
+              </BorderStyle>
+              <FontSize>8pt</FontSize>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.625in</Left>
+            <Height>0.25in</Height>
+            <Value>=Fields!Notes.Value</Value>
+          </Textbox>
+          <Rectangle Name="rectangle1">
+            <ReportItems>
+              <Textbox Name="textbox3">
+                <Width>0.625in</Width>
+                <Style>
+                  <Color>SlateGray</Color>
+                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                  <BorderColor>
+                    <Default>SlateGray</Default>
+                  </BorderColor>
+                  <BorderStyle>
+                    <Default>Solid</Default>
+                  </BorderStyle>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>8pt</FontSize>
+                  <FontWeight>700</FontWeight>
+                  <TextAlign>Left</TextAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <Value>Notes</Value>
+              </Textbox>
+            </ReportItems>
+            <Top>0.5in</Top>
+            <Height>0.25in</Height>
+          </Rectangle>
+        </ReportItems>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!Name.Value</FilterExpression>
+            <Operator>Equal</Operator>
+            <FilterValues>
+              <FilterValue>=Parameters!Category.Label</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <Top>0.125in</Top>
+        <Style>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Grouping Name="list1_Details_Group">
+          <GroupExpressions>
+            <GroupExpression>=Fields!Id.Value</GroupExpression>
+          </GroupExpressions>
+        </Grouping>
+      </List>
+    </ReportItems>
+    <Height>1.25in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

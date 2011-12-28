@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>RunbookTrace</Name>
+  <DataSourceID>3b3a0398-e8ec-416e-bdfe-2c266bf8ffa0</DataSourceID>
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=.;Initial Catalog=SQLClue;Application Name="SQLClue Data Center Runbook"</ConnectString>
+  </ConnectionProperties>
+</RptDataSource>

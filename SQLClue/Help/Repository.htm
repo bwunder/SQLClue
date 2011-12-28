@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+<title>SQL Configuration Repository</title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a id="top" />
+<table>
+
+<!--ADD TITLE -->
+<thead class="title">
+SQL Configuration Repository
+</thead>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+<td class="subtitle">
+The complete historical archive of DDL scripts and other database engine configuration change   
+</td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+<p>The Configuration Archive is a comprehensive database configuration documentation and change monitoring tool for Microsoft's 
+   SQL Server 2000, 2005 and 2008.</p>
+   <p>The Archive will automatically detect changes to many objects and sequentially version a script or name-value property dump 
+   document that defines the configuration item into a data store of all configuration changes on that server.</p>
+   <p>When SQL Server Audit and DDL Events can be utilized, the SQLClue Configuration change monitor captures the SQL Server generated 
+   <b>EVENTDATA</b> XML payload of the change that is stored along with the definition that results after configuration is added, removed 
+   or otherwise changed. For SQL Server 2000 or other scenarios where this detail of the change is not available, processing a few 
+   incremental changes to the Archives can be long running processes. In fact, in thses scenarios just finding out that there has been no 
+   configuration change on the server can be a long running process.</p>
+   <p>The only good alternatives for obtaining a an accurate archive are the Full - and potentially long running - Archive and the Event 
+   based Archive. Efforts to economize by excluding collections and items from the archive are counterproductive.</p>  
+   <p>The repository opens the door to a way forward for shops with faulty change control that desire to take control of
+   change and also a powerful reference perspective of SQL Server change on live systems in settings where change is tightly controlled.</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<a name="node"></a>
+<h5>Documentation Hierarchy</h5>
+<p>In the context of comparison and archival operations, the configuration is organized into a hierarchical taxonomy. The hierarchy is much like 
+the Object Explorer view of SQL Server Management Studio. </p> 
+
+<table>
+<thead>The SQLClue SQLInstance Type Document Hierarchy can be generalized as:</thead>
+<tr><td>
+SubType: Server</td><td></td>							
+</td></tr>
+<tr><td>
+</td><td>
+       'SQLInstance'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Item'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|JobServer'
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases'
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Collection'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Collection|Item'							
+</td></tr>
+<tr><td>
+SubType: JobServer							
+</td><td>
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|JobServer|Item'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|JobServer|Collection'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|JobServer|Collection|Item'							
+</td></tr>
+<tr><td>
+SubType: Database							
+</td><td>
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName|Item							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName|Collection'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName|Collection|Item'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName|ServiceBroker'							
+</td></tr>
+<tr><td>
+SubType: ServiceBroker							
+</td><td>
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName|ServiceBroker|Collection'							
+</td></tr>
+<tr><td>
+</td><td>
+        'SQLInstance|Databases|DbName|ServiceBroker|Collection|Item'							
+</td></tr>
+</table>
+
+<h5>The Node User Defined Type</h5>
+<p>A User Defined Type is used to represent this hierarchy.</p>  
+<pre>
+        SELECT top(10) [Node]
+             , [Node].ToString() AS [ToString() method]
+             , [Node].[Type] AS [Type property]
+             , [Node].[SubType] AS [SubType property]
+             , [Node].[Length] AS [Length (# elements in Node) property]
+             , [Node].[SQLInstance] AS [SQL Instance property]
+             , [Node].[Database] AS [Database property]
+             , [Node].[Collection] AS [Collection Name property]
+             , [Node].[IsCollection] AS [IsCollection property]
+             , [Node].[Path] AS [Parent Node property]
+             , [Node].[Item] AS [Item Name property]
+             , [Node].[IsNull] AS [IsNull property]
+        FROM [dbo].[tSQLCfgChange] 
+        ORDER BY Node 
+
+</pre>Event Notification capable target SQL Server instances (SQL Server 2005 and SQL Server 2008) 
+            include the name of the user making the change and the script executed to effect 
+            the change in the archive record for changes that raise a detectable event. </p>
+
+<p>This is a listing of the event groups monitored by SQLClue. See SQL Server Books Online for a complete
+description of each group and the events thyat fall under each group.</p>
+<ul>
+<li>
+DDL_TABLE_EVENTS  
+</li>
+<li>
+DDL_VIEW_EVENTS 
+</li>
+<li>
+DDL_INDEX_EVENTS 
+</li>
+<li>
+DDL_SYNONYM_EVENTS 
+</li>
+<li>
+DDL_FUNCTION_EVENTS 
+</li>
+<li>
+DDL_PROCEDURE_EVENTS 
+</li>
+<li>
+DDL_TRIGGER_EVENTS 
+</li>
+<li>
+DDL_ASSEMBLY_EVENTS
+</li>
+<li>
+DDL_TYPE_EVENTS
+</li>
+<li>
+DDL_SCHEMA_EVENTS
+</li>
+<li>
+DDL_ROLE_EVENTS
+</li>
+<li>
+DDL_CERTIFICATE_EVENTS
+</li>
+<li>
+DDL_AUTHORIZATION_DATABASE_EVENTS
+</li>
+<li>
+DDL_GDR_DATABASE_EVENTS
+</li>
+<li>
+DDL_APPLICATION_ROLE_EVENTS
+</li>
+<li>
+DDL_USER_EVENTS
+</li>
+<li>
+DDL_MESSAGE_TYPE_EVENTS
+</li>
+<li>
+DDL_CONTRACT_EVENTS
+</li>
+<li>
+DDL_ROUTE_EVENTS
+</li>
+<li>
+DDL_REMOTE_SERVICE_BINDING_EVENTS
+</li>
+<li>
+DDL_XML_SCHEMA_COLLECTION_EVENTS
+</li>
+<li>
+DDL_PARTITION_EVENTS
+</li>
+</ul>
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+ 
+<h5>What to think about before enabling Events?</h5>
+<p>Changes are required on each target with events enabled. This consists of a queue to receive event notification 
+   and supporting stored procedures in the msdb database. The actual database used is configurable. msdb works nicely
+   because some of the shared event notification configuration is usually already be in place and in use by Database mail.
+   Unless there is a compelling reason to use another database stick with msdb.</p>
+<p>Who will have access to the queue? Is the security adequate?</p> 
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<table>
+<tr>
+<td>
+Topic Index:
+    <ul>
+    <li><a href="#Listing1" class="GuidelineListing">Create a How-To</a></li>
+    <li><a href="#Listing2" class="GuidelineListing">Use the Help Template</a></li>
+    </ul>
+<!-- snippit for the next list entry - then add an item below for each entry
+   <li><a href="#Listingn" class="GuidelineList"></a></li>
+-->
+
+</td>
+</tr>
+<tr>
+<td>
+   <p><a name="#Listing1" class="GuidelineListing">How to Create HOW-TOs and SCENARIOs</a></p>
+   <p>
+    Use the FAQ layout: 
+    <ol>
+     <li>Add a link to the HowToList. Make the href a unique local page link. There is a 
+     snippit of HTML available in the template to aid in adding new links.</li>
+     <li>Add a HowtoItem named anchor with the same name as the href in Step 1. </li>
+     <li>Leave and use snippits of HTML as an aid in adding new items. The snippits
+     will keep the feel consistent but allow enough complexity to keep things interesting.</li>
+    </ol>
+   </p> 
+
+   <hr>
+
+   <p><a id="UseHelpTemplate" class="GuidelineList">How to use the Help Template</a></p>
+   <p>
+    Never overwrite the template. The file attribute is supposed to be set ReadOnly. To
+    create a new doc from the template:
+    <ol>
+     <li>Open the template.</li>
+     <li>Wait! Before making any changes, File|"Save As..." the html doc you want to create.</li>
+     <li>Then add the file to the project as an existing item.</li>
+     <li>THERE ARE BEGIN AND END COMMENTS IN ALL CAPITAL LETTERS AT EACH PLACE WHERE CONTENT NEEDS TO BE ADDED.</li>
+     <li>Change the Visual Studio Properties of the file to [Build Action] = Content and [Copy to Output Directory] = "Copy if Newer"</li>
+     </ol>
+     To update existing documents if the template is changed, each document must be touched. 
+     So don't change the template if you don't REALY need to.
+    </p>
+
+<!-- snippit for the next item
+   <p><a name="#Listingn" class="GuidelineList"></a></p>
+   <p>Put what you like in here. Try to stick with paragraphs</p>
+-->
+</td></tr></table>
+
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+

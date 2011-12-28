@@ -1,0 +1,591 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>Installing SQLClue </title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+    <style type="text/css">
+        .style1
+        {
+            height: 33px;
+        }
+    </style>
+</head>
+<body>
+<a id="top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+Installing SQLClue
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+<td  class="subtitle">
+Planning Guide, Prerequisites & Requirements
+</td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+<table width="90%" style="background-color: HighlightText; color:Highlight"><tr><td style="font-size:24px; font-weight:bold">&nbsp;!&nbsp;</td><td style="background-color: Highlight; color:HighlightText">
+<p><b><i>Please read this document before attempting to installing SQLClue</i></b></p>
+<p>Verify all prerequisites listed below to assure trouble free installation and use.</p>
+<p>Review the installation SQL scripts is encouraged. Only execute scripts from the 
+    command line when instructed to do so. </p>
+</td></tr></table>
+
+<p>When SQLClue is initially installed, the application is always enabled at the Workstation level.</p>
+<ul>
+    <li>application files are copied to the user specified program folder.</li>
+    <li>&nbsp;Program group shortcuts to the SQLClue executable and to the SQLClue Resources folder 
+        are created.</li>
+    <li>the application is registered in Windows and can be uninstalled using the Windows Control Panel 
+        at any time.</li>  
+    <li>Three of the five available tool tabs are enabled within the user interface: 
+        <ul>
+        <li><a href="Compare.htm"><b>Configuration Compare</b></a> - A comparison tool 
+            intended for use with SQL Server Configuration and database objects.</li>
+        <li><a href="Reports.htm"><b>Reports</b></a> - A ReportViewer control that renders 
+            SQL Server Report Definition Language (RDL) reports.</li>
+        <li><b>Help</b></li>
+        </ul>
+    </li>    
+</ul>
+<p>There is no licensing requirement to use SQLClue Workstation.</p>
+<p>At the Workstation level the application can be connected to any existing remote Data Center Runbook. This allows 
+full team and/or data center Runbook collaboration within a single SQLClue administrative unit yet limits 
+the SQLClue licensing requirement to a single server for the team or data center. Authorized remote SQLClue Data Center 
+Runbook contributors are restricted from making any SQLClue configuration changes.</p>
+<p>At any time after SQLClue Workstation is installed, the application can be promoted to 
+    a Server level by installing any
+of the data stores available from the Tools menu. At the Server level the <a href= "Repository.htm">SQLClue Configuration Archive</a> 
+is always enabled and a SQL Configuration Repository data store is created on a user specified local SQL Server 
+    instance. 
+Two additional components can be installed, enabled and configured as desired:</p>
+<ul>
+    <li><a href="Runbook.htm"><b>Data Center Runbook</b></a> - A business continuity and strategic monitoring interface and data store.</li>
+    <li><a href="Service.htm"><b>SQLClue Automation Controller</b></a> - A Windows Service for schedule background processing.</li>
+</ul>
+<p>The <a href="Reports.htm"><b>Reports</b></a> components are automatically extended to include powerful administrative views 
+    as additional 
+component data stores and the Automation controller are enabled.</p>
+<p>A role based database security model allows SQLClue security to be extended into the organization by adding 
+    selected database users and roles to the provided SQLClue roles. There is a role 
+hierarchy for each component data store. SQL Authentication is supported for scenarios where the Windows 
+integrated security model is not possible. Windows Integrated Security is recommended and preferred.</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+    </tr>
+    <tr>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<h5>SQL Servers supported</h5>
+
+<p>SQLClue can target SQL Server 2000, SQL Server 2005 and SQL Server 2008 Instances.
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;databases set for 6.0, 6.5 and 7.0 compatibility modes are not supported</p> 
+
+            <p>Whether using both the SQL Configuration Archive and the Data Center Runbook, or only one or the other of these two components that require a 
+repository database, the option of placing the repositories in one database or each in it's own database is 
+                at the discretion of
+the installer. In general, if security rights between the those that will access the SQL Configuration Archive and those that will access 
+the Data Center Runbook are the same, placing both repositories in one physical database may be preferred. 
+                There are scenarios where placing each data store in its own database is of higher utility. For example, if SQL 
+Configuration Archive Repository will be routinely copied to an alternate location accessible by the development staff each night, 
+                consider placing the data stores in separate database to 
+avoid the added payload of the Data Center Runbook in those nightly copys and to avoid exposing 
+                sensitive operational information outside of the data center. Organizational security considerations will usually be the 
+determining factor in deciding to use one database for the SQL Configuration Archive and another for the Data Center Runbook or to place 
+both in a single database. SQLCLue works the same whether one database is configured for each repository or a single database is used to 
+hold both repositories. Both data stores must be located on the same instance when used in 
+                read/write mode. For read only use either data store can be moved to another 
+                server.</p>
+<p></p>
+
+<h5>Workstation Prerequisites</h5>
+    <ul>
+    <li>The <a href = "http://www.google.com/search?q=.NET+3.5+Service+Pack+1+download">.NET Framework 3.5 Service Pack 1</a>
+    <li>Microsoft SQL Server 2008 Management Objects (SMO) Assemblies from any of the following sources:
+    <ul>
+    <li>Any Editions of SQL Server 2008 SP1 installed on the local system.</li>
+    <li>SQL Server 2008 SP1 Client Tools installed on the local system.</li>
+    <li>As a freely distributed <a href="http://www.google.com/search?q=Microsoft+SQL+Server+2008+Feature+Pack+download" target=_blank>SQL Server 2008 Feature Pack</a> download.</li> 
+    </ul>
+    </li>
+    <li>Visual Studio 2008 ReportViewer Control Assemblies from one of the following sources:
+    <ul>
+    <li>Any Edition of Visual Studio 2008 SP1 installed on the local system.</li>
+    <li><a href="http://www.google.com/search?q=ReportViewer+2008+Redistributable+Package+download" target=_blank>ReportViewer Redistributable Package</a></li>
+    <li>Provided the web site remains available, the<a href="http://www.gotreportviewer.com/" target=_blank>www.gotreportviewer.com</a> web site may show other ways to obtain the control.</li>
+    </ul>
+    </li>
+    </ul>
+
+<h5>Server Prerequisites</h5>
+            <p><b>
+<a id="top23" />
+                Host SQL Server Configuration</a></b></p>
+    <ul>
+    <li>In addition to the Workstation prerequisites, one of the following editions of SQL Server installed locally to host the SQLClue Server. 
+        <ul>
+            <li>SQL Server 2008 Express Edition with Advanced Services*</li> 
+            <li>SQL Server 2008 Workgroup Edition</li> 
+            <li>SQL Server 2008 Standard Edition</li> 
+            <li>SQL Server 2008 Enterprise Edition</li>
+            <li>SQL Server 2008 Developer Edition (evaluation only)</li> 
+        </ul>
+    </li>        
+    <li>Service Pack 1 is the minimum recommended version for all installations</li>
+        <li>The Microsoft Distributed Transaction Coordinator Service (MS DTC) must be 
+            properly configured and active on the SQLClue host 
+        and all SQL Servers that will be targeted for Event Notification based monitoring.</li>
+    </ul>
+
+            <h5>Full-Text Search</h5>
+<p>Full-Text must be installed and enabled on the SQLClue Host. The application install scripts will make all necessary 
+configuration changes for full text search support.</p>
+
+<h5>Service Broker</h5>
+<p>SQLClue uses of SQL Server Service Broker reliable messaging technology. Service Broker provides a robust asynchronous server side 
+   operating environment.</p> 
+<p>The SQL Configuration Archive Repository allows the option to use Audit and Trace Event Notifications to detect changes on all SQL Server 
+   2005/2008 target SQL Instances. This option provides complete metadata change audit history and improved archive performance. By default these 
+   notifications use a Service Broker Queue in the msdb database of each "Notification Enabled" target SQL Instance. The SQLClue 
+   Automation Controller service start-up account (described below) and members of the SQLClueAdminRole must have permission to 
+   process events from these queues. Note that the Event Notification database at each target can be any database. User's unfamiliar with 
+   Service Broker and event notifications are strongly encouraged to leave the Notification database set to the default location (msdb) 
+    as this provides the most straight forward implementation.</p>
+
+<h5>CLR Integration</h5>
+<p>SQLClue uses SQL Server Common Language Runtime (CLR) integration.</p> 
+
+<p>The SQL Configuration Archive Repository is build around the SQLCfgNode User 
+    Defined Type. The SQLCfgNode data type provides efficient
+   VARBINARY storage and multiple URN like attribute dereferencing methods.</p> 
+
+<p>When you install the SQL Configuration Repository component, SQLClue will determine the state of the SQLClue host's "clr enabled" 
+   configuration setting. If not yet enabled, the component install will enable CLR Integration and issue the RECONFIGURE command. On a SQL Server 2008 host, the platform 
+    required to host SQLClue, the configuration change occurs immediately when the RECONFIGURE statement is complete. No restart is needed.</p>
+
+<h5>Encryption Hierarchy</h5>
+<p>To support the Code Access Security (CAS) requirements for SQLClue, the Database Master Key must exist or will be created by SQLClue
+   for all databases used by SQLClue data stores. This includes the master database, as well as the database(s) containing the SQLClue 
+   Configuration Archive and the Data Center Runbook.</p> 
+<p>SQLClue&#39;s components depend upon the encryption hierarchy to properly deploy and secure CLR Integration components 
+   and to securely encrypt stored password when SQL Authentication is used.</p>
+<p>In order to assure forward recovery of all SQLClue data stores in most failure scenarios, it is critical that the Service Master 
+   Key and all Database Master Keys are backed up to export files, securely stored following the guidelines in SQL Server Books OnLine, 
+   and that forward recovery is tested sufficiently to assure the usability of the key backups when they might be needed.</p>
+<p>Transparent Data Encryption (TDE) can be used to help prevent unauthorized use of SQLClue data and is fully supported. When 
+   TDE is used, a complete backup of the TDE encryption hierarchy is equally important. See SQL Server 2008 Books Online for complete 
+   TDE backup requirements.</p>
+
+<h5>Microsoft Distributed Transaction Coordinator</h5>
+<p>Microsoft Distributed Transaction Coordinator Service (MS DTC) may not be "completely configured" in some Windows desktop enviroments, 
+   especially Windows Vista. See the SQL Express install readme notes for details on Enabling MS DTC on a SQL Express host system. The 
+   state of the MSDTC may vary depending upon the operating system and the SQL Server Edition of the host system. To configure MSDTC use 
+   the Component Services Microsoft Management Console (MMC) snap-in. Correctly configuring DTC is before installing SQL Server is preferred 
+   over configuring on the fly, but be sure to watch the System Event Log for DTC related errors. </p> 
+
+<p>Accessing Component Services varies by operating system. Usually one of the following 
+   methods can be used:</p> 
+<ul>
+<li>run... dcomcnfg</li>
+<li>run... %SystemRoot%\System32\comexp.msc</li>
+<li>Open "Component Services" from the Administrative Tools</li>
+</ul>
+<p>This blog entry from the Microsoft MS DTC program group explains the likely settings required, 
+<a href="http://blogs.msdn.com/bill/archive/2006/12/12/using-msdtc-between-vista-clients-and-windows-2000-servers.aspx">
+http://blogs.msdn.com/bill/archive/2006/12/12/using-msdtc-between-vista-clients-and-windows-2000-servers.aspx</a>. In the
+event the blog is unavailable, the following step-by-step procedure is directly quoted from the entry:
+<pre>
+a.      Run dcomcnfg command (don’t tell me you couldn’t find the run commandJ)
+b.      Expand the “Component Services” node, then the “My Computer” node, then the “Distributed Transaction Coordinator” node
+c.      Right-Click on the “Local DTC” node and select “Properties”
+d.      On the “Local DTC Properties”, select the “Security” tab
+e.      Select Network DTC Access, Allow Inbound, Allow Outbound, No Authentication Required, and Enable XA Transactions
+</pre>  
+</p>
+
+<h5>Hierarchical Security Roles</h5>
+<p>Neither SQLClue or the install process interact with any SQL Servers during the initial install. This isolates the person installing 
+   the software from the database. This is an important for two reasons:</p>
+<ol>
+<li>SQLClue requires highly privileged access to all target SQL Instances.</li>
+<li>The Repository stores passwords as encrypted data for highly privileged SQL Logins.</li>
+</ol>
+<p>The person installing applications such as SQL Server or SQLClue must be a local administrator on the host machine. However, because of 
+   this isolation between the access required to install the applications and the access required to work within SQL Server, SQLClue is 
+   adaptable to the security model in use by the organization. For example, the local System Adminstrator that installs SQLClue need not 
+   be granted access to the SQLClue host SQL Server.</p>
+
+<p>The SQLClue administrator may need to be a member of the sysadmin fixed server role on the local SQL Server host. 
+   The level of privileged must allow the administrator to create and provision the SQLClue data stores.</p>
+
+<h5>Two Service Principals required</h5>
+<p>It is important to give careful consideration to both the host SQL Server Service start-up account and the SQLClue Automation Controller 
+   start-up account.</p>
+
+<h5>SQLClue Host SQL Server Service Start-up Account</h5>
+<p>Best practice when creating the host SQL Server service account is to follow the guidelines from the SQL Server
+2008 Books Online topic: "Setting up Windows Service Accounts". If SQL Server 2008 Books Online is not available
+refer to the online version of the documentation on Microsoft's MSDN or TechNet web sites.</p>
+<p>An unprivileged domain account is strongly recommended.</p>
+<ul>Be particularly aware of the following guidelines taken directly from SQL Server 2008 Books OnLine:
+<li>
+If the service must interact with network services, access domain resources like file shares, or if it uses 
+linked server connections to other computers running SQL Server, you might use a minimally privileged domain 
+server account. Many server-to-server activities can be performed only with a domain user account.
+</li>
+<li>
+If the computer is not part of a domain, a local user account without Windows administrator permissions is 
+recommended.
+</li>
+<li>
+Be aware that the "Local Service" account is not supported for the SQL Server or SQL Server Agent services.
+</li>
+<li>
+Network Service is a shareable account, and is appropriate for use as a SQL Server service account only if you can 
+ensure that no other services that use the account are installed on the computer.
+</li>
+<li>
+Use caution when you assign the "Local System" account permissions to SQL Server service accounts. Local System is a very 
+high-privileged account.
+</li>
+</ul>
+<h5>The SQLClue Automation Controller Service Start-up Account</h5>
+<p>Best practice when creating the SQLClue Automation Controller service account is to follow the guidelines from the SQL Server
+2008 Books Online topic: "Setting up Windows Service Accounts". If SQL Server 2008 Books Online is not available
+refer to the online version of the documentation on Microsoft's MSDN or TechNet web sites.</p>
+    Because of the file access requirements and the administrative SQL Server access 
+    on all targets using the [Local System], [Local Service] or [Network Service] 
+    service account options are not recommended.</p>
+        <p>It is a business continuity best practice to extend all file system rights 
+            granted to the SQLClue Automation Controller service account to the SQLClue Administrator.</p>
+        <p>A unprivileged domain user account other than the account used for the host SQL Server is strongly recommended. The same 
+account may be used for the SQLClue Automation Controller Service and the host SQL Server, though improved security is possible 
+if a different account is used by each. The SQLClue Automation Controller Service requires administrative access 
+            to all targeted SQL Servers and requires the specific file system privileges 
+            listed below. </p>
+<p>Interactive Data Center Runbook file system I/O and database access rely upon the privileges 
+    of the logged in used running the SQLClue Workstation or Console session. All SQLClue 
+    automation file system I/O and database access must also be extended to the 
+    SQLClue Automation Controller Service service account. This requires that the installer, SQLClue administrator or 
+    Runbook Contributor assure that any necessary file system permissions are 
+    properly configured. SQLClue will transparently set the necessary database 
+    security on the SQLClue host and on each targeted SQL Instance.
+    However, 
+    because network security topologies are highly variable and often 
+    proprietary, file system security must ultimately be configured and managed by the 
+    user as appropriate to organizational security practices. SQL Clue provides prompts when security must be considered. It is up to 
+    the user to assure that any changes are properly configured</p>
+        <p>For the Data Center Runbook the SQLClue Automation Controller service account must have read access to all folders that will be 
+monitored by the Data Center Runbook File Watcher. The File Watcher automatically keeps the Full Text search indexing in 
+sync with changes to the underlying documents. When new document references are added to the data store, the user 
+adding the document is prompted to assure that the service account has the necessary access 
+            to the new document.</p>
+                          
+<p>SQLClue target server SMO access is always done using the privilege level of the logged in user account. 
+    Consequently, all SQLClue administrators and the Automation Controller Service 
+service account must have the rights and permissions necessary to script metadata 
+    and extract configuration from all targeted SQL Instances. Only a member of the
+    <i>sysadmin</i> Fixed Server Role will have the necessary rights 
+    to access this metadata.</p>
+
+<p>No passwords are necessary to install the application. The only requirement is that the logged in
+user during the install be a local administrator when SQL Server is installed/uninstalled and when SQLClue is installed/uninstalled. 
+During installation, the application will never require a database connection.</p>
+
+<p> After installation the SQL Configuration Archive and the Data Center Runbook Repositories can be created using the SQLClue 
+User Interface. It is intended that any SQLClue maintenance is also completed using the Console. 
+All scheduled actions that require external access run under the authority of the SQLClue Automation Controller service account server principal. 
+Service Broker automation on the SQLClue host relies upon the authority of the SQL Server Service Account Server Principal of the host SQL Server.</p>
+
+<p>The avalable SQL Servers shown in all connection dialogs is the union of the "Browsable Servers" 
+that SMO is able to enumerate and the servers currently configured within SQLClue. The configured instances cannot be eliminated from the list. 
+However, the "Browsable Servers" discovered on the network by the enum can be managed 
+    to some extent. Regardless of how many SQL Servers that exist on the 
+network, if the network is large and the load time for the SQLClue console is slow turn the server enumeration down to either Local or None 
+for improved startup performance. Chances are quite high that the SMO enumeration 
+    will not find all SQL Servers on a large network. If the name os the SQL Server 
+    is known it can always be types into the connection dialog.</p>
+
+<h5>Changing the Server Discovery Scope setting</h5>
+<ol>
+<li>From the SQLClue menu select Tools|SQL Server Discovery Scope</li>
+    <li>In the Combo Box Select the desired scope that SMO should used to
+        <a id="top24" />
+        <summary xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">enumerates a 
+        list of available instances of Microsoft SQL Server</a></summary> </li>
+    <li>&quot;Network&quot; to
+        <summary xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5">search the 
+        network </summary>
+&nbsp;</li>
+    <li>"Local" to search only local system for SQL Instances</li>
+    <li>"None" to skip the discovery search</li>
+</ol> 
+
+            <a href="#top" class="index2">top&nbsp;&uarr;</a></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Considerations" class="index2">Considerations/a></b></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+
+<h5>Use and licensing Scenarios:</h5>
+<ul>
+
+<li><b>Local License</b><ul>
+
+    <li><b>Developer</b> - in this scenario a SQL Server Instance is installed at the developer's workstation. As the developer works, 
+database changes are instantly captured and regularly loaded to the local SQLClue. This protects the developer from losing 
+work and allow easy revert to any previos &quot;compile&quot; of a scripted database object during 
+        development. The developer can also modify any configuration on the local instance or even the local 
+SQLClue configuration yet always be able to identify what has been changed. In addition the developer can quickly verify that 
+the unit test environment is equivalent to a production or other pre-production integrative environment. There is no need for 
+the developer to directly access the external environment if a DBA or Team SQLClue is also configured to monitor that live or 
+integrative environment. The developer is optionally able to compare local SQLClue or 
+        local SQL Instance configuration to that stored in a reference SQLClue Repository 
+        available on the network.</li>
+
+<li><b>Stand Alone</b>  - in this scenario a SQLClue Local license is used to monitor changes on an integrative or shared SQL Server 
+instance. SQLClue is installed locally on the server to be monitored and the repository database is installed locally. This can be 
+an effective alternative for a development environment where each developer does not have an isolated unit test SQL Server or when
+a non-centralized configuration is preferred.</li>
+
+</ul>
+</li>
+<li><b>Environment License</b>
+<ul>
+
+<li><b>DBA</b> - in this scenario a SQL Server Instance is installed on a DBA's workstation or server in a small environment consisting of
+between 2 or more SQL Instances. The configuration for all instances is monitored for changes and archived to the central instance.</li>
+
+<li><b>Team</b> - similar to DBA scenarion but better for Integrative Test, QA, and other environments that require more than one use
+to access the data store for comparisons at the central SQLClue host. This server might be configured as a replication publisher of  
+SQLClue data that is copied to a location accessible to developers without having to allow direct developer access to the monitored 
+environment. It may be configured with a Report Server Instance or the subscriber might supply the Report Server with data.</li>
+
+<li><b>Environment</b> - in this scenario. This level of use is most likely to require stand-alone server class hardware.Installation 
+of a repository instance in each environment (for example Production, QA, Integrative Test or Unit Test) is recommended. 
+Hosting other central monitoring and administration databases along with the SQLClue host may be considered in this configuration option. 
+    SQLClue is ideally suited for use on a SQL Server Central Management Server 
+    (CMS)</li>  
+</ul>
+</ul>
+<p>Please drop me an email with your scenario and I will gladly provide my input about configurations you may wish to consider.</p>
+
+<h5>SQLClue Component Databases</h5>
+<p>There are two components that require data stores on the host SQL instance.</p>
+<ol>
+<li>SQL Configuration Archive Repository</li>
+<li>Data Center Runbook Repository</li>
+</ol>
+<p>These can be configured within a single database or can be can be placed in a separate database. The Setup dialogs for 
+each component will default to a a database named <b>SQLClue</b>. To use a different database name, change the name 
+in the setup connection dialog. If the database exists the installation will create the component schema the 
+    existing database. Otherwise, the installation will create the database and then install component schema.</p>  
+<h5>Database Storage Requirements</h5>
+            <p>By default SQLClue creates each database with a 100MB size on a single default 
+                device as determined by the host SQL Instance configuration. This is a 
+                reasonable size for test and evaluation Repositories and is also adequate for initial trial of the 
+                Data Center Runbook databases. The Runbook component storage 
+                requirements will vary greatly between organizations.&nbsp;&nbsp;&nbsp; </p>
+<ul>
+<li>
+<a id="top22" />
+    <b>SQL Configuration Repository</b> - a safe rule of thumb would be 1MB of database storage required for each 
+    50 database objects to be 
+archived.
+</li>
+    <li><b>Data Center Runbook</b> - The Data Center Runbook requires file system storage and database storage. While the number of topic entries will likely never 
+exceed a few hundred each topic may require in excess of 1MB of storage. The actual storage per topic will vary 
+        according to the size and tyoe of the documents added to the Runbook Library. The recommendation is 
+to initially allocate 100MB of database storage and 100MB of File System storage for the Data Center Runbook. As with all database applications, 
+usage should be monitored.
+</li>  
+</ul>
+<p>Always follow organizational Best Practices to monitor physical storage 
+    utilization and adapt as necessary. There are a number of Microsoft and third 
+    party tools available to aid in tracking database growth and calculating storage 
+    requirements. The method used to track the growth and establish storage 
+    requirements of the SQLClue target instances 
+    should also be used for the SQLClue host. A Management Data Warehouse configured 
+    on the SQLClue host collecting data from the host and all targets is an optimal 
+    usage scenario.</p>
+
+<p>To control the CREATE DATABASE of any SQLClue data store, create the database or 
+    databases that will be used before installing the data stores in SQLClue. That is, before running the install for that SQLClue component. This gives 
+ full control over size, options and location of the database created. Then, simply specify the same database 
+ name in the setup dialog in SQLClue when "Install..." is selected. If the database does not exist, the server defaults 
+ are used during install. If the database does exist, the script runs in the context of that existing database.</p>
+ <p>The scripts are non-destructive. That is a little different than idempotent. Non-destructive means data will never be lost by running the 
+ script. Idempotent means running the script will always produce the same resulting state in the database. 
+     The Scripts recreate all DML objects (procedures, functions, triggers, etc.) but 
+     do not replace existing tables. If necessary it is acceptable to re-apply the 
+     installation script for any component using the SQL Server Management Studio 
+     (SSMS) query tool or SQLCMD. Keep in mind that to drop and create objects 
+     results in two versions in SQLClue. To completely remove and recreate the data store it is necessary 
+     to use the &quot;Uninstall&quot; tools menu option.&nbsp; </p>
+<table width="90%" style="background-color: HighlightText; color:Highlight"><tr><td style="font-size:24px; font-weight:bold" class="style1">&nbsp;!&nbsp;</td>
+    <td style="background-color: Highlight; color:HighlightText" class="style1">
+            <p>Dropping a database before running an &quot;Uninstall&quot; will corrupt the data store settings for all affected components. 
+            To recover from such corruption:</p> 
+               <ol>
+               <li>Stop the SQLClue Automation Controller Service.</li>
+               <li>Backup all remaining SQLClue component databases.</li>
+               <li>Remove all references to the data store(s) that were held in the dropped database from the user.config that 
+                   reference the data store.</li>
+               <li>Once the SQLClue Console is able to load, uninstall and reinstall the SQLClue Automation Controller Service.</li>
+               </ol> 
+               <p>Do not hesitate to contact Bill if the installation becomes corrupted. In all know situations it is possible to
+                  recover from corruption provided proper action is taken.</p>
+</td></tr></table>
+ 
+ <p>Space and growth of the Data Center Runbook will be a function of actual usage. If you plan to load 
+     many documents into SQL 
+ Runbook, the storage requirements are greater than if you intend to primarily add knowledge and information as a few lines 
+ of text input directly into the Data Center Runbook database. Documents combined with Full Text Search, Track Changes, and Notifications, render the 
+ Runbook more accessible to users but will require more storage. Flexible storage options allow the documents to be easily served up as intranet links from a result set that 
+ matches the user query.</p>
+   
+
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<h5>Setting SQLClue to "run as administrator"</h5>
+<p>Using SQLClue on systems with User Access Control (UAC) may require that SQLClue is always explicitly 
+    set to &quot;run as administrator&quot;. </p>
+            <p style="font-weight:bold">SQLClue Component Installation and Maintenance</p>
+            <p>The SQLClue UI Tool&#39;s menu provides access to all configuration options available 
+                for each component.When a data store is required, a menu option to &quot;Install&quot; is available. When 
+                a data store has already been installed, options to modify the database 
+                connection details such as on the wire encryption or connection timeout and 
+                &quot;Uninstall&quot; the component are available. Additionally, if the component has 
+                other configurable settings, options to manage the settings are available for 
+                any installed component. </p>
+            <p>When the SQL Configuration Repository 
+                is installed this <a href="../SQLScripts/instSQLClueRepository.sql">database installation script</a> 
+                is executed on the host SQL Server. When uninstalled, this <a href="../SQLScripts/uninstSQLClueRepository.sql">database 
+                uninstall script</a> is executed</p>
+            <p>
+                When the SQLClue Runbook 
+                is installed this <a href="../SQLScripts/instSQLClueRunbook.sql">database installation script</a> 
+                is executed on the host SQL Server. When uninstalled, this <a href="../SQLScripts/uninstSQLClueRunbook.sql">database 
+                uninstall script</a> is executed</a></p>
+            <p>
+SQLClue Event Notifications are enable and disabled on a per target SQL Instance basis. This is done using 
+scripts that changes the configuration on the Target SQL Instance.
+Reviewing these scripts will help in understanding the small size and low risk of the change. Nonetheless
+it is strongly recommended that the scripts are reviewed prior to enabling event Notification on any server. 
+Likewise, and as ought to be true for any software being introduce into an environment, proper testing before
+placing SQLClue in a live environment is prudent. Follow these links to review the 
+<a href="../SQLScripts/instSQLClueDDLEventNotifications.sql">script to enable change Event Notifications</a> and the 
+<a href="../SQLScripts/uninstSQLClueDDLEventNotifications.sql">script to disable change Event Notifications</a>  
+script to enable DDL and configuration change event notification that will run on any target SQL Server instance 
+when SQLClue event notifications are enabled on that SQL Instance.
+You may also at anytime disable event notifications on a server. This script will run to remove the 
+configuration changes on a target server. 
+</p>
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+
+
+
+

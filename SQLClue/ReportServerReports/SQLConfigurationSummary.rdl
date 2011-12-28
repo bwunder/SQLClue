@@ -1,0 +1,1149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="SQLConfiguration">
+      <rd:DataSourceID>58ec24c2-c98e-4b42-9247-0c951b2169af</rd:DataSourceID>
+      <DataSourceReference>SQLConfiguration</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="Days">
+      <DataType>Integer</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Number of Days</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="SQLInstance">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>all</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>SQL Instance</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>7ed882bb-7fdd-40e7-85ca-7d9bb9db34bc</rd:ReportID>
+  <DataSets>
+    <DataSet Name="SummaryByNodeForDays">
+      <Fields>
+        <Field Name="SQLInstance">
+          <DataField>SQLInstance</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Node">
+          <DataField>Node</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalChangeCount">
+          <DataField>TotalChangeCount</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MetadataRowInserts">
+          <DataField>MetadataRowInserts</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MetadataRowUpdates">
+          <DataField>MetadataRowUpdates</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MetadataRowDeletes">
+          <DataField>MetadataRowDeletes</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SQLConfigurationAdded">
+          <DataField>SQLConfigurationAdded</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SQLConfigurationChanged">
+          <DataField>SQLConfigurationChanged</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SQLConfigurationRemoved">
+          <DataField>SQLConfigurationRemoved</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>SQLConfiguration</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>SQLCfg.pChangeActionSummaryByNodeForDays</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@DaysToShow">
+            <Value>=Parameters!Days.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Node">
+            <Value>=Parameters!SQLInstance.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DataSetSQLCfgLocalReporting</rd:DataSetName>
+        <rd:TableName>pSQLCfgChangeActionSummaryByNodeForDays</rd:TableName>
+        <rd:TableAdapterName>pSQLCfgChangeActionSummaryByNodeForDaysTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Width>10.125in</Width>
+  <Body>
+    <ReportItems>
+      <Table Name="table1">
+        <ZIndex>1</ZIndex>
+        <DataSetName>SummaryByNodeForDays</DataSetName>
+        <Top>0.375in</Top>
+        <TableGroups>
+          <TableGroup>
+            <Grouping Name="table1_Group1">
+              <Label>=Fields!SQLInstance.Value</Label>
+              <GroupExpressions>
+                <GroupExpression>=Fields!SQLInstance.Value</GroupExpression>
+              </GroupExpressions>
+            </Grouping>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="SQLInstance_1">
+                          <rd:DefaultName>SQLInstance_1</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>19</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!SQLInstance.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox29">
+                          <rd:DefaultName>textbox29</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>18</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox44">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>17</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>= Sum(Fields!SQLConfigurationAdded.Value) 
++ Sum(Fields!SQLConfigurationChanged.Value) 
++ Sum(Fields!SQLConfigurationRemoved.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox45">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>16</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationAdded.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox35">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>15</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationChanged.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox30">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>14</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationRemoved.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox51">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>13</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationRemoved.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox63">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>12</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!MetadataRowUpdates.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox69">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>11</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!MetadataRowDeletes.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox75">
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>10</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!TotalChangeCount.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.25in</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+          </TableGroup>
+          <TableGroup>
+            <Grouping Name="table1_Group2">
+              <Label>=Fields!Date.Value</Label>
+              <GroupExpressions>
+                <GroupExpression>=Fields!Date.Value</GroupExpression>
+              </GroupExpressions>
+              <Parent>=Fields!SQLInstance.Value</Parent>
+            </Grouping>
+            <Visibility>
+              <Hidden>true</Hidden>
+              <ToggleItem>SQLInstance_1</ToggleItem>
+            </Visibility>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox28">
+                          <rd:DefaultName>textbox28</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>9</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value />
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Date_1">
+                          <rd:DefaultName>Date_1</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>8</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!Date.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox36">
+                          <rd:DefaultName>textbox36</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>SQLInstance</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>All</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, "None", "Underline")</TextDecoration>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>7</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>= Sum(Fields!SQLConfigurationAdded.Value) 
++ Sum(Fields!SQLConfigurationChanged.Value) 
++ Sum(Fields!SQLConfigurationRemoved.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="SQLConfigurationAdded_1">
+                          <rd:DefaultName>SQLConfigurationAdded_1</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>SQLInstance</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>Add</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, "None", "Underline")</TextDecoration>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>6</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationAdded.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="SQLConfigurationChanged">
+                          <rd:DefaultName>SQLConfigurationChanged</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>SQLInstance</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>Change</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, "None", "Underline")</TextDecoration>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>5</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationChanged.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="SQLConfigurationRemoved">
+                          <rd:DefaultName>SQLConfigurationRemoved</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>SQLInstance</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>Delete</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Sum(Fields!SQLConfigurationAdded.Value) 
+    + Sum(Fields!SQLConfigurationChanged.Value) 
+    + Sum(Fields!SQLConfigurationRemoved.Value) = 0, "None", "Underline")</TextDecoration>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>4</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!SQLConfigurationRemoved.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="MetadataRowInserts">
+                          <rd:DefaultName>MetadataRowInserts</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>SQLConfigurationChangesForDate</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>Metadata</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>Include</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>3</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!MetadataRowInserts.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="MetadataRowUpdates">
+                          <rd:DefaultName>MetadataRowUpdates</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!MetadataRowInserts.Value) 
+    + Sum(Fields!MetadataRowUpdates.Value) 
+    + Sum(Fields!MetadataRowDeletes.Value) = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>Metadata</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>Modify</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Sum(Fields!MetadataRowInserts.Value) 
+    + Sum(Fields!MetadataRowUpdates.Value) 
+    + Sum(Fields!MetadataRowDeletes.Value) = 0, "None", "Underline")</TextDecoration>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>2</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!MetadataRowUpdates.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="MetadataRowDeletes">
+                          <rd:DefaultName>MetadataRowDeletes</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!MetadataRowInserts.Value) 
+    + Sum(Fields!MetadataRowUpdates.Value) 
+    + Sum(Fields!MetadataRowDeletes.Value) = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>Metadata</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>Remove</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Sum(Fields!MetadataRowInserts.Value) 
+    + Sum(Fields!MetadataRowUpdates.Value) 
+    + Sum(Fields!MetadataRowDeletes.Value) = 0, "None", "Underline")</TextDecoration>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>1</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!MetadataRowDeletes.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="TotalChangeCount">
+                          <rd:DefaultName>TotalChangeCount</rd:DefaultName>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>=Iif( Sum(Fields!TotalChangeCount.Value, "SummaryByNodeForDays") = 0, Nothing, "SQLConfigurationChangesForDate")</ReportName>
+                              <Parameters>
+                                <Parameter Name="ChangeDate">
+                                  <Value>=Fields!Date.Value</Value>
+                                </Parameter>
+                                <Parameter Name="SQLInstance">
+                                  <Value>=Fields!SQLInstance.Value</Value>
+                                </Parameter>
+                                <Parameter Name="NodeType">
+                                  <Value>All</Value>
+                                </Parameter>
+                                <Parameter Name="Action">
+                                  <Value>All</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                          <Style>
+                            <BorderColor>
+                              <Default>SlateGray</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontSize>8pt</FontSize>
+                            <TextDecoration>=Iif( Fields!TotalChangeCount.Value= 0, "None", "Underline")</TextDecoration>
+                            <TextAlign>Right</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Sum(Fields!TotalChangeCount.Value)</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.25in</Height>
+                </TableRow>
+              </TableRows>
+            </Header>
+          </TableGroup>
+        </TableGroups>
+        <Width>9.875in</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox18">
+                      <rd:DefaultName>textbox18</rd:DefaultName>
+                      <Style>
+                        <Color>SlateGray</Color>
+                        <BackgroundColor>WhiteSmoke</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>29</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>SQLInstance</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox20">
+                      <rd:DefaultName>textbox20</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>28</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Date</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox21">
+                      <rd:DefaultName>textbox21</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>27</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Nbr Cfg Changes</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox24">
+                      <rd:DefaultName>textbox24</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>26</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>New Config</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox41">
+                      <rd:DefaultName>textbox41</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>25</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Changed Config</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox47">
+                      <rd:DefaultName>textbox47</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>24</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Dropped Config</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox34">
+                      <rd:DefaultName>textbox34</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>23</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Metadata Inserts</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox50">
+                      <rd:DefaultName>textbox50</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>22</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Metadata Updates</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox62">
+                      <rd:DefaultName>textbox62</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>21</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Metadata  Deletes</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox68">
+                      <rd:DefaultName>textbox68</rd:DefaultName>
+                      <Style>
+                        <Color>White</Color>
+                        <BackgroundColor>SlateGray</BackgroundColor>
+                        <BorderColor>
+                          <Default>WhiteSmoke</Default>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Default>Solid</Default>
+                        </BorderStyle>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>20</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Total Changes</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.375in</Height>
+            </TableRow>
+          </TableRows>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>2.5in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.375in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75in</Width>
+          </TableColumn>
+        </TableColumns>
+        <Height>0.875in</Height>
+        <Left>0.125in</Left>
+      </Table>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.125in</Top>
+        <Width>9.875in</Width>
+        <Style>
+          <Color>SlateGray</Color>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Left>Solid</Left>
+            <Top>Solid</Top>
+          </BorderStyle>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Value>= "Configuation Archive Changes - Last (" &amp; Parameters!Days.Value &amp; Iif(Parameters!Days.Value &gt; 1, ") days", ") day")</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>1.375in</Height>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

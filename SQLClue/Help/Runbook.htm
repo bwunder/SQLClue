@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>SQLClue Runbook</title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+    <style type="text/css">
+        .style1
+        {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<a id="top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+Data Center Runbook
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+<td class="subtitle">
+Share timely knowledge and information to reduce unplanned work and improve business continuity.
+</td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+<h5>Data Center Runbook</h5>
+<ul>
+<li>
+Library of Data Center knowledge and information
+</li>
+<li>Promotes team excellence
+</li>
+    <ul>
+    <li>
+    effortlessly bring documents into a shared library with no changes to how the document is already used    
+    </li>
+    <li>
+    employ structured knowledge sharing practices to in reduced interruptions and raise data center performance levels
+    </li>
+    <li>
+    introduce peer review feedback to improves quality of content in new and existing documents  
+    </li>
+    </ul>
+<li>
+Enables business continuity best practices and business alignment at the data layer
+</li>
+<li>
+Intended as an open and shared resource for all involved in database administration and operations
+</li>
+<li>
+Target database platform is Microsoft SQL Server Express Edition 2005 with Advanced Services.
+Any edition of SQL Server 2005 or SQL Server 2008 can be used as the data store for convenience or scalability.
+</li>
+</ul>
+</p>
+<p>Three ways that the Data Center Runbook helps to assure business continuity:
+    <ol>
+    <li><b>Data Collection Method</b><br />
+    The SQLClue Runbook provides a convenient and easy interface for those designated as contributors - usually all 
+    administrators and operators at the location - to build and maintain a record of the knowledge and experience 
+    necessary, lessons learn, and data collected during efforts to keep the organizations SQL Servers up and running.
+    </li>
+    <li><b>Highly Searchable Data Store</b><br />
+    The SQLClue Runbook provides a full text search enabled common central reference for all involved in database operations 
+    and administrations to quickly recover the knowledge and information necessary to maintain the required database 
+    availability and support performance service levels. 
+    </li>            
+    <li><b>System Experts Surrogate</b><br />
+    The SQLClue Runbook provides a documentation of existing knowledge that can be used even when the authors - presumably 
+    the most knowledgeable on the topic among the internal group - are unavailable.
+</li>
+</ol>
+</p>
+<p>
+All information relevant to the daily administration and operations of the SQL Servers in an environment must be 
+included. By reviewing the entries, any individual with a working knowledge of SQL Server is able to quickly learn 
+about all <i>in situ</i> processes, procedures, practices and protocols as well as the existence and current status 
+of any outstanding issues.
+</p>
+<p>
+The SQLClue Runbook recognizes the enormity of this task and provides planned operational activities and knowledge sharing 
+within an innovative yet structured method incorporating:
+</p>
+<ul>
+<li>light weight knowledge contribution requirements, for minimal staff time costs to manage data collection or the data store</li>
+<li>peer review to increase accuracy of information, improve exposure across functional work areas and facilitate consensus decision-making</li>
+<li>monitoring to determine how enthusiastically individuals are contributing to the strategic efforts</li>
+</ul>
+
+<p>Adhering to a Runbook oriented database administration and operations practice will reduce the number of interruptions 
+   incurred by all. This often dramatic reduction in the number of interruptions combined with the ever increasing internal
+   availability and accuracy of the knowledge and information help the organization transition from too much chaos and 
+   firefighting mode to more structure and normalcy. To establish a peer reviewed documentation that holds the same answers 
+   as the expert's sleeping brain, but is much more accessible than the expert at 3AM or on Saturday night.</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION--></td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+<p>The Runbook documents the administration and operation of the SQL Servers in an environment. 
+This documentation should be as complete as is practical and cover all aspects from high level aspects like architectural  
+decisions and development best practices and the delete/archive strategy to the daily minutiae like how to determine the 
+currently available backups to tape, or the location of a database master key export. All information relevant to the daily 
+administration and operations of the SQL Servers in an environment must be included. By reviewing the entries, a qualified 
+individual is able to learn the reasons for any configuration changes from the defaults.</p>
+
+<p>The SQLClue approach to Runbook building is to capture information about events and activities as they happen. A successful
+SQLClue Runbook replaces the typical non-strategic approach of documenting anecdotally as time allows. The emphasis for the SQL 
+Runbook is on the mandatory allocation of as little as 5 minutes by all designated personnel each day to add, review, and revise 
+the knowledge and information pertaining to the administrative and operational activities for that day. Dedication to this 
+approach assures relevance that will be unavoidably missed with anecdotal approaches.</p> 
+<p>The SQLClue Runbook also provides an empirical measure of every individual's participation in the documentation process. This is 
+useful for those that must manage and evaluate each individual in the designated pool.</p>
+
+<img src="..\Images\SQLRunbook.jpg" />
+
+<p>The SQLClue Runbook is composed of Documents organized by Topic. Each Document and each Topic are also designated as belonging 
+   to one or more Categories. Limited only by the quality of the decisions during input, this Categories-Topics-Documents matrix 
+    yields a highly searchable resource. Search-ability is extended to the contents and SQLClue annotation by Full-Text indexing.</p>
+<p>The SQLRunbook is highly flexible in how information and knowledge can be stored. A book's worth raw text can be stored with each 
+topic and category. The files that can be stored are limited in size only by the physical resources available. To benefit from SQL 
+Server&#39;s Full Text search engine, many document types can be loaded into SQL Servers for full text indexing. The SQLClue Runbook 
+can be configured to automatically maintain the database stored copy of a file as the file changes.</p>
+<p>The more thoughtful, complete, and thorough this library of information and body of knowledge the less likely that anyone will be 
+called at 3AM or that an obscure system will become a black box and eventually fall into disuse because the knowledge about maintaining 
+the system was lost when an individual left the organization. For these reasons - along with well established documentation best 
+practices - all documentation should be as complete as is practical and cover all aspects from database diagrams and development best 
+practices to delete/archive strategies and the life of a backup tape. The Runbook is a fundamental tool of business continuity at the 
+database layer.</p>
+
+<h5>SQLClue Runbook Topics</h5>
+<p>
+    A SQLClue Runbook Topic is&nbsp;
+    Each topic can have up to 2GB of text and can be associated with an unlimited 
+    number of external documents. A topic row must already exist else it will be 
+    created when a document is added. The console maintains this dependency 
+    transparently. The application never overwrites this text. All updates append to 
+    the text. In fact every action attributable to a SQLClue Runbook topic results in 
+    message being added to this text. In effect, a history of the topic is 
+    maintained in this text. </p>
+<a name="#top0" />
+<a name="#top1" />
+<h5>SQLClue Runbook Documents</h5>
+            </a>
+<p>
+    A Document record specifies the path to any valid and accessible<a 
+        name="#top6" /> file</a>. Document references can be via URL, a UNC path or local
+            file system path. Document Types found in <b>sys.fulltext_document_types </b>
+    can be indexed by the Full Text Search Engine. Only textual data will be indexed 
+    but the documents are stored as binary data. The text of these known files types is indexed
+            just as a VARCHAR(MAX) column. Subsequent queries can then use the using the CONTAINS
+            and FREETEXT predicates as well as the CONTAINSTABLE and FREETEXTTABLE functions
+            resulting in very powerful query capabilities. The user is in full 
+    control of when a binary image is loaded for full text indexing. </p>
+                <p>The document types in <b><a name="#top2" />sys.fulltext_document_types</a></b> 
+                as determined by the file extension for SQL Server 2005 
+                (2005.090.3042.00) include: 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    .ascx, .asm, .asp, .aspx, .bat, .c, .cmd, .cpp, .cxx, .def, .dic, .doc,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>.dot, .h, .hhc, .hpp, .htm, .html, .htw, .htx, .hxx, .ibq, .idl, .inc,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>.inf, .ini, .inx, .js, .log, .m3u, .mht, .obd, .obt, .odc, .pl, .pot, .ppt,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>.rc, .reg, .rtf, .stm, .txt, .url, .vbs, .wtx, .xlb, .xlc, .xls, .xlt, .xml               
+                                        </a></p>
+                <p>The document types in <b><a name="#top2" />sys.fulltext_document_types</a></b> 
+                as determined by the file extension for a SQL Server 2008 (10.0.1600.22) on Windows Vista 
+                with all IFilters shipped with the OS and Adobe's PDF IFilter into SQL Server include: 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            .a, .ans, .asc, .ascx, .asm, .asp, .aspx, .asx, .bas, .bat, .bcp, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.c, .cc, .cls, .cmd, .cpp, .cs, .csa, .csproj, .css, .cxx, .dbs, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.def, .dic, .doc, .docm, .docx, .dos, .dot, .dsp, .dsw, .ext, .faq, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.fky, .h, .hhc, .hpp, .hta, .htm, .html, .htt, .htw, .htx, .hxx, .i, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.ibq, .ics, .idl, .idq, .inc, .inf, .ini, .inl, .inx, .jav, .java, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.jnt, .js, .kci, .lgn,  .log, .lst, .m3u, .mak, .map, .mdb, .mdi, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.mht, .mhtml, .mk, .msg, .obd, .obt, .odc, .odh, .odl, .one, .pdf, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.pl, .pot, .potm, .ppt, .pptm, .pptx, .prc, .rc, .rc2, .rct, .reg, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.rgs, .rtf, .rul, .s, .scc, .shtm, .shtml, .sldm, .sldx, .snippet, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.sol, .sor, .sql, .srf, .stm, .tab, .tdl, .tlh, .tli, .trg, .txt, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.udf, .udt, .url, .user, .usr, .vbproj, .vbs, .vcproj, .vdx, .viw, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.vsd, .vspscc, .vss, .vsscc, .vssscc, .vst, .vsx, .vtx, .wri, .wtx, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.xlb, .xlc, .xls, .xlsb, .xlsm, .xlsx, .xlt, .xml, .xps, .xsd, .xsl, 
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.xslt, .zip</p>
+<p>                                     
+
+<p>Numerous Internet locations offer a multitude of other IFilters. Be sure to test any such IFilters before installing in a live system.</p>   
+                                        
+                                        
+<h5>SQLClue Runbook Categories</h5>
+<p>Each Runbook topic can has only one textual attribute but can have as many documents associated to it as is appropriate.</p>
+<p>The SQLClue Runbook documents the administration and operation of the SQL Servers in an environment. The intended uses of the 
+   SQLClue Runbook include:</p>
+<ul>           
+<li>Enabling a central source of information for Network Operations, Production Operations, Development and Database Administration 
+    staff.</li>
+<li>Preserving the purposes, goals, implementation details, use and interesting results from the projects, problem solving, and 
+    routine activities of all professionals that support an organizations SQL Server infrastructure.</li>
+<li>Assuring business continuity in the event that a person of primary knowledge is not available when technical knowledge and 
+    information is required.</li>
+<li>Providing tangible metrics of individual contributions toward the success of the organization's SQL Server Database Applications. 
+    Often IT leaders lack the specialized technical expertise to properly evaluate individual performance of highly skilled professionals.</li>
+</ul>
+<p>System Documentation must always be as complete as is practical. Often include all software lifecycle aspects from design data 
+   decisions to development best practices to routine production activities to warehouse and delete/archive strategies. All personal 
+   knowledge, plans, schedules, research, testing, and professional opinion are valid and important types of input to realize maximum 
+   value from the SQLClue Runbook. All information relevant to the daily administration and operations of the SQL Servers in each environment 
+   must be included. By reviewing the entries, any reasonably qualified individual is able to learn about the architecture, processes, 
+   and available tools for the location.</p>
+<p>The SQLClue strategy to runbook building is to capture topical information about events and activities as they happen. While it 
+   may well be as easy to capture such knowledge anecdotally or ad hoc, the result is less complete and less likely to be limited to 
+   a single topic. The structure of the SQLClue Runbook encourages the dedication of a few planned minutes of time each day to add and 
+   update text and documents for all Topics that received attention during the day. As Topics are entered or edited, they are associated 
+   with appropriate categories of database activity. A default collection of said categories is included with the SQLClue Runbook, however 
+   the list can be modified as is appropriate for the organization. Dedication to this strategy will grow and evolve the Runbook’s body of 
+   knowledge over time and produce a body of information that can be quickly and easily searched by topic, category, or content.</p>
+<p>A collection of SQLClue Runbook reports are included on the SQLClue ReportViewer Tab. Report Server hosted (.rdl) Report Definition 
+   Markup Language (RDML) can be created and deployed as desired. This ability to customize the report library as desired coupled with 
+   the collection of reports included with the SQLClue Runbook creates a nearly unlimited capability to report on interesting data layer 
+   information when and where it is needed.</p>
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+ 
+<p>Documentation is a thought process. The SQLClue Runbook allows for Categories to be defined, refined and changed as 
+   necessary to properly capture the information that the Runbook Contributors are feeding to the Runbook.</p>  
+ 
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<h5>Recommended SQLClue Runbook structured adoption and maintenance methodology.</h5> 
+<p>
+The fundamental principle of the SQLClue Runbook maintenance methodology is that information and knowledge be added based on
+the contributors activities for that day. The time demand for adding information is not great, however consistent daily 
+attention to SQLClue Runbook maintenance is very important. The people using the system must invest an average of 1-5 minutes 
+a day into adding, revising, and reviewing SQLClue Runbook Content.
+</p>  
+
+<p>
+Even the shop that may not have a more formal over-arching Systems Runbook can begin to capture database administration 
+and operational knowledge and information immediately. (Note that such shops may want to give consideration to the need for
+an overarching run book.</p>
+<p>Contributors should view SQLClue Runbook maintenance activities in many ways like the maintenance activities of maintaining 
+a blog. Much of the data will be text. Each entry, 
+or Topic can also include references to files, images, videos, and even printed materials. Also like a blog, information is 
+entered in chronological context.</p> 
+<p>Unlike a Blog, the SQLClue Runbook is shared by designated staff. Also the preference for the SQLClue Runbook is to place more 
+important and larger topics into documents that support track changes (e.g. Microsoft Office Word and Excel) as the body of 
+information grows beyond a few hundred word about a topic, they receive a date/user stamp yet become part of the original Topic 
+text. The Topic and the Topic Owner do not change, but the content of topic evolves as necessary over time.</p>
+<p>Unlike a wiki or blog, the SQLClue Runbook is intended to have Topics created by all authors visible at all times and to support 
+editable and versioned shared documentation. While bloggers enjoy great flexibility in composition and content, SQLClue Runbook 
+contributors must adhere very closely to the Topic and each Topic must be relevant to SQL Server Administration and Operations.</p>
+<p>Each Runbook Topic can have only one textual annotation attribute but can have as many documents associated to it as is appropriate. 
+Use the text column of the table when the topic is new. As the topic sees change activity, the text column will be appended with 
+informational history about each topic change. Topics that have a changing definition or that are larger are better used if a document 
+is created. Moving the good documentation to a document leaves the Topic's text column to track the history of the topic.</p>
+<p>Documents created with Microsoft Office can be created with change tracking enabled. This allows the history of changes to the 
+document to be stored in the document. The document can be viewed as a normal document showing only the most recent version, or as a 
+history of changes by author.</p>
+<p>Shops that already have a runbook like repository in place can use the SQLClue Runbook as a queue to capture necessary information 
+that can then be integrated into the legacy documentation collection.</p>
+
+<h5>Security</h5>
+<p>The SQLClue Runbook uses a role based hierarchy to secure all data. The hierarchy consists of Users, Contributor, Service, Admin.
+   Users (RunbookUserRole members) can query, read, peer review all Topics and Documents. Contributors can also add and edit Topics 
+   and Documents. The Service Account (RunbookServiceRole members) can read underlying documents from the file system. The Runbook 
+   Administrators (RunbookAdminRole members) may or may not have the file reading access of the Service. Administrators can do all 
+   operations that the Contributor is authorized to conduct. The Administrator is responsible for managing Topic and Document ownership.</p>
+<p>Documents can have assigned owners. The "Enforce Ownership" menu option settings determines if only the owner can change a file. Members 
+   of the RunbookServiceRole can resync the database copy of all files with the file system copy provided the file location owner has 
+   extended read access to the service account. Members of RunbookAdminRole can resync files, reassign ownership and also modify the 
+   document provided the file location owner has extended read write access to the file location to the members of the role. File system 
+   permissions are managed by the owner of the file system location. This is beyond the realm of what the SQLClue Runbook can automatically 
+   configure.</p>
+
+<h5>How To:</h5>
+<p><a href="RunbookContributorTutorial.htm">Contribute to the Runbook</a></p>
+<p><a href="RunbookPeerReviewTutorial.htm">Peer Review a Runbook Topic</a></p>
+<p><a href="RunbookSearchTutorial.htm">Search the Runbook</a></p>
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+

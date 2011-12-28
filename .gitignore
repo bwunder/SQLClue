@@ -1,0 +1,8 @@
+# git ignore file
+bin/
+obj/
+Sandbox/
+*.scc
+*.msi
+*.exe
+*.rdl.data

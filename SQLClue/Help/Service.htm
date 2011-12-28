@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>
+The SQLClue Automation Controller Service 
+ </title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a id="top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+The SQLClue Automation Controller Service
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+ <td class="subtitle">
+ SQLClue Scheduling and automated processing
+ </td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+<p>The SQLClue Automation Controller Service is a Windows Service. The service is configured andd installed from the SQLClue 
+   Administrator's Console.  Use the Automation Controller to carry out all SQLClue data collection and synchronization activities 
+   at regular intervals. It is important to use only the SQLClue Administrator's Console to install and interact with the Automation 
+   Controller service to assure that all configuration changes are properly communicated to the service.</p>
+
+<p>The SQL Configuration Repository component uses the Automation Controller to collect data from each 
+   target server associated via a scheduled collector.</p> 
+<p>The Data Center Runbook component uses the Automation Controller Service to maintain 
+   synchronization between file system documents and the full text indexed copy of the document stored in the database.</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<p>The SQLClue Automation Controller Windows Service handles routine SQLClue operations. This frees highly skilled
+   data professionals to conduct more urgent and varied activities yet assures that the routine activities are not skipped in
+   the interest of more pressing issues. As we all know, without the routine activities, the more pressing issues are frequently 
+   compounded in the long run. Routine SQLClue operations include Configuration Archives and processing and monitoring of Data 
+   Center Runbook document changes.</p>
+<p>A Windows Service is used for scheduling so that SQLClue can be hosted on any Edition SQL Server 2008 including the
+   freely distributed Express Edition with Advanced Services Editions - even though SQLExpress has no SQLAgent capabilities. Express Edition 
+   installations must include the Advanced Services optioins for adequate support of SQLClue Full Text Search functions.</p>
+<p>A Windows Service is used rather than a Web Service because the context and sensitivity of the SQLClue content should never be allowed 
+   to propagate outside the security citadel of the data center or environment. A Windows Service can be very effectively secured and is 
+   less prone to access and malicious use from outside the boundaries of the trusted domain perimeter.</p>
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+ 
+<h4>Security Considerations</h4> 
+<h5>The SQLClue Automation Controller Service Start-up Account</h5>
+<p>Follow the same guidelines as recommended for the SQL Server service account in the 2008 Books Online topic: "Setting 
+   up Windows Service Accounts". If SQL Server 2008 Books Online is not available refer to an online version of the documentation 
+   on Microsoft's MSDN or TechNet web sites.</p>
+<p>Due to the file access requirements and the administrative SQL Server access on all targets using the [Local System], 
+   [Local Service] or [Network Service] service account options are not supported for the SQL Clue Automation Controller Service.</p>
+<p>An otherwise un-privileged domain user account other than the account used for the host SQL Server is strongly recommended. 
+   Do not use the same account for the SQLClue Service and the SQLClue host SQL Server. The SQLClue Automation Controller 
+   requires administrative access to all targeted SQL Servers and requires the specific file system privileges listed below for 
+   any location hosting Runbook Documents.</p>
+<p>All SQLClue automation file system I/O and database access is intended to done using the rights and permissions of the SQLClue Automation 
+   Controller service account. Because network security topologies are highly variable and often proprietary, file system security 
+   is not attempted by SQLClue but must be configured and managed by other means. The SQLClue console provides prompts when 
+   security requirements are created or changed. It is up to the user to assure that all such prompts are properly addressed.</p>
+<p>SQL Configuration Archive scheduled processing requires that the Automation Controller is a member of the <i>sysadmin</i> Fixed 
+   Server Role on all targeted SQL Servers. While most of the DDL itmes can be scripted with only VIEW DEFINITION permission, a 
+   number of the metadata items archived can only be accessed by users with the highest level of access.</p>   
+<p>For the Data Center Runbook the SQLClue Automation Controller service account must have read access to all folders that will be 
+   monitored by the Data Center Runbook File Watcher. The File Watcher automatically keeps the Full Text search indexing in sync 
+   with changes to the underlying documents. When new document references are added to the data store, the user adding the 
+   document is clearly advised of the access that will be required by the service account.</p>
+ <p>Lastly, the SQLClue console must be set to "run as administrator". This is necessary so the console can install and control 
+ the Automation Controller Service.</p> 
+ 
+ <p>To set SQLClue to "run as administrator" on Windows Vista use these steps as outlined in 
+ Microsoft's KB article 922708:</p>
+ <ol>
+ <li>Right-click the icon that you use to run the program, and then click Properties. On the Shortcut tab, the Target box contains 
+ the location and the name of the program file.</li>
+ <li>Open the folder that contains the program file.</li>
+ <li>Right-click the program file, and then click Properties.</li>
+ <li>On the Compatibility tab, click to select the Run this program as an administrator check box, and then click OK.</li>
+ </ol>
+
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+The SQLClue Automation Control is designed to be managed using the SQLClue console. While the service can be Started, Paused, 
+Continued and Stopped using the Windows Service Manager snap-in, the synchronization of settings between the application and the 
+service can only be maintained when the SQLClue console is used. When a changed is accepted by the SQLClue console that
+requires propagation to the Automation Controller, it happens effortlessly with no user action required. 
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+
+
+

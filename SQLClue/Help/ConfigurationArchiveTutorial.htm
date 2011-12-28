@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Planning SQL Configuration Archives</title>
+    <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+
+<table class="sqlclue">
+<tr>
+<td class="sqlclue">
+
+<h4>Planning SQL Configuration Archives</h4>
+
+<p>This page walks the reader through the SQL Configuration Archive Planning and a User Interface initiated Archive of the SQLClue host SQL Instance.</p>
+
+<table>
+<thead>Scenario Introduction</thead>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+<h5>The first archive on every SQLClue installation.</h5>
+<p>By default, the SQLClue host SQL Instance is added to the SQL Instance grid at the upper left of the "Archive Planning" Tab Form when 
+the SQL Configuration component is initially installed.</p>
+<p>The host SQL Instance is not considered a SQLClue target until and unless an archive has been completed. It is strongly recommend 
+that an archive of the host is done as part of the installation process and that the host is monitored for configuration change by SQLClue 
+    at all times. 
+This will establish a <i>perimeter of deployment</i> and allow targets added to the host to move within 
+    a known boundary of change. Successful execution of the first SQL Configuration 
+    Archive will also verify the SQLClue installation for added confidence that it is ready to be licensed and put to use.</p>
+    <p>A daily SQLClue archive of the host with events enabled should be considered mandatory. After all, this is the central master copy of 
+all configuration changes on the target servers. Just in case the state of the host might affect the change detected a target, it is necessary 
+to monitor the host.   
+</p>
+    <p>A dailiy backup of the host repository database after this archive is also 
+        recommended.</p>
+
+</td>
+</tr>
+</table>
+
+<h5>To begin, Install the SQL Configuration Archive and Select the Archive Planning 
+    Window of the SQLCLue Administrator&#39;s Console </h5>
+
+<ul>
+<li>Select the grid cell containing the name of SQL Server to be targeted. (Select 
+    the last row labeld <b>new</b> to add a new target SQL Server) 
+<p>On a new install of SQLClue, the host SQL Server will be the only server shown in the list. Connection information for 
+each server that is accessed by "Archive Planning" is stored in the repository. </p>
+ </li>
+    <li>A dialog is opened to select the SQL Instance, configure the connection and connect
+        <ol>         
+        <li><b>Connect to a Target SQL Instance</b>
+            <p>Several connection options can be set, although in most scenarios all that is needed is to select or enter 
+            the SQL Instance and then hit the [OK] button.</p></li>
+            <ol>
+            <li>Select or enter the name of the SQL Instance to be targeted in the &quot;SQL Instance&quot; input box of the
+                &quot;Connect to a Target SQL Instance&quot; dialog.</li>
+            <li>Leave the database name blank. 
+            <p>When no database is selected, the &quot;Configuration Compare&quot; connection uses the default database configured 
+               for the login at the Target SQL Instance.</p></li>
+            </ol>
+        <li><b>Configure the Connection Authentication</b>
+            <ol>
+            <li>Leave the &quot;Use Trusted Connection&quot; check box checked. 
+            <p>When SQL Authentication must be used un-check the checkbox and provide a valid SQL Login/Password combination.</p>
+            <p>Whether Windows Authentication is used or SQL Server Authentication is used the user must be a member of the <i>sysadmin</i> Fixed Server Role. While some items can be compared with a less powerful 
+               account, many configuration items, including the Server Settings, can be compared only when the user is a <i>sysadmin</i> 
+              member.</p></li>
+            </ol>
+        </li>
+        <li><b>Configure the Connection Settings</b>
+            <ol>
+            <li>Leave the Connection Timeout value set to the default (60 seconds).
+                <p>Only adjust the Connection Timeout when necessary. In most scenarios the the default value is acceptable.</p></li>
+            <li>Leave the Network Library blank.
+                <p>When no library is selected, the values enabled in the SQL Native Client Configuration will be used. Using the SQL 
+                Native Client configured protocols has the added advantage of escalating the protocol if the Target does not accept
+                a connection using the first protocol in the configured protocol list.</p></li>
+            <li>Leave the &quot;Encrypt Connection&quot; check box un-checked.
+            <p>To encrypt the data sent on the wire select the &quot;Encrypt Connection&quot; check box. By default, an SSL certificate
+               must be installed on the host operating system of the Target SQL Instance to encrypt data on the wire.</p></li>            
+            <li>Leave the &quot;Trust Server Certificate&quot; check box un-checked.
+            <p>When data encryption on the wire is desired yet an SSL certificate is not available, select the &quot;Trust Server 
+               Certificate&quot; check box. The target SQL Server will automatically 
+                self-generate a certificate that will be used to encrypt the bits sent on the 
+                network </p></li>
+            </ol>
+        </li>
+        <li>Select the dialog's [OK] button to connect to the SQL Instance.</li>
+        </ol>
+    <li>The &quot;Items to Monitor&quot; Treeview will be populated with a view of the Configuration Hierarchy available from the SQL Instance.
+    <p>Review the SQLClue provided defaults for which items are enabled/disabled in user databases and system databases as well as which database 
+    to include are set in two stored procedures (pDbInt and pInstanceInit - Note that Users wishing to change the defaults for local condititions 
+        may do so within these stored procedures. Be sure to complete this walkthrough before making any changes 
+        to the stored procedures mentioned.)   
+    </p>   
+    </li>
+    <li>Select any column of the <b>new</b> row of the Schedule Grid to add a new schedule row.  
+    <p>If any schedules have been previously set for the Instance, they will appear in the schedules listing in the lower section of the form.
+    A schedule is required to produce an archive. Furthermore the schedule must be marked "Active". Edit the cells of existing schedules by selecting the cell.</p></li>
+    <li>Edit the Schedule as necessary. </li>
+    <li>If the <b>Automation Controller </b>is not installed the schedule will not be met or maintained. 
+        You will able to start the archive from the UI regardless if the Automation 
+        Controller is installed or not. </li>
+    <li>Select "Run Now"</li>
+    <li>The host will be archived asynchronously. The currently archiving SQL Server item name is shown in the SQLClue status bar.</li> 
+    <li>A "Cancel Archive" button allows the console initiated archive can be cancelled at any time.
+    <p> Nothing else can happen on the Archive Planning Tab while the archive is running. Other SQLClue components may be used normally 
+    during any archive. This is&nbsp; true whether the archive is console UI initiated, Automation Controller initiated, or started by an external process in batch mode.</p></li>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

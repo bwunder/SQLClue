@@ -1,0 +1,13 @@
+set version in
+cCommon
+SQLClue
+SQLCluSvc
+
+set msi in SQLCLueConsole properties to the version
+
+build cCommon or SQLClue
+build the service code
+build the service. this goes to resources of the app
+build the setup
+
+update LatestSQLVersion.txt on website

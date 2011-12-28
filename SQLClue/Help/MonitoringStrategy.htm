@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>The SQL Server Monitoring Strategy</title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a id="#top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+The SQL Server Monitoring Strategy
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+<td class="subtitle">
+Creating a clearly defined shared strategy
+</td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+<h5>Following the Leader</h5>
+
+<p>In most organizations, those who monitor are also involved in the design, construction and maintenance of the monitors.</p>
+
+<p> In shops that develop software, monitoring usually has a <i>de facto</i> lifecycle that tends to follow, yet always lag 
+slightly behind - that of the application(s) monitored. It is also typical for production focused operations and technical 
+administrative staff - rather than the software developers - to build and implement most monitors.  This pattern is a good 
+predictor that the shops monitoring is reactive rather than planned and strategic. Typically, each request or requirement for 
+monitoring is tossed on the "ToDo" heap and implemented in due course. As the shop grows and workers become saturated with tasks, 
+the more likely those monitoring requests and requirements will be implemented with the utmost of urgency, insufficient critical 
+thought and even less cognizance of the underlying business reasons.</p>
+ 
+<p>Production shops primarily supporting third party business application often lack even a software development life cycle (SDLC)
+to drive monitoring activities. Monitoring is often reactive and without structured or stoic and overly structured. With too little 
+structure, monitoring can become chaotic and looses effectiveness. With overly rigid processes, monitoring activities are frequently 
+unable to change quickly enough to protect the application or the organization.</p>
+
+<p>Whether purely a production shop, a start-up, or anSDLC shop with minimal established patterns, a methodical transition to a 
+planned monitoring strategy providing a high level structural framework that engages The IT organization with the business 
+in a partnership is recommended.</p>
+
+<p>It is not practical to define and implement a monolithic monitoring strategy overnight in any organization. This would be too 
+disruptive to the applications and work flows being monitored. Monitoring would become a reason for service level issues rather than 
+an aid in identifying issues and improving efficacy. Effective strategic database monitoring cannot begin without the explicit 
+direction and guidance from the IT and business decision makers. It may even be necessary for the DBA or data lead to go to extraordinary 
+lengths to convince management of the advantage and value in a monitoring strategy, especially if all are already busy people. Organizational
+Leaders usually just want IT to take care of it. IT leaders just wants the DBA to handle it. This is not only unacceptable but an incredibly
+weak leadership chain of command. The result can only be successful if the DBA is a very good mind reader. Since few DBAs possess such 
+telepathic skills, the result is more often a setup for failure. Without a regularly reinforced and informed mandate from business leaders 
+monitoring will never become strategic. Guesswork about what the organization needs and wants to be monitored can never be a best practice. 
+Organizations that are not clear about what they need are not very likely to get it.</p> 
+
+<p>Once management is fully behind the strategic monitoring efforts, enlistment of the Operations and Administrative workers will 
+follow. Of course, greater cooperation and higher quality of contributions can be expected if the IT workers share a common objective and 
+enjoy a genuine sense of ownership in the strategic monitoring systems. Yet another reason why getting management on board is necessary from 
+the onset of strategic monitoring is mandatory for success.</p>
+
+<p>The organization can then begin to examine existing monitors to begin to identify the strategy and create plans to meet the now strategic 
+mandate. Usually the steps of this process are:</p>
+
+<ol>
+<li>catalog existing monitors in the organization</li>
+<li>assess how the organization currently defines and implements monitoring needs</li>
+<li>define the high level strategic framework based upon the catalog and the assessment</li> 
+<li>identify projects that will move everyone under the umbrella of the strategy in a sane and successful manner</li>   
+<li>expand the strategic initiative gradually throughout the organization</li> 
+</ol>
+
+<p>As experienced folks assume more responsibilities and new people join the organization, they must be given knowledge of and access to 
+existing monitors. Over time, everyone must be able to see the reasons a monitor exists, how it is used, how it is implemented, how to 
+install and uninstall the monitor, and any other incidental knowledge and information necessary on order to properly respond to the monitor.</p>
+
+<p>The structure of strategy will help the organization to not repeat the same mistakes over and again. The strategy should integrate with 
+organizatinal continuity planning. And it should foster knowledge and information transfer among all workers actively involved in carrying out
+the strategy.</p>
+
+<p>Typically, when the primary builders and other knowledgeable staff supporting a monitoring sub-system leave the organization, the monitor 
+falls into disuse. Not because the need for the monitor changed, simply because no one is aware it exists or those that remain are unsure how 
+to use it. This happenstance actually contributes to one of the insidious problems that an effective monitoring strategy will help to relieve: 
+the accumulation of unused and atrophied objects within the database.</p>
+
+<p>Working from a strategic platform for database montitoring eliminates much uncertainty and duplication of effort. It allows the systems of
+the organization to remain robust, useful and usable even as the organization evolves and the players change.</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<h4>Ground Rules for a Database Monitoring Strategy</h4>
+<ul>
+<li>The Database Monitoring Strategy is the high level logical container for all database monitoring activities.</li>
+<li>The Database Monitoring Strategy is business need based.</li>
+<li>A business reason is any reason that is clearly derived from the goals and purpose of the organization. "Because that's the 
+way it's always been done," and "...knowing the WMI API would be good for my career" are probably not valid business reasons. 
+"Failed login auditing as an intrusion detection for an online retailer", is closer to strategic because it may be designed, 
+coded and tested with the same rules and rigor as any other application software.</li>
+<li>Identifying business reasons for all existing monitors is a necessary exercize in defining a Database Monitoring Strategy.</li>
+<li>The Database Monitoring Strategy need be only as formal or structured as is necessary to meet the stated business need.</li>
+<li>Effective Database Monitoring strategies require the genuine commitment and support of business and IT leadership.</li>
+<li>Effective Database Monitoring strategies have a carefully calculated planned level of monitoring redundancy across the organization.</li>
+<li>When database monitoring is done within a known strategic framework, it is reasonable to expect that less time will be required 
+to support individual monitors.</li>
+<li>Build monitors for live systems, but build them - and test them - first in an integrated development environment first.</li>
+</ul>
+
+<p><a href="../Documents/SQLMonitoringStrategies.ppt" target="strategy">The Database Monitoring Strategy</a> slide deck presents a walkthrough 
+of defining, designing and building a monitoring strategy using a business reason based monitoring strategy.</p>
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="#Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+
+<p>Once all monitors are identified, the task is to make sure the tools are in place to satisfy the data collection requirements and 
+provide a suitable reporting/notification mechanism for each monitor. You'll know you've missed the mark in reaching the business 
+interests with a shared fundamental understanding of strategic monitoring when the requests for new or different monitoring 
+requirements begin to spring up even before the usually not that tough to do process and infrastructure are put in place to 
+support the "strategically" identified monitors.</p>
+
+<p>Use the following brainstorming table as a thought provoking aid when identifying and specifying monitors. This is a listing of 
+many common database monitors. Expand, consolidate and modify the list as necessary and appropiate for the organization. If all that 
+was necessary was listing of monitors that any organization could simply implement, things would be nice and easy. Clearly reality
+is not lent to such mechanization. The listing will be unique and ever changing for every organization. For each entry in the list 
+provide an indication of the business reason, data collection methods, any established baselines and thresholds, all necessary notification and 
+escalation details.</p>
+
+<ul>
+<li>Service Level Commitments</li>
+<li>Change history
+	<ul> 
+	<li>Environment
+		  <ul>
+		    <li>DDL comparison results</li>
+		    <li>Data comparison results</li>
+		  </ul>
+		</li>
+        <li>Server
+          <ul>
+          <li>Uptime</li>
+          <li>Service pack/patch levels</li>
+          <li>Configuration/Features/Software Installed</li>
+          </ul>
+        </li>
+  	    <li>SQL Instance
+		  <ul>
+          <li>Uptime</li>
+          <li>Service pack/patch levels</li>
+          <li>Configuration/Features</li>
+	      </ul> 
+	   </li>
+	   <li>Database
+		  <ul>
+		    <li>Storage</li>
+		    <li>Metadata</li>
+		  </ul>
+       </li>
+   </ul>
+</li>
+<li>Recovery/High Availability
+    <ul>
+    <li>Forward/disaster recovery plans</li>
+    <li>Backup/restore
+        <ul>
+        <li>Size, location, durations</li>
+        <li>Tape rotation scheme</li>
+        </ul>
+    </li>
+    </ul>
+</li>
+<li>Escalation details
+    <ul>
+    <li>Escalation tier</li>
+    <li>When to escalate</li>
+    <li>Who to contact</li>
+    </ul>
+</li>
+<li>Validation procedures for automated processes
+    <ul>
+    <li>How to determine is working as expected</li> 
+    <li>Log Shipping and Database Mirroring</li>
+    <li>Delete/Archive</li>
+    <li>Replication</li>
+    <li>Data Feed processing
+        <ul>
+        <li>Imports</li>
+        <li>Exports</li>
+        </ul>
+    </li>
+    </ul>
+</li>
+<li>Database Maintenance Activities
+    <ul>
+    <li>Types<ul>
+        <li>Scheduled</li>
+        <li>On Demand</li> 
+        </ul>
+    </li>
+    <li>Usage Documentation Contents<ul>
+        <li>Activity Description</li>
+        <li>Activity Results and Reports</li>
+        <li>Problem Identification and Resolution Guidelines</li>
+        </ul>
+    </li>
+    </ul>
+</li>
+<li>Current usage Information
+    <ul>
+    <li>Heartbeat</li>
+    <li>Performance</li>
+    <li>Current Activity</li>
+    <li>Errors</li>
+    </ul>
+</li>
+<li>Usage Information Logs
+    <ul>
+    <li>Sampling of Dynamic Metrics
+        <ul>
+        <li>Establish baselines</li>
+        <li>Meaningful aggregations</li>
+        <li>Delete/archive strategy</li>
+        </ul>
+    </li>
+    <li>Security Audit</li>
+    <li><i>ad hoc</i> Query Usage</li>
+    </ul>
+</li>
+<li>Elevated Privilege SQL User Usage
+    <ul>
+    <li>sysadmin (sa)</li>
+    <li>Other Fixed Server Roles</li>
+    <li>Database owner (dbo/db_owner)</li>
+    <li>Other Database Roles</li>
+    </ul>
+</li>
+<li>Intrusion/Breach Detection
+    <ul>
+    <li>How to Identify</li>
+    <li>Preventive Measures in Place</li>
+    <li></li>
+    </ul> 
+</li>
+<li>Data patterns
+    <ul>
+    <li>Fragmentation Studies</li>
+    <li>Delete/Archive Strategies</li>
+    <li>Table Growth</li>
+    <li>Identify Unused Tables</li>
+    </ul>
+</li>
+<li>Stored Procedure and Function Usage Patterns 
+    <ul>
+    <li>Query Plan Stability and Efficiency</li>
+    <li>Baselines</li>
+    <li>Identify Unused</li>
+    </ul>
+</li>
+<li>Blocking Pattern History</li>
+<li>Deadlocking History</li>
+<li>SQL Agent Job Error History
+    <ul>
+    <li>SQL Agent Log History</li>
+    <li>SSIS/DTS Log History</li>
+    <li>Windows Events</li>
+    </ul>
+</li>
+<li>General Documents</li>
+<li>Contact information</li>
+<li>Recovery information</li>
+<li>Database Enterprise Topology Diagram(s)</li>
+<li>Source/Change Control practices</li>
+<li>Coding Standards</li>
+<li>Code Review Guidelines</li>
+</ul>
+
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<table>
+<tr>
+<td>
+Topic Index:
+    <ul>
+    <li><a href="#Listing1" class="GuidelineListing">Create the Database Monitoring Strategy</a></li>
+    </ul>
+<!-- snippit for the next list entry - then add an item below for each entry
+   <li><a href="#Listingn" class="GuidelineList"></a></li>
+-->
+
+</td>
+</tr>
+<tr>
+<td>
+
+<h4><a name="#Listing1" class="GuidelineListing">A Project to List Strategic Database Monitors</a></h4>
+  
+<p>SQLClue Monitoring Strategy guidelines are targeted toward the small to mid-sized software development shops with or without 
+existing monitoring practices. Here there is an always the assumption that adequate <i>a priori</i> project management is not in 
+place for such systems development work. Shops with more mature systems development process or large shops - with typically more 
+stoic methodologies - will want to remain within the bounds of the established practices of the organization. As with any other 
+curative or prescriptive advise, take what is useful and leave the rest.</p>
+<p>The project to list strategic monitors is run just as is any other SDLC project when best practices are in place. Shops unfamiliar
+with SDLC methodologies are encouraged to investigate the topic as quickly as possible.</p>
+<p>The measure of an effective database montoring strategy is satisfactory results as determined by the explicit endorsement by the 
+organization that data layer availability and accessibility are at desired levels. If the organization is not getting the results 
+needed from the monitors, the monitors need to be changed else the organization is at risk.</p>
+ 
+<h5>The Strategic Monitoring Authority</h5> 
+ 
+<p>Few organizations will have an a person or team tasked with database monitoring. Most often it is just one of the many issues
+left to the DBA's. In the absence of an organizational authority to mandate the strategic objectives, identify a small work 
+group representative of the organizational groups that are responsible for the design, development, administration and operations of 
+the database servers to assume that role. Members of this group should be considered expert or senior in their assigned roles. As a 
+minimal alternative a strategic monitoring listing could be produced by one person or by a team of DBAs, however the result is likely 
+to be more complete if the diverse group is used. The work group can also serve as the organization's voice for endorsement of current 
+monitoring efforts. Clearly the demands of membership in a strategic monitoring authority team are not overly time consuming. Once the
+strategic framework is in place the authority may require as little as an hour or two a month to assure that things stay on track.</p>
+
+<p>To get started, the SQLClue Administrator should make a best guess effort to infer requirements from current conditions. 
+Do this before even before the previously suggested work group becomes involved in the strategic effort. List existing monitors 
+in a table or spreadsheet. Once the work group is active the listing can be used to kick-start the collaborative effort to 
+expand upon the principles as generally described throughout the SQLClue Strategy Monitoring Documentation to:</p> 
+<ul>
+    <li>identify the business reasons(s)</li>
+    <li>identify the monitoring attributes</li>
+    <li>organize by business purpose</li>
+    <li>establish an accurate prioritization of each monitor's importance to the business</li>
+</ul>
+<p>Documents to aid in the effort that are shipped with the SQLClue application include:</p> 
+<ul>
+<li>A <a href="../Documents/Database Monitoring Strategies.doc">Word document</a> describing the fundamentals of effective 
+strategic monitoring.</li>
+<li>A fully annotated <a href="../Documents/SQLMonitoringStrategies.ppt">PowerPoint slide deck</a></li>
+</ul>
+<p>Updates to these documents and ather works are also posted on the 
+<a href="http://bwunder.com/strategy.aspx" target="_blank">SQLClue web site</a>.</p>
+
+<p>Add new monitoring requirements to the strategic listing as they become evident. This is an ongoing task for the authority, 
+the SQLClue Administrator, and all other teams involved in fulfilling the strategic monitoring efforts. Everyone in the organization 
+must to remain vigilant for existing monitors that are not properly listed and must be able to communicate ineffective or new 
+requirements as they become known.</p>
+
+<p>The strategic listing should never be considered complete or generic. Furthermore, every organization will have unique monitoring 
+requirements and methods. Different applications may even warrant completely disparate or otherwise isolated monitors within 
+the organization or location. Applications and the organization will change over time. Like any SDLC, fulfilling the monitoring 
+strategy is iterative in nature and deserves to be regularly reviewed by the identified organizational authority.</p>
+
+<p>It is recommended that one or more SQLClue Runbook Topics are created to aid the proper dissemination of information necessary for
+an effective collaborative effort. The Runbook Topics will enable access and Full-Text search to the larger audience of developers, 
+administrators, operations staff and management of the details to the details of the strategic effort.</p>
+
+</td></tr></table>
+
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+
+
+

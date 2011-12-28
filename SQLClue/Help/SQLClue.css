@@ -1,0 +1,329 @@
+BODY.xxx
+{
+	background-color: #FFFFFF;
+	color: #000000; 
+	font-family: Verdana; 
+	margin-left: 20px; 
+	margin-right: 20px; 
+	margin-top: 20px;
+	font-size:12px;
+	font-weight:normal 
+}
+
+TABLE.sqlclue
+{
+	background-color: #FFFFFF;
+	color: #000000; 
+	font-family: Verdana; 
+	margin-left: 20px; 
+	margin-right: 20px; 
+	margin-top: 20px;
+	font-size:12px;
+	font-weight:normal;
+	width:90%;
+	height:90%
+}
+
+A:link 
+{
+	color: #000066; 
+	font-weight: bold; 
+	text-decoration: none
+}
+
+A:visited 
+{
+	color: #000088; 
+	font-weight: bold; 
+	text-decoration: none
+}
+
+A:active 
+{
+	color: #000044; 
+	font-weight: bold; 
+	text-decoration: none
+}
+
+A:hover 
+{
+	color: #FF6600; 
+	font-weight: bold; 
+	text-decoration:underline  
+}
+
+A.index:link {font-size:  larger}
+
+A.index:visited {font-size: larger}
+
+A.index:active {font-size: larger}
+
+A.index:hover {font-size: larger}
+
+A.index1:link {font-size: inherit}
+
+A.index1:visited {font-size: inherit}
+
+A.index1:active {font-size: inherit}
+
+A.index1:hover {font-size: inherit}
+
+A.index2:link {font-size: smaller}
+
+A.index2:visited 
+{	
+	font-size: smaller;
+}
+
+A.index2:active {	
+	font-size: smaller;
+}
+
+A.index2:hover {	
+	font-size: smaller;
+}
+
+A.index2 {	
+	font-size: smaller;
+}
+
+H1.sqlclue
+{
+	color: #000000; 
+	font-family: Verdana;
+	font-size: 36px;
+	font-style: normal;
+	font-weight: normal
+}
+
+H2.sqlclue
+{
+	color: #000000; 
+	font-family: Verdana;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: normal
+}
+
+H3.sqlclue
+{
+	color: #000000; 
+	font-family: Verdana;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: normal
+}
+
+H4.sqlclue
+{
+	color: #000000; 
+	font-family: Verdana;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: normal
+}
+
+H5.sqlclue
+{
+	color: #000000; 
+	font-family: Verdana;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: bold
+}
+
+H6.sqlclue
+{
+	color: #000000; 
+	font-family: Verdana;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal
+}
+
+P.sqlclue 
+{
+	color: #000000; 
+	font-family: Verdana;
+	margin-top: 0px; 
+	margin-bottom: 12px
+}
+
+PRE.sqlclue 
+{
+	background-color: #e5e5cc;
+	border-bottom: #f0f0e0 1px solid; 
+	border-left: #f0f0e0 1px solid; 
+	border-right: #f0f0e0 1px solid; 
+	border-top: #f0f0e0 1px solid; 
+	font-family: Lucida Console; 
+	font-size: x-small; 
+	margin-top: -5px; 
+	padding-bottom: 5px; 
+	padding-left: 5px; 
+	padding-right: 5px; 
+	padding-top: 5px 
+}
+
+THEAD.sqlclue 
+{
+	color: #000000; 
+	font-family: Verdana
+}
+THEAD.title 
+{
+	color: #000000; 
+	font-size: 16px;
+	font-family: Verdana
+}
+
+TD.sqlclue
+{
+	color: #000000;
+	font-family: Verdana;
+	font-size: 12px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+TD.title 
+{
+	color: #000000; 
+	font-family: Verdana;	
+	font-size: 16px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+TD.subtitle
+{
+	color: #000000;
+	font-family: Verdana;
+	font-size: 10px;
+	padding-left: 10px;
+	padding-right: 5px;
+}
+
+TD.halfbox
+{
+	color: #000000;
+	font-family: Verdana;
+	font-size: 12px;
+	border-collapse: separate;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-right-style: none;
+	border-top-style: solid
+}
+
+TR.halfbox
+{
+	border-bottom-style: none;
+	border-collapse: separate;
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none
+}
+
+TABLE.halfbox
+{
+	border-bottom-style: none;
+	border-collapse: separate;
+	border-left-style: none;
+	border-right-style: none;
+	border-top-style: none
+}
+
+TD.halfbottomright
+{
+	color: #000000;
+	font-family: Verdana;
+	font-size: 12px;
+	border-collapse: separate;
+	border-bottom-style: solid;
+	border-left-style: none;
+	border-right-style: solid;
+	border-top-style: none
+}
+
+TD.halfbottomleft
+{
+	color: #000000;
+	font-family: Verdana;
+	font-size: 12px;
+	border-collapse: separate;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-style: none;
+	border-top-style: none
+}
+
+TD.halftopright
+{
+	color: #000000;
+	font-family: Verdana;
+	font-size: 12px;
+	border-collapse: separate;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-right-style: solid;
+	border-top-style: solid
+}
+
+TABLE.halfdashed
+{
+	border-bottom-style: dashed;
+	border-bottom-width: thin;
+	border-collapse: separate;
+	border-left-style: none;
+	border-right-style: dashed;
+	border-right-width: thin;
+	border-top-style: none
+}
+
+TABLE.halfthin
+{
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	border-collapse: separate;
+	border-left-style: none;
+	border-right-style: solid;
+	border-right-width: thin;
+	border-top-style: none
+}
+
+OL.sqlclue 
+{
+	margin-left: 20px;
+	margin-top: 10px
+}
+
+LI.sqlclue 
+{
+	color: #000000;
+	margin-top: 10px 
+}
+
+UL.small 
+{
+ font-size:10px;
+ font-variant:small-caps;
+ font-weight:normal;
+ line-height:10px;
+}
+
+LI.small 
+{	
+ font-size:10px;
+ font-variant:small-caps;
+ font-weight:bold;
+ line-height:10px;
+ 
+}
+
+HR.sqlclue 
+{
+	height: 2px; 
+	text-align: center;
+	width: 50%
+}

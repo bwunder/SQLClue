@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>
+ADD WINDOW TITLE
+ </title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a name="#top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+ADD TITLE
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+ <td class="subtitle">
+ ADD SUBTITLE
+ </td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+<p>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<p>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+ 
+<p>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+ 
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<table>
+<tr>
+<td>
+Topic Index:
+    <ul>
+    <li><a href="#CreateHowTo" class="HowToList">Create a How-To</a></li>
+    <li><a href="#UseHelpTemplate" class="HowToList">Use the Help Template</a></li>
+    </ul>
+<!-- snippit for the next list entry - add an item below for each entry
+   <li><a href="#" class="HowToList"></a></li>
+-->
+
+</td>
+</tr>
+<tr>
+<td>
+   <p><a name="#CreateHowTo" class="HowToItem">How to Create HOW-TOs and SCENARIOs</a></p>
+   <p>
+    Use the FAQ layout: 
+    <ol>
+     <li>Add a link to the HowToList. Make the href a unique local page link. There is a 
+     snippit of HTML available in the template to aid in adding new links.</li>
+     <li>Add a HowtoItem named anchor with the same name as the href in Step 1. </li>
+     <li>Leave and use snippits of HTML as an aid in adding new items. The snippits
+     will keep the feel consistent but allow enough complexity to keep things interesting.</li>
+    </ol>
+   </p> 
+
+   <hr>
+
+   <p><a name="#UseHelpTemplate" class="HowToItem">How to use the Help Template</a></p>
+   <p>
+    Never overwrite the template. The file attribute is supposed to be set ReadOnly. To
+    create a new doc from the template:
+    <ol>
+     <li>Open the template.</li>
+     <li>Wait! Before making any changes, File|"Save As..." the html doc you want to create.</li>
+     <li>Then add the file to the project as an existing item.</li>
+     <li>THERE ARE BEGIN AND END COMMENTS IN ALL CAPITAL LETTERS AT EACH PLACE WHERE CONTENT NEEDS TO BE ADDED.</li>
+     <li>Change the Visual Studio Properties of the file to [Build Action] = Content and [Copy to Output Directory] = "Copy if Newer"</li>
+     </ol>
+     To update existing documents if the template is changed, each document must be touched. 
+     So don't change the template if you don't REALY need to.
+    </p>
+
+<!-- snippit for the next item
+   <p><a name="#" class="HowToItem"></a></p>
+   <p></p>
+-->
+</td></tr></table>
+
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+
+
+

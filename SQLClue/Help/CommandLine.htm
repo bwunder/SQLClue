@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>
+SQLClue Batch Mode
+ </title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a name="#top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+SQLClue Batch Mode
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+ <td class="subtitle">
+ A Command line interface for control of SQLClue tasks by external schedulers.
+ </td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+<p>Configuration Compares, SQL Configuration Archives, and Data Center Runbook Synchronization can all be initiated by a command 
+line call to the SQLClue.exe. This allows SQLClue use within SQL Server Integration Services packages, PowerShell scripts, and SQL Agent jobs.</p>
+
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<h5>Command line options</h5>
+
+<pre>
+usage: SQLClue.exe -cmd {component} {parameters}
+  parameters by component (use one of these 4 command line options at a time):
+    SQLClue.exe -cmd Archive ScheduleId (Integer)
+              example: SQLClue.exe -cmd SQLInstance Archive 4
+              must be a valid ArchiveId
+                SELECT * FROM [SQLCfg].[vArchive]
+    -cmd Compare OriginA {nodeA} ConnectStringA OriginB {nodeB} ConnectStringB True/False
+              example (all one line): -cmd Compare SQLInstance "PROD1|Logins" 
+                                           "Data Source=PROD1;Integrated Security=True;" 
+                                           SQLInstance "DEV\SYS|Logins" 
+                                           "Data Source=DEV\SYS|;Integrated Security=True" 
+                                           False
+              origin: either "SQLInstance" or "Repository"
+              node: a valid SQLClue node string
+                SELECT [Node].ToString() FROM [SQLCfg].[tChange]
+             True/False: compare all descendent nodes (for Server, Database, Schema item only)
+    -cmd Runbook   (no parameters)
+              example: SQLInstance Runbook
+</pre>
+
+<p>Batch mode supports full hierarchy compares for SQL Instance, Database and Schema. If {nodeA} and {nodeB} are 
+both a SQL Instance, Database or Schema and the CompareDescendents flag is true, all decendent nodes will be compared.</p>
+
+<p>Batch Mode Compare results are written to html files for viewing. The HTML files are written to the same folder as the
+interactive compare uses to produce the "SQLClueCompare.htm". Batch mode also adds a timestamp to the names of the HTML file's 
+so they are not overwritten with each compare as is case for the HTML produced by the interactive compare.
+The folder is stored in the user.config if it is ever changed from the default of "My Documents" for the current user. The 
+formatting of the HTML output is similar to the the view seen when doing an interactive compare. Scrolling can also be 
+synchronized in the HTML document if JavaScript execution is enabled. (Most likely a warning will be shown in browser giving you the 
+option to enable script execution.)</p>
+
+<p>Batch mode errors and messages are written to the SQLClue host's Application Event Log. If there is a problem writing to the
+Application Event Log the command line may also write the failure message to the file "SQLClue.log" in the SQLClue 
+Program folder. "SQLClue.log" is only created when an error cannot be reported by any other means. </p>
+
+<p>The Automation Controller is not used and is not required to use batch mode. Each batch call runs one task one time.</p>
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+ 
+<p>Uses the user.config of the logged in user at execution time. If the last compare by the user was customized, the results
+of the batch mode compare will receive the same customizations. Caution is advised as this flexibilty can produce incorrect results.</p>
+ 
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a name="#Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<h4>samples of various batch mode calls</h4>
+
+<p><i>All commands must be submitted on a single line.</i> The commands are formatted on multiple
+lines below only for readabilty</p>
+
+<h5>Start a SQL Configuration Archive</h5>
+<code>
+SQLClue.exe -cmd Archive 4
+</code>
+<p>To identify valid ArchiveId values query the view [SQLCfg].[vArchive] in the SQL Configuration data store</p>
+<p>&nbsp;</p>
+            <h5>Synchronize Runbook documents with the database image</h5>
+<code>
+SQLClue.exe -cmd Runbook
+</code>
+<p>&nbsp;</p>
+<h5>Compare two SQL Configuration items</h5>
+<p>In this example Origin A is a SQL Instance and Origin B is the Repository. Origin A could also be 
+any version of any item from the SQL Configuration Archive. Origin B could also a SQL Instance. (Note 
+that the command line does not support file compares)</p>
+<code>
+SQLCue.exe /cmd SQLInstance "PROD1|Logins" "Data Source=PROD1;Integrated Security=True;" <br />
+                Repository "PROD1|Logins" "Data Source=ADMIN1;Integrated Security=True" False
+</code>
+<p>To identify valid nodes consider the query SELECT [Node].ToString() FROM [SQLCfg].[tChange]</p>
+<p>Use the [SQLCfg].[[pConnectionGetTargetConnectionString] stored procedure passing the SQL Instance name as the 
+only parameter to generate a connection strings using the configured connection information stored 
+in the SQLClue Repository. Passwords are not included in connection strings that use SQL Server 
+Authentication. The literal "password" is used as a placeholder where the password must be entered. 
+In most cases the connections strings generated by this stored procedure can be modified for use in 
+compares targeting SQL Instances that are not in the SQLClue Configured instance list. </p>
+<p>&nbsp;</p>
+
+<h5>Compare two SQL Configuration SMO collections</h5>
+<p>In this example, Origin A is a SQL Instance and Origin B is another SQL Instance. </p>
+<code>
+SQLCue.exe \cmd SQLInstance "PROD1|Logins" "Data Source=PROD1;Integrated Security=True;" <br /> 
+                SQLInstance "QA\PROD|Logins" "Data Source=QA\PROD;Integrated Security=True" False
+</code>
+<p>&nbsp;</p>
+<h5>Compare two SQL schemas</h5>
+<p>Includes all items belonging to the schema in the compare. In this example the Origin A is the 
+most recent archive version from PROD1 and Origin B is the current configuration on DEV. The differenc 
+between a compare of the only the schema's definition requires only that the final Boolean parameter be False.</p>
+<code>
+SQLCue.exe /cmd Repository "PROD1|Databases|Northwinds|Schema|Sales" "Data Source=ADMINSQL;Integrated Security=True;" <br />
+                SQLInstance "DEV|Databases|Northwinds|Schema|Sales" "Data Source=DEV;Integrated Security=True" True
+</code>
+<p>&nbsp;</p>
+<h5>Compare two SQL database</h5>
+<p>Includes all configuration items in database. As with the Schema or Server, if the final 
+parameter is "True" the complete SMO hierarchy is compared and if the final parameter id "False" 
+only the item definitions (in this case the CREATE DATABASE scripts) will be compares.</p>
+<code>
+SQLCue.exe /cmd Repository "PROD1|Databases|Northwinds" "Data Source=ADMINSQL;Integrated Security=True;" <br />
+                SQLInstance "DEV|Databases|Northwinds" "Data Source=DEV;Integrated Security=True" True
+</code>
+<p>&nbsp;</p>
+<h5>Compare two SQL Servers</h5>
+<p>Includes all configuration items on SQL Instance. The last parameter must be "True" to compare all configuration. 
+If the parameter is "False" or missing, only the SQL Instance item will be compared. The SQL Instance item includes 
+the Service Master Key, SQL Server Attributes, SQL Server Properties, SQL Server Policies and all configured Server 
+level Event Notifications</p>
+<code>
+SQLCue.exe /cmd SQLInstance "DEV" "Data Source=DEV;Integrated Security=True;" <br />
+                Repository "PROD" "Data Source=PROD;Integrated Security=True" TRUE
+</code>
+<p>&nbsp;</p>
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+
+
+

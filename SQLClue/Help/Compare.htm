@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+<title>DDL &amp; Configuration Compare</title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a id="top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+Configuration Compare
+</td>
+</tr>
+
+<tr>
+ 
+ <td class="subtitle">
+<!--ADD SUBTITLE-->
+Finding the Differences Between the Configurations of Two SQL Servers 
+</td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+<p><b>SQLClue Configuration Compare</b> is interactive assistant for to help quickly understand 
+    the SQL Server configuration, DML and DDL differences between two <b>Origins</b>.</p>
+ 
+<p>No database objects or configuration will ever be changed on a SQL Server targeted by a <b>SQLClue Configuration Compare</b></p> 
+
+<p>Both <b>SQLClue Workstation</b> and <b>SQLClue Console</b> installations include the 
+    <b>Configuration Compare</b> 
+   component. The documentation used to compare
+<a id="top0" />
+    configuration items </a>is derived using Microsoft's SQL Server Management Objects (SMO) managed 
+   .NET object model. <b>Configuration Compare</b> also exploits the predictable relationship between the <b>SQLClue 
+   Configuration Repository</b> hierarchy and a SQL Server's SMO hierarchy. This is an important aid in producing useful 
+   results when comparing between software lifecycle environments with a data center 
+    or when comparing between data centers or other organizational boundaries. </p>
+            <p>To assure the highest comparisons fidelity possible, only like items from matching collections are comparable. 
+                That is to say: a stored procedure can be compared to a <i>stored procedure</i> 
+                and it can be compared with a <i>user defined function</i>. A <i>table</i> can 
+                be compared to another <i>table</i> and it can be compared to a <i>view</i>. While 
+                there will always be defferences between a <i>stored procedure</i> and a <i>user 
+                defined function, </i>there are also ocassional legitimate reasons to compare 
+                queries within either of these database objects. Likewise it is sometimes useful 
+                to understand the indexing or partitioning similarities between a table and a 
+                view. SQLClue provides a reasonable measure of flexibility to support atypical 
+                requirements when needed.&nbsp; </p> 
+
+<p>When possible, configuration items are compared and  presented at the user interface as T-SQL scripts. 
+    Scripts are generated using the SMO Scripting engine. While all scripting 
+    options are fully configurable, the default options produce accurate and fast 
+    comparison reults. Items not readily 
+    documented as T-SQL scripts, for example <i>active directory</i> configuration at either 
+    the server or database scope, <i>server attributes</i>, <i>event notifications,
+    </i>or <i>
+    assymmetric keys</i> are presented and compared as standardized name-pair tabulations.</p>
+
+<p>Comparisons between two SQL Server Instances, a SQL Instance and a <b>SQLClue Configuration Repository</b>, or two 
+   repositories are possible. Repository items are archived with the same script or standardized name-pair tabulation as the
+    <b>Configuration Compare</b> component generates when the default SMO scripting 
+    options are used.</p> 
+
+<p>In addition, items comparisons are supported between a item from a SQL Instance or <b>SQLClue Configuration Repository</b> 
+    and a file system text file. This capability is provided to support efforts to identify drift and reconcile 
+   development source control systems and any SQL Server through the use of the source control &quot;working folders&quot; 
+   Origins in a comparison.</p>
+
+<p>Most compares are conducted using the <b>SQLClue</b> <b>Workstation</b> or <b>
+    Console</b> user interface (UI). In most cases there is no need or purpose for a command line 
+   interface or batch execution mode. Since any compare can be long running operation, 
+    all compares conducted from the SQLClue is executed on a <i>WinForms 
+   BackgroundWorker</i> thread. This allows the comparer to continue with other tasks within <b>SQLClue</b> 
+    or elsewhere on the desktop while awaiting the compare results. The duration of 
+    a compare is a function of the number of items being compared and the size of 
+    each item. However, some <b>SQLClue</b> supported compares - in particular full 
+    database or complete server compares or schema level compares - in particular when the &quot;With Dependencies&quot; SMO 
+   scripting option is enabled - may require several minutes to complete. Most compares 
+    of object collections (e.g all tables or all users between two databases) will complete in a minute or two. 
+    Larger compares can be run using a commond line interface. The command line 
+    interface also offers the ability to be scheduled through the SQL Agent, the 
+    windows Task Scheduler, or other scheduler provided adequate rights and 
+    permissions are extened to the account running the scheduler. See the Command 
+    Line help document for additional details.</p>
+
+<p>The <b>Configuration Compare</b> UI tab is divided into two sides. The sides mirror each other. Each includes the parameters 
+   and results for one of the two &quot;Origins&quot; targeted by each compare operation. Whenever <b>SQLClue</b> is launched, 
+   static usage tips and <i>Quick Start</i> information are shown in the comparison results panes.</p>
+
+<p>The <b>SQLClue Configuration Compare</b> is unique from the many other SQL Server metadata comparison tools available. The
+   most important difference being the <b>SQL Configuration Repository</b> support provided. In addition, <b>SQLClue Configuration 
+   Compare</b> includes scripting and formatting flexibility not found in aggregate in other compare tools. For example, 
+   &quot;REGEX&quot; regular expressions can be used to match object names and within metadata text during the comparison of 
+   an objects properties or DDL; results can be shown in various levels of detail; and result lines can be numbered. It is 
+   difficult to imagine a valid compare scenario not supported by <b>SQLClue's Configuration Compare</b>.</p>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+<h4>Configuration Compare Terminology</h4>
+<p>
+<b>SQL Server Management Objects (SMO)</b> is a hierarchical .NET object model. SMO models the Configuration components 
+   of Microsoft's SQL Server 2000, SQL Server 2005 and SQL Server 2008. SMO is designed for all programmatic administration 
+   of these database servers.</p>
+
+<p>An Origin describes the location of the metadata documentation used in a compare. An Origin can be one of:
+</p>
+<ul>
+  <li><b>SQLInstance</b> - <b>SQLClue</b> uses SMO to extract the documentation from the SQL Instance. The scripting process is
+      the same as is used to archive the SQL Instance to the SQL Configuration Repository.</li>
+  <li><b>Repository</b> - <b>SQLClue</b> uses a previously archived of a any specified SQL Instance from the SQL Configuration Repository.</li>
+  <li><b>File</b> - SQLClue uses a select file.</li>
+</ul>
+<p><b>Name</b> identifies a SQL Instance name or - for File Origin only - a folder name.</p>
+
+<p><b>Object Hierarchy</b> describes the relationship of database objects within SQL Server. The Object Hierarchy displays a 
+   <b>TreeView</b> for configuration documents using the Collections of the SMO hierarchy for documentation originate directly from
+   a SQL Server or for SQL Configuration Repository originated documents. Compare exploits the predictable relationship between a 
+   <a href="RepositoryHelp.htm#node">SQL Configuration Repository change node</a> and nodes within the SQL Server SMO hierarchy. 
+   This is an important aid in comparing only like items and in comparing collections.</p>
+
+<p><b>Collections</b> are SMO groupings of like typed SQL Server objects. Collections exist at the server level and at the database 
+   level. (e.g. Tables Collection or Jobs Collections) </p>
+
+<p><b>Items</b> represent the named instances in an SMO Collection and metadata elements that is not described in the context of a 
+   Collection. (e.g. Database, ServerSettings)</p>
+
+<p><b>Advanced Settings</b> provide a rich set of knobs for customization of any comparison. Review the current settings by selecting
+   the [Advanced Settings] link at any time.</p>
+
+<h4>Color coded Output</h4>
+<li>The comparison result status of each line displayed is indicated by the color coding as indicated in the &quot;Results Key&quot; 
+    located at the bottom of the <b>Configuration Compare</b> UI. The color coding is based upon the Desktop settings of the local
+    operating system.</li> 
+
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+ 
+<p>In most cases Documents from Collections of the same type are compared. Comparing the Jobs on a SQL Instance with the 
+   Jobs documented in the Repository or comparing the stored procedures on one SQL Instance with those on another SQL 
+   Instance are typical use scenarios. However, to support the comparison between files, non-SQLClue generated scripts, 
+   and Repository documents as well as to allow reasonable user flexibility, the comparison of Items from different 
+   Collections or Databases is allowed in some cases. To help create this flexibility Collections and Items must always be 
+   selected independently at each Origin.</p>
+
+<p><b>Configuration Compare</b> makes no attempt to generate synchronization scripts. Automation that attempts to provide
+   a script that will correct differences represents an 80% approach. That is, it works most of the time. It is for those times that
+   the automated script does not produce the desired and correct result that SQLClue leaves all scripts that fix metadata scripts 
+   to an experienced DBA to create, test and promote through the organization's Software 
+   Development Lifecycle (SDLC) environments in accordance with the organization's standard methods. Synchronization
+   scripts generated by third party tools almost always must be introduced via exceptions to standard organizatinal methodologies 
+   and therefore should be avoided in the interest of system stability and maximum visibility within the organization.</p>
+ 
+<p>All .NET REGEX regular expressions must be completely tested to produce the desired result before use. One possible test 
+   platform for those not already fluent in regular expressions and REGEX variety syntax in particular is 
+   <a href="http://www.ultrapico.com">Expresso</a> freely distributed by the good folks at UltraPico. Microsoft's DataDude 
+   (VS2005 for Database Developers) also has some regular expression development aids for those already using this development
+   environment.</p>
+
+<p>One interesting reason for manipulating the SMO Scripter options is to use the [WithDependencies] scripting option to include 
+   dependent objects in a script. When both sides of a compare are of Origin "SQLInstance" and the "Tables" or "Stored Procedures" 
+   collection or an item from either collection is selected, the result produces will reveal differences that my otherwise be
+   difficult to find.</p> 
+
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+<h4>Configuration Compare Settings</h4>
+<p>Fetched metadata documents can be compared line by line. A standard algorithm is used for all compares, however the 
+   application of different SMO scripting options, regular expression filtering and output verbosity provide a robust and 
+   resilient comparison platform.</p>
+<p><b>Configuration Compare Settings</b> provides late bound direct access to manipulate of over 130 compare settings. Any settings 
+   changed from the <b>SQLClue</b> application defaults are stored in a <b>user.config</b> file. Each user has a private user.config.</p> 
+<ul>
+<li>All available SMO Scripting Options can be configured when targeting a SQLInstance Origin.</li>
+<li>Regular Expression filtering and matching can be configured. All .NET REGEX syntax is supported. In addition, all REGEX options
+can be set on/off.</li>
+<li>If the database component being compared is scriptable, the DML is used as the basis for the comparison.
+    <p>The SMO based script generator is fully configurable using the <a href="#AdvancedSettings">Configuration Compare 
+    Settings</a> dialog located within the &quot;Tools&quot; menu.</li>
+<li>If an interesting configuration item is not scriptable, such as server properties, a name-value pair tabulation of the 
+    SMO properties are used as the basis for the compare.</li>
+<li>The verbosity of the output displayed is tunable using the <a href="#AdvancedSettings">Configuration Compare Settings</a> dialog.
+    <p>This can affect the CPU utilization, working memory requirements and processing time of the compare. For example, when
+    the "Show Comparison Details" and the &quot;Show Differences Only&quot; are not selected, the compare will not need to iterate through the
+    lines of the metadata documentation.</p></li>
+<li>Metadata documentation output lines can be numbered to simplify external usage.</li>
+<li>Object name can be shown on each output line at any level of output verbosity.</li>
+<li>Either schema or data can be scripted.</li>
+<li>The context menu of the results panel provides view zoom and save output to file options.</li>
+<li>Comparing Stored Procedures directly on two SQL Instances with the SMO &quot;WithDependencies&quot; and 
+   &quot;Permissions&quot; scripting options will produce a useful comparison of the user objects in two databases. 
+   Comparisons can be saved to the clipboard using the standard method of selecting the text rich text and hitting the 
+   [CTL-C] key combination.</li>
+</ul>
+
+<p><b>Configuration Compare Settings</b> do not affect the scripts produced during a <b>SQLClue Configuration Archive</b>.
+See the Scripting Options discussion in the <a href="RepositoryHelp.htm">SQL Configuration Repository help</a> for 
+information about manipulating scripting options during archive operations.</p>
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>
+
+
+
+
+
+

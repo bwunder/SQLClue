@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+
+<!--ADD WINDOW TITLE - In a frame so not used by browser-->
+ <title>
+SQLClue Help 
+ </title>
+
+ <link rel="stylesheet" type="text/css" href="SQLClue.css" />
+</head>
+<body>
+<a id="top" />
+<table>
+
+<!--ADD TITLE -->
+<tr>
+<td colspan="2" class="title">
+SQLClue
+</td>
+</tr>
+
+<tr>
+ 
+<!--ADD SUBTITLE-->
+<td class="subtitle">
+Automation and Collaboration Extensions For the Microsoft's SQL Server 2000, 2005, and 2008 
+</td>
+
+<td align="right">
+    <table class="halfbox">
+    <tr class="halfbox">
+    <td class="halfbox"><a href="#Overview" class="index2">Overview</a></td> 
+    <td class="halfbox"><a href="#Principles" class="index2">Principles</a></td> 
+    <td class="halfbox"><a href="#Considerations" class="index2">Considerations</a></td> 
+    <td class="halfbox"><a href="#Guidelines" class="index2">Guidelines</a></td>
+    </tr>
+    </table>
+</td>
+</tr>
+<tr>
+<td colspan="2">
+    <table>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Overview" class="index2">Overview</a></b></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
+
+      <table width="100%">
+      <tr>      
+      <td align="center">
+      <h1>SQLClue</h1>
+      <h2>SQL Configuration Change Monitoring Tools and Data Center Runbook</h2>
+      <img src="../Images/SQLClueOverview.jpg" alt="high level achitecture" width="90%"/>
+      </td>
+      </tr>
+      <tr>
+      <td>
+            
+<p>SQLClue is a service oriented solution to provide system documentation automation in the SQL Server data center. 
+The services warehouse 'near real time' collected data into two operation data stores (ODS):</p>  
+<ol>
+<li>The SQL Configuration Archive data store of database server configuration settings and scripts of database DDL and DML objects. This data is 
+sourced directly from targeted SQL Server instances. The data store is a self-versioned and fully documented catalog of the change history 
+from targeted SQL Server instances. Primary reporting purposes for the data store include change tracking, software lifecycle consistence 
+validation, regulatory compliance, developer references, rollback contigency, and database source management.</li>
+<li>The Data Center Runbook data store of administrative knowledge and information. This data is sourced from designated network file system 
+location. This data store is a virtual catalog of operational documentation and protocols. Primary reporting purposes forf this data store 
+include business continuity, collaboration, process improvement, planning, project tracking, education, and training.</li>
+</ol>
+<p>SQLClue services are designed to easily adapt to the existing work flows – without adding work requirements - to enable higher 
+performance capabilities across the diverse, busy and highly skilled team of database administrators, system administrators, engineers, 
+technicians, developers, architects, and managers.</p>
+<p>As depicted in the architectual overview diagram above, the interfaces to the SQLClue services 
+can be grouped into three categories:  
+</p>
+<ol>
+<li>User interface (UI) services to securely enable selected user to install and maintain SQLClue component services and easily find the 
+answers required to support the data center's operational and strategic requirements.</li> 
+<li>Background automation component services to collect data center metadata, including database server configuration changes as well as 
+documentation revision changes as they happen.</li>
+<li>Command line services for intergration with existing data center practices and processes.</li>
+</ol>
+
+<p>Integration of the SQL Configuration Archive data store will enable database administration and development. Automated documentation 
+of database configuration and scripted object changes saves the DBA time and increases the accuracy of change tracking mechanisms. Finding 
+what changed when a problem occurs becomes a simple ODS search instead of an <i>ad hoc</i> scramble across many heterogeneous configuration 
+nodes in hopes of spotting an incorrect or inappropriate bit or byte.</p>
+
+<p>The ability to easily compare database configuration and scripted objects between SQL Servers using the Configuration Compare tool 
+augments the time saving and accuracy benefits of the SQL Configuration Archive. Testing and debugging are simplimfied and more secure 
+when the configuration and scripted objects can be compared without the need to move and thereby expose sensitive data when the data is 
+not material to the comparison. Knowing what stored procedures or table structures are different between a production server and a test 
+or development server should never expose the live system data to a less secure and disconnected pre-production environment. With the SQL 
+Configuration Archive the live system metadata can be safely and efficiently made available in the development environment without the need 
+to copy and/or obfuscate sensitive production data.</p>
+
+<p>As easy and powerful as SQL Configuration Archive integration is, the benefits of full SQLClue integration into the data center by using 
+both the SQL Configuration Archive and the Data Center Runbook stores are even more sweeping.</p>  
+
+<p>Most valuable among these benefits is the transformation of data center best practices from implicit and 
+usually misunderstood expectations into explicit and visible principals, considerations, and guidelines that are shared by all data center 
+staff. A resilient and pliable method of of defining and refining data center business continuity best practices is established that allows 
+all involved persons to keep abreast with the current state of affairs. The efficiency and effectiveness of data center channels for monitoring 
+and development support become mostly planned in nature. Firefighting abates in direct correlation to the commitment of the data center 
+leaders and staff to the SQLClue extensions of the work that is already required. Meaningful and ongoing self-documenting communication among 
+highly skilled data center staff is enabled.</p> 
+<p>As a direct result of the self-documentation mechanisms, a wide range of metrics are collected 
+to aid IT leaders and managers understand data center dynamics:
+<ul>
+<li>what is changing</li>
+<li>the rate of change</li>
+<li>originators of change - within the database as well as among the data center team members</li>
+<li>peer evaluations
+    <ul>
+    <li>percieved quality of work</li>
+    <li>concerns and usability questions</li>
+    <li>areas of interdiciplinary contention</li>
+    </ul>
+</li>    
+</ul>
+<p>This information is useful to help direct and manage the movement toward business reason focus, data center business continuity, planned 
+activities and effective communication among data center team members.</p>
+
+<p>SQLClue is built upon a unique online runbook approach. At the core a runbook is a catalog of 'how to' of the the operational, 
+administrative, and change practices within the data center. Bringing the Runbook concept 'online' allows the highly skilled consumers of 
+the cataloged information to benefit from the automation, productivity, and reporting benefits inherent in today's information systems. 
+The SQLClue approach is an alternative heroic's based operational and administrative practices that relies on silo'ed and closely held 
+individual knowledge centers that seldom survive the departure of the silo architect's departure from the organization. With the SQLClue 
+Runbook approach the knowledgebase of the data center continues to grow and is able to build upon the legacy of each individual that comes 
+and goes from the team.</p>
+
+<p>SQLClue exploits the latest tools and technologies such as Microsoft SQL Server 2008 and the .NET framework to reveal
+the hidden treasures of the data center. Mysterious silos are transformed into a secure yet rich and accessible catalog of knowledge 
+and information. With the SQLClue approach, the data center is able to realize the benefits of many great minds working together to achieve 
+a common business focused result.</p> 
+
+<p>Full SQLClue integration is most valuable to the IT organization targeting a "mostly planned work" and project oriented data center operational and 
+administrative paradigm.</p>
+
+      </td>
+      </tr>      
+      </table>
+
+<!--END ADD HIGH LEVEL DESCRIPTION-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Principles" class="index2">Principles</a></b></td>
+        </tr>
+        </table>
+     </td>
+    </tr>
+    <tr>
+     <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD PRINCIPALS fundamental truths-->
+
+    <table>
+     <tr>
+      <td>
+                 
+<h3>The Strategic Monitoring Framework</h3>
+<p>A high performance data center team is one that best serves and supports the strategic goals of the business or organization. To target high 
+performance requires a planned effort. To maintain an elevated performance level further requires that the data center team continually 
+validate and verify the activities and results within the data center in the context of business purposed goals. This is the organizational 
+unit performance plan. The data center team must always have the ability to revise this performance plan as needed in response to change in 
+the over-arching goals and direction of the business. Because the performance plan is built upon dynamic external factors, it is helpful to
+view the plan as a set of guidelines or a <i>template</i> for achieving high performance.</p> 
+<p>The framework helps to assure that all data center activities remain accurately targeted at the needs of the business. The SQLClue approach 
+enhances common and routine data centers activities to yield an almost effortless yet powerful alignment with the needs of the business. This
+plan for business alignment - or Strategic Monitoring Framework - is the treasure map to a high performance data center.</p>
+<p>Using the SQLClue approach adds substance and visibility to ordinary implicit monitoring strategies. If the existing monitoring is not 
+clearly defined and explicitly strategically aligned SQLClue practices will help to incrementally strengthen the definition. Where existing 
+strategies are anecdotal SQLClue practices will help flesh out the strategy without getting in the way of the existing daily work requirements. 
+If existing monitors are not on target with business needs SQLClue practices will provide each individual in the data center and elsewhere in 
+the business with a podium to help redirect the data center efforts as necessary.</p> 
+<p>Adopting the SQLClue approach will allow the identification of existing operational, administrative, and change monitoring practices and 
+the existing documentation around those practices. Once identified, each monitor becomes known to the business. It is then a simple matter to 
+evaluate how well that monitor serves strategic business interests.</p> 
+<ul>
+<li>SQLClue makes it easy for the SQL Server data center team to initialize, catalog and maintain a complete record of database monitoring, operational, administrative, and change practices. It is then possible for the managers and leaders of the data center team to evaluate and redirect practices toward strategic business interests as needed.</li>
+<li>SQLClue is similarly well suited for elegant and effortlessly knowledge and information sharing by opening the information silos of the typical data center. By creating asynchronous pathways to communication among busy technical staff with typically introverted tendencies and in frequently pigeon holed role assignments, SQLClue can help to ease the dynamics or the typical stressful and therefore confrontational data center setting that can hamper necessary communications. Working within a loosely coupled yet centralize and collaborative documentation library the data center staff is able to identify, share and attain the business continuity and service level goals of the organization. A visible cue is provided to managers and leaders to identify issues that may prove confrontational before disagreements between team members reach a level that affects overall morale and team productivity. SQLClue does not eliminate the need for quality leadership. It does provide quality leaders with the information they need to keep a team on target and productive.</li>
+<li>SQLClue provides a low stress, low key, high value, peer reviewed and easily measured Runbook model for meeting and exceeding the business alignment objectives in the data center. In today’s complex data center operation environments where it is unlikely that managers and leaders will possess the technical depth of knowledge in the specific areas of expertise of those they lead and manage, without the measurements and metrics exposed by the SQLClue approach, it is far too common that frustrated leadership systems are seeking to motivate disenfranchised technical experts.</li>
+</ul>
+<h3>The Right Tools for the Job</h3>
+<p>Describing appropriate and consistent usage of the tools built in to SQL Server in the context of the local data center is a very important part of the SQLClue approach. The Client Tools included with Microsoft SQL Server and the Administrative Tools and Accessories included with Microsoft Windows provide many highly suitable views to much of the information necessary to properly monitor most servers including the database server. With each release of Microsoft SQL Server and Microsoft Windows these tools change and generally improve. With SQL Server 2008 running on Windows Server 2008, Microsoft provides many tools to meet most data center monitoring requirements. Maturing SQL Server Dynamic Management Views (DMVs) and the supporting reports, Audits and other Extended Events, Data Collectors and the Management Data Warehouse, Change Data Capture, and the Activity Monitor of SQL Server 2008 provide excellent monitoring views of ever more powerful production SQL Server installations. The managed Reliability and Performance tool of Windows 2008 combined with the strongest Operations Management tools ever and intrinsic virtualization and remote desktop facilities provide a very broad spectrum of valid configurations. Collaborative guidance in the administrative use and interpretation of data produced by this formidable arsenal is essential in preventing the members of the well meaning IT organization from unknowing and inadvertently working against one another.</p>
+<p>In addition, cross-training and building consensus about when to turn to any of the many third party software tools that fill the remaining voids or render Microsoft's administrative services and features more useful is essential. Many of these tools represent a significant investment of time and money. Unless everyone on the data center team knows the purpose for these tools, how to use them and when to use them, the business cannot expect a high yield from the investment.</p>
+<p>SQLClue fills two voids in the Microsoft provided monitoring and administrative tools set. First and foremost, SQLClue plugs a gaping hole in the Microsoft tool shed over database change monitoring. Without reliable change monitoring how can there be reliable change control? The SQLClue SQL Configuration Archive automatically creates a permanent central repository of structural (DDL), procedural (DML) and configuration changes on any or all SQL Servers in the data center. The SQL Configuration Archive can be applied across the software lifecycle landscape to the advantage of the developers, engineers, administrators and architects. One advantage of the SQL Configuration Archive is that each successive previous definition is persevered for use in rollback, historical analysis, and cross-server comparisons. Another advantage, when the more recent releases of SQL Server are in place, is in keeping track of which users are making changes on any given database server and exactly what script was used to implement a given change.</p> 
+<p>SQLClue reaches well beyond what is reasonable to expect from the database vendor to provide the SQLClue Data Center Runbook for data center team knowledge and information sharing. Without a runbook, centralizing and cataloging the wherefore and why of the data center implementation details is virtually impossible. SQLClue exceeds the form and function of a classic runbook by providing automation, search-ability, and team driven quality improvement mechanisms without changing the way that any existing runbook documentation is compiled and maintained. With as little a commitment as five minutes a week from each team member, the Data Center Runbook can help any underperforming data center team the high performance, fully business aligned status.</p>
+<h3>More Secure Production Systems</h3>
+<p>With SQLClue, direct ad hoc access to live database servers is reduced even as the availably of meta-information about those database servers is made more accessible across the IT organization. Using SQLClue application security, otherwise unprivileged Windows user accounts can get the specific information they need from the repository without direct access of a monitored database servers or access to sensitive data that may be stored in those live databases.</p>
+<p>SQLClue component data stores</p> 
+<ul>
+<li>The SQLClue Runbook knowledge and information library</li>
+<li>The SQL Configuration Archive administrative change archive</li>
+</ul>
+<p>Data stored by SQLClue describes the ever changing database environment in ways not readily available using the SQL Server User Interface. While SQL Server does have some useful intrinsic abilities to identify and notify regarding many kinds of change and also provides transient views of a somewhat different assortment of changes through System Catalog Views, Dynamic Management Views (DMVs), and the default trace; however it does not include the necessary infrastructure to maintain a permanent history of change. Most of the performance related information can be captured by SQL Server 2008’s Management Data Warehouse data collector. Unfortunately, the tools built in to SQL Server and Enterprise extensions like the Management Data Warehouse are not able to provide a complete rollback path or to reliably identify who made a change of interest or even when it occurred. SQLClue's Configuration Archive provides a complete and persistent logical configuration change history. Configuration elements that cannot be expressed as DDL are archived as consistently formatted name=pair descriptions that can be easily and consistently compared. (e.g. server properties, Active Directory state, Full-Text Service). Even the binary image of each user CLR assembly is archived for example. The result is complete information with a minimum system impact and a minimum of set-up and maintenance time. There is wide flexibility for the SQLClue administrator to customize the data and knowledge collected into the SQLClue data store. Since such customizations can produce false positives and even corruption when comparing versions or systems, this customization ability is limited to the administrator and is always audited within the repository.</p>
+<h3>No External Application Dependencies</h3>
+<p>A local SQL Server is the repository for SQLClue metadata. The only other software needed to fully employ SQLClue, other than the SQLClue installer “.msi” is local SQL Server 2008 instance. SQLClue can be hosted on any SQL Server 2008 instance including the SQL Express 2008 with Advanced Options. SQL Server configuration stored as DDL scripts in any source control repository can be compared to the SQLClue Configuration archive items or directly to a SQL Instance by using the 'working folder' of the source control system to Compare. When the target metadata for a comparison is not generated by a consistent mechanism, such as is provided by SQLClue, the SQLClue Compare user is able to exploit a variety of mechanisms including Regular Expression matching and filtering, full control of the SMO scripting options, and several unique output options to produce the most valid and accurate comparison results possible without the need for custom development efforts or protracted and tedious command line exercises.</p>
+<p>SQLClue is not a replacement or alternative for any intrinsic SQL Server capability or for any other third party application. SQLClue compliments SQL Server Management Studio (SSMS), SQL Profiler, Dynamic Management Views, the many alerts and monitors that are included with SQL Server and the Windows operating system. Even the SQL Server 2008 Data Collector executable is complementary to the Configuration Archive produced by SQLClue.</p>
+<p>SQLClue relies upon the SQLClue Automation Controller Service, a Windows Service, for the scheduling of distributed data collection activities. SQLClue works within the security bounds of the defined network topology. However, SQLClue data can easily be moved replicated between environments to facilitate software lifecycle environment comparisons and validations. Since the data is in a SQL Server database, all available methods of moving data between SQL Servers are fully supported. SQLClue makes no presupposition that forces the use or avoidance of any replication, ETL, service brokered, mirroring or backup based strategy. If it makes sense to move SQLClue data in your organization, you can rest assured that the methods you prefer will work with SQLClue data the same as for any other SQL Server hosted data store. This is one of the ways that SQLClue protects the security exposure of all target machines while providing a central repository of change history, query performance, and environment specific knowledge. The SQLClue Automation Controller service account becomes the primary principal for interaction with all target SQL Servers within and the file system and local network only.</p>
+<p>The SQLClue Automation Controller service also provides a task scheduler designed to use Windows Authentication by default. SQL Authentication is also easy to use if it is the only viable option. Windows authentication helps to consolidate the rights and permissions necessary to monitor SQL Servers in the distributed environment to the SQLClue Automation Controller service account. This is one of the ways that SQLClue maintains the security buffer between internal users and live systems. Using the internal Automation Controller is also a key reason that SQLClue will work with the freely distributed SQL Server Express 2008 Edition that does not include a working SQL Agent.</p>
+<p>With each release of SQL Server, enhancements and new technologies are introduced that can be beneficial in server monitoring. SQLClue captures new metadata for SQL Server 2008 yet retains the ability to support SQL Server 2005 and SQL Server 2000 targets.</p>
+<h3>Low Impact, Structured and Holistic</h3>
+<p>The Data Center Runbook is low impact, structured and holistic. Low impact in that SQLClue is designed to ultimately reduce workloads without adding to the paperwork load of the staff in the short term. Structured in that all documentation activities are repeatable and measurable - purely a mechanism for resident experts of any persuasion to record and share important information. Holistic in that SQLClue compliments other monitors into a single strategic effort.</p>
+<p>The SQL Configuration Repository captures DDL and database configuration changes to a versioned archive. To compliment this historical data repository, SQLClue facilitates the strategic advantages of thought and planning necessary to transform ad hoc troubleshooting and personal knowledge of the experts into an effective, reusable and strategic organizational database monitoring effort. The Data Center Runbook not only captures expert knowledge about the database, but also allows the data team to improve and expand that information as deemed appropriate and necessary by all willing experts within the organization. In total, SQLClue provides the structural and procedural details for a high performance SQL Server Monitoring Strategy.</p>
+<p>The SQLClue approach will improve the quality of intra-organizational communications about important database considerations by replacing linear and primarily verbal interruption based communications and discrete - perhaps disconnected or incomplete - articles of documentation with an indexed and searchable library of concise, categorized, accurate and evolving documents that are easily updatable at any time. The aim is to reduce the interruptions for experts, in part by reducing the number of times they must answer the same questions and at the same time create a work environment that is most receptive to those routine questions being asked as many times and as often as they may need to be asked. SQLClue achieves this end without the need to repeat any documentation already completed. Documents can easily be added to the Data Center Runbook with just a few clicks of the mouse. The documents need not even be moved from the file system location where they are already stored. In every sense of the word, a best of both worlds approach.</p>
+<p>As a direct result of using SQLClue the time demands placed on highly skilled administration and operations personnel will be reduced over time. That is not to say that those folks would have more time or that the organization might need fewer experts. Rather, the experts will be set free to devote high quality time to other, perhaps more interesting, complex or urgent business problems. Possibly even a reduction in the number of interruptions throughout the workday that can easily undermine time line requirements and relentless off hours support that can drive good people to the shop down the street. The SQLClue approach will result in 
+    a higher quality of work output and happier more engaged workers.</p>
+<p>A common problem that chews up a lot of time when working with SQL Server is low 
+    confidense with the accuracy of database objects in the developer&#39;s source 
+    control system. There is no way to lock the source control system in 
+    synchronization with the database.&nbsp; With SQLClue, a Database Developer doesn't need to ask a DBA to go to the production server to get the latest version of a query at the beginning of a maintenance cycle. 
+    If SQL Server automation is set up to replicate, copy or mirror the database 
+    metadata collected by SQLClue to a location accissible by the develoer then tThe developer will be able to get the latest production 
+    object script from SQLClue without interrupting the DBA and conduct a verification 
+    compare to ascertain the accuracy of item in the source control system.</p>
+      
+      </td>
+     </tr>
+     </table>
+<!--END ADD PRINCIPALS fundamental truths-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom">&nbsp;</td></tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Considerations" class="index2">Considerations</a></b></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD CONSIDERATIONS areas the user must think carefully about-->
+
+<h3>The Importance of Strategy</h3>
+<p>Strategy produces intentional success through planning. A clearly stated strategy will lead to more focused experts and problem solvers. They will know what the business wants them to do. It is really that simple. A strategy implemented through the SQLClue approach will not only result in more empowered experts and problem solvers but also creates a setting in which others in the organization can learn and benefit from the resident experts. By using the SQLClue approach, the designated experts need only invest a few minutes to add, refine and validate the body of knowledge captured in the Data Center Runbook. After only a few weeks of as little as five minutes time investment a week, an amazing documentation of the systems around the SQL Servers begins to emerge. Within a few months of the onset of the same small but dedicated effort, expert system knowledge will be widespread.</p>
+<p>Monitoring activities that employ the SQLClue approach are more complete. When implemented with full team support and maintained with some discipline, this information has an immediate, enduring and beneficial effect on business continuity at the data layer. Immediately, a common base of information from reliable resources about the routines used to keep the data application well supplied with good data will begin to grow. Over time, the body of captured knowledge will be reviewed, refined and kept current with the evolution of the software systems that use the data.</p>
+<h3>The Data Center Runbook Approach</h3>
+<p>It is important to recognize the wide scope of influence a monitoring strategy will have across the organization.</p>
+<p>The strategic Data Center Runbook approach is immediately beneficial not only for database professionals but also network and IT infrastructure professionals, network operations center (NOC), internal support, developers and those that manager and evaluate these technical groups not to mention improved outcomes for the organization or business unit. The exact composition of the organization's internal SQLClue user group must reflect the organization. Consequently, no organizational change is needed to implement SQLClue. However, significant operational improvements will occur as the Runbook becomes successfully adopted and integrated into the environment and some individuals may need to step up to more team oriented practices.</p>
+<p>The Data Center Runbook tools create an environment where administrators and operations staff can get the information they need to do their work without the need to interrupt the work - or rest - of others in search of fundamental database information. In this way, the Runbook improves the availability of information. The Data Center Runbook works best when adopted ubiquitously across the organization; when all participate; and all are responsible to review, rate and create valid topics and documents. Everyone involved in the administration and operations of the database ought to be involved and included from the onset. It may or may not be desirable to restrict the number of individuals that can create new topics. There may be layers of database role based security within each SQLClue component to support such a distinction. However, everyone must be able and be expected to rate and submit feedback. Only in this way will the accuracy of the SQLClue Runbook information improved over time.</p>
+<h3>Strong Organizational Leadership</h3>
+<p>The single most important requirement for a successful implementation is the unwavering support of the person or persons that manage and evaluate the team of data professionals. As with any initiative that can touch several people within the administration and operations staff, without the will of management behind it, success is unlikely. Unless organizational leadership mandates success and champions’ success the only certainty is mediocrity. SQLClue, like all monitoring, becomes less effective the more <i>laissez faire</i> or populist the organizational leadership.</p>
+    
+<!--END ADD CONSIDERATIONS areas the user must think carefully about-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+    </table>
+</td>
+    </tr>
+    <tr>
+    <td align="left" valign="top">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox"><b><a id="Guidelines" class="index2">Guidelines</a></b></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
+    <tr>
+    <td align="left">
+        <table class="halfbox">
+        <tr class="halfbox">
+        <td class="halfbox">
+<!--BEGIN ADD GUIDELINES (best) practices and procedures-->
+
+         <table>
+          <tr>
+           <td>
+<h3>Next Steps</h3>
+<ul>
+<li>Select the  Configuration Compare tutorial in the Help menu to learn about using the Configuration Compare component.</li>
+<li>Select the "Configuration Compare" tab to go directly to the SQLClue Configuration Compare component.</li>
+<li>Select the "Open a Remote Runbook" option of the "Tools|Data Center Runbook" menu to attach to a 
+Data Center Runbook on another computer in a local domain.</li>
+<li>Select the "Install" link in the SQLClue help index in the left side panel to learn about the available installation options.</li>
+<li>Select the "Install" option of the "Tools|SQL Configuration Archive" menu to enable the SQLClue Server Console.</li>
+</ul>
+<hr />
+               <h3>Help Layout</h3>
+<p>Other main SQLClue help topics will follow the general format introduced on this page. An Overview will begin each topic, followed by Principles, Considerations and Guidelines for the topic. Many tutorial walkthroughs are presented to make the adoption of best practices with SQLClue very easy.</p>
+<ul>
+<li>A principle as used here is a fundamental, primary truth. Principles apply equally in all scenarios.</li>
+<li>A consideration is a concept or decision tree requiring careful thought. Often considerations lead to practices and results specific to the scenarios.</li>
+</ul>
+<p>A guideline is a statement or other indication of policy or procedure intended to help identify the right course of action. Guidelines may take the form of step-by-step "how-to" instructions, heuristics, best practices or standards. Guidelines are derived from a working knowledge of the topic combined with the application of the principles and considerations of the topic.</p>
+<hr />
+<h3>Disclaimer</h3>
+<p>The names "Microsoft" and "Windows" and "Microsoft SQL Server" as used throughout the SQLClue documentation are references to the software company Microsoft Corp and to the database product made by Microsoft. The names and products are exclusively the property of Microsoft. Bill Wunder and SQLClue are in no way related to Microsoft Corp an make no claim to any Microsoft products and technologies mentioned herein.</p>
+<hr />
+           </td>
+          </tr>
+         </table>
+
+<!--END ADD GUIDELINES (best) practices and procedures-->
+        </td>
+        </tr>
+        <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        </table>
+    </td>
+    </tr>
+    </table>    
+</td>
+</tr>
+</table>    
+</body>
+</html>

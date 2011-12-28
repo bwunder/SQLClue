@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="SQLRunbook">
+      <rd:DataSourceID>9cf17c63-de84-463e-afab-e58b3c8e4bf4</rd:DataSourceID>
+      <DataSourceReference>SQLRunbook</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="Level1Days">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>3</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Top Chart Days To Show</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Level2Days">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>30</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Middle Chart Days To Show</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Level3Days">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>365</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Bottom Chart Days To Show</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="EndDt">
+      <DataType>DateTime</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>= Today</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>End Date</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>1in</RightMargin>
+  <LeftMargin>1in</LeftMargin>
+  <BottomMargin>1in</BottomMargin>
+  <rd:ReportID>534c686f-129e-4f64-8879-0527a02e4677</rd:ReportID>
+  <DataSets>
+    <DataSet Name="RunbookActivity">
+      <Fields>
+        <Field Name="ActivityDate">
+          <DataField>ActivityDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CategoriesCreated">
+          <DataField>CategoriesCreated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CategoriedAssigned">
+          <DataField>CategoriedAssigned</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TopicsCreated">
+          <DataField>TopicsCreated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TopicsUpdated">
+          <DataField>TopicsUpdated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TopicsRated">
+          <DataField>TopicsRated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DocumentsAssigned">
+          <DataField>DocumentsAssigned</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DocumentsCreated">
+          <DataField>DocumentsCreated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DocumentAddKBytes">
+          <DataField>DocumentAddKBytes</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DocumentsUpdated">
+          <DataField>DocumentsUpdated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DocumentUpdateKBytes">
+          <DataField>DocumentUpdateKBytes</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="DocumentsRated">
+          <DataField>DocumentsRated</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="MaxColumnValue">
+          <DataField>MaxColumnValue</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>SQLRunbook</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>SQLRunbook.pRunbookActivity</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@DaysToShow">
+            <Value>=Parameters!Level3Days.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@EndDt">
+            <Value>=DateAdd("d", 1, Parameters!EndDt.Value)</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code>Public Function RatingColor (ByVal Rating as Integer) As String
+                        Select Case Rating
+                            Case 1
+                                RatingColor = "Green"
+                            Case 2
+                                RatingColor = "Lime"
+                            Case 3
+                                RatingColor = "GreenYellow"
+                            Case 4
+                                RatingColor = "Yellow"
+                            Case 5
+                                RatingColor = "Orange"
+                            Case 6
+                                RatingColor = "Red"
+                            Case Else
+                                RatingColor = "White"
+                        End Select
+End Function</Code>
+  <Width>3in</Width>
+  <Body>
+    <ReportItems>
+      <Chart Name="chart2">
+        <Legend>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <FontSize>8pt</FontSize>
+          </Style>
+          <Position>TopCenter</Position>
+          <Layout>Table</Layout>
+        </Legend>
+        <CategoryAxis>
+          <Axis>
+            <Title>
+              <Caption>Activity Type</Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+            </Title>
+            <Style />
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <Interlaced>true</Interlaced>
+          </Axis>
+        </CategoryAxis>
+        <NoRows>no changes found</NoRows>
+        <ZIndex>5</ZIndex>
+        <DataSetName>RunbookActivity</DataSetName>
+        <Visibility>
+          <Hidden>=Iif(First(Fields!ActivityDate.Value, "RunbookActivity") &gt; DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value), True,
+Iif(Last(Fields!ActivityDate.Value, "RunbookActivity") &lt; DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value), True, False))</Hidden>
+        </Visibility>
+        <PlotArea>
+          <Style>
+            <BackgroundColor>WhiteSmoke</BackgroundColor>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+        </PlotArea>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <PointWidth>0</PointWidth>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!ActivityDate.Value</FilterExpression>
+            <Operator>GreaterThanOrEqual</Operator>
+            <FilterValues>
+              <FilterValue>=DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value)</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <StaticSeries>
+              <StaticMember>
+                <Label>Categories Added</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Categories Assigned</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topics Created</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topics Updated</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topics Rated</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Documents Added</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Documents Assigned</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Documents Updated</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Documents Rated</Label>
+              </StaticMember>
+            </StaticSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>3.875in</Top>
+        <Subtype>Plain</Subtype>
+        <ValueAxis>
+          <Axis>
+            <Title>
+              <Caption>Number of Actions</Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+            </Title>
+            <Style>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <Min>0</Min>
+            <Max>=Iif(Sum(Fields!MaxColumnValue.Value) &lt; 4, 4, Sum(Fields!MaxColumnValue.Value))</Max>
+            <MajorInterval>= Iif(Sum(Fields!MaxColumnValue.Value) &gt; 200, 50, Iif(Sum(Fields!MaxColumnValue.Value) &gt; 10, 10, 2))</MajorInterval>
+            <MinorInterval>1</MinorInterval>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <Type>Bar</Type>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!CategoriesCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookCategoriesAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="StartDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!CategoriedAssigned.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookCategoryTopicsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsUpdated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsChangedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsRated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsReviewedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Value>=Iif(Sum(Fields!DocumentsCreated.Value)&gt;0,Sum(Fields!DocumentAddKBytes.Value) &amp; " KB", "")</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsAssigned.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicDocumentsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsUpdated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Value>=IIf(Sum(Fields!DocumentsUpdated.Value)&gt;0,Sum(Fields!DocumentUpdateKBytes.Value) &amp; " KB", "")</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsChangedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsRated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsReviewedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <Color>White</Color>
+          <BackgroundColor>White</BackgroundColor>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+        </Style>
+        <Title>
+          <Caption>="Runbook Activity Last " &amp; Parameters!Level2Days.Value.ToString &amp; " Days"</Caption>
+          <Style>
+            <FontSize>8pt</FontSize>
+            <FontWeight>700</FontWeight>
+          </Style>
+        </Title>
+        <Height>2.625in</Height>
+      </Chart>
+      <Textbox Name="textbox2">
+        <Top>3.875in</Top>
+        <Style>
+          <Color>Gainsboro</Color>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+          <FontSize>8pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>4</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>2.625in</Height>
+        <Value>=Iif(Count(Fields!ActivityDate.Value, "RunbookActivity")=0, "No Runbook data", "No Runbook actions from " &amp; vbCrLf &amp; DateAdd("d", -1 * Parameters!Level2Days.Value, Parameters!EndDt.Value) &amp; vbCrLf &amp; " thru " &amp; vbCrLf &amp; Parameters!EndDt.Value)</Value>
+      </Textbox>
+      <Chart Name="chart3">
+        <Legend>
+          <Visible>true</Visible>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <FontSize>8pt</FontSize>
+          </Style>
+          <Position>BottomCenter</Position>
+        </Legend>
+        <CategoryAxis>
+          <Axis>
+            <Title>
+              <Caption>Activity Type</Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+            </Title>
+            <Style>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <Interlaced>true</Interlaced>
+          </Axis>
+        </CategoryAxis>
+        <NoRows>no activity</NoRows>
+        <ZIndex>3</ZIndex>
+        <DataSetName>RunbookActivity</DataSetName>
+        <Visibility>
+          <Hidden>=Iif(Last(Fields!ActivityDate.Value, "RunbookActivity") &lt; DateAdd("d", -1 * Parameters!Level3Days.Value, Parameters!EndDt.Value), True, False)</Hidden>
+        </Visibility>
+        <PlotArea>
+          <Style>
+            <BackgroundColor>WhiteSmoke</BackgroundColor>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+        </PlotArea>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <PointWidth>0</PointWidth>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <StaticSeries>
+              <StaticMember>
+                <Label>Category Create</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Category Assign</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topic Create</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topic Edit</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topic Review</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Add</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Assign</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Edit</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Review</Label>
+              </StaticMember>
+            </StaticSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Top>6.5in</Top>
+        <Subtype>Plain</Subtype>
+        <ValueAxis>
+          <Axis>
+            <Title>
+              <Caption>Number of Actions</Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+            </Title>
+            <Style>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <Min>0</Min>
+            <Max>=Sum(Fields!MaxColumnValue.Value)</Max>
+            <MajorInterval>= Iif(Sum(Fields!MaxColumnValue.Value) &gt; 200, 50, Iif(Sum(Fields!MaxColumnValue.Value) &gt; 10, 10, 2))</MajorInterval>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <Type>Bar</Type>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!CategoriesCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookCategoriesAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="StartDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=DateAdd("d", 1, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!CategoriedAssigned.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookCategoryTopicsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=DateAdd("d", 1, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=DateAdd("d", 1, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsUpdated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsRated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsReviewedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Value>=IIf(Sum(Fields!DocumentsCreated.Value) &gt; 0, Sum(Fields!DocumentAddKBytes.Value) &amp; " KB", "")</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsAssigned.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicDocumentsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsUpdated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Value>=Iif(Sum(Fields!DocumentsUpdated.Value)&gt;0, Sum(Fields!DocumentUpdateKBytes.Value) &amp; " KB", "")</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsChangedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsRated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsReviewedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level3Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <Color>White</Color>
+          <BackgroundColor>White</BackgroundColor>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+        </Style>
+        <Title>
+          <Caption>="Runbook Activity Last " &amp; Parameters!Level3Days.Value &amp; " Days"</Caption>
+          <Style>
+            <FontSize>8pt</FontSize>
+            <FontWeight>700</FontWeight>
+          </Style>
+        </Title>
+      </Chart>
+      <Textbox Name="textbox3">
+        <Top>6.5in</Top>
+        <Style>
+          <Color>Gainsboro</Color>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+          <FontSize>8pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Value>=Iif(Count(Fields!ActivityDate.Value, "RunbookActivity")=0, "No Runbook data", "No Runbook actions from " &amp; vbCrLf &amp; DateAdd("d", -1 * Parameters!Level3Days.Value, Parameters!EndDt.Value) &amp; vbCrLf &amp; " thru " &amp; vbCrLf &amp; DateAdd("d", 1, Parameters!EndDt.Value))</Value>
+      </Textbox>
+      <Chart Name="chart1">
+        <Legend>
+          <Visible>true</Visible>
+          <Style>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+            <FontSize>8pt</FontSize>
+          </Style>
+          <Position>TopCenter</Position>
+        </Legend>
+        <CategoryAxis>
+          <Axis>
+            <Title>
+              <Caption>Activity Type</Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+            </Title>
+            <Style>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <MajorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <Min>0</Min>
+          </Axis>
+        </CategoryAxis>
+        <ZIndex>1</ZIndex>
+        <DataSetName>RunbookActivity</DataSetName>
+        <Visibility>
+          <Hidden>=Iif(Last(Fields!ActivityDate.Value, "RunbookActivity") &lt; DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value), True, False)</Hidden>
+        </Visibility>
+        <PlotArea>
+          <Style>
+            <BackgroundColor>WhiteSmoke</BackgroundColor>
+            <BorderStyle>
+              <Default>Solid</Default>
+            </BorderStyle>
+          </Style>
+        </PlotArea>
+        <ThreeDProperties>
+          <Rotation>30</Rotation>
+          <Inclination>30</Inclination>
+          <Shading>Simple</Shading>
+          <WallThickness>50</WallThickness>
+        </ThreeDProperties>
+        <PointWidth>0</PointWidth>
+        <Filters>
+          <Filter>
+            <FilterExpression>=Fields!ActivityDate.Value</FilterExpression>
+            <Operator>GreaterThanOrEqual</Operator>
+            <FilterValues>
+              <FilterValue>=DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value)</FilterValue>
+            </FilterValues>
+          </Filter>
+        </Filters>
+        <SeriesGroupings>
+          <SeriesGrouping>
+            <StaticSeries>
+              <StaticMember>
+                <Label>Category Create</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Category Assign</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topic Create</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topic Edit</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Topic Review</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Create</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Assign</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Edit</Label>
+              </StaticMember>
+              <StaticMember>
+                <Label>Document Review</Label>
+              </StaticMember>
+            </StaticSeries>
+          </SeriesGrouping>
+        </SeriesGroupings>
+        <Subtype>Plain</Subtype>
+        <ValueAxis>
+          <Axis>
+            <Title>
+              <Caption>Number of Actions</Caption>
+              <Style>
+                <FontSize>8pt</FontSize>
+              </Style>
+            </Title>
+            <Style>
+              <FontSize>8pt</FontSize>
+            </Style>
+            <MajorGridLines>
+              <ShowGridLines>true</ShowGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MajorGridLines>
+            <MinorGridLines>
+              <Style>
+                <BorderStyle>
+                  <Default>Solid</Default>
+                </BorderStyle>
+              </Style>
+            </MinorGridLines>
+            <MajorTickMarks>Outside</MajorTickMarks>
+            <Min>0</Min>
+            <Max>=Iif(Sum(Fields!MaxColumnValue.Value) &lt; 4, 4, Sum(Fields!MaxColumnValue.Value))</Max>
+            <MajorInterval>= Iif(Sum(Fields!MaxColumnValue.Value) &gt; 200, 50, Iif(Sum(Fields!MaxColumnValue.Value) &gt; 10, 10, 2))</MajorInterval>
+            <Margin>true</Margin>
+            <Visible>true</Visible>
+            <Scalar>true</Scalar>
+          </Axis>
+        </ValueAxis>
+        <Type>Bar</Type>
+        <Palette>Default</Palette>
+        <ChartData>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!CategoriesCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookCategoriesAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="StartDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=DateAdd("d", 1,  Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Style />
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!CategoriedAssigned.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookCategoryTopicsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d",-1*Parameters!Level1Days.Value,Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=DateAdd("d",1, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=DateAdd("d", 1, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsUpdated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsChangedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!TopicsRated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicsReviewedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsCreated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Value>=Iif(Sum(Fields!DocumentsCreated.Value)&gt;0,Sum(Fields!DocumentAddKBytes.Value).ToString &amp; "KB","")</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsAssigned.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookTopicDocumentsAddedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1*Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsUpdated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                  <Value>=Iif(Sum(Fields!DocumentsUpdated.Value)&gt;0,Sum(Fields!DocumentUpdateKBytes.Value) &amp; "KB","")</Value>
+                  <Visible>true</Visible>
+                </DataLabel>
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsChangedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+          <ChartSeries>
+            <DataPoints>
+              <DataPoint>
+                <DataValues>
+                  <DataValue>
+                    <Value>=Sum(Fields!DocumentsRated.Value)</Value>
+                  </DataValue>
+                </DataValues>
+                <DataLabel />
+                <Action>
+                  <Drillthrough>
+                    <ReportName>SQLRunbookDocumentsReviewedInDateRange</ReportName>
+                    <Parameters>
+                      <Parameter Name="BeginDt">
+                        <Value>=DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value)</Value>
+                      </Parameter>
+                      <Parameter Name="EndDt">
+                        <Value>=Parameters!EndDt.Value</Value>
+                      </Parameter>
+                    </Parameters>
+                  </Drillthrough>
+                </Action>
+                <Marker>
+                  <Size>6pt</Size>
+                </Marker>
+              </DataPoint>
+            </DataPoints>
+          </ChartSeries>
+        </ChartData>
+        <Style>
+          <Color>White</Color>
+          <BackgroundColor>White</BackgroundColor>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+          <FontSize>8pt</FontSize>
+        </Style>
+        <Title>
+          <Caption>="Runbook Activity Last " &amp; Parameters!Level1Days.Value &amp; " Days"</Caption>
+          <Style>
+            <FontSize>8pt</FontSize>
+            <FontWeight>700</FontWeight>
+          </Style>
+        </Title>
+        <Height>3.875in</Height>
+      </Chart>
+      <Textbox Name="textbox1">
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Style>
+          <Color>Gainsboro</Color>
+          <BorderColor>
+            <Default>SlateGray</Default>
+          </BorderColor>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>8pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>3.875in</Height>
+        <Value>=Iif(Count(Fields!ActivityDate.Value, "RunbookActivity")=0, "No Runbook data", "No Runbook actions " &amp; vbCrLf &amp; DateAdd("d", -1 * Parameters!Level1Days.Value, Parameters!EndDt.Value) &amp; vbCrLf &amp; " thru " &amp; vbCrLf &amp; Parameters!EndDt.Value)</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>10.5in</Height>
+    <Style>
+      <BorderColor>
+        <Default>SlateGray</Default>
+      </BorderColor>
+      <BorderStyle>
+        <Default>Solid</Default>
+      </BorderStyle>
+    </Style>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>1in</TopMargin>
+</Report>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReferencePath>C:\Program Files\Microsoft SQL Server\100\SDK\Assemblies\</ReferencePath>
+    <PublishUrlHistory>C:\Users\bill\Documents\SQLCluePublish\|http://localhost/SQLClue/|http://localhost/bwDiff/</PublishUrlHistory>
+    <InstallUrlHistory>http://www.bwunder.com/SQLClueDownload.htm/|http://www.bwunder.com/Documents/SQLClue_1_0_0_3.zip/|\\BILL_VU\SQLCluePublish\|http://www.bwunder.com/SQLClue/Trial/</InstallUrlHistory>
+    <SupportUrlHistory>http://www.bwunder.com/SQLClue|http://www.bwunder.com</SupportUrlHistory>
+    <UpdateUrlHistory>
+    </UpdateUrlHistory>
+    <BootstrapperUrlHistory>
+    </BootstrapperUrlHistory>
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>true</VerifyUploadedFiles>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+    <ErrorReportUrlHistory>
+    </ErrorReportUrlHistory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <EnableSQLServerDebugging>true</EnableSQLServerDebugging>
+    <StartArguments>
+    </StartArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <EnableSQLServerDebugging>true</EnableSQLServerDebugging>
+  </PropertyGroup>
+</Project>

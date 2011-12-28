@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "SQLClue", "SQLClue.rptproj", "{1DCB0DFB-DDC3-49BE-9516-34386870882E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.Debug|Default.ActiveCfg = Debug
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.Debug|Default.Build.0 = DebugLocal
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.Debug|Default.Deploy.0 = DebugLocal
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.DebugLocal|Default.Build.0 = DebugLocal
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.Production|Default.ActiveCfg = Production
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.Production|Default.Build.0 = Production
+		{1DCB0DFB-DDC3-49BE-9516-34386870882E}.Production|Default.Deploy.0 = Production
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

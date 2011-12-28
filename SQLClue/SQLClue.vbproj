@@ -1,0 +1,1180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8F14659-7404-47DC-895F-070B64EAE843}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SQLClue.My.MyApplication</StartupObject>
+    <RootNamespace>SQLClue</RootNamespace>
+    <AssemblyName>SQLClue</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>Resources\bw.ico</ApplicationIcon>
+    <OptionStrict>Off</OptionStrict>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>keypair.snk</AssemblyOriginatorKeyFile>
+    <TargetZone>LocalIntranet</TargetZone>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OptionInfer>On</OptionInfer>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <PublishUrl>C:\Users\bill\Documents\SQLCluePublish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>http://www.bwunder.com/SQLClue</SupportUrl>
+    <ProductName>SQLClue</ProductName>
+    <PublisherName>Bill Wunder</PublisherName>
+    <MinimumRequiredVersion>1.4.1.1</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>InstallSQLClue.htm</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <DisallowUrlActivation>true</DisallowUrlActivation>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.5.1.1</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SQLClue.xml</DocumentationFile>
+    <NoWarn>42017,42018,42019,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>41999,42016,42020,42021,42022</WarningsAsErrors>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>Full</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SQLClue.xml</DocumentationFile>
+    <NoWarn>42017,42018,42019,42032,42036,42353,42354,42355</NoWarn>
+    <WarningsAsErrors>41999,42016,42020,42021,42022</WarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ExceptionMessageBox, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SqlWmiManagement, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.WmiEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\WPF Toolkit\v3.5.40320.1\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\WPF Toolkit\v3.5.40320.1\WPFToolkit.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit.VisualStudio.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\WPF Toolkit\v3.5.40320.1\WPFToolkit.VisualStudio.Design.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.Reporting.WinForms" />
+    <Import Include="Microsoft.SqlServer" />
+    <Import Include="Microsoft.SqlServer.Management" />
+    <Import Include="Microsoft.SqlServer.Management.Common" />
+    <Import Include="Microsoft.SqlServer.Management.Sdk.Sfc" />
+    <Import Include="Microsoft.SqlServer.Management.Smo" />
+    <Import Include="Microsoft.SqlServer.Management.Smo.Agent" />
+    <Import Include="Microsoft.SqlServer.Management.Smo.Broker" />
+    <Import Include="Microsoft.SqlServer.Management.Smo.Mail" />
+    <Import Include="Microsoft.SqlServer.Management.Smo.Wmi" />
+    <Import Include="Microsoft.SqlServer.MessageBox" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="Microsoft.VisualBasic.MyServices" />
+    <Import Include="Microsoft.VisualBasic.MyServices.Internal" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Data" />
+    <Import Include="System.Data.SqlClient" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Globalization" />
+    <Import Include="System.IO" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Management" />
+    <Import Include="System.Runtime.InteropServices" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Threading" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBoxForm.Designer.vb">
+      <DependentUpon>AboutBoxForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBoxForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="cTreeView.vb" />
+    <Compile Include="DataSetQueuedChanges.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetQueuedChanges.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSQLRunbook.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetSQLRunbook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetSQLRunbook.vb">
+      <DependentUpon>DataSetSQLRunbook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DialogArchiveNotifications.Designer.vb">
+      <DependentUpon>DialogArchiveNotifications.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogArchiveNotifications.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogCategoryAdd.Designer.vb">
+      <DependentUpon>DialogCategoryAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogCategoryAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogDocumentInterval.Designer.vb">
+      <DependentUpon>DialogDocumentInterval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogDocumentInterval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogDocumentMonitorInterval.Designer.vb">
+      <DependentUpon>DialogDocumentMonitorInterval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogDocumentMonitorInterval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogRunbookSecurity.Designer.vb">
+      <DependentUpon>DialogRunbookSecurity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogRunbookSecurity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogRunbookTopic.Designer.vb">
+      <DependentUpon>DialogRunbookTopic.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogRunbookTopic.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogSelectNodeVersion.Designer.vb">
+      <DependentUpon>DialogSelectNodeVersion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSelectNodeVersion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogServiceTimerInterval.Designer.vb">
+      <DependentUpon>DialogServiceTimerInterval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogServiceTimerInterval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogSetEncryptionHierarchy.Designer.vb">
+      <DependentUpon>DialogSetEncryptionHierarchy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSetEncryptionHierarchy.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogViewQueue.Designer.vb">
+      <DependentUpon>DialogViewQueue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogViewQueue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogViewEventData.Designer.vb">
+      <DependentUpon>DialogViewEventData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogViewEventData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogRunbookLookupCriteria.Designer.vb">
+      <DependentUpon>DialogRunbookLookupCriteria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogRunbookLookupCriteria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigurationForm.Designer.vb">
+      <DependentUpon>ConfigurationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedSettings.designer.vb">
+      <DependentUpon>AdvancedSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AdvancedSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogConnect.Designer.vb">
+      <DependentUpon>DialogConnect.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogConnect.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompareForm.designer.vb">
+      <DependentUpon>CompareForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CompareForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogDateTimePicker.Designer.vb">
+      <DependentUpon>DialogDateTimePicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogDateTimePicker.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogNotes.Designer.vb">
+      <DependentUpon>DialogNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogNotes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpForm.Designer.vb">
+      <DependentUpon>HelpForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HelpForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mother.Designer.vb">
+      <DependentUpon>Mother.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mother.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogRating.Designer.vb">
+      <DependentUpon>DialogRating.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogRating.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogRunbookCategory.Designer.vb">
+      <DependentUpon>DialogRunbookCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogRunbookCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RunbookForm.Designer.vb">
+      <DependentUpon>RunbookForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RunbookForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogLicense.Designer.vb">
+      <DependentUpon>DialogLicense.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogLicense.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewerForm.Designer.vb">
+      <DependentUpon>ReportViewerForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewerForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RunFrequencySelector.Designer.vb">
+      <DependentUpon>RunFrequencySelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RunFrequencySelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSetup.Designer.vb">
+      <DependentUpon>DialogSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DialogSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen1.designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SQLClueHelp.Designer.vb">
+      <DependentUpon>SQLClueHelp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SQLClueHelp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SQLRunbookDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQLRunbookDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBoxForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutBoxForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogArchiveNotifications.resx">
+      <DependentUpon>DialogArchiveNotifications.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogCategoryAdd.resx">
+      <DependentUpon>DialogCategoryAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogDocumentInterval.resx">
+      <DependentUpon>DialogDocumentInterval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogDocumentMonitorInterval.resx">
+      <DependentUpon>DialogDocumentMonitorInterval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogRunbookSecurity.resx">
+      <DependentUpon>DialogRunbookSecurity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogRunbookTopic.resx">
+      <DependentUpon>DialogRunbookTopic.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSelectNodeVersion.resx">
+      <DependentUpon>DialogSelectNodeVersion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogServiceTimerInterval.resx">
+      <DependentUpon>DialogServiceTimerInterval.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSetEncryptionHierarchy.resx">
+      <DependentUpon>DialogSetEncryptionHierarchy.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogViewQueue.resx">
+      <DependentUpon>DialogViewQueue.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="ReportViewerReports\SQLClueConsole.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="DialogViewEventData.resx">
+      <DependentUpon>DialogViewEventData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogRunbookLookupCriteria.resx">
+      <DependentUpon>DialogRunbookLookupCriteria.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConfigurationForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogConnect.resx">
+      <DependentUpon>DialogConnect.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompareForm.resx">
+      <DependentUpon>CompareForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>HelpForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mother.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Mother.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvancedSettings.resx">
+      <DependentUpon>AdvancedSettings.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogDateTimePicker.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DialogDateTimePicker.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogRating.resx">
+      <DependentUpon>DialogRating.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogRunbookCategory.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DialogRunbookCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="ReportViewerReports\SQLConfigurationArchiveByInstance.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationChangeDefinitionByVersion.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationChangesForDate.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationChangesForArchive.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLClueScheduledTasks.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLClueServiceStatus.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationChange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLClueDashboard.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationCatalogIndex.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookChange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookDocumentTypes.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationArchiveScheduleHistory.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookCategoriesAddedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookDocumentsAddedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookTopicDocumentsAddedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookTopicsAddedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookTopicsReviewedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationCatalog.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookCatalog.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookCategoryTopicsAddedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookContributor.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookContributorScores.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookDocumentsChangedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookDocumentsReviewedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLRunbookTopicsChangedInDateRange.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationArchiveSettings.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationArchiveHistoryByInstanceName.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationArchiveHistoryByScheduleId.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="RunbookForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RunbookForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogLicense.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DialogLicense.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportViewerForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ReportViewerForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RunFrequencySelector.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RunFrequencySelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogSetup.resx">
+      <DependentUpon>DialogSetup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="ReportViewerReports\SQLClueWorkstation.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLClueSchedule.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="SQLClueHelp.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SQLClueHelp.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="ReportViewerReports\SQLConfigurationSummary.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="DialogNotes.resx">
+      <DependentUpon>DialogNotes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Documents\LatestSQLClueVersion.txt" />
+    <None Include="Documents\ReadMe_1_03_5_1.txt">
+    </None>
+    <Content Include="Help\CommandLine.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\ConfigurationArchiveTutorial.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Compare.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\ConfigurationCompareTutorial.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Console.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\home.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Help\price.htm">
+    </None>
+    <Content Include="Help\RunbookContributorTutorial.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\RunbookPeerReviewTutorial.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\RunbookSearchTutorial.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Images\anomalies.jpg">
+    </None>
+    <None Include="Images\d_microsoft_FrontRunner_webLogos.jpg" />
+    <Content Include="Images\PeerReviewRating1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Images\querybaseline.jpg">
+    </None>
+    <None Include="Images\queryprofile1.jpg">
+    </None>
+    <None Include="Images\queryprofile2.jpg">
+    </None>
+    <Content Include="Images\SpinningTwoHeadedDB.gif" />
+    <Content Include="Images\SQLClueOverview.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\SQLRunbook.jpg" />
+    <Content Include="Images\TwoHeadedDb288.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\index.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Install.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\MonitoringStrategy.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Reports.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Repository.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Runbook.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="DataSetQueuedChanges.xsc">
+      <DependentUpon>DataSetQueuedChanges.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetQueuedChanges.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetQueuedChanges.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetQueuedChanges.xss">
+      <DependentUpon>DataSetQueuedChanges.xsd</DependentUpon>
+    </None>
+    <None Include="Documents\IntegratingRSApp.doc" />
+    <None Include="Documents\SharePoint_SQL_Integration.doc" />
+    <None Include="Documents\TrackChanges.doc">
+    </None>
+    <None Include="DataSetSQLRunbook.xsc">
+      <DependentUpon>DataSetSQLRunbook.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetSQLRunbook.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetSQLRunbook.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSetSQLRunbook.xss">
+      <DependentUpon>DataSetSQLRunbook.xsd</DependentUpon>
+    </None>
+    <Content Include="Help\SQLClue.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\SQLClue.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\Service.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Documents\Database Monitoring Strategies.doc">
+    </None>
+    <None Include="Documents\DBAReleaseReview.doc">
+    </None>
+    <None Include="Documents\SQLMonitoringStrategies.ppt">
+    </None>
+    <None Include="Documents\The Data Bridge Catalog.docx">
+    </None>
+    <None Include="Documents\Licensing.xlsx">
+    </None>
+    <None Include="My Project\DataSources\cCommon.dsSQLConfiguration.datasource" />
+    <None Include="Images\arrow_back.gif">
+    </None>
+    <None Include="Images\arrow_forward.gif">
+    </None>
+    <None Include="My Project\DataSources\SQLClue.My.MySettings.datasource" />
+    <None Include="ReportServerReports\SQLClueDashboard.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLClueSchedule.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLClueScheduledTasks.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLClueServiceStatus.rdl">
+    </None>
+    <Resource Include="Resources\holmes.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\bw2.ico">
+    </Resource>
+    <Resource Include="Resources\Collection.jpg">
+    </Resource>
+    <Resource Include="Resources\Item.jpg">
+    </Resource>
+    <Resource Include="Resources\TestCases.xlsx">
+    </Resource>
+    <Resource Include="Resources\bw.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TwoHeadedDb288.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\SQLClue96.ico">
+    </Resource>
+    <Resource Include="Resources\SQLClue96.bmp">
+    </Resource>
+    <None Include="ReportServerReports\SQLConfigurationArchiveByInstance.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationArchiveHistory.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationArchiveHistoryByInstanceName.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationArchiveHistoryByScheduleId.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationArchiveHistoryForSQLInstanceByScheduleId.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationArchiveSettings.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationCatalog.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationCatalogIndex.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationChange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationChangeDefinitionByVersion.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationChangesForArchive.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationChangesForDate.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLConfigurationRecentSQLErrors.rdl" />
+    <None Include="ReportServerReports\SQLConfigurationSummary.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookCatalog.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookCategoriesAddedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookCategory.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookCategoryTopicsAddedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookChange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookContributor.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookContributorScores.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocument.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentsAddedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentsByOwner.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentsByTopic.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentsChangedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentsReviewedByOwner.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentsReviewedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookDocumentTypes.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookSimpleSearch.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookSummary.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopic.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicDocumentsAddedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicsAddedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicsByCategoryId.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicsByOwner.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicsChangedInDateRange.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicsReviewedByOwner.rdl">
+    </None>
+    <None Include="ReportServerReports\SQLRunbookTopicsReviewedInDateRange.rdl">
+    </None>
+    <Content Include="ReportViewerReports\SQLConfigurationArchiveSimpleSearch.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerReports\SQLConfigurationRecentSQLErrors.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="ReportViewerReports\SQLRunbookSimpleSearch.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Include="ReportServerReports\SQLConfigurationArchiveSimpleSearch.rdl">
+    </None>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <Resource Include="Resources\CompareOut.ico">
+    </Resource>
+    <Resource Include="Resources\CompareIn.ico">
+    </Resource>
+    <Resource Include="Resources\CompOut.jpg">
+    </Resource>
+    <Resource Include="Resources\CompIn.jpg">
+    </Resource>
+    <Content Include="ReportViewerReports\readme.txt" />
+    <Resource Include="Resources\sqlclue75.ico">
+    </Resource>
+    <Resource Include="Resources\bw75.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\DataContainer_MoveFirstHS.png">
+    </Resource>
+    <Resource Include="Resources\DataContainer_MoveLastHS.png">
+    </Resource>
+    <Resource Include="Resources\DataContainer_MoveNextHS.png">
+    </Resource>
+    <Resource Include="Resources\DataContainer_MovePreviousHS.png">
+    </Resource>
+    <Resource Include="Resources\DataContainer_NewRecordHS.png">
+    </Resource>
+    <Resource Include="Resources\DeleteHS.png">
+    </Resource>
+    <Resource Include="Resources\Annotation_New.png">
+    </Resource>
+    <Resource Include="Resources\delete.png">
+    </Resource>
+    <Resource Include="Resources\Edit_RedoHS.png">
+    </Resource>
+    <Resource Include="Resources\Edit_UndoHS.png">
+    </Resource>
+    <Resource Include="Resources\error.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ActualSizeHS.png">
+    </Resource>
+    <Resource Include="Resources\AddTableHS.png">
+    </Resource>
+    <Resource Include="Resources\AttachmentHS.png">
+    </Resource>
+    <Resource Include="Resources\book_reportHS.png">
+    </Resource>
+    <Resource Include="Resources\Book_StackOfReportsHS.png">
+    </Resource>
+    <Resource Include="Resources\CommentHS.png">
+    </Resource>
+    <Resource Include="Resources\compareversionsHS.png">
+    </Resource>
+    <Resource Include="Resources\CopyHS.png">
+    </Resource>
+    <Resource Include="Resources\EditInformationHS.png">
+    </Resource>
+    <Resource Include="Resources\ExpirationHS.png">
+    </Resource>
+    <Resource Include="Resources\Favorites.png">
+    </Resource>
+    <Resource Include="Resources\Flag_redHS.png">
+    </Resource>
+    <Resource Include="Resources\holmes.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PlayHS.png">
+    </Resource>
+    <Resource Include="Resources\RepeatHS.png">
+    </Resource>
+    <Resource Include="Resources\SaveAllHS.png">
+    </Resource>
+    <Resource Include="Resources\saveHS.png">
+    </Resource>
+    <Resource Include="Resources\NoteHS.png">
+    </Resource>
+    <Resource Include="Resources\PointerHS.png">
+    </Resource>
+    <Resource Include="Resources\RelationshipsHS.png">
+    </Resource>
+    <Resource Include="Resources\RefreshDocViewHS.png">
+    </Resource>
+    <Resource Include="Resources\servicepaused.ico">
+    </Resource>
+    <Resource Include="Resources\servicerunning.ico">
+    </Resource>
+    <Resource Include="Resources\servicestopped.ico">
+    </Resource>
+    <Resource Include="Resources\serviceunknown.ico">
+    </Resource>
+    <Resource Include="Resources\MessageQueuing.ico">
+    </Resource>
+    <Resource Include="Resources\Messages.ico">
+    </Resource>
+    <Resource Include="Resources\SingleMessage.ico">
+    </Resource>
+    <Resource Include="Resources\Import.png">
+    </Resource>
+    <Resource Include="Resources\Refresh.png">
+    </Resource>
+    <Resource Include="Resources\Restart.png">
+    </Resource>
+    <Resource Include="Resources\RestartBW.png">
+    </Resource>
+    <Resource Include="Resources\StartConversation.png">
+    </Resource>
+    <Resource Include="Resources\LoadOutput.png">
+    </Resource>
+    <Resource Include="Resources\sqlclue.ico">
+    </Resource>
+    <Resource Include="Resources\ZoomHS.png">
+    </Resource>
+    <Resource Include="Resources\RefreshBW.png">
+    </Resource>
+    <Resource Include="Resources\SBQueue.png" />
+    <Resource Include="Resources\SBQueueActivationOff.png" />
+    <Resource Include="Resources\SBQueueOK.png" />
+    <Resource Include="Resources\SBQueueDown.png" />
+    <Content Include="SQLScripts\instSQLClueRepository.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\instSQLClueDDLEventNotifications.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\instSQLCluePasswordEncryptionKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\instSQLClueRunbook.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="keypair.snk" />
+    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="My Project\Settings.settings">
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Resource Include="Resources\FormRunHS.png">
+    </Resource>
+    <Content Include="Help\License.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\rpsh.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <None Include="Service References\ServiceReference1\reportservice.wsdl" />
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ActiveState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.CatalogItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.DataRetrievalPlan.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.DataSetDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.DataSource.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.DataSourceDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.DataSourcePrompt.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Event.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ExecutionSettingEnum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ExpirationDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Extension.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ExtensionParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ExtensionSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ItemTypeEnum.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ParameterValue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ParameterValueOrFieldReference.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Policy.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Property.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ReportHistorySnapshot.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ReportParameter.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Role.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Schedule.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ScheduleDefinitionOrReference.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.ServerInfoHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.SessionHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Subscription.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Task.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Warning.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <Content Include="ServiceSetup\SQLClueServiceSetup.msi">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="SQLRunbookDataSet.xsc">
+      <DependentUpon>SQLRunbookDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SQLRunbookDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>SQLRunbookDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="SQLRunbookDataSet.xss">
+      <DependentUpon>SQLRunbookDataSet.xsd</DependentUpon>
+    </None>
+    <Content Include="SQLScripts\alterSQLClueRepository_1_4_1_4.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="SQLScripts\alterSQLClueRunbook_1_4_1_4.sql" />
+    <None Include="SQLScripts\RepositoryPopulationExample.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="SQLScripts\uninstSQLCluePasswordEncryptionKey.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\uninstSQLClueRunbook.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\uninstSQLClueRepository.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\uninstSQLClue.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SQLScripts\uninstSQLClueDDLEventNotifications.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cCommon\cCommon.vbproj">
+      <Project>{F05EC60E-A3C5-4C18-A205-3195A40DD95F}</Project>
+      <Name>cCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.ReportViewer.8.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Studio 2008 Report Viewer</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="ReportServerReports\DataSources\" />
+    <Folder Include="ReportServerReports\SQLClue\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

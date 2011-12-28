@@ -1,0 +1,817 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="RepositorySQLLoginName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RepositorySQLLoginPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RepositoryDatabaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLClue</Value>
+    </Setting>
+    <Setting Name="LicensedCompany" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LicensedUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LicenseCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Unlicensed Trial Software</Value>
+    </Setting>
+    <Setting Name="RepositoryPasswordEncryptionCertificate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ArchiveUsers</Value>
+    </Setting>
+    <Setting Name="RepositoryPasswordEncryptionKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PasswordKey</Value>
+    </Setting>
+    <Setting Name="TargetEventNotificationDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">msdb</Value>
+    </Setting>
+    <Setting Name="instRepository" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\instSQLClueRepository.sql</Value>
+    </Setting>
+    <Setting Name="instDDLEventNotifications" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\instSQLClueDDLEventNotifications.sql</Value>
+    </Setting>
+    <Setting Name="instPasswordEncryption" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\instSQLCluePasswordEncryptionKey.sql</Value>
+    </Setting>
+    <Setting Name="uninstDDLEventNotifications" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\uninstSQLClueDDLEventNotifications.sql</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_Batch__Separator" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GO</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__A_Name_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__A_SQL__Login__Name_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__B_Name_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__B_SQL__Login__Name_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ServerDiscoveryScope" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Local</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Pattern_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Replacement_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Pattern_3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\r\n|\n</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Encoding_240" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__B_SQL__Login__Password_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__A_SQL__Login__Password_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__A_Filters_Label" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__B_Filters_Label" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace_AutoComplete__Patterns" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;(\[?)(\]?)(?# match square brackets to unbracketed - OK to use null string for a replacement)&lt;/string&gt;
+  &lt;string&gt;(?:ServerName1|ServerName2)(?# match specified literal - use a replacement such as "LocalServer" rather than blank)&lt;/string&gt;
+  &lt;string&gt;(\s+)(?# match inline whitespace - use null string or blank for a replacement)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit_AutoComplete__Patterns" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;\r\n(?# carriage return + line feed)&lt;/string&gt;
+  &lt;string&gt;\n(?# carriage return)&lt;/string&gt;
+  &lt;string&gt;\n|\r\n(?#both carriage return and carriage return + line feed)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace_AutoComplete__Replacements" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;$2 $1(?# replace the second search match with the first)&lt;/string&gt;
+  &lt;string&gt;ServerName(?# replace specific server names with a generic literal)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Misc_Origin__Enum" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;SQLInstance&lt;/string&gt;
+  &lt;string&gt;Repository&lt;/string&gt;
+  &lt;string&gt;FileFolder&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch_AutoComplete__Patterns" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;test(?# all names containing the text "test")&lt;/string&gt;
+  &lt;string&gt;~(^*test$)(?# do not match names that end with "test")&lt;/string&gt;
+  &lt;string&gt;(^*test$|^*$)(?# match names whether or not they end with "test")&lt;/string&gt;
+  &lt;string&gt;(\[?)dbo(\]?)(.)(?# all names starting with "dbo." with or without square brackets)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="RepositoryInstanceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LicenseDate" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RepositoryConnectionTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="LicensedInstanceCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Misc_Ignore__Blank__Lines" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_Number__Script__Lines" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__A_Connection__Timeout_5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__A_Use__Trusted__Connection_2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__B_Connection__Timeout_5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__B_Use__Trusted__Connection_2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_IgnoreCase_5" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_Multiline_7" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_ExplicitCapture_4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_Compiled_1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_RightToLeft_8" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_IgnorePatternWhiteSpace_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_SingleLine_9" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_ECMAScript_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineReplace__Regex__Options_CultureInvariant_2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_IgnoreCase_5" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_Multiline_7" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_ExplicitCapture_4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_Compiled_1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_SingleLine_9" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_RightToLeft_8" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_IgnorePatternWhiteSpace_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_ECMAScript_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_LineSplit__Regex__Options_CultureInvariant_2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_IgnoreCase_5" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Pattern_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_Multiline_7" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_ExplicitCapture_4" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_Compiled_1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_SingleLine_9" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_RightToLeft_8" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_IgnorePatternWhiteSpace_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_ECMAScript_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Regular__Expressions_NameMatch__Regex__Options_CultureInvariant_2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_AllowSystemObjects_10" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_AnsiFile_20" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_AnsiPadding_30" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Bindings_40" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ClusteredIndexes_50" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ContinueScriptingOnError_60" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ConvertUserDefinedDataTypesToBaseType_70" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DdlBodyOnly_80" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DdlHeaderOnly_90" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Default_100" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriAll_110" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriAllConstraints_120" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriAllKeys_130" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriChecks_140" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriClustered_150" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriDefaults_160" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriForeignKeys_170" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriIncludeSystemNames_180" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriIndexes_190" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriNonClustered_200" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriPrimaryKey_210" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriUniqueKeys_220" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_DriWithNoCheck_230" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_EnforceScriptingOptions_250" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_FullTextCatalogs_270" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_FullTextindexes_280" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_IncludeDatabaseContext_290" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_IncludeHeaders_300" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Indexes_310" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_LoginSID_320" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoAssemblies_330" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoCollation_340" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoCommandTerminator_350" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoExecuteAs_360" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoFilegroup_370" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoIdentities_380" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoIndexPartitioningSchemes_390" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoMailProfileAccounts_400" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoMailProfilePrincipals_410" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NonClusteredIndexes_420" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoTablePartitioningSchemes_430" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoViewColumns_440" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoXMLNameSpaces_450" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_OptimizerData_460" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Permissions_470" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_PrimaryObject_480" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_SchemaQualify_490" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_SchemaQualifyForeignKeysReferences_500" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Statistics_510" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_TimestampToBinary_520" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_Triggers_540" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_WithDependencies_550" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_XMLIndexes_560" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ExtendedProperties_260" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_Show__Comparison__Details" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_Show__Differences__Only" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SettingsDirty" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_Include__DROP__In__Script" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_Include__IF__EXISTS__With__Drop" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_Show__Object__Name__on__Script__Lines" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_AgentAlertJob_1" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_AgentJobId_2" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_AgentNotify_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_IncludeDatabaseRoleMemberships_291" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_IncludeIfNotExists_301" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoVardecimal_431" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_Show__Scripts__For__Unmatched__Items" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_TargetServerVersion_530" Type="Microsoft.SqlServer.Management.Smo.SqlServerVersion" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__A_Encrypted__Connection_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__A_Trust__Server__Certificate_7" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__B_Encrypted__Connection_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__B_Trust__Server__Certificate_7" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RepositoryTrustServerCertificate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="uninstRepository" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\uninstSQLClueRepository.sql</Value>
+    </Setting>
+    <Setting Name="RepositoryEncryptConnection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RepositoryNetworkLibrary" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RepositoryUseTrustedConnection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RunbookConnectionTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="RunbookDatabaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLClue</Value>
+    </Setting>
+    <Setting Name="RunbookEncryptConnection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RunbookNetworkLibrary" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RunbookSQLLoginName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RunbookSQLLoginPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RunbookTrustServerCertificate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RunbookUseTrustedConnection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="instRunbook" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\instSQLClueRunbook.sql</Value>
+    </Setting>
+    <Setting Name="RepositoryEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RunbookEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ReportingEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RunbookInstanceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="NetworkLibraries" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string /&gt;
+  &lt;string&gt;dbnmpntw (Named Pipes) &lt;/string&gt;
+  &lt;string&gt;dbmsadsn (AppleTalk)&lt;/string&gt;
+  &lt;string&gt;dbmsgnet (VIA)&lt;/string&gt;
+  &lt;string&gt;dbmslpcn (Shared Memory)&lt;/string&gt;
+  &lt;string&gt;dbmsrpcn (Multiprotocol)&lt;/string&gt;
+  &lt;string&gt;dbmssocn (TCP/IP)&lt;/string&gt;
+  &lt;string&gt;dbmsspxn (IPX/SPX)&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="SQL__Instance__B_Network__Protocol_8" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Instance__A_Network__Protocol_8" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="rdlcPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/ReportViewerReports</Value>
+    </Setting>
+    <Setting Name="uninstRunbook" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\uninstSQLClueRunbook.sql</Value>
+    </Setting>
+    <Setting Name="HelpRoot" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Help\home.htm</Value>
+    </Setting>
+    <Setting Name="uninstSQLClue" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SQLScripts\uninstSQLClue.sql</Value>
+    </Setting>
+    <Setting Name="alterRepository" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLScripts\alterSQLClueRepository.sql</Value>
+    </Setting>
+    <Setting Name="alterRunbook" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLScripts\alterSQLClueRunbook.sql</Value>
+    </Setting>
+    <Setting Name="uninstPasswordEncryption" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLScripts\unintSQLCluePasswordEncryptionKey.sql</Value>
+    </Setting>
+    <Setting Name="ServiceEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RunbookDateFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dd MMM yyyy HH:mm:ss:fff</Value>
+    </Setting>
+    <Setting Name="LastWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">800</Value>
+    </Setting>
+    <Setting Name="LastHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="LastWindowState" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__A_Connection__Timeout_7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__B_Connection__Timeout_7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__A_Encrypted__Connection_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__B_Encrypted__Connection_6" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__A_Name_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__B_Name_1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__A_Network__Protocol_9" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__B_Network__Protocol_9" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__A_SQL__Login__Name_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__B_SQL__Login__Name_4" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__A_SQL__Login__Password_5" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__B_SQL__Login__Password_5" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__A_Trust__Server__Certificate_8" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__B_Trust__Server__Certificate_8" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__A_Use__Trusted__Connection_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__B_Use__Trusted__Connection_3" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__A_Database__Name_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SQL__Repository__B_Database__Name_2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RemoteRunbookInstanceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RemoteRunbookDatabaseName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SQLClue</Value>
+    </Setting>
+    <Setting Name="RemoteRunbookUseTrustedConnection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RemoteRunbookTrustServerCertificate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RemoteRunbookSQLLoginPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RemoteRunbookSQLLoginName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RemoteRunbookNetworkLibrary" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RemoteRunbookEncryptConnection" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RemoteRunbookConnectionTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_BatchSize_35" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ChangeTracking_45" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_FullTextStopLists_285" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_IncludeFullTextCatalogRootPath_295" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoFileStream_373" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_NoFileStreamColumn_376" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ScriptSchema_509" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ScriptOwner_508" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ScriptDrops_506" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ScriptDataCompression_505" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ScriptData_503" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Scripting__Options_SMO_ScriptBatchTerminator_502" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="AlwaysStartService" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ServiceTimerIntervalSeconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="DocumentMonitorSleepSeconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">900</Value>
+    </Setting>
+    <Setting Name="WaitBetweenDocumentsSeconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="RunbookCategoriesMultiColumn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RunbookCategoryLocked" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DDLEventQueueConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.\EEEVAL;Initial Catalog=msdb;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.\EEEVAL;Initial Catalog=msdb;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="SQLCfgConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.Initial Catalog=SQLClue;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.Initial Catalog=SQLClue;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="TargetConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.;Initial Catalog=SQLClue;Integrated Security=True&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.;Initial Catalog=SQLClue;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="rdlLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/ReportServerScripts</Value>
+    </Setting>
+    <Setting Name="CompareResultsFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CompareResultsToFile" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_To_HTML" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Misc_Display__Output_HTML_Path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TargetHandshakeConnectionTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="ComponentDBSizeInMB" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="Rating0" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="Rating1" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">LimeGreen</Value>
+    </Setting>
+    <Setting Name="Rating2" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">SpringGreen</Value>
+    </Setting>
+    <Setting Name="Rating3" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">GreenYellow</Value>
+    </Setting>
+    <Setting Name="Rating4" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Yellow</Value>
+    </Setting>
+    <Setting Name="Rating5" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Orange</Value>
+    </Setting>
+    <Setting Name="Rating6" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="Rating7" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="SQLClueConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.;Initial Catalog=SQLClue;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.;Initial Catalog=SQLClue;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="CompareOutputHeaderText" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ControlText</Value>
+    </Setting>
+    <Setting Name="CompareOutputHeaderBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="CompareOutputBodyText" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">WindowText</Value>
+    </Setting>
+    <Setting Name="CompareOutputBodyBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Window</Value>
+    </Setting>
+    <Setting Name="CompareOutputDifferentText" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ActiveCaptionText</Value>
+    </Setting>
+    <Setting Name="CompareOutputDifferentBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">ActiveCaption</Value>
+    </Setting>
+    <Setting Name="CompareOutputNoMatchText" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">HighlightText</Value>
+    </Setting>
+    <Setting Name="CompareOutputNoMatchBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Highlight</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__B_Filters_Version" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SQL__Repository__A_Filters_Version" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="RunbookConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=.;Initial Catalog=SQLClue;Integrated Security=True&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=.;Initial Catalog=SQLClue;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="ArchiveErrorsDaysToShow" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

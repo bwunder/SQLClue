@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Peer Review in the SQLClue Runbook</title>
+    <link rel="stylesheet" type="text/css" href="SQLClue.css" /></head>
+<body>
+
+<table class="sqlclue">
+<tr>
+<td class="sqlclue">
+
+<h4>Peer Review in the SQLClue Runbook</h4>
+
+    <p>This page demonstrates how to provide peer review feedback for a SQLClue Runbook Topic and how to view the existing peer review
+       activity for a SQLClue Runbook Topic.</p>
+
+    <p>Categories, Topics and Documents are all peer review capable in the SQL Runbook. The rating dialog is the same for all. 
+    Categories are rated using the Category Editor Dialog data grid found in the Tools menu, Topics are rated using the Topic List 
+    data grid (upper panel) of the SQLClue Runbook Tab and Documents are rated using the Documents data grid in the Topic Editor (lower panel)
+    of the SQLClue Runbook Tab.</p>
+
+    <p>The peer review rating cell is always in the first column of the data grid.</p>
+
+    <p>To begin this walkthrough a Topic must exist in the SQLClue Runbook. If there are currently no Topics, the reader can
+       first complete the <a href="RunbookContributorTutorial.htm">Contributing to the SQLClue Runbook</a> How-to help document. The
+       Topic created in that tutorial will be the referenced in what follows.</p>
+
+    <h4><b>Rating a Runbook Topic</b></h4>
+    <ul>
+        <li>Review the Topic for completeness, accuracy, suitability and relevance. Look for any benefits and risks.
+        <p>The review will be presented from the technical perspective of the reviewer's area(s) of expertise and responsibility 
+           within the organization, though any observations of the Topic's usefulness or risks, even if beyond the reviewer's 
+           purvey are equally important. The purpose of the review is to appropriately reinforce the utility of Topic. When other's 
+           access or search the SQLClue Runbook for knowledge and information, the existing reviews serve to establish the level of 
+           acceptance of each Topic's content across the organization. For example, a Topic owned by the production DBA regarding 
+           database backups will be seen from much different perspectives by a Data Center Operator and a Quality Assurance (QA) 
+           Engineer. The Data center Operator may have unique knowledge of the storage limits for backup files while the QA Engineer 
+           may have special needs to know the release level of the backup. The purpose of the the review is to bring both perspectives 
+           in focus each time the Topic is viewed. This will greatly reduce the chances that important considerations are not overlooked 
+           at any time.</p></li>
+        <li>Load the Topic into the Topic List panel.</li>
+        <li>Select the "Ratings" cell column of the Topic.</li>
+        <li>The Peer Review Rating Dialog will open in the center of the SQLClue User Interface (UI) window.
+        <p style="text-align:center"><img src="../Images/PeerReviewRating1.jpg" /></p></li>
+        <li>Select the Radio Button in the right side panel adjacent to the rating number to be assigned.
+        <p>Use the panels decision tree to assist in selecting the correct rating.</p></li>
+        <li><b>Selecting the right Rating</b>
+            <ol>
+            <li>Consider the the three descriptors to the left in the panel to narrow the rating possibilities. These will 
+                help to narrow your general inclination toward the reviewed item.</li>
+                <ol>
+                <li><b>Accurate</b> - the Topic is of high quality and value.
+                <p>Narrows the Rating selection possibilities to 1, 2 or 3.</p></li>
+                <li><b>Acceptable</b> - the Topic is good enough to be generally of value.
+                <p>Narrows the Rating selection possibilities to 3 or 4.</p></li>
+                <li><b>Avoid</b> - the Topic is of no help or value.
+                <p>Narrows the Rating selection possibilities to 4, 5 or 6.</p></li>
+                </ol>
+            <li>Critically think about the Topic's suitability to each of the possible Ratings. SQLClue offers to facillitate 
+                full and open communication in the interest of improving the shared working experience.
+            <p>Additional considerations for each Rating are found by hovering the mouse over the rating text.</p></li>
+            <li>Click in or tab to the chosen radio button to select.</li>
+            </ol></li>
+        <li>Insert a brief note explaining the rating in the "Rating Note" input box.</li>
+        <li>Select [OK] to commit the rating to the data store.</li>
+    </ul>
+    
+    <h4><b>Reviewing Existing Runbook Topic Ratings</b></h4>
+    <p>The current rating for each Topic is shown on the Topic List data grid. This is the average for all ratings the Topic has
+       received. The Rating cell for is also color coded in a stop light like color bar similar to the color bar of the Peer 
+       Review Rating dialog: green indicating better rated ratings, turning to yellow and finally red for the lowest rating.</p>
+    <p>Hovering on the rating shows the current user's most recent rating and the number of number of individuals that have rated the Topic.</p>
+    <p>The rating dialog also shows the current average rating and the number of unique ratings at the bottom of the right side panel.
+       To review all of your rating notes, select the upper - non-editable - notes panel of the dialog. This will launch the full 
+       sized notes dialog.</p>
+     <p>To review the ratings and notes of other users, navigate to the Topic in the SQLClue Runbook report hierarchy of the Reporting 
+        Tab and drill into the ratings to get the Peer Review Rating Summary for a Topic. A similar summary is available for each Category 
+        and Document. Of course custom views and reports accessible across the Environment and beyond can also be created on any Report Server
+        that can access the SQLClue Runbook's database.</p> 
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

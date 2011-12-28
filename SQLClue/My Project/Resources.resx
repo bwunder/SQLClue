@@ -1,0 +1,993 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BooleanAdvOptions" xml:space="preserve">
+    <value>a Boolean</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="CompareComplete" xml:space="preserve">
+    <value> Compare Complete</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="RepositoryInstallCaption" xml:space="preserve">
+    <value>Create SQLClue DDL &amp; Configuration Repository?</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="SQLRunbookNewFileListBoxItem" xml:space="preserve">
+    <value>&lt;--add new file--&gt;</value>
+    <comment>file list box default entry</comment>
+  </data>
+  <data name="SelectOrigin" xml:space="preserve">
+    <value>{0} Select Origin</value>
+    <comment>embedded help</comment>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Refresh.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Messages" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Messages.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddTableHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddTableHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArchiveIntervalSelectFailed" xml:space="preserve">
+    <value>No Interval Type Seleceted!</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="DataContainer_MoveFirstHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MoveFirstHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RunbookTopicListHeader" xml:space="preserve">
+    <value>Topics for {0} {1}</value>
+    <comment>label</comment>
+  </data>
+  <data name="InvalidItemCompare" xml:space="preserve">
+    <value>An item of type [{0}] cannot be compared with an item of type [{1}]</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="RefreshBW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RefreshBW.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectServer" xml:space="preserve">
+    <value>{0} Select a SQL Instance</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="NonNumericEntry" xml:space="preserve">
+    <value>The value entered must be numeric</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Comparing" xml:space="preserve">
+    <value>Comparing [{0}] and  [{1}] </value>
+    <comment>Event message</comment>
+  </data>
+  <data name="EventNotificationsEnable" xml:space="preserve">
+    <value>Enabling SQLClue Event Notifications on SQL Instance [{0}]</value>
+    <comment>event message</comment>
+  </data>
+  <data name="CommentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CommentHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ActualSizeHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ActualSizeHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArchiveScheduleViewTitle" xml:space="preserve">
+    <value>Configuration Archive Schedules for SQL Instance [{0}]</value>
+    <comment>label</comment>
+  </data>
+  <data name="CompareHTMLResultsAFileName" xml:space="preserve">
+    <value>SQLClueResultsA.htm</value>
+  </data>
+  <data name="Book_StackOfReportsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Book_StackOfReportsHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ActiveArchiveAbortText" xml:space="preserve">
+    <value>A background Archive process owned by this window is in progress. Closing the window will cancel the archive. Select [Yes] to Close SQLClue and cancel this archive?</value>
+    <comment>msgbox text</comment>
+  </data>
+  <data name="ArchiveNotificationSelectMethods" xml:space="preserve">
+    <value>Select one or more - If none available for selection the SQL Agent Operator is not correctly configured.</value>
+  </data>
+  <data name="CompareHTMLResultsBFileName" xml:space="preserve">
+    <value>SQLClueResultsB.htm</value>
+  </data>
+  <data name="InvalidSQLPasswordChar" xml:space="preserve">
+    <value>SQL Passwords allow alpha-numeric, symbol and punctuaion charaters only.</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="LoadOutput" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoadOutput.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SQLCfgArchiveTypeChange" xml:space="preserve">
+    <value>Change</value>
+    <comment>SQL Configuration Repository change row type</comment>
+  </data>
+  <data name="InvalidPasswordEdit" xml:space="preserve">
+    <value>For maximum security, password editing is not permitted.  Re-enter the complete password.</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="PlayHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlayHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="saveHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Import" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Import.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HelpOverview" xml:space="preserve">
+    <value />
+    <comment>Tab tooltip</comment>
+  </data>
+  <data name="DocumentSecurityMessage" xml:space="preserve">
+    <value>SQLClue Automation Controller start-up account access must be granted to enable automated synchronization between a document and the SQLClue Runbook. Verify the access requirement listed or forward this information to the security authority or SQLClue Administrator [{0}] before commiting this Runbook Topic action.</value>
+  </data>
+  <data name="DeleteConfigCaption" xml:space="preserve">
+    <value>Remove Target Instance</value>
+    <comment>msgbox caption</comment>
+  </data>
+  <data name="RunbookNotesHeader" xml:space="preserve">
+    <value>Notes for Topic: {0}</value>
+    <comment>label</comment>
+  </data>
+  <data name="StringAdvOptions" xml:space="preserve">
+    <value>a String (text)</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="ArchiveIntervalSelect" xml:space="preserve">
+    <value>Set Interval Type then Frequency </value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="SetupNoServersMessage" xml:space="preserve">
+    <value>SQLClue has not been able to detect any local SQL Server instances. This may be because the SQL Browser Service is not running. It may also be an indication that SQL Server is not installed on the local system. [{0}] requires a pre-existing local SQL Server. Select [OK] to continue and enter the name of an existing local SQL Instance. Select [Cancel] to exit and quit this request to run [{0}].</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="RepeatHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RepeatHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Item" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Item.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompIn1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CompIn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareInstanceLabel" xml:space="preserve">
+    <value>Instance</value>
+  </data>
+  <data name="Annotation_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Annotation_New.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SQLClue961" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SQLClue96.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SBQueue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SBQueue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArchiveConfigurationTreeTitle" xml:space="preserve">
+    <value>Configuration from [{0}] to Include in Archive</value>
+    <comment>Connection form label</comment>
+  </data>
+  <data name="ArchiveNotificationOperatorRequired" xml:space="preserve">
+    <value>A SQL Agent Operator must be properly configured before Alert Notifications can be enabled and sent.</value>
+  </data>
+  <data name="ConnectToAnySQL" xml:space="preserve">
+    <value>Connect to Target SQL Instance</value>
+    <comment>label</comment>
+  </data>
+  <data name="ArchiveIntervalSentence" xml:space="preserve">
+    <value>Archive every {0} {1}{2}</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="StringAdvOptionsHelp" xml:space="preserve">
+    <value>Text entry field that allows you to enter [{0}] value for this setting.</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="RepositoryInstallPromtpt" xml:space="preserve">
+    <value>It is recommended that the SQL Server DDL and Configuration Repository database is installed when SQLClue is installed. It is to the advantage of most users to respond [Yes]. Unless only the SQLClue Compare component is desired – an unlikely first use yet entirely appropriate supplemental configuration, the creation of this database is required by SQLClue.  For script details see file [{0}] at {1})
+
+HOST SQL SERVER REQUIREMENTS 
+A user specified local SQL Server 2005 instance will host the Repository. The SQL instance must be installed before the repository can be installed. A new or existing database can be specified. If a new database name is specified, the setup routine will use the SQL instance defaults when creating the database. To control the database creation, simply specify an existing database in the Setup connection dialog.  Enable the CLR on the host SQL instance by executing the following T-SQL command and then restarting the SQL Server service.
+
+	EXEC sp_configure ‘clr enabled’, 1
+	RECONFIGURE
+
+DATABASE ROLE BASED SECURITY
+The script will create three roles in the database:  
+
+	SQLClueAdminRole 
+	SQLClueServiceRole 
+	SQLClueReportingRole 
+ 
+Place users that will use the SQLClue application to plan and administer Repository archival activities in the SQLClueAdminRole. Assign the SQLClueService service account to the SQLClueServiceRole. Add all users  that might access data through Reporting Services or other read only interfaces to the archive through the SQLClueReportingRole's stored procedures. 
+
+ If [No] is selected at this time, Repository setup can be restarted from the [Tools] menu option at any time. This menu option can also be used at anytime to modify the connection information to the Repository.</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="ArchivePlanningRequestInvalid" xml:space="preserve">
+    <value>Connect to a SQL Instance, then manage the schedules and configuration for that instance.</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="ArchiveNotificationNoMethodsEnabled" xml:space="preserve">
+    <value>Operator {0} will not receive {1} notificatons because no Notification Methods have been set.</value>
+  </data>
+  <data name="CompareHTMLResultsB" xml:space="preserve">
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" 
+      content="text/html; charset=UTF-8"&gt;
+&lt;title&gt;SQLClue Compare Panel 2&lt;/title&gt;
+&lt;script type="text/javascript"&gt;
+{0}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body style="font-family: Lucida Console; font-size: 10px"&gt;
+&lt;table width="500%"&gt;
+{1}
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>Origin</value>
+    <comment>label</comment>
+  </data>
+  <data name="ArchiveIntervalSelectFailedCaption" xml:space="preserve">
+    <value>Archive Frequency Validation Failed</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="Favorites" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Favorites.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AppendingScript" xml:space="preserve">
+    <value>Appending script: {0} of {1}</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="UnauthorizedInstallUser" xml:space="preserve">
+    <value>Only local system Administrators can configure the SQLClue Automation Controller Service.</value>
+  </data>
+  <data name="SBQueueOK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SBQueueOK.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ServiceStartupMessage" xml:space="preserve">
+    <value>Starting SQLClue Service... </value>
+  </data>
+  <data name="CompareHTMLKey" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;&lt;title&gt;SQLClue Compare Key&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family: Lucida Console; font-size: 10px"&gt;
+&lt;table width="100%"&gt;&lt;tr&gt;&lt;td style="text-align: center"&gt;
+&lt;table border="1" width="40%" align="center"&gt;&lt;tr&gt;&lt;td&gt;Results Key&lt;/td&gt;
+&lt;td style="background-color: #{0}; color: #{1}"&gt;matched&lt;/td&gt;
+&lt;td style="background-color: #{2}; color: #{3}"&gt;different&lt;/td&gt;
+&lt;td style="background-color: #{4}; color: #{5}"&gt;no match&lt;/td&gt;
+&lt;td style="background-color: #{6}; color: #{7}"&gt;label&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;table align="center"&gt;&lt;tr&gt;&lt;td&gt;Compare Date: {8}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="BooleanAdvOptionsHelp" xml:space="preserve">
+    <value>Toggles between true and false for this setting.</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="NoSelection" xml:space="preserve">
+    <value>[{0}] must be selected. {0}A = [{1}]; {0}B = [{2}] </value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="NoMatch" xml:space="preserve">
+    <value>item or script line not found in other source</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="CompareHTMLTitleFileName" xml:space="preserve">
+    <value>SQLClueTitle.htm</value>
+  </data>
+  <data name="serviceunknown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\serviceunknown.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="compareversionsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compareversionsHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NodePlaceHolder" xml:space="preserve">
+    <value>*</value>
+    <comment>Indicator that a collection lives at the treeviewnode (user never sees)</comment>
+  </data>
+  <data name="RepositoryItem" xml:space="preserve">
+    <value>RepositoryItem</value>
+    <comment>frequently compared and tested literal</comment>
+  </data>
+  <data name="ConnectionToSQLFailed" xml:space="preserve">
+    <value>{0} failed to Connect to [{1}]</value>
+    <comment>Event Message</comment>
+  </data>
+  <data name="ConnectToAnyRepository" xml:space="preserve">
+    <value>Connect to SQLClue Repository</value>
+    <comment>Connection form label</comment>
+  </data>
+  <data name="StringAdvOptionsAbbr" xml:space="preserve">
+    <value>str</value>
+    <comment>label</comment>
+  </data>
+  <data name="ZoomHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ZoomHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SecurityMessage" xml:space="preserve">
+    <value>Notice: Security best practices dictate that for all but the very least sensitive of applications the SQLClue repository is never directly exposed to the Internet.</value>
+    <comment>About security message</comment>
+  </data>
+  <data name="CompareOverview" xml:space="preserve">
+    <value>Compare SQL Server Configuration and Scripted Objects</value>
+    <comment>Tab ToolTips, this is the overview text from the forms help doc</comment>
+  </data>
+  <data name="SelectANode" xml:space="preserve">
+    <value>{0} Select a node</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="FormRunHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FormRunHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="holmes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\holmes.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArchiveComplete" xml:space="preserve">
+    <value>Archive Schedule Id {0} Complete</value>
+    <comment>event message</comment>
+  </data>
+  <data name="NoDatabaseSelected" xml:space="preserve">
+    <value>Select one Database from each SQL Instance. Database A - [{0}]; Database B - [{1}]</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="InvalidECMAScriptSelection" xml:space="preserve">
+    <value>Option [ECMA Script] can be used only with options [Ignore Case], [Multi-line] and [Ignore Pattern Whitespace]. Combining with any other options is not supported.</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="DeleteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeleteHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PointerHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PointerHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArchiveStarting" xml:space="preserve">
+    <value>Archive Schedule Id {0} Starting</value>
+  </data>
+  <data name="LoadingRepositoryHierarchyForInstance" xml:space="preserve">
+    <value>Fetching hierarchy for the most recent archive of SQL Instance [{0}]</value>
+    <comment>status message</comment>
+  </data>
+  <data name="ConnectedToSQL" xml:space="preserve">
+    <value>{0} now connected to [{0}]</value>
+    <comment>Event Message</comment>
+  </data>
+  <data name="EditInformationHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EditInformationHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit_UndoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit_UndoHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArchiveIntervalPlural" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="ArchiveHasUnsavedChanges" xml:space="preserve">
+    <value>There are unsaved archive configuration changes. Select [Yes] to save changes now, [No] to abandon all changes or [Cancel] to close this dialog</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="StringListAdvOptionsHelp" xml:space="preserve">
+    <value>ComboBox that allows you to enter values of type [{0}] for [{1}]</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="ArchiveNotificationHasBeenCustomized" xml:space="preserve">
+    <value>This notification must be maintained using SQL Server tools.</value>
+  </data>
+  <data name="ArchiveFailNotificationName" xml:space="preserve">
+    <value>SQLClue: SQL Configuration Archive Failed</value>
+    <comment>needs to match name in SQL Script</comment>
+  </data>
+  <data name="EventNotificationsNotSupported" xml:space="preserve">
+    <value>DDL Event Notifications not supported for SQL Server Version [{1}] ([{0}])</value>
+    <comment>embedded help:SQLInstanceName, VersionString</comment>
+  </data>
+  <data name="CompareHTMLTitle" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;SQLClue Compare Heading&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="font-family: Lucida Console; font-size: 10px"&gt;
+&lt;table width="100%"&gt;
+&lt;tr&gt;
+&lt;td style="font-weight: bold; text-align: left"&gt;
+{0}
+&lt;/td&gt;
+&lt;td style="font-weight: bold; text-align: right"&gt;
+{1}
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="NumericAdvOptions" xml:space="preserve">
+    <value>an Integer (numeric)</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="SQLCfgArchiveTypeAdd" xml:space="preserve">
+    <value>Add</value>
+    <comment>SQL Configuration Repository change row type</comment>
+  </data>
+  <data name="CompareHTMLKeyFileName" xml:space="preserve">
+    <value>SQLClueKey.htm</value>
+  </data>
+  <data name="CompareHTMLScrollerJavaScript" xml:space="preserve">
+    <value>var _run;
+if(navigator.userAgent.indexOf("Firefox")!=-1||navigator.appName=="Microsoft Internet Explorer")
+{_run=false;} 
+else 
+{_run= true;}
+function scrollR()
+{var left = (window.pageXOffset)?(window.pageXOffset):(document.documentElement)?document.documentElement.scrollLeft:document.body.scrollLeft;
+var top = (window.pageYOffset)?(window.pageYOffset):(document.documentElement)?document.documentElement.scrollTop:document.body.scrollTop;
+parent.frames["left"].scrollTo(left,top);}
+function searchScroll()
+{var left = (window.pageXOffset)?(window.pageXOffset):(document.documentElement)?document.documentElement.scrollLeft:document.body.scrollLeft;
+ var top = (window.pageYOffset)?(window.pageYOffset):(document.documentElement)?document.documentElement.scrollTop:document.body.scrollTop;
+ parent.frames["left"].scrollTo(left,top);
+ window.setTimeout("searchScroll();",1);}
+if(_run == false) 
+{window.onscroll=function(){scrollR();}} 
+else 
+{window.onload=function(){searchScroll();}}</value>
+  </data>
+  <data name="book_reportHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\book_reportHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="servicerunning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\servicerunning.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareHTML" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;&lt;title&gt;SQLClue Compare&lt;/title&gt;&lt;/head&gt;
+&lt;frameset cols="100%" rows="10%,80%,10%" frameborder="1"&gt;
+&lt;frame src="SQLClueTitle.htm" scrolling="no" name="top"&gt;
+&lt;frameset cols="50%,50%" rows="100%" frameborder="1"&gt;
+&lt;frame src="SQLClueResultsA.htm" scrolling="yes" name="left"&gt;
+&lt;frame src="SQLClueResultsB.htm" scrolling="yes" name="right"&gt;
+&lt;/frameset&gt;
+&lt;frame src="SQLClueKey.htm" scrolling="no" name="bottom"&gt;
+&lt;noframes&gt;&lt;body&gt;
+A browser that supports HTML Frames is required.
+&lt;/body&gt;&lt;/noframes&gt;&lt;/frameset&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="DataContainer_NewRecordHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_NewRecordHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SQLClueService" xml:space="preserve">
+    <value>SQLClueSvc</value>
+  </data>
+  <data name="NoteHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NoteHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectingToSQL" xml:space="preserve">
+    <value>Connecting to [{0}]...</value>
+    <comment>Event Message</comment>
+  </data>
+  <data name="CompareSaveTextFilter" xml:space="preserve">
+    <value>Rich Text Files (*.rtf)|*.rtf|SQL Files (*.sql)|*.sql|Text Files (*.txt)|*.txt</value>
+  </data>
+  <data name="ArchiveSuccessNotificationName" xml:space="preserve">
+    <value>SQLClue: SQL Configuration Archive Succeeded</value>
+    <comment>needs to match name in SQL script</comment>
+  </data>
+  <data name="ExpirationHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExpirationHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SplashMsg" xml:space="preserve">
+    <value>Enumerating Servers... If this operation is taking too long or not providing a complete list of servers, try changing the [Server Enum Scope] in the Compare form [Advanced Settings]</value>
+    <comment>Startup info</comment>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>enabled</value>
+    <comment>literal for use with EventNotificationStateChanging</comment>
+  </data>
+  <data name="ArchiveInterval" xml:space="preserve">
+    <value>Select a Frequency between 1 and {0} {1}s </value>
+  </data>
+  <data name="MessageQueuing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MessageQueuing.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OnlyLicenceIfDBInstalled" xml:space="preserve">
+    <value>The SQL Configuration Repository must be installed before SQLClue can be licensed.  Use the SQL Configuration Repository option of the Tools Menu to install the component. It is also recommended that an archive of the host SQL Instance be completed before licensing to verify the installation. </value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="RelationshipsHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RelationshipsHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareCancelled" xml:space="preserve">
+    <value>Compare Cancelled</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="ServiceSetupMessage" xml:space="preserve">
+    <value>You must be a local administrator on host
+   {0}
+to install the Automation Controller service.
+
+The installer requires you to enter a Windows 
+user name and password for use as the Windows 
+service start-up account
+
+The Service start-up account will be added to 
+the [sysadmin] Fixed Server Role on targeted 
+SQL Server instances that use where SQLClue
+is configured to connect using Windows 
+authentication.
+
+Monitor the Application Event Log on the host
+for all event messages from source '{1}'.
+
+See the Automation Controller help for additional
+considerations and guidelines.</value>
+  </data>
+  <data name="ExceptionInfoMsg" xml:space="preserve">
+    <value>For more information or support for this error see http://www.bwunder.com or email Bill at bwunder@yahoo.com.</value>
+  </data>
+  <data name="bw2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bw2.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareText" xml:space="preserve">
+    <value>Configuration Compare</value>
+    <comment>Tab Title</comment>
+  </data>
+  <data name="CompareResultVersionLabel" xml:space="preserve">
+    <value>-- Version: [{0}]</value>
+  </data>
+  <data name="OriginRepository" xml:space="preserve">
+    <value>Repository</value>
+    <comment>Compare Origin (ComboBox Item)</comment>
+  </data>
+  <data name="ArchiveNotificationNoSQLExpress" xml:space="preserve">
+    <value>Alert Notifications not supported on SQL Server Expresss</value>
+  </data>
+  <data name="UnsavedChangesCaption" xml:space="preserve">
+    <value>Warning: Unsaved Changes</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="CompareResultOriginLabel" xml:space="preserve">
+    <value>-- Origin: [{0}]</value>
+  </data>
+  <data name="Flag_redHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flag_redHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoRepositoryServerNodes" xml:space="preserve">
+    <value>No Servers found in local Repository</value>
+  </data>
+  <data name="ActiveArchiveAbortCaption" xml:space="preserve">
+    <value>Warning: Archive in Progress</value>
+    <comment>msgbox caption</comment>
+  </data>
+  <data name="CompOut1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CompOut.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Same" xml:space="preserve">
+    <value>No Differences Found</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="SQLLoginNotRecommendedText" xml:space="preserve">
+    <value>Windows Authentication is recommended. SQL Server Authentication is provided for your convenience for situations where it is may not possible to use Windows authentication. The SQL password may be stored in clear text in the app.config file. Great care should be used to assure that no unwanted access is provided to this file. The password is also exposed as clear text on the wire. Use the 'Encrypted Connection' option to prevent exposing the password to network sniffers and other whippersnappers. If an SSL certificate is not installed, use the 'Trust Server Certificate' to allow the target SQL Server to generate a certificate for on the wire encryption.</value>
+    <comment>setup warning msgbox text</comment>
+  </data>
+  <data name="CopyHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CopyHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RepositoryCorrupt" xml:space="preserve">
+    <value>SQL Configuration Repository appears to be corrupted or has been previously uninstalled. The setup dialog will be populated with cached values for the existing Configuration Repository. Use these values to reconnect to the existing data store or provide connection information to another database/server if preferred.</value>
+    <comment>message</comment>
+  </data>
+  <data name="CompareHTMLStartLine" xml:space="preserve">
+    <value>&lt;tr&gt;&lt;td style="background-color: #{0}; color: #{1}"&gt;</value>
+  </data>
+  <data name="CompareResultNodeItemLabel" xml:space="preserve">
+    <value>-- Node: [{0}|{1}]</value>
+  </data>
+  <data name="bw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bw.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareValidationFailureCaption" xml:space="preserve">
+    <value>Compare Validation Failed.</value>
+    <comment>event message</comment>
+  </data>
+  <data name="SelectAFile" xml:space="preserve">
+    <value>{0} Select a File</value>
+  </data>
+  <data name="servicestopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\servicestopped.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sqlclue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sqlclue.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InvalidCollectionCompare" xml:space="preserve">
+    <value>A collection of type [{0}] cannot be compared with a collection of type [{1}]</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="EventNotificationsDisable" xml:space="preserve">
+    <value>Disabling SQLClue Event Notifications on SQL Instance [{0}]</value>
+    <comment>event message</comment>
+  </data>
+  <data name="Collection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Collection.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rpsh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rpsh.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RepositoryCollection" xml:space="preserve">
+    <value>RepositoryCollection</value>
+    <comment>frequently compared and tested literal</comment>
+  </data>
+  <data name="BooleanAdvOptionsAbbr" xml:space="preserve">
+    <value>bool</value>
+    <comment>label</comment>
+  </data>
+  <data name="InvalidRepository" xml:space="preserve">
+    <value>{0} Repository {1} is invalid or contains no archives</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="servicepaused" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\servicepaused.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CompOut.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoSqlServers" xml:space="preserve">
+    <value>The smo EnumAvailableSqlServers was not able to detect any SQL Servers</value>
+    <comment>Startup enum warning</comment>
+  </data>
+  <data name="DataContainer_MovePreviousHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MovePreviousHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NumericAdvOptionsAbbr" xml:space="preserve">
+    <value>int</value>
+    <comment>label</comment>
+  </data>
+  <data name="bw75" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bw75.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TwoHeadedDb288" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TwoHeadedDb288.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DisconnectingFromSQL" xml:space="preserve">
+    <value>{0} Disconnecting from SQL Instance [{1}]</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+    <comment>select all from a combo box</comment>
+  </data>
+  <data name="ReportViewerOverview" xml:space="preserve">
+    <value>SQLClue Management &amp; Analysis Views</value>
+    <comment>Tab ToolTips, this is the overview text from the forms help doc</comment>
+  </data>
+  <data name="DataContainer_MoveLastHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MoveLastHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AttachmentHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AttachmentHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareHTMLFileName" xml:space="preserve">
+    <value>SQLClueCompare.htm</value>
+  </data>
+  <data name="RefreshDocViewHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RefreshDocViewHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompareStarting" xml:space="preserve">
+    <value>Comparing...</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="OriginFile" xml:space="preserve">
+    <value>Folder</value>
+    <comment>Compare Origin (ComboBox Item)</comment>
+  </data>
+  <data name="InvalidCompare" xml:space="preserve">
+    <value>A collection of {0} and the item {1} cannot be compared. Select either a collection from each source or an item from each source.</value>
+    <comment>Validation message</comment>
+  </data>
+  <data name="ManagedComputerNodeName" xml:space="preserve">
+    <value>Managed Computer [{0}]</value>
+    <comment>treeview root node</comment>
+  </data>
+  <data name="Edit_RedoHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Edit_RedoHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ServiceEnabledButNotInstalled" xml:space="preserve">
+    <value>SQLClue Automation Controller service is enabled in the SQLClue application but not found on host {0}. SQLClue application settings are now updated to resolve conflict.</value>
+  </data>
+  <data name="CompIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CompIn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OriginSQLInstance" xml:space="preserve">
+    <value>SQLInstance</value>
+    <comment>Compare Origin (ComboBox Item)</comment>
+  </data>
+  <data name="CompareHTMLEndLine" xml:space="preserve">
+    <value>&lt;/td&gt;&lt;/tr&gt;</value>
+  </data>
+  <data name="ReloadList" xml:space="preserve">
+    <value>&lt;reload list...&gt;</value>
+    <comment>force reload from db</comment>
+  </data>
+  <data name="RepositoryNotEnabled" xml:space="preserve">
+    <value>The SQL Configuration Repository is not enabled </value>
+    <comment>event message</comment>
+  </data>
+  <data name="EventNotificationStateChanging" xml:space="preserve">
+    <value>Event Notifications {0} on SQL Instance [{1}]</value>
+    <comment>Event message: NewStatus, SQLInstanceName</comment>
+  </data>
+  <data name="StartConversation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StartConversation.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SQLLoginForCompareNotRecommended" xml:space="preserve">
+    <value>Using SQL Server Authentication is not recommended. The ability to use SQL Server authentication is provided for situations where a trusted connection is not possible. </value>
+  </data>
+  <data name="DataContainer_MoveNextHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DataContainer_MoveNextHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SetupNoServersCaption" xml:space="preserve">
+    <value>Warning: No Local SQL Server Detected</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="ContactBillAt" xml:space="preserve">
+    <value>Contact Bill Wunder at bwunder@yahoo.com for all support and licensing inquiries.  </value>
+  </data>
+  <data name="StartPlanning" xml:space="preserve">
+    <value>Add or Select a SQL Instance</value>
+    <comment>opening status message</comment>
+  </data>
+  <data name="ServiceDidNotStartMessage" xml:space="preserve">
+    <value>The Automation Controller Service could not be started at this time. The Automation Controller must be running before any scheduled SQLClue activities will be completed. </value>
+  </data>
+  <data name="NodeSelected" xml:space="preserve">
+    <value>{0} ready to compare {1}</value>
+  </data>
+  <data name="Restart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Restart.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Different" xml:space="preserve">
+    <value>Differences Found</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="SQLInstance" xml:space="preserve">
+    <value>Name</value>
+    <comment>label</comment>
+  </data>
+  <data name="Dirty" xml:space="preserve">
+    <value>Changes have been made but not saved</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="NoItemInDB" xml:space="preserve">
+    <value>No [{0}] found in at least one source using the currently configured settings. </value>
+    <comment>Validation message: CollectionName</comment>
+  </data>
+  <data name="ServiceInstalledButNotEnabled" xml:space="preserve">
+    <value>SQLClue Automation Controller service installed on host {0} but not enabled in the SQLClue application. SQLClue application settings are now updated to resolve conflict.</value>
+  </data>
+  <data name="CompareHTMLResultsA" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;&lt;title&gt;SQLClue Compare Panel 1&lt;/title&gt; &lt;/head&gt;
+&lt;body style="font-family: Lucida Console; font-size: 10px"&gt;
+&lt;table width="500%"&gt;
+{0}
+&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="ArchivePlanningOverview" xml:space="preserve">
+    <value>Configure and Schedule DDL and Configuration Archive Automation </value>
+    <comment>Tab ToolTips, this is the overview text from the forms help doc</comment>
+  </data>
+  <data name="ArchiveRescheduled" xml:space="preserve">
+    <value>Scheduling next run date</value>
+    <comment>event message</comment>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Done</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="ArchiveException" xml:space="preserve">
+    <value>Archive Schedule Id {0} Exception</value>
+  </data>
+  <data name="SingleMessage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SingleMessage.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SQLCfgArchiveTypeDelete" xml:space="preserve">
+    <value>Delete</value>
+    <comment>SQL Configuration Repository change row type</comment>
+  </data>
+  <data name="RunbookOverview" xml:space="preserve">
+    <value>Administration of Online Knowledge and Information Sharing Runbook </value>
+    <comment>Tab ToolTips, this is the overview text from the forms help doc</comment>
+  </data>
+  <data name="ArchiveIntervalSequence" xml:space="preserve">
+    <value>Select [Interval Type] before selecting [Interval]</value>
+    <comment>embedded help</comment>
+  </data>
+  <data name="OriginArchiveTarget" xml:space="preserve">
+    <value>TargetSQLInstance</value>
+    <comment>Configuration Origin (not in Compare ComboBox items)</comment>
+  </data>
+  <data name="AdvancedSettings" xml:space="preserve">
+    <value>Configuration Compare Settings</value>
+    <comment>Form Title</comment>
+  </data>
+  <data name="SaveAllHS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SaveAllHS.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Disabled" xml:space="preserve">
+    <value>disabled</value>
+    <comment>literal for use with EventNotificationStateChanging</comment>
+  </data>
+  <data name="CompareResultNodeLabel" xml:space="preserve">
+    <value>-- Node: [{0}]</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+    <comment>Event message</comment>
+  </data>
+  <data name="SQLLoginNotRecommendedCaption" xml:space="preserve">
+    <value>Warning - Password Exposure Risk</value>
+    <comment>setup warning msgbox caption</comment>
+  </data>
+  <data name="SelectFileFolder" xml:space="preserve">
+    <value>Select the folder containing  the SQL Server configuration documentation text or script files to be used in this compare.</value>
+  </data>
+  <data name="NumericAdvOptionsHelp" xml:space="preserve">
+    <value>Adjusts the numeric value for [{0}].</value>
+    <comment>Embedded help</comment>
+  </data>
+  <data name="SQLClue96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SQLClue96.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorsOccurred" xml:space="preserve">
+    <value>Errors Occurred</value>
+  </data>
+  <data name="DeleteConfigText" xml:space="preserve">
+    <value>Remove all archive configuration for [{0}]?</value>
+    <comment>msgbox text</comment>
+  </data>
+  <data name="ArchiveNotificationAlertNotFound" xml:space="preserve">
+    <value>'{0}' Alert not found.</value>
+  </data>
+  <data name="ArchiveCancelled" xml:space="preserve">
+    <value>Archive Schedule Id {0} Cancelled</value>
+  </data>
+  <data name="SpinningTwoHeadedDB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\SpinningTwoHeadedDB.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EvtNotifyDropFailed" xml:space="preserve">
+    <value>SQL Instance [{0}] is not available. SQLClue Event Notification configuration cannot be removed from the target instance at this time. To prevent an out of space condition in the future have a DBA execute the 'uninstSQLClueDDLEventNotifications.sql' script from the SQLClue Resources Library in database [{1}] on target [{0}] when the SQL Server is available. </value>
+  </data>
+  <data name="ServiceLoginDropFailed" xml:space="preserve">
+    <value>Failed to remove the SQL Server login from Instance [{0}] for the SQLClue Automation Controller service account [{1}]. Remove the login when the SQL Server is available.</value>
+  </data>
+</root>

@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Comparing SQL Configuration</title>
+    <link rel="stylesheet" type="text/css" href="SQLClue.css" /></head>
+<body>
+<table class="sqlclue">
+<tr>
+<td class="sqlclue">
+<h4>Comparing SQL Configurations</h4>
+    <p>This tutorial describes comparing SQL Server configuration items and collections of items.  The narrative will first 
+    focus on comparing the <i>Settings</i> on two SQL Instances, then on comparing the tables collection from a database on one SQL Instance to 
+    the tables collection from a database on another SQL Instance. </p>
+    <p>To begin the walkthrough, open the SQLClue application and navigate to the &quot;Configuration Compare&quot; tab. 
+       Review the <i>Quick Start</i> information shown in the Configuration Compare results panels. 
+        Notice that the User Interface is split into two sides: <b>A</b> and <b>B</b> 
+        and that each side is further split into an input panel where the compare is 
+        configured and an output panel where the results of the compare are displayed.</p>
+    <p>If only a single SQL Server is available, consider using two different databases on the SQL Instance. 
+        This option will work as effectively for the tutorial. Comparing 
+       a configuration item to itself will also work but is not very interesting since 
+        there will not be any real differences.</p>
+    <h4><b>Comparing the Server Settings of Two SQL Instances</b></h4>
+    <ul>
+    <li>
+    <p>The first step in configuring each side of a compare is to select the <b>Origin</b>. The 
+        <b>Origin</b> is the location SQLClue will use to
+    source the metadata to be compared. There are three possible <b>Origins</b>:</p>
+    <ol>
+    <li><b>SQLInstance</b> - SQLClue will connect to the a target SQL Instance and document the configuration using SMO.</li>
+    <li><b>Repository</b> - SQLClue will query the indicated SQLClue Repository for archived versions of configuration 
+    elements previously generated using the same algorithm as the SQLInstance origin above will use during the compare.
+    <p>The <b>Repository</b> <b>Origin</b> will allow the selection of a specific version when doing item-vs-item compares. The default is the
+    most recent version.  When the compare is Collection-vs-Collection, the most recent version or alternately the versions associated 
+    with a specified label are used.</p></li>
+    <li><b>File</b> - SQLClue can be pointed to a file system folder containing script files. This allows scripts from disconnected
+    SQL instances and more importantly source code "working folder" to be used in either or both 'sides' of any compare. The File 
+    Origin is available only when doing item-vs-item. The Collection-vs-Collection compares and 
+        the <b>SQLClue -cmd</b> comand line options are not supported for compares
+    using the '<b>File</b>' Origin.  
+    </li>
+    </ol>
+    <p>To begin the walkthrough, select the &quot;<b>SQLInstance</b>&quot; Origin from Origin drop down list on side &quot;<b>A</b>&quot;</p></li>
+    <li>A dialog is opened to select the SQL Instance and configure the connection string.
+        <ol>         
+        <li><b>Connect to a Target SQL Instance</b>
+            <p>Several connection options can be set, although in most scenarios all that is needed is to select or enter 
+            the SQL Instance and then hit the [OK] button.</p>
+            <ol>
+            <li>Select or enter the name of the SQL Instance to be targeted in the &quot;SQL Instance&quot; input box of the
+                &quot;Connect to a Target SQL Instance&quot; dialog.</li>
+            <li>Leave the database name blank. 
+            <p>When no database is selected, the &quot;Configuration Compare&quot; connection uses the default database configured 
+               for the login at the Target SQL Instance.</p></li>
+            </ol>
+         </li>   
+         <li><b>Configure the Connection Authentication</b>
+            <ol>
+            <li>Leave the &quot;Use Trusted Connection&quot; check box checked. 
+            <p>When SQL Authentication must be used un-check the checkbox and provide a valid SQL Login/Password combination.</p>
+            <p>Whether Windows Authentication is used or SQL Authentication is used the user must be a member of the <i>sysadmin</i> Fixed Server Role. While some items can be compared with a less powerful 
+               account, many configuration items, including the Server Settings, can be compared only when the user is a <i>sysadmin</i> 
+              member.</p></li>
+            </ol>
+        </li>
+        <li><b>Configure the Connection Settings</b>
+            <ol>
+            <li>Leave the Connection Timeout value set to the default (60 seconds).
+                <p>Only adjust the Connection Timeout when necessary. In most scenarios the the default value is 
+                    more than adaquate.</p></li>
+            <li>Leave the Network Library blank.
+                <p>When no library is selected, the values enabled in the SQL Native Client Configuration will be used. Using the SQL 
+                Native Client configured protocols has the added advantage of escalating the protocol if the Target does not accept
+                a connection using the first protocol in the configured protocol list.</p></li>
+            <li>Leave the &quot;Encrypt Connection&quot; check box un-checked.
+            <p>To encrypt the data sent on the wire select the &quot;Encrypt Connection&quot; check box. By default, an SSL certificate
+               must be installed on the host operating system of the Target SQL Instance to encrypt data on the wire.</p></li>            
+            <li>Leave the &quot;Trust Server Certificate&quot; check box un-checked.
+            <p>When data encryption on the wire is desired yet an SSL certificate is not available, select the &quot;Trust Server 
+               Certificate&quot; check box. Trust Server Certificate is meaningful only if <i>Encrypt Connection</i> is checked.</p></li>
+            </ol>
+        </li>
+        <li>Select the dialog's [OK] button to connect to the SQL Instance.</li>
+        </ol>
+    </li>   
+    <li style="font-weight: 700">The &quot;A&quot; side Treeview will be populated with a view of the Configuration Hierarchy available from the SQL Instance.</li>
+    <li>Select &quot;SQLInstance&quot; from the drop down list for Origin &quot;<b>B</b>&quot;</li>
+    <li>Repeat the <b>Connect to a Target SQL Instance</b> dialog steps to connect to the second SQL Instance.
+    </li>    
+    <li style="font-weight: 700">The &quot;B&quot; side Treeview will be populated with a view of the Configuration Hierarchy available from the SQL Instance.</li>
+    <li>Select the &quot;Settings&quot; node from the &quot;<b>A</b>&quot; side TreeView.</li> 
+    <li>Select the &quot;Settings&quot; node from the &quot;<b>B</b>&quot; side TreeView.</li> 
+    <li>Open the <b>Compare Options</b> dialog located in the &quot;Tools&quot; menu.</li>
+    <li>Expand the &quot;<b>Misc</b>&quot; Category shown on the left side of the dialog.</li>
+    <li>Select the &quot;<b>Display Output</b>&quot; Category revealed when &quot;<b>Misc&quot;</b> was expanded.</li>
+    <li>Verify that the &quot;<b>Show Comparison Details</b>&quot; setting is checked.</li>
+    <li>Select the [OK] button of the <b>Modify Compare Settings</b> dialog to close the dialog.</li>
+    <li>Select the [Compare] button to initiate the compare.</li> 
+    <li>The line by line results of the tabulated name-pair settings values will be shown in the adjacent results panels.</li>
+        <li></li> 
+    </ul>
+    
+    <h4><b>Comparing the Tables from Two SQL Server Databases</b></h4>
+    <p>This walkthrough will presume to compare the tables from an AdventureWorks database and an AdventureWorks2008 database. 
+       Any user databases can be substituted to follow along with this walk-through when two accessible SQL Instances 
+       with these AdventureWorks databases are not available in the environment. The same SQLInstance can be selected for both
+       side &quot;A&quot; and side &quot;B&quot;. However, the same database can be selected for both side &quot;A&quot; and side 
+       &quot;B&quot; only if different SQLInstance have been targeted.</p>
+    <ul>
+    <li>Select &quot;SQLInstance&quot; from the drop down list for Origin &quot;A&quot;</li>
+    <li>A dialog is opened to select the SQL Instance and configure the connection string.
+        <ol>         
+        <li><b>Connect to a Target SQL Instance</b>
+            <p>Several connection options can be set, although in most scenarios all that is needed is to select or enter 
+            the SQL Instance and then hit the [OK] button.</p></li>
+            <ol>
+            <li>Select or enter the name of the SQL Instance to be targeted in the &quot;SQL Instance&quot; input box of the
+                &quot;Connect to a Target SQL Instance&quot; dialog.</li>
+            <li>Leave the database name blank. 
+            <p>When no database is selected, the &quot;Configuration Compare&quot; connection uses the default database configured 
+               for the login at the Target SQL Instance.</p></li>
+            </ol>
+        <li><b>Configure the Connection Authentication</b>
+            <ol>
+            <li>Leave the &quot;Use Trusted Connection&quot; check box checked. 
+            <p>When SQL Authentication must be used un-check the checkbox and provide a valid SQL Login/Password combination.</p>
+            <p>The user must be a member of the <i>sysadmin</i> Fixed Server Role. While some items can be compared with a less powerful 
+               account, many configuration items, including the Server Settings, can be compared only when the user is a <i>sysadmin</i> 
+              member.</p></li>
+            </ol>
+        </li>
+        <li><b>Configure the Connection Settings</b>
+            <ol>
+            <li>Leave the Connection Timeout value set to the default (60 seconds).
+                <p>Only adjust the Connection Timeout when necessary. In most scenarios the the default value is acceptable.</p></li>
+            <li>Leave the Network Library blank.
+                <p>When no library is selected, the values enabled in the SQL Native Client Configuration will be used. Using the SQL 
+                Native Client configured protocols has the added advantage of escalating the protocol if the Target does not accept
+                a connection using the first protocol in the configured protocol list.</p></li>
+            <li>Leave the &quot;Encrypt Connection&quot; check box un-checked.
+            <p>To encrypt the data sent on the wire select the &quot;Encrypt Connection&quot; check box. By default, an SSL certificate
+               must be installed on the host operating system of the Target SQL Instance to encrypt data on the wire.</p></li>            
+            <li>Leave the &quot;Trust Server Certificate&quot; check box un-checked.
+            <p>When data encryption on the wire is desired yet an SSL certificate is not available, select the &quot;Trust Server 
+               Certificate&quot; check box.</p></li>
+            </ol>
+        </li>
+        <li>Select the dialog's [OK] button to connect to the SQL Instance.</li>
+        </ol>
+    <li>The &quot;A&quot; side Treeview will be populated with a view of the Configuration Hierarchy available from the SQL Instance.</li>
+    <li>Select &quot;SQLInstance&quot; from the drop down list for Origin &quot;B&quot;</li>
+    <li>Expand the &quot;Databases&quot; node from the &quot;A&quot; side TreeView.</li> 
+    <li>Expand the AdventureWorks database node revealed from the &quot;A&quot; side TreeView.</li>
+    <li>Select the &quot;Tables&quot; node from the &quot;A&quot; side TreeView.</li> 
+    <li>Repeat the <b>Connect to a Target SQL Instance</b> to connect to the second SQL Instance.</li>    
+    <li>The &quot;B&quot; side Treeview will be populated with a view of the Configuration Hierarchy available from the SQL Instance.</li>
+    <li>Expand the &quot;Databases&quot; node from the &quot;B&quot; side TreeView.</li> 
+    <li>Expand the AdventureWorks database node revealed from the &quot;B&quot; side TreeView.</li>
+    <li>Select the &quot;Tables&quot; node from the &quot;B&quot; side TreeView.</li> 
+    <li>Open the <b>Modify Compare Settings</b> dialog located in the &quot;Tools&quot; menu.</li>
+    <li>Expand the &quot;Misc&quot; Category shown on the left side of the dialog.</li>
+    <li>Select the &quot;Display Output&quot; Category revealed when &quot;Misc&quot; was expanded.</li>
+    <li>Verify that the &quot;Show Differences Only&quot; setting is not checked.</li>
+    <li>Verify that the &quot;Show Comparison Details&quot; setting is not checked.</li>
+    <li>Select the [OK] button of the <b>Compare Options</b> dialog to close the dialog.</li>
+    <li>Select the [Compare] button to initiate the compare.</li> 
+    <li>The line by line results of the tabulated name-pair settings values will be shown in the adjacent results panels. 
+        Differences will be highlighted in accordance with the key shown at the bottom 
+        of the compare window.</li>
+    </ul>
+
+<p>If differences are indicated between the two table collections, the  details can be reviewed in two general ways. In the first 
+   method, the same compare is repeated but the details are allowed to flow to the screen. In the second, specific objects with 
+   indicated differences are compared with details enabled producing a much smaller result in a faster time.</p>
+    <ul>
+    <li><b>View details method one - collection level compare</b></li>
+    <li>Open the <b>Compare Options</b> dialog located in the &quot;Tools&quot; menu.</li>
+    <li>Expand the &quot;<b>Misc</b>&quot; Category shown on the left side of the dialog.</li>
+    <li>Select the &quot;<b>Display Output</b>&quot; Category revealed when &quot;<b>Misc</b>&quot; was expanded.</li>
+    <li>Verify that the &quot;<b>Show Differences Only</b>&quot; setting is not checked.</li>
+    <li>Verify that the &quot;<b>Show Comparison Detail</b>s&quot; setting is checked.
+    <p>Alternately, to see only lines with differences, Verify that the &quot;<b>Show Differences Only</b>&quot; setting is checked and 
+       that the &quot;<b>Show Comparison Details</b>&quot; setting is not checked.</p></li>
+    <li>Select the [OK] button of the <b>Modify Compare Settings</b> dialog to close the dialog.</li>
+    <li>Select the [Compare] button to initiate the compare.</li> 
+    </ul>
+
+    <ul>
+    <li><b>View details method two - item level table compare</b></li>
+    <li>Expand the &quot;<b>Tables</b>&quot; node from the &quot;<b>A</b>&quot; side TreeView.</li> 
+    <li>Select the node of a table with differences indicated from the &quot;<b>A</b>&quot; side TreeView.</li> 
+    <li>Expand the &quot;<b>Tables</b>&quot; node from the &quot;<b>B</b>&quot; side TreeView.</li> 
+    <li>Select the node of the corresponding table with differences indicated from the &quot;<b>B</b>&quot; side TreeView.</li> 
+    <li>Open the <b>Compare Options</b> dialog located in the &quot;<b>Tools</b>&quot; menu.</li>
+    <li>Expand the &quot;<b>Misc</b>&quot; Category shown on the left side of the dialog.</li>
+    <li>Select the &quot;<b>Display Output</b>&quot; Category revealed when &quot;<b>Misc</b>&quot; was expanded.</li>
+    <li>Verify that the &quot;<b>Show Differences Only</b>&quot; setting is not checked.</li>
+    <li>Verify that the &quot;<b>Show Comparison Detail</b>s&quot; setting is checked.
+    <p>Alternately, to see only lines with differences, Verify that the &quot;<b>Show Differences Only</b>&quot; setting is checked and 
+       that the &quot;<b>Show Comparison Details</b>&quot; setting is not checked.</p></li>
+    <li>Select the [OK] button of the <b>Compare Options</b> dialog to close the dialog.</li>
+    <li>Select the [Compare] button to initiate the compare.</li>  
+    </ul>
+</td>
+</tr>
+<tr>
+<td class="sqlclue">
+    &nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>

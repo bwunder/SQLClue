@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="SQLClue" Class="DataClassesSQLRunbookDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=BILL_VU\ATE;Initial Catalog=SQLClue;Integrated Security=True" SettingsObjectName="cCommon.My.MySettings" SettingsPropertyName="SQLClueConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="SQLRunbook.tUser" Member="tUsers">
+    <Type Name="tUser">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OriginalLogin" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="FriendlyName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CategoriesAdded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoriesUpdated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoriesDeleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoriesRated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoriesReRated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryTopicsAdded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CategoryTopicsDeleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicsAdded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicsUpdated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicsDeleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicsRated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicsReRated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicDocumentsAdded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TopicDocumentsDeleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentsAdded" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentsUpdated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentsDeleted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentsRated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocumentsReRated" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastContributionDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tTopicRating" Member="tTopicRatings">
+    <Type Name="tTopicRating">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RatingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tTopic_tTopicRating" Member="tTopic" ThisKey="TopicId" OtherKey="Id" Type="tTopic" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tRating_tTopicRating" Member="tRating" ThisKey="RatingId" OtherKey="Id" Type="tRating" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tTopicDocument" Member="tTopicDocuments">
+    <Type Name="tTopicDocument">
+      <Column Name="TopicId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DocumentId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tTopic_tTopicDocument" Member="tTopic" ThisKey="TopicId" OtherKey="Id" Type="tTopic" IsForeignKey="true" />
+      <Association Name="tDocument_tTopicDocument" Member="tDocument" ThisKey="DocumentId" OtherKey="Id" Type="tDocument" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tTopic" Member="tTopics">
+    <Type Name="tTopic">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tTopic_tTopicRating" Member="tTopicRatings" ThisKey="Id" OtherKey="TopicId" Type="tTopicRating" />
+      <Association Name="tTopic_tTopicDocument" Member="tTopicDocuments" ThisKey="Id" OtherKey="TopicId" Type="tTopicDocument" />
+      <Association Name="tTopic_tCategoryTopic" Member="tCategoryTopics" ThisKey="Id" OtherKey="TopicId" Type="tCategoryTopic" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tRating" Member="tRatings">
+    <Type Name="tRating">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tRating_tTopicRating" Member="tTopicRatings" ThisKey="Id" OtherKey="RatingId" Type="tTopicRating" />
+      <Association Name="tRating_tDocumentRating" Member="tDocumentRatings" ThisKey="Id" OtherKey="RatingId" Type="tDocumentRating" />
+      <Association Name="tRating_tCategoryRating" Member="tCategoryRatings" ThisKey="Id" OtherKey="RatingId" Type="tCategoryRating" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tOption" Member="tOptions">
+    <Type Name="tOption">
+      <Column Name="EnforceOwnership" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ScanForDocumentChanges" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tDocumentRating" Member="tDocumentRatings">
+    <Type Name="tDocumentRating">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DocumentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RatingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tRating_tDocumentRating" Member="tRating" ThisKey="RatingId" OtherKey="Id" Type="tRating" IsForeignKey="true" />
+      <Association Name="tDocument_tDocumentRating" Member="tDocument" ThisKey="DocumentId" OtherKey="Id" Type="tDocument" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tDocument" Member="tDocuments">
+    <Type Name="tDocument">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[File]" Member="File" Type="System.String" DbType="NVarChar(450)" CanBeNull="true" />
+      <Column Name="Document" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DocumentType" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="LastModifiedDt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="WatchFileForChange" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tDocument_tTopicDocument" Member="tTopicDocuments" ThisKey="Id" OtherKey="DocumentId" Type="tTopicDocument" />
+      <Association Name="tDocument_tDocumentRating" Member="tDocumentRatings" ThisKey="Id" OtherKey="DocumentId" Type="tDocumentRating" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tCategoryTopic" Member="tCategoryTopics">
+    <Type Name="tCategoryTopic">
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TopicId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tTopic_tCategoryTopic" Member="tTopic" ThisKey="TopicId" OtherKey="Id" Type="tTopic" IsForeignKey="true" />
+      <Association Name="tCategory_tCategoryTopic" Member="tCategory" ThisKey="CategoryId" OtherKey="Id" Type="tCategory" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tCategoryRating" Member="tCategoryRatings">
+    <Type Name="tCategoryRating">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RatingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tRating_tCategoryRating" Member="tRating" ThisKey="RatingId" OtherKey="Id" Type="tRating" IsForeignKey="true" />
+      <Association Name="tCategory_tCategoryRating" Member="tCategory" ThisKey="CategoryId" OtherKey="Id" Type="tCategory" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="SQLRunbook.tCategory" Member="tCategories">
+    <Type Name="tCategory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RecCreatedDt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RecCreatedUser" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="tCategory_tCategoryTopic" Member="tCategoryTopics" ThisKey="Id" OtherKey="CategoryId" Type="tCategoryTopic" />
+      <Association Name="tCategory_tCategoryRating" Member="tCategoryRatings" ThisKey="Id" OtherKey="CategoryId" Type="tCategoryRating" />
+    </Type>
+  </Table>
+</Database>

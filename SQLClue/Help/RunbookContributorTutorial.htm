@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Contributing to the SQLClue Runbook</title>
+    <link rel="stylesheet" type="text/css" href="SQLClue.css" /></head>
+<body>
+
+<table class="sqlclue">
+<tr>
+<td class="sqlclue">
+
+    <h4>Contributing to the SQLClue Data Center Runbook</h4>
+
+    <p>This page demonstrates how to add and maintain knowledge resources and information in the SQLClue 
+        Data Center Runbook. 
+    </p>
+    <p>A usable first Runbook Topic: &quot;Using the SQLClue Runbook&quot; is created during the example.</p>
+    <p>Files that are included in the SQLClue installation and files that can be 
+        obtained from the SQLClue web site are used for this exercise. This hands-on exercize 
+    demonstrates the use of the Runbook for a user with the authority to create and own topics and documents: Contributors and Admins 
+    in the SQLClue security role hierarchy. In addition, upon completion of the exercize a valid 
+        Data Center Runbook topic is initialized. The topic created is useful as a starting 
+        entry in the Data Center Runbook for any local environment. Bear in mind that no SQLClue Runbook topic is ever complete. 
+        The data center systems the Runbook supports will continuously change. The 
+        Runbook must be updated as change occurs. </p>
+
+    <h4><b>Install the Data Center Runbook</b></h4>
+    <p>To begin this walkthrough install the SQLClue Administrator&#39;s Console, install 
+        the SQL Configuration Archive from the &quot;Tools&quot; menu of the SQLClue 
+        Administrator&#39;s Console. Next install the Data Center Runbook component also 
+        found under the &quot;Tools&quot; menu.&nbsp; Navigate to the Runbook tab of the SQLClue Console.</p>
+
+    <h4><b>Data Center Runbook User Interface Layout</b></h4>
+    <p>The Runbook tab is divided into two an upper section and a lower section. The upper section contains a 
+       Topic List data grid. The data grid is populated by a default query each time the 
+        SQLClue Administrator&#39;s Console is launched. The default query is suitable for 
+        most Data Center Runbook usage.&nbsp; The search query can also be modified as 
+        desired. A Topic is opened by selecting the topic from the upper region. The lower section shows 
+        all details for a Topic once selected. Alternately, a Topic may be selected from the Topic 
+        Combo Box drop down list at the beginning of the lower section, even if the 
+        topic is not loaded in the upper regions data grid. All topics in the Runbook 
+        are available in the drop down list. </p>
+    <p><b>Tip</b>: The splitter between the upper Topic list and the Topic details section 
+        below can be
+       repositioned to improve the user view of the displayed data as desired.</p>
+
+    <h4><b>Create a Runbook Topic</b></h4>
+    <ul>
+        <li>Select any cell column of the first blank row in the upper section's <b>Topic List</b> data grid.</li>
+        <li>Enter the text &quot;Using the SQLClue Runbook&quot; in the Topic Name input dialog that opens.</li>
+        <li>Select [Ok] in the Topic Name input dialog. </li>
+        <li>As the dialog closes the data grid row is populated with the Name and default 
+            values for other row values.</li>
+        <li><b>Quick Add of a Runbook Topic Note</b>
+            <ol>
+            <li>Select the Notes column cell adjacent and to the right of the Topic Name column 
+                cell in the Topic List data grid.</li>
+            <li>Enter the following text in the &quot;Add a Note&quot; (lower) field of the Notes input dialog 
+                that opens when the Notes cell is selected.
+            <pre>Topic created while working through the How-to &quot;Contribute to the Runbook&quot; help document.</pre></li>
+            <li>Select [Ok] in the Notes input dialog.</li>
+                <li>Preview the note just added by hovering the mouse over the Notes cell in the Topic List data grid. The preview feature is handy but is limited to showing only the first few hundred characters of the Notes column. 
+                    To view the complete note the Notes cell must be selected to relaunch the notes 
+                    dialog.</li>
+            </ol>
+        </li>
+        <li><b>Editing Notes for a Selected Runbook Topic</b>
+            <ol>
+                <li>Select the Topic Name cell column containing the text &quot;Using the SQLClue Runbook&quot; from the Topic List 
+                    data grid.</li>
+                <li>The Topic is loaded into the lower section for editing and the Name will appear 
+                    in the Topic Name input box.</li>
+                <li>Select the Notes Button that is adjacent and to the right of the Topic Name 
+                    input box in the lower panel.</li>
+                <li>The same Notes dialog is opened as when accessing the Topic&#39;s Notes in the Topic 
+                    List of the 
+                upper panel. </li>
+                <li>The Note entered above now appears in the upper text panel of the Notes dialog. 
+                    The lower region is reserved for new notes entries.</li>
+                <li>Enter the following text on separate lines as shown in the &quot;Add a Note&quot; 
+                    (lower) field of the Notes dialog.
+                    <pre>Bill Wunder 
+email:bwunder@yahoo.com 
+phone 01-307-761-1605 
+all product support and licensing information</pre>
+                </li>
+                <li>Move the splitter between the previous notes (top) panel and the new note (bottom) to reveal all entered text. 
+                Alternately resize the Notes dialog or zoom from the context menu to customize the view of either notes panel. 
+                Scroll bars are also available if the text in either field overflows the visible area.</li>
+                <li>It is possible to open the previously entered notes for edit. This option is provided for administrator 
+                convenience only so that direct ad hoc query updates are never required. Editing previous notes is not recommended because the audit trail is bypassed when this method is used. Best 
+                practice is to always add notes to the bottom panel of the Notes dialog.</li>
+                <li>Select [Ok] in the Notes dialog.</li>
+                <li>Hover over the Notes cell of the Topic List (upper panel) to verify the information just added.</li>
+            </ol>
+            <p>
+                <b>Tip</b>: The upper panel of the notes dialog is normally in read-only mode. To edited text in this panel select the &quot;edit 
+           previous notes&quot; link in the upper right corner of the dialog. Editing previous notes should be used only rarely if at all.
+           The historical audit trail is broken when changes are made to the previous notes. The feature is provided only as an alternative 
+           to ad-hoc updates to the notes by directly updating the database.</p>
+        </li>
+        <li><b>Selecting a Category for a Runbook Topic</b>
+            <ol>
+                <li>Select &quot;Contact&quot; In the Category List at the bottom left of the lower section.</li>
+                <li>There is <i><b>no need</b> to hold the [CTRL] key </i>when selecting multiple Categories for a 
+                    Topic. However, it is OK to do so since the [CTRL] key has no effect on the 
+                    category selection process. When categories are selected or de-selected the background color of the Category panel changes to indicate that that there 
+                    is data that must be saved. </li>
+                <li>Select [Save] in the lower panel of the Dialog.</li>
+                <li>Each change does not need to be saved individually. Documents can be added. 
+                    Categories selected or de-selected and the Topic name can be modified. The 
+                    changes can all be committed to the database as a single save operation at any 
+                    time the Save button is selected - and also any time a Note is added the topic 
+                    will be save.</li>
+            </ol>
+            <p>
+                <b>Tip</b>: The Category list can be displayed as a scrolling one column list or as multi-column list that can be 
+               displayed in its entirety on the screen. Under &quot;SQLClue Runbook&quot; in the &quot;Tools&quot; menu, select the &quot;Multicolumn
+               Category List&quot; option to toggle the display between the two views at any time.</p>
+        </li>
+        <li>Select the Notes button again. Notice that the system has added a note to indicate that the Contact Category was 
+            associated with the Topic. 
+            In general it is handy to add the Category at the same time as the content is 
+            added that belongs to the category because the notes can later be reviewed to 
+            see the relationship, however this is not required. SQLClue Runbook Categories 
+            are primarily a search aid and the search results will not be affected whether 
+            or not the category and content are entered at the same time. The practice 
+            merely helps to understand the sequence and evolution of the Topic.</li>
+        <li>Select &quot;Best Practice&quot; in the Category List the selection since the note just 
+            entered is a &quot;Best Practice&quot;. </li>
+        <li>Enter the following text. 
+            <pre>1. Always update the topic with all changes from the application defaults. 
+2. Include a comment to explain why the change was made and any specialized information about 
+   the reasons for the change and how to properly effect the change. 
+3. Keep notes brief. 
+4. Place lengthy comments and diagrams in a document and add the document rather than adding a note. 
+5. Assign categories immediately after each note as an aid to users that may later search or browse the topic.             
+</pre>
+        </li>
+        <li>Select [Ok] in the Notes input dialog. The Note and the Category selection are 
+            added to the Topic.</li>
+        <li>Select the &quot;Security&quot; Category in preparation for adding the next note.</li>
+        <li>Open the Notes input dialog again and enter the following, replacing 'enter service account name' with 
+            the name of the SQLClue Automation Controller service account used when the 
+            service was configured.&nbsp;
+            <pre>Authorize domain users and groups to access the Runbook by adding them to the SQLRunbookUserRole 
+or SQLRunbookContributorRole database roles. The SQLClue Automation Controller Service account must 
+have read access to file system folder before document file(s) can be managed by the SQLClue Runbook 
+the service account name is 'enter service account name'.</pre>
+        </li>
+        <li>If the SQLClue Automation Controller service is not yet been installed, add a reminder note. Select &quot;MemoToSelf&quot; in the Category List 
+            and enter the note: &nbsp;
+            <pre>Service not installed at this time. Add the service account to the Topic when the service is installed. 
+Other users will need to know this service account name when they add documents to the SQLClue Runbook. 
+There is no need for each Runbook Contributor to have to search out and interrupt the person that knows 
+this bit of information when it is needed. Saving such information in these notes provides easy 
+visibility of necessary information to the appropriate people.</pre>
+    <p>
+        <b>Tip</b>: The &quot;MemoToSelf&quot; Category is a time saver used to identify 
+        work that needs to be done and early stage work in progress. Including memos as 
+        they come to mind is a good way to call out work that needs to be done. 
+        Categorizing the topic as one with such outstanding work requirements helps to 
+        find the work items in the future. It also helps others to identify 
+        documentation areas that need attention. In most cases the reason documentation 
+        is incomplete or not available is because the topic described by the 
+        documentation needs attention. Once the work captured as a memo is completed or 
+        assigned to a more precise category, the &quot;MemoToSelf&quot; category can be removed 
+        from the topic. &quot;MemoToSelf&quot; should only be a temporarily assigned category.&nbsp;&nbsp;&nbsp;
+    </p>
+        </li>
+    </ul>
+    <ul>
+        <li>Add this note:             
+        <pre>Add the appropriate domain users and groups to the 
+SQLRunbookUserRole and SQLRunbook ContributorRole database roles.</pre>
+        </li>
+        <li>Return later to the topic and record any additional determination of how role membership has been determined and 
+            perhaps to list the members added to each role. Most shops will have already existing methods to capture the role
+            membership enumeration changes. The SQLClue Configuration Archive is an 
+            excellent way to capture such changes. Including redundant information in the Runbook 
+            is not recommended. Simply state where the information can be found. Searches 
+            using the &quot;MemoToSelf&quot; category will quickly find the unfinished work. Removing the &quot;MemoToSelf&quot; 
+            category when outstanding tasks are completed will then remove the Topic from 
+            subsequent searches based on criteria that include the &quot;MemoToSelf&quot; category. 
+    <p><b>Tip</b>:: While a Note is not necessary when a document is added, when a series of 
+            documents will be added use of a note helps to make it clear which documents are 
+            being added at a particular time.</p>
+            </li>
+    </ul>
+    <ul>
+        <li>Select &quot;FullText Search&quot; in the Category.</li>
+        <li>In the Notes Dialog enter:
+            <pre>The application's pertinent HTML help files and other documents included with the base install are loaded for Full-Text indexing. </pre>
+        </li>
+        <li><b>Adding a Document to a Runbook Topic</b>
+            <ol>
+                <li>In the Documents data grid just below the lower sections Topic Name input, select any cell 
+                of the first blank row.</li>
+                <li>This will open the File Open dialog. Navigate to the Help subfolder of the SQLClue Program installation folder 
+                in the dialog.&nbsp;
+                    <p>
+                        The &quot;Resources&quot; shortcut in the SQLClue Program Start Menu group also opens the 
+                program folder. Use this shortcut to help determine the path if necessary.</p>
+                    <p>
+                        <b>Tip</b>: In some scenarios it may be necessary to obtain read access rights to the Program 
+                    Group and the subfolders before continuing. If this step is necessary at this 
+                    time, also obtain the same rights for the SQLClue Automation Controller Service 
+                    Account. This will save time and eliminate an interruption for you and possibly 
+                    another person later.</p>
+                </li>
+                <li>Select the &quot;Runbook.htm&quot; file.</li>
+                <li>Select the [OK] in the Open File dialog.</li>
+                <li>The &quot;File System Rights Changes Required&quot; dialog opens to advise you of the access SQLClue expects for the file.</li>
+                <li>Set the necessary file permissions or copy the requirements to the clipboard and notify the appropriate person of
+                the necessary permission changes.
+                    <p>
+                        An alternative would be to remove the check from the &quot;Watch File for Changes&quot; 
+                    cell column check box. The advantages of assigning the permissions include:</p>
+                    <ol>
+                        <li>the &quot;SQLClue Automation Controller&quot; will be able to keep the file and the Full-Text 
+                   index synchronized if the service account has read access to the file</li>
+                        <li>Business continuity efforts are improved if the SQLClue Administrator is able to reassign the file
+                   to a different user should the need arise.</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>Select a cell of the blank row to recall the Open File Dialog.</li>
+        <li>Select the &quot;Install.htm&quot; file.</li>
+        <li>Select the [OK] in the Open File dialog.</li>
+        <li>If security was set at the file level above, repeat the assignment for this file. Share and Directory rights will
+            be the same as for the Runbook.htm so no additional changes are needed at those levels.</li>
+        <li>Select a cell of the blank row to recall the Open File Dialog.</li>
+        <li>Select the &quot;Services.htm&quot; file.</li>
+        <li>Select the [OK] in the Open File dialog.</li>
+        <li>If security was set at the file level above, repeat the assignment for this file. Share and Directory rights will
+            be the same as for the Runbook.htm so no additional changes are needed at those levels.</li>
+        <li>Locate and download the following documents from the Internet. Both can be found from the SQLClue web site (http://www.bwunder.com) 
+            Save the documents to any location on the local network and repeat the steps used to load the 
+            Install.htm and Services.htm documents to load the downloaded documents into the 
+            Data Center Runbook. The saved documents can HTML, text, or even PDF or any other format that is recognized by the 
+            IFilters available in the SQLClue host SQL Server. <b>Hint!</b> For more details about SQL Server IFilters see the 
+            second article listed.  
+            <ul>
+                <li>Database Monitoring Strategies</li> 
+                <li>Share Database Knowledge with Office and SQL Server - download the docx version of this article.</li>
+            </ul>
+        </li>
+    </ul>
+    <p>This document demonstrates a method that can be used to quickly bring all available documentation into the SQLClue 
+       Runbook very quickly.</p>
+       <p> If the current owners of existing system documentation use this method to add and classify all 
+       documents then access to the information is quickly established for a wider, yet still appropriate audience. Furthermore, 
+       the prospects for others to be able to find the relevant information should any individual leave the organization or 
+       assume new duties or be home asleep in the middle of night are greatly increased. The silly jostle to get a &quot;short 
+       timer&quot; - one who will soon leave their current position - to spend the last few days of an assignment producing low quality 
+       documentation is completely avoided to the benefit of all.</p>
+       <p> If the permissions are established according to these recommendations, 
+       the SQLClue Administrator can easily reassign the documents to any individual at any time necessary. The documents can be updated 
+       when convenient and necessary yet will always be automatically maintained in the SQLClue Runbook central system information library.</p>
+
+</td>
+</tr>
+<tr>
+<td class="sqlclue">
+
+    &nbsp;</td>
+</tr>
+</table>
+
+</body>
+</html>
