@@ -3,12 +3,14 @@
 Public Class cDbDocumentor
 
     Public Event Status(ByVal Message As String)
+
     Private _oSQLServer As Smo.Server
     Private _oDatabase As Smo.Database
     Private _script As New StringCollection
     Private _oDropScripter As Smo.Scripter
     Private _oScripter As Smo.Scripter
     Private _bIncludeDrop As Boolean
+
     Public _BatchSeparator As String
 
     ' the parameters define the starting place in the hierarchy

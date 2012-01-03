@@ -12,18 +12,8 @@ Public Class SQLClueSvc
     Delegate Sub ArchiveDoWorkExceptionHandlerDelegate(ByVal ArchiveException As Exception)
     Private RunbookFileWatcherThread As System.Threading.Thread
     Friend Shared ConfiguredInstanceList() As String
-    Private BeenNagged As Boolean
     Private RepositoryThreadCount As Integer
     Private RunbookThreadCount As Integer
-
-    Protected Structure LicenseStruct
-        Friend LicensedCompany As String
-        Friend LocalKey As String
-        Friend LicenseLevel As String
-        Friend LicenseDate As Date
-        Friend TargetCount As Integer
-        Friend TargetCountDt As DateTime
-    End Structure
 
     Private Sub WorkerLoop(ByVal sender As Object, ByVal e As ElapsedEventArgs)
         ' called every My.Settings.TimerInterval Seconds
@@ -122,7 +112,6 @@ Public Class SQLClueSvc
             DAL.RepositoryTrustServerCertificate = My.Settings.RepositoryTrustServerCertificate
             RepositoryThreadCount = 0
             RunbookThreadCount = 0
-            BeenNagged = False
             t = New Timer(My.Settings.TimerIntervalSeconds * 1000)
             RemoveHandler t.Elapsed, AddressOf WorkerLoop
             AddHandler t.Elapsed, AddressOf WorkerLoop

@@ -110,44 +110,6 @@ WITH PERMISSION_SET = SAFE';
 
 GO
 
-IF EXISTS (SELECT * FROM [sys].[fn_listextendedproperty] (N'AutoDeployed'
-                                                         ,  N'ASSEMBLY'
-                                                         , 'SQLClueCLR'
-                                                         , NULL
-                                                         , NULL
-                                                         , NULL
-                                                         , NULL))
-  EXEC [sys].[sp_dropextendedproperty] 
-      @name=N'AutoDeployed'
-    , @level0type=N'ASSEMBLY'
-    , @level0name=N'SQLClueCLR';
-
-EXEC [sys].[sp_addextendedproperty] 
-  @name=N'AutoDeployed'
-, @value=N'no'
-, @level0type=N'ASSEMBLY'
-, @level0name=N'SQLClueCLR';
-
-IF EXISTS (SELECT * FROM [sys].[fn_listextendedproperty] (N'SqlAssemblyProjectRoot'
-                                                         ,  N'ASSEMBLY'
-                                                         , 'SQLClueCLR'
-                                                         , NULL
-                                                         , NULL
-                                                         , NULL
-                                                         , NULL))
-  EXEC [sys].[sp_dropextendedproperty] 
-      @name=N'SqlAssemblyProjectRoot'
-    , @level0type=N'ASSEMBLY'
-    , @level0name=N'SQLClueCLR';
-
-EXEC [sys].[sp_addextendedproperty] 
-  @name=N'SqlAssemblyProjectRoot'
-, @value=N'..\Visual Studio 2008\Projects\SQLClue\SQLCfgNode' 
-, @level0type=N'ASSEMBLY'
-, @level0name=N'SQLClueCLR';
-
-GO
-
 IF NOT EXISTS(SELECT * FROM [sys].[types] WHERE [name] = N'SQLCfgNode' And SCHEMA_NAME(schema_id) = 'SQLCfg')
  BEGIN
   EXEC sp_executesql N'CREATE TYPE [SQLCfg].[SQLCfgNode] EXTERNAL NAME [SQLClueCLR].[SQLCgfNode.SQLCfgNode]'

@@ -11,12 +11,11 @@ Public Class Mother
     Private NeedToInstallReporting As Boolean
     Private NeedToInstallRepository As Boolean
     Private NeedToInstallRunbook As Boolean
+    Private NeedToInstallBackup As Boolean
     Private _LoadRemoteRunbook As Boolean
     Private ServiceSettings(33) As String
     Friend SQLClueServiceAccount As String
     Friend SQLClueHostSQLServerServiceAccount As String
-
-    Private BeenNagged As Boolean
 
     Public ReadOnly Property LicensedInstanceList() As String()
         Get
@@ -52,7 +51,6 @@ Public Class Mother
             ' looks like it is blocked waiting for form to finish loading.
             ' MotherHasBeenDisplayed is a work around to make sure errors can be handled at all times.
             MotherHasBeenDisplayed = False
-            BeenNagged = False
             Me.Text = My.Application.Info.ProductName
             SplashScreen1.CurrentStatusEventHandler("Verifying Event Log")
             My.Application.DoEvents()
@@ -63,7 +61,7 @@ Public Class Mother
             _LoadRemoteRunbook = False
             LicenseToolStripMenuItem.ToolTipText = "License SQLClue for full feature support"
             RepositoryToolStripMenuItem.ToolTipText = "Configure SQL Configuration Data Store"
-            RunbookToolStripMenuItem.ToolTipText = "Configure the Query SQLClue Runbook Data Store"
+            RunbookToolStripMenuItem.ToolTipText = "Configure the Data Center Runbook Data Store"
             ToolStripMenuItemDashboard.Enabled = My.Settings.RepositoryEnabled
             ToolStripMenuItemConfigurationReports.Enabled = My.Settings.RepositoryEnabled
             ToolStripMenuItemConfigurationReports.DropDown.Enabled = My.Settings.RepositoryEnabled

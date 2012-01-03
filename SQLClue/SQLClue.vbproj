@@ -622,8 +622,6 @@
     <Content Include="Help\home.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Help\price.htm">
-    </None>
     <Content Include="Help\RunbookContributorTutorial.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -633,18 +631,9 @@
     <Content Include="Help\RunbookSearchTutorial.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Images\anomalies.jpg">
-    </None>
-    <None Include="Images\d_microsoft_FrontRunner_webLogos.jpg" />
     <Content Include="Images\PeerReviewRating1.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Images\querybaseline.jpg">
-    </None>
-    <None Include="Images\queryprofile1.jpg">
-    </None>
-    <None Include="Images\queryprofile2.jpg">
-    </None>
     <Content Include="Images\SpinningTwoHeadedDB.gif" />
     <Content Include="Images\SQLClueOverview.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -981,9 +970,6 @@
     </None>
     <Resource Include="Resources\FormRunHS.png">
     </Resource>
-    <Content Include="Help\License.htm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Resource Include="Resources\rpsh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -1167,7 +1153,6 @@
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="ReportServerReports\DataSources\" />
-    <Folder Include="ReportServerReports\SQLClue\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -46,6 +46,7 @@
     <PostConversionAddToScc>
     </PostConversionAddToScc>
     <PreviousProjectVersion>4.0</PreviousProjectVersion>
+    <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

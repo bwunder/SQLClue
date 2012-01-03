@@ -18,7 +18,6 @@ Runbook database.
 No other changes are required to convert the reports to '.rdl'
 files and use them from BIDS UI or deployed to an RS instance.
 
-
 Note that some functionality available when reports are 
 viewed through the ReportViewer control embedded in the SQL 
 Clue Administrator's Console does not work when the reports are 
@@ -26,5 +25,5 @@ used through BIDS or Reporting Services. On the other hand,
 several reports that do not expose parameter selection within
 the SQL Clue Administrator's Console expose the report 
 parameter selection controls as '.rdl' files. There are 
-advantages to both usage scenarios. 
+advantages to both usage scenarios - depending upon the need. 
 

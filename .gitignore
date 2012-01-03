@@ -6,3 +6,4 @@ Sandbox/
 *.msi
 *.exe
 *.rdl.data
+*.dbmdl
