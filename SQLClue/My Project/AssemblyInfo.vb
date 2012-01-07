@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("SQLClue")> 
-<Assembly: AssemblyDescription("SQL Configuration Change Monitoring Tools and Data Center Runbook")> 
+<Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("Bill Wunder")> 
 <Assembly: AssemblyProduct("SQLClue")> 
 <Assembly: AssemblyCopyright("Bill Wunder © 2007-2012")> 

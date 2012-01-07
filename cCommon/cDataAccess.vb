@@ -1,4 +1,5 @@
 Imports System.Runtime.InteropServices
+
 Public Class cDataAccess
 
     Public dsSQLCfg As New dsSQLConfiguration

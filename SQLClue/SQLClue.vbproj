@@ -80,14 +80,15 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ExceptionMessageBox, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.SqlWmiManagement, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SqlServer.WmiEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ExceptionMessageBox, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Dmf, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SqlWmiManagement, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.WmiEnum, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -125,7 +126,7 @@
     <Import Include="Microsoft.SqlServer" />
     <Import Include="Microsoft.SqlServer.Management" />
     <Import Include="Microsoft.SqlServer.Management.Common" />
-    <Import Include="Microsoft.SqlServer.Management.Sdk.Sfc" />
+    <Import Include="Microsoft.SqlServer.Management.Dmf" />
     <Import Include="Microsoft.SqlServer.Management.Smo" />
     <Import Include="Microsoft.SqlServer.Management.Smo.Agent" />
     <Import Include="Microsoft.SqlServer.Management.Smo.Broker" />
@@ -314,12 +315,6 @@
       <DependentUpon>RunbookForm.vb</DependentUpon>
     </Compile>
     <Compile Include="RunbookForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DialogLicense.Designer.vb">
-      <DependentUpon>DialogLicense.vb</DependentUpon>
-    </Compile>
-    <Compile Include="DialogLicense.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -548,10 +543,6 @@
     <EmbeddedResource Include="RunbookForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>RunbookForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DialogLicense.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>DialogLicense.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -1061,9 +1052,7 @@
     <None Include="Service References\ServiceReference1\SQLClue.ServiceReference1.Warning.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <Content Include="ServiceSetup\SQLClueServiceSetup.msi">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="ServiceSetup\SQLClueServiceSetup.msi" />
     <None Include="SQLRunbookDataSet.xsc">
       <DependentUpon>SQLRunbookDataSet.xsd</DependentUpon>
     </None>
@@ -1075,10 +1064,6 @@
     <None Include="SQLRunbookDataSet.xss">
       <DependentUpon>SQLRunbookDataSet.xsd</DependentUpon>
     </None>
-    <Content Include="SQLScripts\alterSQLClueRepository_1_4_1_4.sql">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="SQLScripts\alterSQLClueRunbook_1_4_1_4.sql" />
     <None Include="SQLScripts\RepositoryPopulationExample.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

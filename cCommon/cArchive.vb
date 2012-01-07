@@ -619,7 +619,7 @@ Public Class cArchive
 
 #Region " Archive Iterators "
 
-    Private Function ArchiveDB(ByVal oDb As Smo.Database, _
+    Private Function ArchiveDB(ByVal oDb As Database, _
                                ByVal bUseEventNotifications As Boolean, _
                                ByVal ScheduleId As Integer) _
                                As Boolean

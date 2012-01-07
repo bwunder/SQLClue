@@ -1,5 +1,5 @@
 ' for the backgroundworker
-Imports System.ComponentModel
+'Imports System.ComponentModel
 
 ' decoration prevents breakpoints but allows backgroundworker error handling to work
 ' for backgroundworker that accesses the class (eg cArchive)
@@ -206,7 +206,7 @@ Public Class cCompare
 
 #End Region
 
-    Public Sub SetSmoFieldsToLoad(ByVal smoSQLServer As Smo.Server)
+    Public Sub SetSmoFieldsToLoad(ByVal smoSQLServer As Server)
         Try
             smoSQLServer.SetDefaultInitFields(GetType(Agent.Alert), New String() {My.Resources.SMOName})
             smoSQLServer.SetDefaultInitFields(GetType(ApplicationRole), New String() {My.Resources.SMOName})
@@ -265,7 +265,7 @@ Public Class cCompare
             smoSQLServer.SetDefaultInitFields(GetType(Table), New String() {My.Resources.SMOName, _
                                                                             My.Resources.SMOSchema, _
                                                                             My.Resources.SMOIsSystemObject})
-            smoSQLServer.SetDefaultInitFields(GetType(Smo.View), New String() {My.Resources.SMOName, _
+            smoSQLServer.SetDefaultInitFields(GetType(View), New String() {My.Resources.SMOName, _
                                                                                My.Resources.SMOSchema, _
                                                                                My.Resources.SMOIsSystemObject})
             smoSQLServer.SetDefaultInitFields(GetType(Trigger), New String() {My.Resources.SMOName})
@@ -338,7 +338,7 @@ Public Class cCompare
             ' any list could be derived from the smo hierarchy or from the reporitory
             ' only if from the repository does itemlabel or itemversion mean anything
             If Origin = My.Resources.OriginSQLInstance Then
-                Dim smoSQLServer As Smo.Server
+                Dim smoSQLServer As Server
                 If Side1or2 = 1 Then
                     smoSQLServer = SqlServer1
                 Else

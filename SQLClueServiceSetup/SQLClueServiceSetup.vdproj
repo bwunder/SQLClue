@@ -1091,7 +1091,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SQLClueService"
         "ProductCode" = "8:{6B7D718E-C2DA-4920-B714-D027CFB0FCC5}"
-        "PackageCode" = "8:{43F823FE-574D-49AE-89BB-0DEF6F1360C4}"
+        "PackageCode" = "8:{526D4026-26B2-4168-9717-71124A199309}"
         "UpgradeCode" = "8:{44A8F0A8-2B61-4591-9F3B-E0870ED886AD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

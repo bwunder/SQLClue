@@ -18,7 +18,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="LicenseCode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Unlicensed Trial Software</Value>
+      <Value Profile="(Default)">Open Source</Value>
     </Setting>
     <Setting Name="RepositoryPasswordEncryptionCertificate" Type="System.String" Scope="User">
       <Value Profile="(Default)">ArchiveUsers</Value>

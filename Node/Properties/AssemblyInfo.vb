@@ -13,7 +13,7 @@ Imports System.Data.Sql
 
 '<Assembly: AssemblyTitle("Node")> 
 <Assembly: AssemblyDescription("a user defined type")> 
-<Assembly: AssemblyCompany("Bill WUnder")> 
+<Assembly: AssemblyCompany("Bill Wunder")> 
 <Assembly: AssemblyProduct("SQLClue")> 
 <Assembly: AssemblyCopyright("Copyright © Bill Wunder 2007-2012")> 
 <Assembly: AssemblyTrademark("")> 

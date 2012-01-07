@@ -1,0 +1,1895 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SQLClueModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SQLClueModelStoreContainer">
+          <EntitySet Name="tArchiveLog" EntityType="SQLClueModel.Store.tArchiveLog" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tChange" EntityType="SQLClueModel.Store.tChange" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tChangeLabel" EntityType="SQLClueModel.Store.tChangeLabel" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tConnection" EntityType="SQLClueModel.Store.tConnection" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tDb" EntityType="SQLClueModel.Store.tDb" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tInstance" EntityType="SQLClueModel.Store.tInstance" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tJobServer" EntityType="SQLClueModel.Store.tJobServer" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tLabel" EntityType="SQLClueModel.Store.tLabel" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tSchedule" EntityType="SQLClueModel.Store.tSchedule" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tServiceBroker" EntityType="SQLClueModel.Store.tServiceBroker" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tServiceSettings" EntityType="SQLClueModel.Store.tServiceSettings" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tSQLCfg" EntityType="SQLClueModel.Store.tSQLCfg" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="tSQLErrorLog" EntityType="SQLClueModel.Store.tSQLErrorLog" store:Type="Tables" Schema="SQLCfg" />
+          <EntitySet Name="vArchive" EntityType="SQLClueModel.Store.vArchive" store:Type="Views" store:Schema="SQLCfg" store:Name="vArchive">
+            <DefiningQuery>SELECT 
+      [vArchive].[ArchiveId] AS [ArchiveId], 
+      [vArchive].[InstanceName] AS [InstanceName], 
+      [vArchive].[Interval] AS [Interval], 
+      [vArchive].[IntervalType] AS [IntervalType], 
+      [vArchive].[NextRunDt] AS [NextRunDt], 
+      [vArchive].[UseEventNotifications] AS [UseEventNotifications], 
+      [vArchive].[IsScheduleActive] AS [IsScheduleActive]
+      FROM [SQLCfg].[vArchive] AS [vArchive]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk_tChangeLabel__ChangeId__to__tChange" Association="SQLClueModel.Store.fk_tChangeLabel__ChangeId__to__tChange">
+            <End Role="tChange" EntitySet="tChange" />
+            <End Role="tChangeLabel" EntitySet="tChangeLabel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tChangeLabel__LabelId__to__tLabel" Association="SQLClueModel.Store.fk_tChangeLabel__LabelId__to__tLabel">
+            <End Role="tLabel" EntitySet="tLabel" />
+            <End Role="tChangeLabel" EntitySet="tChangeLabel" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tDb__Instance__to__tInstance__Name" Association="SQLClueModel.Store.fk_tDb__Instance__to__tInstance__Name">
+            <End Role="tInstance" EntitySet="tInstance" />
+            <End Role="tDb" EntitySet="tDb" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tInstance__Name__to__tConnection__InstanceName" Association="SQLClueModel.Store.fk_tInstance__Name__to__tConnection__InstanceName">
+            <End Role="tConnection" EntitySet="tConnection" />
+            <End Role="tInstance" EntitySet="tInstance" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tJobServer__to__tInstance__Name" Association="SQLClueModel.Store.fk_tJobServer__to__tInstance__Name">
+            <End Role="tInstance" EntitySet="tInstance" />
+            <End Role="tJobServer" EntitySet="tJobServer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tSchedule__InstanceName__to__tConnection__InstanceName" Association="SQLClueModel.Store.fk_tSchedule__InstanceName__to__tConnection__InstanceName">
+            <End Role="tConnection" EntitySet="tConnection" />
+            <End Role="tSchedule" EntitySet="tSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tServiceBroker__to__tDB__InstanceName__DBName" Association="SQLClueModel.Store.fk_tServiceBroker__to__tDB__InstanceName__DBName">
+            <End Role="tDb" EntitySet="tDb" />
+            <End Role="tServiceBroker" EntitySet="tServiceBroker" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tArchiveLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleId" Type="int" Nullable="false" />
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="NbrDDLEventsProcessed" Type="int" />
+          <Property Name="NbrItemsProcessed" Type="int" />
+          <Property Name="NbrItemsAdded" Type="int" />
+          <Property Name="NbrItemsChanged" Type="int" />
+          <Property Name="NbrItemsDeleted" Type="int" />
+          <Property Name="ArchiveError" Type="varchar(max)" />
+          <Property Name="ScheduledStartDt" Type="datetime" />
+          <Property Name="ActualStartDt" Type="datetime" Nullable="false" />
+          <Property Name="ActualEndDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6005: The data type 'SQLCfgNode' is not supported; the column 'Node' in table 'SQLClue.SQLCfg.tChange' was excluded.
+      -->
+        <EntityType Name="tChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="int" />
+          <Property Name="Action" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="EventData" Type="xml" />
+          <Property Name="Definition" Type="nvarchar(max)" />
+          <Property Name="DefinitionDt" Type="datetime" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tChangeLabel">
+          <Key>
+            <PropertyRef Name="LabelId" />
+            <PropertyRef Name="ChangeId" />
+          </Key>
+          <Property Name="LabelId" Type="int" Nullable="false" />
+          <Property Name="ChangeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tConnection">
+          <Key>
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="EncryptedConnection" Type="bit" Nullable="false" />
+          <Property Name="TrustServerCertificate" Type="bit" Nullable="false" />
+          <Property Name="NetworkProtocol" Type="nvarchar" MaxLength="128" />
+          <Property Name="ConnectionTimeout" Type="int" Nullable="false" />
+          <Property Name="LoginSecure" Type="bit" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="128" />
+          <Property Name="EncryptedPassword" Type="varbinary" MaxLength="256" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tDb">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ActiveDirectory" Type="bit" Nullable="false" />
+          <Property Name="ApplicationRoles" Type="bit" Nullable="false" />
+          <Property Name="Assemblies" Type="bit" Nullable="false" />
+          <Property Name="AsymmetricKeys" Type="bit" Nullable="false" />
+          <Property Name="Certificates" Type="bit" Nullable="false" />
+          <Property Name="DatabaseAuditSpecifications" Type="bit" Nullable="false" />
+          <Property Name="DatabaseOptions" Type="bit" Nullable="false" />
+          <Property Name="Defaults" Type="bit" Nullable="false" />
+          <Property Name="FullTextCatalogs" Type="bit" Nullable="false" />
+          <Property Name="FullTextStopLists" Type="bit" Nullable="false" />
+          <Property Name="PartitionFunctions" Type="bit" Nullable="false" />
+          <Property Name="PartitionSchemes" Type="bit" Nullable="false" />
+          <Property Name="PlanGuides" Type="bit" Nullable="false" />
+          <Property Name="Roles" Type="bit" Nullable="false" />
+          <Property Name="Rules" Type="bit" Nullable="false" />
+          <Property Name="Schemas" Type="bit" Nullable="false" />
+          <Property Name="ServiceBroker" Type="bit" Nullable="false" />
+          <Property Name="StoredProcedures" Type="bit" Nullable="false" />
+          <Property Name="SymmetricKeys" Type="bit" Nullable="false" />
+          <Property Name="Synonyms" Type="bit" Nullable="false" />
+          <Property Name="Tables" Type="bit" Nullable="false" />
+          <Property Name="Triggers" Type="bit" Nullable="false" />
+          <Property Name="UserDefinedAggregates" Type="bit" Nullable="false" />
+          <Property Name="UserDefinedDataTypes" Type="bit" Nullable="false" />
+          <Property Name="UserDefinedFunctions" Type="bit" Nullable="false" />
+          <Property Name="UserDefinedTableTypes" Type="bit" Nullable="false" />
+          <Property Name="UserDefinedTypes" Type="bit" Nullable="false" />
+          <Property Name="Users" Type="bit" Nullable="false" />
+          <Property Name="Views" Type="bit" Nullable="false" />
+          <Property Name="XMLSchemaCollections" Type="bit" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tInstance">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="ActiveDirectory" Type="bit" Nullable="false" />
+          <Property Name="Audits" Type="bit" Nullable="false" />
+          <Property Name="BackupDevices" Type="bit" Nullable="false" />
+          <Property Name="Configuration" Type="bit" Nullable="false" />
+          <Property Name="Credentials" Type="bit" Nullable="false" />
+          <Property Name="CryptographicProviders" Type="bit" Nullable="false" />
+          <Property Name="Databases" Type="bit" Nullable="false" />
+          <Property Name="EndPoints" Type="bit" Nullable="false" />
+          <Property Name="FullTextService" Type="bit" Nullable="false" />
+          <Property Name="Information" Type="bit" Nullable="false" />
+          <Property Name="JobServer" Type="bit" Nullable="false" />
+          <Property Name="LinkedServers" Type="bit" Nullable="false" />
+          <Property Name="Logins" Type="bit" Nullable="false" />
+          <Property Name="Mail" Type="bit" Nullable="false" />
+          <Property Name="ProxyAccount" Type="bit" Nullable="false" />
+          <Property Name="ResourceGovernor" Type="bit" Nullable="false" />
+          <Property Name="Roles" Type="bit" Nullable="false" />
+          <Property Name="ServerAuditSpecifications" Type="bit" Nullable="false" />
+          <Property Name="Settings" Type="bit" Nullable="false" />
+          <Property Name="Triggers" Type="bit" Nullable="false" />
+          <Property Name="UserDefinedMessages" Type="bit" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tJobServer">
+          <Key>
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Alerts" Type="bit" Nullable="false" />
+          <Property Name="AlertSystem" Type="bit" Nullable="false" />
+          <Property Name="Jobs" Type="bit" Nullable="false" />
+          <Property Name="Operators" Type="bit" Nullable="false" />
+          <Property Name="ProxyAccounts" Type="bit" Nullable="false" />
+          <Property Name="TargetServers" Type="bit" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tLabel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IncludeChildren" Type="bit" />
+          <Property Name="Label" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="ExpiredDt" Type="datetime" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Interval" Type="int" Nullable="false" />
+          <Property Name="IntervalType" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="IntervalBaseDt" Type="datetime" />
+          <Property Name="UseEventNotifications" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tServiceBroker">
+          <Key>
+            <PropertyRef Name="DatabaseName" />
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="DatabaseName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="MessageTypes" Type="bit" Nullable="false" />
+          <Property Name="Priorities" Type="bit" Nullable="false" />
+          <Property Name="Queues" Type="bit" Nullable="false" />
+          <Property Name="RemoteServiceBindings" Type="bit" Nullable="false" />
+          <Property Name="Routes" Type="bit" Nullable="false" />
+          <Property Name="ServiceContracts" Type="bit" Nullable="false" />
+          <Property Name="Services" Type="bit" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tServiceSettings">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="AddDatabasesUponDiscovery" Type="bit" Nullable="false" />
+          <Property Name="TargetEventNotificationDatabase" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Scripting__Options_Batch__Separator" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Misc_Ignore__Blank__Lines" Type="bit" Nullable="false" />
+          <Property Name="Misc_Display__Output_Show__Comparison__Details" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_Include__DROP__In__Script" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_Include__IF__EXISTS__With__Drop" Type="bit" Nullable="false" />
+          <Property Name="Misc_Display__Output_Show__Scripts__For__Unmatched__Items" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_IgnoreCase_5" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_Multiline_7" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_ExplicitCapture_4" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_Compiled_1" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_SingleLine_9" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_IgnorePatternWhiteSpace_6" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_RightToLeft_8" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_ECMAScript_3" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_CultureInvariant_2" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Pattern_1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Replacement_2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_IgnoreCase_5" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_Multiline_7" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_ExplicitCapture_4" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_Compiled_1" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_SingleLine_9" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_IgnorePatternWhiteSpace_6" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_RightToLeft_8" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_ECMAScript_3" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_CultureInvariant_2" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Pattern_3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_IgnoreCase_5" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_Multiline_7" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_ExplicitCapture_4" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_Compiled_1" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_SingleLine_9" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_IgnorePatternWhiteSpace_6" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_RightToLeft_8" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_ECMAScript_3" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_CultureInvariant_2" Type="bit" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Pattern_4" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AgentAlertJob_1" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AgentJobId_2" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AgentNotify_3" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AllowSystemObjects_10" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AnsiFile_20" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AnsiPadding_30" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_BatchSize_35" Type="int" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Bindings_40" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ChangeTracking_45" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ClusteredIndexes_50" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ContinueScriptingOnError_60" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ConvertUserDefinedDataTypesToBaseType_70" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DdlBodyOnly_80" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DdlHeaderOnly_90" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Default_100" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriAll_110" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriAllConstraints_120" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriAllKeys_130" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriChecks_140" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriClustered_150" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriDefaults_160" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriForeignKeys_170" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriIncludeSystemNames_180" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriIndexes_190" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriNonClustered_200" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriPrimaryKey_210" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriUniqueKeys_220" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriWithNoCheck_230" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Encoding_240" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Scripting__Options_SMO_EnforceScriptingOptions_250" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ExtendedProperties_260" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_FullTextCatalogs_270" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_FullTextindexes_280" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_FullTextStopLists_285" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeDatabaseContext_290" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeDatabaseRoleMemberships_291" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeFullTextCatalogRootPath_295" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeHeaders_300" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeIfNotExists_301" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Indexes_310" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_LoginSID_320" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoAssemblies_330" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoCollation_340" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoCommandTerminator_350" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoExecuteAs_360" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoFilegroup_370" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoFileStream_373" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoFileStreamColumn_376" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoIdentities_380" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoIndexPartitioningSchemes_390" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoMailProfileAccounts_400" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoMailProfilePrincipals_410" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NonClusteredIndexes_420" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoTablePartitioningSchemes_430" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoVarDecimal_431" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoViewColumns_440" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoXMLNameSpaces_450" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_OptimizerData_460" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Permissions_470" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_PrimaryObject_480" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_SchemaQualify_490" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_SchemaQualifyForeignKeysReferences_500" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptBatchTerminator_502" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptData_503" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptDataCompression_505" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptDrops_506" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptOwner_508" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptSchema_509" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Statistics_510" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_TimestampToBinary_520" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_TargetServerVersion_530" Type="int" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Triggers_540" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_WithDependencies_550" Type="bit" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_XMLIndexes_560" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tSQLCfg">
+          <Key>
+            <PropertyRef Name="LicensedCompany" />
+            <PropertyRef Name="LicensedUser" />
+            <PropertyRef Name="LicenseCode" />
+          </Key>
+          <Property Name="LicensedCompany" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="LicensedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="LicenseCode" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="LicensedInstanceCount" Type="int" Nullable="false" />
+          <Property Name="LicenseDate" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="RecUpdatedDt" Type="datetime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tSQLErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="DBName" Type="nvarchar" MaxLength="128" />
+          <Property Name="ErrorNumber" Type="int" />
+          <Property Name="ErrorSeverity" Type="int" />
+          <Property Name="ErrorState" Type="int" />
+          <Property Name="ErrorProcedure" Type="nvarchar" MaxLength="126" />
+          <Property Name="ErrorLine" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="2048" />
+          <Property Name="TextData" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="RecCreatedDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SQLClue.SQLCfg.vArchive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vArchive">
+          <Key>
+            <PropertyRef Name="ArchiveId" />
+            <PropertyRef Name="InstanceName" />
+            <PropertyRef Name="Interval" />
+            <PropertyRef Name="IntervalType" />
+            <PropertyRef Name="UseEventNotifications" />
+          </Key>
+          <Property Name="ArchiveId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Interval" Type="int" Nullable="false" />
+          <Property Name="IntervalType" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="NextRunDt" Type="datetime" />
+          <Property Name="UseEventNotifications" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="IsScheduleActive" Type="bit" />
+        </EntityType>
+        <Association Name="fk_tChangeLabel__ChangeId__to__tChange">
+          <End Role="tChange" Type="SQLClueModel.Store.tChange" Multiplicity="1" />
+          <End Role="tChangeLabel" Type="SQLClueModel.Store.tChangeLabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tChange">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tChangeLabel">
+              <PropertyRef Name="ChangeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tChangeLabel__LabelId__to__tLabel">
+          <End Role="tLabel" Type="SQLClueModel.Store.tLabel" Multiplicity="1" />
+          <End Role="tChangeLabel" Type="SQLClueModel.Store.tChangeLabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tLabel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tChangeLabel">
+              <PropertyRef Name="LabelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tDb__Instance__to__tInstance__Name">
+          <End Role="tInstance" Type="SQLClueModel.Store.tInstance" Multiplicity="1" />
+          <End Role="tDb" Type="SQLClueModel.Store.tDb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tInstance">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="tDb">
+              <PropertyRef Name="InstanceName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tInstance__Name__to__tConnection__InstanceName">
+          <End Role="tConnection" Type="SQLClueModel.Store.tConnection" Multiplicity="1" />
+          <End Role="tInstance" Type="SQLClueModel.Store.tInstance" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tConnection">
+              <PropertyRef Name="InstanceName" />
+            </Principal>
+            <Dependent Role="tInstance">
+              <PropertyRef Name="Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tJobServer__to__tInstance__Name">
+          <End Role="tInstance" Type="SQLClueModel.Store.tInstance" Multiplicity="1" />
+          <End Role="tJobServer" Type="SQLClueModel.Store.tJobServer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tInstance">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="tJobServer">
+              <PropertyRef Name="InstanceName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tSchedule__InstanceName__to__tConnection__InstanceName">
+          <End Role="tConnection" Type="SQLClueModel.Store.tConnection" Multiplicity="1" />
+          <End Role="tSchedule" Type="SQLClueModel.Store.tSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tConnection">
+              <PropertyRef Name="InstanceName" />
+            </Principal>
+            <Dependent Role="tSchedule">
+              <PropertyRef Name="InstanceName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tServiceBroker__to__tDB__InstanceName__DBName">
+          <End Role="tDb" Type="SQLClueModel.Store.tDb" Multiplicity="1" />
+          <End Role="tServiceBroker" Type="SQLClueModel.Store.tServiceBroker" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tDb">
+              <PropertyRef Name="InstanceName" />
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="tServiceBroker">
+              <PropertyRef Name="InstanceName" />
+              <PropertyRef Name="DatabaseName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="pArchiveLogInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ScheduleId" Type="int" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="NbrDDLEventsProcessed" Type="int" Mode="In" />
+          <Parameter Name="NbrItemsProcessed" Type="int" Mode="In" />
+          <Parameter Name="NbrItemsAdded" Type="int" Mode="In" />
+          <Parameter Name="NbrItemsChanged" Type="int" Mode="In" />
+          <Parameter Name="NbrItemsDeleted" Type="int" Mode="In" />
+          <Parameter Name="ScheduledStartDt" Type="datetime" Mode="In" />
+          <Parameter Name="ActualStartDt" Type="datetime" Mode="In" />
+          <Parameter Name="ActualEndDt" Type="datetime" Mode="In" />
+          <Parameter Name="ArchiveError" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="pArchiveLogSelectScheduleHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+          <Parameter Name="BeginDt" Type="datetime" Mode="In" />
+          <Parameter Name="EndDt" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="pArchiveLogSelectScheduleHistoryByScheduleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ScheduleId" Type="int" Mode="In" />
+          <Parameter Name="BeginDt" Type="datetime" Mode="In" />
+          <Parameter Name="EndDt" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="pArchiveLogSelectSQLInstanceHistoryByScheduleId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ScheduleId" Type="int" Mode="In" />
+          <Parameter Name="BeginDt" Type="datetime" Mode="In" />
+          <Parameter Name="EndDt" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="pChangeActionByNodeForDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DaysToShow" Type="int" Mode="In" />
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeActionSummaryByNodeForDays" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DaysToShow" Type="int" Mode="In" />
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeAppendEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ChangeId" Type="int" Mode="In" />
+          <Parameter Name="Action" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventData" Type="xml" Mode="In" />
+        </Function>
+        <Function Name="pChangeApplyLabel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ChangeId" Type="int" Mode="In" />
+          <Parameter Name="IncludeChildren" Type="bit" Mode="In" />
+          <Parameter Name="Label" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Notes" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="LabelVersionDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="pChangeGetAllNodesForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeGetLastCountByNodeParent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="NodeParent" Type="nvarchar" Mode="In" />
+          <Parameter Name="NbrDescendents" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="pChangeGetLatestHierarchyForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeGetLatestItemsForNode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeHistoryByItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+          <Parameter Name="DaysToShow" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pChangeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="nvarchar" Mode="In" />
+          <Parameter Name="EventData" Type="xml" Mode="In" />
+          <Parameter Name="Definition" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ChangeId" Type="int" Mode="InOut" />
+          <Parameter Name="Version" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="pChangeLatestByItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+          <Parameter Name="Definition" Type="nvarchar(max)" Mode="InOut" />
+        </Function>
+        <Function Name="pChangePurgeInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectByContains" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SearchString" Type="nvarchar" Mode="In" />
+          <Parameter Name="LatestVersion" Type="bit" Mode="In" />
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectDatabaseListForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectDefinitionByVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Node" Type="nvarchar" Mode="In" />
+          <Parameter Name="Version" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectLastestBySQLInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectLatestByNodeParent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="NodeParent" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectNodesForDateRange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="BeginDt" Type="datetime" Mode="In" />
+          <Parameter Name="EndDt" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="pChangeSelectScheduleListForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangesForArchive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ArchiveLogId" Type="int" Mode="In" />
+          <Parameter Name="RootNode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pChangesForDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ChangeDate" Type="datetime" Mode="In" />
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+          <Parameter Name="NodeType" Type="nvarchar" Mode="In" />
+          <Parameter Name="Action" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pConfigurationCatalog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pConnectionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EncryptedConnection" Type="bit" Mode="In" />
+          <Parameter Name="TrustServerCertificate" Type="bit" Mode="In" />
+          <Parameter Name="IsNull_NetworkProtocol" Type="int" Mode="In" />
+          <Parameter Name="NetworkProtocol" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConnectionTimeout" Type="int" Mode="In" />
+          <Parameter Name="LoginSecure" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pConnectionGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EncryptedConnection" Type="bit" Mode="InOut" />
+          <Parameter Name="TrustServerCertificate" Type="bit" Mode="InOut" />
+          <Parameter Name="NetworkProtocol" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="ConnectionTimeout" Type="int" Mode="InOut" />
+          <Parameter Name="LoginSecure" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="pConnectionGetTargetConnectionString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="SQLInstance" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pConnectionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EncryptedConnection" Type="bit" Mode="In" />
+          <Parameter Name="TrustServerCertificate" Type="bit" Mode="In" />
+          <Parameter Name="NetworkProtocol" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConnectionTimeout" Type="int" Mode="In" />
+          <Parameter Name="LoginSecure" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pConnectionSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pConnectionUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="EncryptedConnection" Type="bit" Mode="In" />
+          <Parameter Name="TrustServerCertificate" Type="bit" Mode="In" />
+          <Parameter Name="NetworkProtocol" Type="nvarchar" Mode="In" />
+          <Parameter Name="ConnectionTimeout" Type="int" Mode="In" />
+          <Parameter Name="LoginSecure" Type="bit" Mode="In" />
+          <Parameter Name="Original_InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Original_EncryptedConnection" Type="bit" Mode="In" />
+          <Parameter Name="Original_TrustServerCertificate" Type="bit" Mode="In" />
+          <Parameter Name="IsNull_NetworkProtocol" Type="int" Mode="In" />
+          <Parameter Name="Original_NetworkProtocol" Type="nvarchar" Mode="In" />
+          <Parameter Name="Original_ConnectionTimeout" Type="int" Mode="In" />
+          <Parameter Name="Original_LoginSecure" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pConnectionUserGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LoginName" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="Password" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="pConnectionUserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="LoginName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pDbDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pDbGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="InOut" />
+          <Parameter Name="ApplicationRoles" Type="bit" Mode="InOut" />
+          <Parameter Name="Assemblies" Type="bit" Mode="InOut" />
+          <Parameter Name="AsymmetricKeys" Type="bit" Mode="InOut" />
+          <Parameter Name="Certificates" Type="bit" Mode="InOut" />
+          <Parameter Name="DatabaseAuditSpecfications" Type="bit" Mode="InOut" />
+          <Parameter Name="DatabaseOptions" Type="bit" Mode="InOut" />
+          <Parameter Name="Defaults" Type="bit" Mode="InOut" />
+          <Parameter Name="FullTextCatalogs" Type="bit" Mode="InOut" />
+          <Parameter Name="FullTextStopLists" Type="bit" Mode="InOut" />
+          <Parameter Name="PartitionFunctions" Type="bit" Mode="InOut" />
+          <Parameter Name="PartitionSchemes" Type="bit" Mode="InOut" />
+          <Parameter Name="PlanGuides" Type="bit" Mode="InOut" />
+          <Parameter Name="Roles" Type="bit" Mode="InOut" />
+          <Parameter Name="Rules" Type="bit" Mode="InOut" />
+          <Parameter Name="Schemas" Type="bit" Mode="InOut" />
+          <Parameter Name="ServiceBroker" Type="bit" Mode="InOut" />
+          <Parameter Name="StoredProcedures" Type="bit" Mode="InOut" />
+          <Parameter Name="SymmetricKeys" Type="bit" Mode="InOut" />
+          <Parameter Name="Synonyms" Type="bit" Mode="InOut" />
+          <Parameter Name="Tables" Type="bit" Mode="InOut" />
+          <Parameter Name="Triggers" Type="bit" Mode="InOut" />
+          <Parameter Name="UserDefinedAggregates" Type="bit" Mode="InOut" />
+          <Parameter Name="UserDefinedDataTypes" Type="bit" Mode="InOut" />
+          <Parameter Name="UserDefinedFunctions" Type="bit" Mode="InOut" />
+          <Parameter Name="UserDefinedTableTypes" Type="bit" Mode="InOut" />
+          <Parameter Name="UserDefinedTypes" Type="bit" Mode="InOut" />
+          <Parameter Name="Users" Type="bit" Mode="InOut" />
+          <Parameter Name="Views" Type="bit" Mode="InOut" />
+          <Parameter Name="XMLSchemaCollections" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="pDbInit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="DBName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VersionMajor" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pDbInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="In" />
+          <Parameter Name="ApplicationRoles" Type="bit" Mode="In" />
+          <Parameter Name="Assemblies" Type="bit" Mode="In" />
+          <Parameter Name="AsymmetricKeys" Type="bit" Mode="In" />
+          <Parameter Name="Certificates" Type="bit" Mode="In" />
+          <Parameter Name="DatabaseAuditSpecifications" Type="bit" Mode="In" />
+          <Parameter Name="DatabaseOptions" Type="bit" Mode="In" />
+          <Parameter Name="Defaults" Type="bit" Mode="In" />
+          <Parameter Name="FullTextCatalogs" Type="bit" Mode="In" />
+          <Parameter Name="FullTextStopLists" Type="bit" Mode="In" />
+          <Parameter Name="PartitionFunctions" Type="bit" Mode="In" />
+          <Parameter Name="PartitionSchemes" Type="bit" Mode="In" />
+          <Parameter Name="PlanGuides" Type="bit" Mode="In" />
+          <Parameter Name="Roles" Type="bit" Mode="In" />
+          <Parameter Name="Rules" Type="bit" Mode="In" />
+          <Parameter Name="Schemas" Type="bit" Mode="In" />
+          <Parameter Name="ServiceBroker" Type="bit" Mode="In" />
+          <Parameter Name="StoredProcedures" Type="bit" Mode="In" />
+          <Parameter Name="SymmetricKeys" Type="bit" Mode="In" />
+          <Parameter Name="Synonyms" Type="bit" Mode="In" />
+          <Parameter Name="Tables" Type="bit" Mode="In" />
+          <Parameter Name="Triggers" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedAggregates" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedDataTypes" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedFunctions" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedTableTypes" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedTypes" Type="bit" Mode="In" />
+          <Parameter Name="Users" Type="bit" Mode="In" />
+          <Parameter Name="Views" Type="bit" Mode="In" />
+          <Parameter Name="XMLSchemaCollections" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pDbSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pDbSelectAllForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pDbUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="In" />
+          <Parameter Name="ApplicationRoles" Type="bit" Mode="In" />
+          <Parameter Name="Assemblies" Type="bit" Mode="In" />
+          <Parameter Name="AsymmetricKeys" Type="bit" Mode="In" />
+          <Parameter Name="Certificates" Type="bit" Mode="In" />
+          <Parameter Name="DatabaseAuditSpecifications" Type="bit" Mode="In" />
+          <Parameter Name="DatabaseOptions" Type="bit" Mode="In" />
+          <Parameter Name="Defaults" Type="bit" Mode="In" />
+          <Parameter Name="FullTextCatalogs" Type="bit" Mode="In" />
+          <Parameter Name="FullTextStopLists" Type="bit" Mode="In" />
+          <Parameter Name="PartitionFunctions" Type="bit" Mode="In" />
+          <Parameter Name="PartitionSchemes" Type="bit" Mode="In" />
+          <Parameter Name="PlanGuides" Type="bit" Mode="In" />
+          <Parameter Name="Roles" Type="bit" Mode="In" />
+          <Parameter Name="Rules" Type="bit" Mode="In" />
+          <Parameter Name="Schemas" Type="bit" Mode="In" />
+          <Parameter Name="ServiceBroker" Type="bit" Mode="In" />
+          <Parameter Name="StoredProcedures" Type="bit" Mode="In" />
+          <Parameter Name="SymmetricKeys" Type="bit" Mode="In" />
+          <Parameter Name="Synonyms" Type="bit" Mode="In" />
+          <Parameter Name="Tables" Type="bit" Mode="In" />
+          <Parameter Name="Triggers" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedAggregates" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedDataTypes" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedFunctions" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedTableTypes" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedTypes" Type="bit" Mode="In" />
+          <Parameter Name="Users" Type="bit" Mode="In" />
+          <Parameter Name="Views" Type="bit" Mode="In" />
+          <Parameter Name="XMLSchemaCollections" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pInstanceDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pInstanceGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="InOut" />
+          <Parameter Name="Audits" Type="bit" Mode="InOut" />
+          <Parameter Name="BackupDevices" Type="bit" Mode="InOut" />
+          <Parameter Name="Configuration" Type="bit" Mode="InOut" />
+          <Parameter Name="Credentials" Type="bit" Mode="InOut" />
+          <Parameter Name="CryprographicProviders" Type="bit" Mode="InOut" />
+          <Parameter Name="Databases" Type="bit" Mode="InOut" />
+          <Parameter Name="EndPoints" Type="bit" Mode="InOut" />
+          <Parameter Name="FullTextService" Type="bit" Mode="InOut" />
+          <Parameter Name="Information" Type="bit" Mode="InOut" />
+          <Parameter Name="JobServer" Type="bit" Mode="InOut" />
+          <Parameter Name="Logins" Type="bit" Mode="InOut" />
+          <Parameter Name="LinkedServers" Type="bit" Mode="InOut" />
+          <Parameter Name="Mail" Type="bit" Mode="InOut" />
+          <Parameter Name="ProxyAccount" Type="bit" Mode="InOut" />
+          <Parameter Name="ResourceGovernor" Type="bit" Mode="InOut" />
+          <Parameter Name="Roles" Type="bit" Mode="InOut" />
+          <Parameter Name="ServerAuditSpecifications" Type="bit" Mode="InOut" />
+          <Parameter Name="Settings" Type="bit" Mode="InOut" />
+          <Parameter Name="Triggers" Type="bit" Mode="InOut" />
+          <Parameter Name="UserDefinedMessages" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="pInstanceInit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="VersionMajor" Type="int" Mode="In" />
+          <Parameter Name="EngineEdition" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pInstanceInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="In" />
+          <Parameter Name="Audits" Type="bit" Mode="In" />
+          <Parameter Name="BackupDevices" Type="bit" Mode="In" />
+          <Parameter Name="Configuration" Type="bit" Mode="In" />
+          <Parameter Name="Credentials" Type="bit" Mode="In" />
+          <Parameter Name="CryptographicProviders" Type="bit" Mode="In" />
+          <Parameter Name="Databases" Type="bit" Mode="In" />
+          <Parameter Name="EndPoints" Type="bit" Mode="In" />
+          <Parameter Name="FullTextService" Type="bit" Mode="In" />
+          <Parameter Name="Information" Type="bit" Mode="In" />
+          <Parameter Name="JobServer" Type="bit" Mode="In" />
+          <Parameter Name="Logins" Type="bit" Mode="In" />
+          <Parameter Name="LinkedServers" Type="bit" Mode="In" />
+          <Parameter Name="Mail" Type="bit" Mode="In" />
+          <Parameter Name="ProxyAccount" Type="bit" Mode="In" />
+          <Parameter Name="ResourceGovernor" Type="bit" Mode="In" />
+          <Parameter Name="Roles" Type="bit" Mode="In" />
+          <Parameter Name="ServerAuditSpecifications" Type="bit" Mode="In" />
+          <Parameter Name="Settings" Type="bit" Mode="In" />
+          <Parameter Name="Triggers" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedMessages" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pInstanceSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pInstanceSelectNameList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pInstanceUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="In" />
+          <Parameter Name="Audits" Type="bit" Mode="In" />
+          <Parameter Name="BackupDevices" Type="bit" Mode="In" />
+          <Parameter Name="Configuration" Type="bit" Mode="In" />
+          <Parameter Name="Credentials" Type="bit" Mode="In" />
+          <Parameter Name="CryptographicProviders" Type="bit" Mode="In" />
+          <Parameter Name="Databases" Type="bit" Mode="In" />
+          <Parameter Name="EndPoints" Type="bit" Mode="In" />
+          <Parameter Name="FullTextService" Type="bit" Mode="In" />
+          <Parameter Name="Information" Type="bit" Mode="In" />
+          <Parameter Name="JobServer" Type="bit" Mode="In" />
+          <Parameter Name="Logins" Type="bit" Mode="In" />
+          <Parameter Name="LinkedServers" Type="bit" Mode="In" />
+          <Parameter Name="Mail" Type="bit" Mode="In" />
+          <Parameter Name="ProxyAccount" Type="bit" Mode="In" />
+          <Parameter Name="ResourceGovernor" Type="bit" Mode="In" />
+          <Parameter Name="Roles" Type="bit" Mode="In" />
+          <Parameter Name="ServerAuditSpecifications" Type="bit" Mode="In" />
+          <Parameter Name="Settings" Type="bit" Mode="In" />
+          <Parameter Name="Triggers" Type="bit" Mode="In" />
+          <Parameter Name="UserDefinedMessages" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pJobServerDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pJobServerGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Alerts" Type="bit" Mode="InOut" />
+          <Parameter Name="AlertSystem" Type="bit" Mode="InOut" />
+          <Parameter Name="Jobs" Type="bit" Mode="InOut" />
+          <Parameter Name="Operators" Type="bit" Mode="InOut" />
+          <Parameter Name="ProxyAccounts" Type="bit" Mode="InOut" />
+          <Parameter Name="TargetServers" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="pJobServerInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Alerts" Type="bit" Mode="In" />
+          <Parameter Name="AlertSystem" Type="bit" Mode="In" />
+          <Parameter Name="Jobs" Type="bit" Mode="In" />
+          <Parameter Name="Operators" Type="bit" Mode="In" />
+          <Parameter Name="ProxyAccounts" Type="bit" Mode="In" />
+          <Parameter Name="TargetServers" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pJobServerSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pJobServerUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Alerts" Type="bit" Mode="In" />
+          <Parameter Name="AlertSystem" Type="bit" Mode="In" />
+          <Parameter Name="Jobs" Type="bit" Mode="In" />
+          <Parameter Name="Operators" Type="bit" Mode="In" />
+          <Parameter Name="ProxyAccounts" Type="bit" Mode="In" />
+          <Parameter Name="TargetServers" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pLogSQLError" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="ParmString" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ObjectId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pRepositoryInit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pScheduleDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="pScheduleGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="Interval" Type="int" Mode="InOut" />
+          <Parameter Name="IntervalType" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="IntervalBaseDt" Type="datetime" Mode="InOut" />
+          <Parameter Name="UseEventNotifications" Type="bit" Mode="InOut" />
+          <Parameter Name="IsActive" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="pScheduleGetCountForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Count" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="pScheduleGetInstanceNameById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="pScheduleInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Interval" Type="int" Mode="In" />
+          <Parameter Name="IntervalType" Type="nvarchar" Mode="In" />
+          <Parameter Name="IntervalBaseDt" Type="datetime" Mode="In" />
+          <Parameter Name="UseEventNotifications" Type="bit" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="pScheduleSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pScheduleSelectAllForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pScheduleSelectAllWithLastNbrItemsProcessed" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pScheduleUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Interval" Type="int" Mode="In" />
+          <Parameter Name="IntervalType" Type="nvarchar" Mode="In" />
+          <Parameter Name="IntervalBaseDt" Type="datetime" Mode="In" />
+          <Parameter Name="UseEventNotifications" Type="bit" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pServiceBrokerDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DatabaseName" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pServiceBrokerGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DatabaseName" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="MessageTypes" Type="bit" Mode="InOut" />
+          <Parameter Name="Priorities" Type="bit" Mode="InOut" />
+          <Parameter Name="Queues" Type="bit" Mode="InOut" />
+          <Parameter Name="RemoteServiceBindings" Type="bit" Mode="InOut" />
+          <Parameter Name="Routes" Type="bit" Mode="InOut" />
+          <Parameter Name="ServiceContracts" Type="bit" Mode="InOut" />
+          <Parameter Name="Services" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="pServiceBrokerInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DatabaseName" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="MessageTypes" Type="bit" Mode="In" />
+          <Parameter Name="Priorities" Type="bit" Mode="In" />
+          <Parameter Name="Queues" Type="bit" Mode="In" />
+          <Parameter Name="RemoteServiceBindings" Type="bit" Mode="In" />
+          <Parameter Name="Routes" Type="bit" Mode="In" />
+          <Parameter Name="ServiceContracts" Type="bit" Mode="In" />
+          <Parameter Name="Services" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pServiceBrokerSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pServiceBrokerSelectAllForInstance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pServiceBrokerUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DatabaseName" Type="nvarchar" Mode="In" />
+          <Parameter Name="InstanceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="MessageTypes" Type="bit" Mode="In" />
+          <Parameter Name="Priorities" Type="bit" Mode="In" />
+          <Parameter Name="Queues" Type="bit" Mode="In" />
+          <Parameter Name="RemoteServiceBindings" Type="bit" Mode="In" />
+          <Parameter Name="Routes" Type="bit" Mode="In" />
+          <Parameter Name="ServiceContracts" Type="bit" Mode="In" />
+          <Parameter Name="Services" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="pServiceSettingsSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pSQLCfgGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="LicensedCompany" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="LicensedUser" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="LicenseCode" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="LicensedInstanceCount" Type="int" Mode="InOut" />
+          <Parameter Name="LicenseDate" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="pSQLCfgInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="LicensedCompany" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicensedUser" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicenseCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicensedInstanceCount" Type="int" Mode="In" />
+          <Parameter Name="LicenseDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pSQLCfgSelect" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />
+        <Function Name="pSQLCfgUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="LicensedCompany" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicensedUser" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicenseCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="LicensedInstanceCount" Type="int" Mode="In" />
+          <Parameter Name="LicenseDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="pSQLErrorLogSelectMostRecent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg">
+          <Parameter Name="DaysToGet" Type="int" Mode="In" />
+        </Function>
+        <!--Errors Found During Generation:
+      warning 6005: The function 'fLastVersion' has a parameter 'Node' at parameter index 0 that has a data type 'SQLCfgNode' which is not supported. The function was excluded.
+      
+      <Function Name="fLastVersion" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="SQLCfg" />-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SQLClueModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SQLClueEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tArchiveLogs" EntityType="SQLClueModel.tArchiveLog" />
+          <EntitySet Name="tChanges" EntityType="SQLClueModel.tChange" />
+          <EntitySet Name="tConnections" EntityType="SQLClueModel.tConnection" />
+          <EntitySet Name="tDbs" EntityType="SQLClueModel.tDb" />
+          <EntitySet Name="tInstances" EntityType="SQLClueModel.tInstance" />
+          <EntitySet Name="tJobServers" EntityType="SQLClueModel.tJobServer" />
+          <EntitySet Name="tLabels" EntityType="SQLClueModel.tLabel" />
+          <EntitySet Name="tSchedules" EntityType="SQLClueModel.tSchedule" />
+          <EntitySet Name="tServiceBrokers" EntityType="SQLClueModel.tServiceBroker" />
+          <EntitySet Name="tServiceSettings" EntityType="SQLClueModel.tServiceSetting" />
+          <EntitySet Name="tSQLCfgs" EntityType="SQLClueModel.tSQLCfg" />
+          <EntitySet Name="tSQLErrorLogs" EntityType="SQLClueModel.tSQLErrorLog" />
+          <EntitySet Name="vArchives" EntityType="SQLClueModel.vArchive" />
+          <AssociationSet Name="fk_tInstance__Name__to__tConnection__InstanceName" Association="SQLClueModel.fk_tInstance__Name__to__tConnection__InstanceName">
+            <End Role="tConnection" EntitySet="tConnections" />
+            <End Role="tInstance" EntitySet="tInstances" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tSchedule__InstanceName__to__tConnection__InstanceName" Association="SQLClueModel.fk_tSchedule__InstanceName__to__tConnection__InstanceName">
+            <End Role="tConnection" EntitySet="tConnections" />
+            <End Role="tSchedule" EntitySet="tSchedules" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tDb__Instance__to__tInstance__Name" Association="SQLClueModel.fk_tDb__Instance__to__tInstance__Name">
+            <End Role="tInstance" EntitySet="tInstances" />
+            <End Role="tDb" EntitySet="tDbs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tServiceBroker__to__tDB__InstanceName__DBName" Association="SQLClueModel.fk_tServiceBroker__to__tDB__InstanceName__DBName">
+            <End Role="tDb" EntitySet="tDbs" />
+            <End Role="tServiceBroker" EntitySet="tServiceBrokers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tJobServer__to__tInstance__Name" Association="SQLClueModel.fk_tJobServer__to__tInstance__Name">
+            <End Role="tInstance" EntitySet="tInstances" />
+            <End Role="tJobServer" EntitySet="tJobServers" />
+          </AssociationSet>
+          <AssociationSet Name="tChangeLabel" Association="SQLClueModel.tChangeLabel">
+            <End Role="tChange" EntitySet="tChanges" />
+            <End Role="tLabel" EntitySet="tLabels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tArchiveLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="NbrDDLEventsProcessed" Type="Int32" />
+          <Property Name="NbrItemsProcessed" Type="Int32" />
+          <Property Name="NbrItemsAdded" Type="Int32" />
+          <Property Name="NbrItemsChanged" Type="Int32" />
+          <Property Name="NbrItemsDeleted" Type="Int32" />
+          <Property Name="ArchiveError" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ScheduledStartDt" Type="DateTime" />
+          <Property Name="ActualStartDt" Type="DateTime" Nullable="false" />
+          <Property Name="ActualEndDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tChange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Version" Type="Int32" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="EventData" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Definition" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DefinitionDt" Type="DateTime" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="tLabels" Relationship="SQLClueModel.tChangeLabel" FromRole="tChange" ToRole="tLabel" />
+        </EntityType>
+        <EntityType Name="tConnection">
+          <Key>
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="EncryptedConnection" Type="Boolean" Nullable="false" />
+          <Property Name="TrustServerCertificate" Type="Boolean" Nullable="false" />
+          <Property Name="NetworkProtocol" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ConnectionTimeout" Type="Int32" Nullable="false" />
+          <Property Name="LoginSecure" Type="Boolean" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="EncryptedPassword" Type="Binary" MaxLength="256" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tInstance" Relationship="SQLClueModel.fk_tInstance__Name__to__tConnection__InstanceName" FromRole="tConnection" ToRole="tInstance" />
+          <NavigationProperty Name="tSchedules" Relationship="SQLClueModel.fk_tSchedule__InstanceName__to__tConnection__InstanceName" FromRole="tConnection" ToRole="tSchedule" />
+        </EntityType>
+        <EntityType Name="tDb">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ActiveDirectory" Type="Boolean" Nullable="false" />
+          <Property Name="ApplicationRoles" Type="Boolean" Nullable="false" />
+          <Property Name="Assemblies" Type="Boolean" Nullable="false" />
+          <Property Name="AsymmetricKeys" Type="Boolean" Nullable="false" />
+          <Property Name="Certificates" Type="Boolean" Nullable="false" />
+          <Property Name="DatabaseAuditSpecifications" Type="Boolean" Nullable="false" />
+          <Property Name="DatabaseOptions" Type="Boolean" Nullable="false" />
+          <Property Name="Defaults" Type="Boolean" Nullable="false" />
+          <Property Name="FullTextCatalogs" Type="Boolean" Nullable="false" />
+          <Property Name="FullTextStopLists" Type="Boolean" Nullable="false" />
+          <Property Name="PartitionFunctions" Type="Boolean" Nullable="false" />
+          <Property Name="PartitionSchemes" Type="Boolean" Nullable="false" />
+          <Property Name="PlanGuides" Type="Boolean" Nullable="false" />
+          <Property Name="Roles" Type="Boolean" Nullable="false" />
+          <Property Name="Rules" Type="Boolean" Nullable="false" />
+          <Property Name="Schemas" Type="Boolean" Nullable="false" />
+          <Property Name="ServiceBroker" Type="Boolean" Nullable="false" />
+          <Property Name="StoredProcedures" Type="Boolean" Nullable="false" />
+          <Property Name="SymmetricKeys" Type="Boolean" Nullable="false" />
+          <Property Name="Synonyms" Type="Boolean" Nullable="false" />
+          <Property Name="Tables" Type="Boolean" Nullable="false" />
+          <Property Name="Triggers" Type="Boolean" Nullable="false" />
+          <Property Name="UserDefinedAggregates" Type="Boolean" Nullable="false" />
+          <Property Name="UserDefinedDataTypes" Type="Boolean" Nullable="false" />
+          <Property Name="UserDefinedFunctions" Type="Boolean" Nullable="false" />
+          <Property Name="UserDefinedTableTypes" Type="Boolean" Nullable="false" />
+          <Property Name="UserDefinedTypes" Type="Boolean" Nullable="false" />
+          <Property Name="Users" Type="Boolean" Nullable="false" />
+          <Property Name="Views" Type="Boolean" Nullable="false" />
+          <Property Name="XMLSchemaCollections" Type="Boolean" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tInstance" Relationship="SQLClueModel.fk_tDb__Instance__to__tInstance__Name" FromRole="tDb" ToRole="tInstance" />
+          <NavigationProperty Name="tServiceBroker" Relationship="SQLClueModel.fk_tServiceBroker__to__tDB__InstanceName__DBName" FromRole="tDb" ToRole="tServiceBroker" />
+        </EntityType>
+        <EntityType Name="tInstance">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ActiveDirectory" Type="Boolean" Nullable="false" />
+          <Property Name="Audits" Type="Boolean" Nullable="false" />
+          <Property Name="BackupDevices" Type="Boolean" Nullable="false" />
+          <Property Name="Configuration" Type="Boolean" Nullable="false" />
+          <Property Name="Credentials" Type="Boolean" Nullable="false" />
+          <Property Name="CryptographicProviders" Type="Boolean" Nullable="false" />
+          <Property Name="Databases" Type="Boolean" Nullable="false" />
+          <Property Name="EndPoints" Type="Boolean" Nullable="false" />
+          <Property Name="FullTextService" Type="Boolean" Nullable="false" />
+          <Property Name="Information" Type="Boolean" Nullable="false" />
+          <Property Name="JobServer" Type="Boolean" Nullable="false" />
+          <Property Name="LinkedServers" Type="Boolean" Nullable="false" />
+          <Property Name="Logins" Type="Boolean" Nullable="false" />
+          <Property Name="Mail" Type="Boolean" Nullable="false" />
+          <Property Name="ProxyAccount" Type="Boolean" Nullable="false" />
+          <Property Name="ResourceGovernor" Type="Boolean" Nullable="false" />
+          <Property Name="Roles" Type="Boolean" Nullable="false" />
+          <Property Name="ServerAuditSpecifications" Type="Boolean" Nullable="false" />
+          <Property Name="Settings" Type="Boolean" Nullable="false" />
+          <Property Name="Triggers" Type="Boolean" Nullable="false" />
+          <Property Name="UserDefinedMessages" Type="Boolean" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tConnection" Relationship="SQLClueModel.fk_tInstance__Name__to__tConnection__InstanceName" FromRole="tInstance" ToRole="tConnection" />
+          <NavigationProperty Name="tDbs" Relationship="SQLClueModel.fk_tDb__Instance__to__tInstance__Name" FromRole="tInstance" ToRole="tDb" />
+          <NavigationProperty Name="tJobServer" Relationship="SQLClueModel.fk_tJobServer__to__tInstance__Name" FromRole="tInstance" ToRole="tJobServer" />
+        </EntityType>
+        <EntityType Name="tJobServer">
+          <Key>
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Alerts" Type="Boolean" Nullable="false" />
+          <Property Name="AlertSystem" Type="Boolean" Nullable="false" />
+          <Property Name="Jobs" Type="Boolean" Nullable="false" />
+          <Property Name="Operators" Type="Boolean" Nullable="false" />
+          <Property Name="ProxyAccounts" Type="Boolean" Nullable="false" />
+          <Property Name="TargetServers" Type="Boolean" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tInstance" Relationship="SQLClueModel.fk_tJobServer__to__tInstance__Name" FromRole="tJobServer" ToRole="tInstance" />
+        </EntityType>
+        <EntityType Name="tLabel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncludeChildren" Type="Boolean" />
+          <Property Name="Label" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ExpiredDt" Type="DateTime" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tChanges" Relationship="SQLClueModel.tChangeLabel" FromRole="tLabel" ToRole="tChange" />
+        </EntityType>
+        <EntityType Name="tSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Interval" Type="Int32" Nullable="false" />
+          <Property Name="IntervalType" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="IntervalBaseDt" Type="DateTime" />
+          <Property Name="UseEventNotifications" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tConnection" Relationship="SQLClueModel.fk_tSchedule__InstanceName__to__tConnection__InstanceName" FromRole="tSchedule" ToRole="tConnection" />
+        </EntityType>
+        <EntityType Name="tServiceBroker">
+          <Key>
+            <PropertyRef Name="DatabaseName" />
+            <PropertyRef Name="InstanceName" />
+          </Key>
+          <Property Name="DatabaseName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="MessageTypes" Type="Boolean" Nullable="false" />
+          <Property Name="Priorities" Type="Boolean" Nullable="false" />
+          <Property Name="Queues" Type="Boolean" Nullable="false" />
+          <Property Name="RemoteServiceBindings" Type="Boolean" Nullable="false" />
+          <Property Name="Routes" Type="Boolean" Nullable="false" />
+          <Property Name="ServiceContracts" Type="Boolean" Nullable="false" />
+          <Property Name="Services" Type="Boolean" Nullable="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tDb" Relationship="SQLClueModel.fk_tServiceBroker__to__tDB__InstanceName__DBName" FromRole="tServiceBroker" ToRole="tDb" />
+        </EntityType>
+        <EntityType Name="tServiceSetting">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="AddDatabasesUponDiscovery" Type="Boolean" Nullable="false" />
+          <Property Name="TargetEventNotificationDatabase" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Scripting__Options_Batch__Separator" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Misc_Ignore__Blank__Lines" Type="Boolean" Nullable="false" />
+          <Property Name="Misc_Display__Output_Show__Comparison__Details" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_Include__DROP__In__Script" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_Include__IF__EXISTS__With__Drop" Type="Boolean" Nullable="false" />
+          <Property Name="Misc_Display__Output_Show__Scripts__For__Unmatched__Items" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_IgnoreCase_5" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_Multiline_7" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_ExplicitCapture_4" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_Compiled_1" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_SingleLine_9" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_IgnorePatternWhiteSpace_6" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_RightToLeft_8" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_ECMAScript_3" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Regex__Options_CultureInvariant_2" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineReplace__Pattern_1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Regular__Expressions_LineReplace__Replacement_2" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_IgnoreCase_5" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_Multiline_7" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_ExplicitCapture_4" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_Compiled_1" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_SingleLine_9" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_IgnorePatternWhiteSpace_6" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_RightToLeft_8" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_ECMAScript_3" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Regex__Options_CultureInvariant_2" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_LineSplit__Pattern_3" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_IgnoreCase_5" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_Multiline_7" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_ExplicitCapture_4" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_Compiled_1" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_SingleLine_9" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_IgnorePatternWhiteSpace_6" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_RightToLeft_8" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_ECMAScript_3" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Regex__Options_CultureInvariant_2" Type="Boolean" Nullable="false" />
+          <Property Name="Regular__Expressions_NameMatch__Pattern_4" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Scripting__Options_SMO_AgentAlertJob_1" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AgentJobId_2" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AgentNotify_3" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AllowSystemObjects_10" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AnsiFile_20" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_AnsiPadding_30" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_BatchSize_35" Type="Int32" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Bindings_40" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ChangeTracking_45" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ClusteredIndexes_50" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ContinueScriptingOnError_60" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ConvertUserDefinedDataTypesToBaseType_70" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DdlBodyOnly_80" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DdlHeaderOnly_90" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Default_100" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriAll_110" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriAllConstraints_120" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriAllKeys_130" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriChecks_140" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriClustered_150" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriDefaults_160" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriForeignKeys_170" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriIncludeSystemNames_180" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriIndexes_190" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriNonClustered_200" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriPrimaryKey_210" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriUniqueKeys_220" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_DriWithNoCheck_230" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Encoding_240" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Scripting__Options_SMO_EnforceScriptingOptions_250" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ExtendedProperties_260" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_FullTextCatalogs_270" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_FullTextindexes_280" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_FullTextStopLists_285" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeDatabaseContext_290" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeDatabaseRoleMemberships_291" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeFullTextCatalogRootPath_295" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeHeaders_300" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_IncludeIfNotExists_301" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Indexes_310" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_LoginSID_320" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoAssemblies_330" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoCollation_340" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoCommandTerminator_350" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoExecuteAs_360" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoFilegroup_370" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoFileStream_373" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoFileStreamColumn_376" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoIdentities_380" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoIndexPartitioningSchemes_390" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoMailProfileAccounts_400" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoMailProfilePrincipals_410" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NonClusteredIndexes_420" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoTablePartitioningSchemes_430" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoVarDecimal_431" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoViewColumns_440" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_NoXMLNameSpaces_450" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_OptimizerData_460" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Permissions_470" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_PrimaryObject_480" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_SchemaQualify_490" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_SchemaQualifyForeignKeysReferences_500" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptBatchTerminator_502" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptData_503" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptDataCompression_505" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptDrops_506" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptOwner_508" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_ScriptSchema_509" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Statistics_510" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_TimestampToBinary_520" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_TargetServerVersion_530" Type="Int32" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_Triggers_540" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_WithDependencies_550" Type="Boolean" Nullable="false" />
+          <Property Name="Scripting__Options_SMO_XMLIndexes_560" Type="Boolean" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tSQLCfg">
+          <Key>
+            <PropertyRef Name="LicensedCompany" />
+            <PropertyRef Name="LicensedUser" />
+            <PropertyRef Name="LicenseCode" />
+          </Key>
+          <Property Name="LicensedCompany" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="LicensedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="LicenseCode" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="LicensedInstanceCount" Type="Int32" Nullable="false" />
+          <Property Name="LicenseDate" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecCreatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="RecUpdatedDt" Type="DateTime" Nullable="false" />
+          <Property Name="RecUpdatedUser" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tSQLErrorLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="DBName" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ErrorNumber" Type="Int32" />
+          <Property Name="ErrorSeverity" Type="Int32" />
+          <Property Name="ErrorState" Type="Int32" />
+          <Property Name="ErrorProcedure" Type="String" MaxLength="126" Unicode="true" FixedLength="false" />
+          <Property Name="ErrorLine" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
+          <Property Name="TextData" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RecCreatedDt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vArchive">
+          <Key>
+            <PropertyRef Name="ArchiveId" />
+            <PropertyRef Name="InstanceName" />
+            <PropertyRef Name="Interval" />
+            <PropertyRef Name="IntervalType" />
+            <PropertyRef Name="UseEventNotifications" />
+          </Key>
+          <Property Name="ArchiveId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstanceName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Interval" Type="Int32" Nullable="false" />
+          <Property Name="IntervalType" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="NextRunDt" Type="DateTime" />
+          <Property Name="UseEventNotifications" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="IsScheduleActive" Type="Boolean" />
+        </EntityType>
+        <Association Name="fk_tInstance__Name__to__tConnection__InstanceName">
+          <End Role="tConnection" Type="SQLClueModel.tConnection" Multiplicity="1" />
+          <End Role="tInstance" Type="SQLClueModel.tInstance" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tConnection">
+              <PropertyRef Name="InstanceName" />
+            </Principal>
+            <Dependent Role="tInstance">
+              <PropertyRef Name="Name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tSchedule__InstanceName__to__tConnection__InstanceName">
+          <End Role="tConnection" Type="SQLClueModel.tConnection" Multiplicity="1" />
+          <End Role="tSchedule" Type="SQLClueModel.tSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tConnection">
+              <PropertyRef Name="InstanceName" />
+            </Principal>
+            <Dependent Role="tSchedule">
+              <PropertyRef Name="InstanceName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tDb__Instance__to__tInstance__Name">
+          <End Role="tInstance" Type="SQLClueModel.tInstance" Multiplicity="1" />
+          <End Role="tDb" Type="SQLClueModel.tDb" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tInstance">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="tDb">
+              <PropertyRef Name="InstanceName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tServiceBroker__to__tDB__InstanceName__DBName">
+          <End Role="tDb" Type="SQLClueModel.tDb" Multiplicity="1" />
+          <End Role="tServiceBroker" Type="SQLClueModel.tServiceBroker" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tDb">
+              <PropertyRef Name="InstanceName" />
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="tServiceBroker">
+              <PropertyRef Name="InstanceName" />
+              <PropertyRef Name="DatabaseName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tJobServer__to__tInstance__Name">
+          <End Role="tInstance" Type="SQLClueModel.tInstance" Multiplicity="1" />
+          <End Role="tJobServer" Type="SQLClueModel.tJobServer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tInstance">
+              <PropertyRef Name="Name" />
+            </Principal>
+            <Dependent Role="tJobServer">
+              <PropertyRef Name="InstanceName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tChangeLabel">
+          <End Role="tChange" Type="SQLClueModel.tChange" Multiplicity="*" />
+          <End Role="tLabel" Type="SQLClueModel.tLabel" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SQLClueModelStoreContainer" CdmEntityContainer="SQLClueEntities1">
+          <EntitySetMapping Name="tArchiveLogs"><EntityTypeMapping TypeName="SQLClueModel.tArchiveLog"><MappingFragment StoreEntitySet="tArchiveLog">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="NbrDDLEventsProcessed" ColumnName="NbrDDLEventsProcessed" />
+            <ScalarProperty Name="NbrItemsProcessed" ColumnName="NbrItemsProcessed" />
+            <ScalarProperty Name="NbrItemsAdded" ColumnName="NbrItemsAdded" />
+            <ScalarProperty Name="NbrItemsChanged" ColumnName="NbrItemsChanged" />
+            <ScalarProperty Name="NbrItemsDeleted" ColumnName="NbrItemsDeleted" />
+            <ScalarProperty Name="ArchiveError" ColumnName="ArchiveError" />
+            <ScalarProperty Name="ScheduledStartDt" ColumnName="ScheduledStartDt" />
+            <ScalarProperty Name="ActualStartDt" ColumnName="ActualStartDt" />
+            <ScalarProperty Name="ActualEndDt" ColumnName="ActualEndDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tChanges"><EntityTypeMapping TypeName="SQLClueModel.tChange"><MappingFragment StoreEntitySet="tChange">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Version" ColumnName="Version" />
+            <ScalarProperty Name="Action" ColumnName="Action" />
+            <ScalarProperty Name="EventData" ColumnName="EventData" />
+            <ScalarProperty Name="Definition" ColumnName="Definition" />
+            <ScalarProperty Name="DefinitionDt" ColumnName="DefinitionDt" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tConnections"><EntityTypeMapping TypeName="SQLClueModel.tConnection"><MappingFragment StoreEntitySet="tConnection">
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="EncryptedConnection" ColumnName="EncryptedConnection" />
+            <ScalarProperty Name="TrustServerCertificate" ColumnName="TrustServerCertificate" />
+            <ScalarProperty Name="NetworkProtocol" ColumnName="NetworkProtocol" />
+            <ScalarProperty Name="ConnectionTimeout" ColumnName="ConnectionTimeout" />
+            <ScalarProperty Name="LoginSecure" ColumnName="LoginSecure" />
+            <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+            <ScalarProperty Name="EncryptedPassword" ColumnName="EncryptedPassword" />
+            <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tDbs"><EntityTypeMapping TypeName="SQLClueModel.tDb"><MappingFragment StoreEntitySet="tDb">
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="ActiveDirectory" ColumnName="ActiveDirectory" />
+            <ScalarProperty Name="ApplicationRoles" ColumnName="ApplicationRoles" />
+            <ScalarProperty Name="Assemblies" ColumnName="Assemblies" />
+            <ScalarProperty Name="AsymmetricKeys" ColumnName="AsymmetricKeys" />
+            <ScalarProperty Name="Certificates" ColumnName="Certificates" />
+            <ScalarProperty Name="DatabaseAuditSpecifications" ColumnName="DatabaseAuditSpecifications" />
+            <ScalarProperty Name="DatabaseOptions" ColumnName="DatabaseOptions" />
+            <ScalarProperty Name="Defaults" ColumnName="Defaults" />
+            <ScalarProperty Name="FullTextCatalogs" ColumnName="FullTextCatalogs" />
+            <ScalarProperty Name="FullTextStopLists" ColumnName="FullTextStopLists" />
+            <ScalarProperty Name="PartitionFunctions" ColumnName="PartitionFunctions" />
+            <ScalarProperty Name="PartitionSchemes" ColumnName="PartitionSchemes" />
+            <ScalarProperty Name="PlanGuides" ColumnName="PlanGuides" />
+            <ScalarProperty Name="Roles" ColumnName="Roles" />
+            <ScalarProperty Name="Rules" ColumnName="Rules" />
+            <ScalarProperty Name="Schemas" ColumnName="Schemas" />
+            <ScalarProperty Name="ServiceBroker" ColumnName="ServiceBroker" />
+            <ScalarProperty Name="StoredProcedures" ColumnName="StoredProcedures" />
+            <ScalarProperty Name="SymmetricKeys" ColumnName="SymmetricKeys" />
+            <ScalarProperty Name="Synonyms" ColumnName="Synonyms" />
+            <ScalarProperty Name="Tables" ColumnName="Tables" />
+            <ScalarProperty Name="Triggers" ColumnName="Triggers" />
+            <ScalarProperty Name="UserDefinedAggregates" ColumnName="UserDefinedAggregates" />
+            <ScalarProperty Name="UserDefinedDataTypes" ColumnName="UserDefinedDataTypes" />
+            <ScalarProperty Name="UserDefinedFunctions" ColumnName="UserDefinedFunctions" />
+            <ScalarProperty Name="UserDefinedTableTypes" ColumnName="UserDefinedTableTypes" />
+            <ScalarProperty Name="UserDefinedTypes" ColumnName="UserDefinedTypes" />
+            <ScalarProperty Name="Users" ColumnName="Users" />
+            <ScalarProperty Name="Views" ColumnName="Views" />
+            <ScalarProperty Name="XMLSchemaCollections" ColumnName="XMLSchemaCollections" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tInstances"><EntityTypeMapping TypeName="SQLClueModel.tInstance"><MappingFragment StoreEntitySet="tInstance">
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="ActiveDirectory" ColumnName="ActiveDirectory" />
+            <ScalarProperty Name="Audits" ColumnName="Audits" />
+            <ScalarProperty Name="BackupDevices" ColumnName="BackupDevices" />
+            <ScalarProperty Name="Configuration" ColumnName="Configuration" />
+            <ScalarProperty Name="Credentials" ColumnName="Credentials" />
+            <ScalarProperty Name="CryptographicProviders" ColumnName="CryptographicProviders" />
+            <ScalarProperty Name="Databases" ColumnName="Databases" />
+            <ScalarProperty Name="EndPoints" ColumnName="EndPoints" />
+            <ScalarProperty Name="FullTextService" ColumnName="FullTextService" />
+            <ScalarProperty Name="Information" ColumnName="Information" />
+            <ScalarProperty Name="JobServer" ColumnName="JobServer" />
+            <ScalarProperty Name="LinkedServers" ColumnName="LinkedServers" />
+            <ScalarProperty Name="Logins" ColumnName="Logins" />
+            <ScalarProperty Name="Mail" ColumnName="Mail" />
+            <ScalarProperty Name="ProxyAccount" ColumnName="ProxyAccount" />
+            <ScalarProperty Name="ResourceGovernor" ColumnName="ResourceGovernor" />
+            <ScalarProperty Name="Roles" ColumnName="Roles" />
+            <ScalarProperty Name="ServerAuditSpecifications" ColumnName="ServerAuditSpecifications" />
+            <ScalarProperty Name="Settings" ColumnName="Settings" />
+            <ScalarProperty Name="Triggers" ColumnName="Triggers" />
+            <ScalarProperty Name="UserDefinedMessages" ColumnName="UserDefinedMessages" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tJobServers"><EntityTypeMapping TypeName="SQLClueModel.tJobServer"><MappingFragment StoreEntitySet="tJobServer">
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="Alerts" ColumnName="Alerts" />
+            <ScalarProperty Name="AlertSystem" ColumnName="AlertSystem" />
+            <ScalarProperty Name="Jobs" ColumnName="Jobs" />
+            <ScalarProperty Name="Operators" ColumnName="Operators" />
+            <ScalarProperty Name="ProxyAccounts" ColumnName="ProxyAccounts" />
+            <ScalarProperty Name="TargetServers" ColumnName="TargetServers" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tLabels"><EntityTypeMapping TypeName="SQLClueModel.tLabel"><MappingFragment StoreEntitySet="tLabel">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="IncludeChildren" ColumnName="IncludeChildren" />
+            <ScalarProperty Name="Label" ColumnName="Label" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="ExpiredDt" ColumnName="ExpiredDt" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tSchedules"><EntityTypeMapping TypeName="SQLClueModel.tSchedule"><MappingFragment StoreEntitySet="tSchedule">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="Interval" ColumnName="Interval" />
+            <ScalarProperty Name="IntervalType" ColumnName="IntervalType" />
+            <ScalarProperty Name="IntervalBaseDt" ColumnName="IntervalBaseDt" />
+            <ScalarProperty Name="UseEventNotifications" ColumnName="UseEventNotifications" />
+            <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tServiceBrokers"><EntityTypeMapping TypeName="SQLClueModel.tServiceBroker"><MappingFragment StoreEntitySet="tServiceBroker">
+            <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="MessageTypes" ColumnName="MessageTypes" />
+            <ScalarProperty Name="Priorities" ColumnName="Priorities" />
+            <ScalarProperty Name="Queues" ColumnName="Queues" />
+            <ScalarProperty Name="RemoteServiceBindings" ColumnName="RemoteServiceBindings" />
+            <ScalarProperty Name="Routes" ColumnName="Routes" />
+            <ScalarProperty Name="ServiceContracts" ColumnName="ServiceContracts" />
+            <ScalarProperty Name="Services" ColumnName="Services" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tServiceSettings"><EntityTypeMapping TypeName="SQLClueModel.tServiceSetting"><MappingFragment StoreEntitySet="tServiceSettings">
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="AddDatabasesUponDiscovery" ColumnName="AddDatabasesUponDiscovery" />
+            <ScalarProperty Name="TargetEventNotificationDatabase" ColumnName="TargetEventNotificationDatabase" />
+            <ScalarProperty Name="Scripting__Options_Batch__Separator" ColumnName="Scripting__Options_Batch__Separator" />
+            <ScalarProperty Name="Misc_Ignore__Blank__Lines" ColumnName="Misc_Ignore__Blank__Lines" />
+            <ScalarProperty Name="Misc_Display__Output_Show__Comparison__Details" ColumnName="Misc_Display__Output_Show__Comparison__Details" />
+            <ScalarProperty Name="Scripting__Options_Include__DROP__In__Script" ColumnName="Scripting__Options_Include__DROP__In__Script" />
+            <ScalarProperty Name="Scripting__Options_Include__IF__EXISTS__With__Drop" ColumnName="Scripting__Options_Include__IF__EXISTS__With__Drop" />
+            <ScalarProperty Name="Misc_Display__Output_Show__Scripts__For__Unmatched__Items" ColumnName="Misc_Display__Output_Show__Scripts__For__Unmatched__Items" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_IgnoreCase_5" ColumnName="Regular__Expressions_LineReplace__Regex__Options_IgnoreCase_5" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_Multiline_7" ColumnName="Regular__Expressions_LineReplace__Regex__Options_Multiline_7" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_ExplicitCapture_4" ColumnName="Regular__Expressions_LineReplace__Regex__Options_ExplicitCapture_4" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_Compiled_1" ColumnName="Regular__Expressions_LineReplace__Regex__Options_Compiled_1" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_SingleLine_9" ColumnName="Regular__Expressions_LineReplace__Regex__Options_SingleLine_9" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_IgnorePatternWhiteSpace_6" ColumnName="Regular__Expressions_LineReplace__Regex__Options_IgnorePatternWhiteSpace_6" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_RightToLeft_8" ColumnName="Regular__Expressions_LineReplace__Regex__Options_RightToLeft_8" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_ECMAScript_3" ColumnName="Regular__Expressions_LineReplace__Regex__Options_ECMAScript_3" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Regex__Options_CultureInvariant_2" ColumnName="Regular__Expressions_LineReplace__Regex__Options_CultureInvariant_2" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Pattern_1" ColumnName="Regular__Expressions_LineReplace__Pattern_1" />
+            <ScalarProperty Name="Regular__Expressions_LineReplace__Replacement_2" ColumnName="Regular__Expressions_LineReplace__Replacement_2" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_IgnoreCase_5" ColumnName="Regular__Expressions_LineSplit__Regex__Options_IgnoreCase_5" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_Multiline_7" ColumnName="Regular__Expressions_LineSplit__Regex__Options_Multiline_7" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_ExplicitCapture_4" ColumnName="Regular__Expressions_LineSplit__Regex__Options_ExplicitCapture_4" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_Compiled_1" ColumnName="Regular__Expressions_LineSplit__Regex__Options_Compiled_1" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_SingleLine_9" ColumnName="Regular__Expressions_LineSplit__Regex__Options_SingleLine_9" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_IgnorePatternWhiteSpace_6" ColumnName="Regular__Expressions_LineSplit__Regex__Options_IgnorePatternWhiteSpace_6" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_RightToLeft_8" ColumnName="Regular__Expressions_LineSplit__Regex__Options_RightToLeft_8" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_ECMAScript_3" ColumnName="Regular__Expressions_LineSplit__Regex__Options_ECMAScript_3" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Regex__Options_CultureInvariant_2" ColumnName="Regular__Expressions_LineSplit__Regex__Options_CultureInvariant_2" />
+            <ScalarProperty Name="Regular__Expressions_LineSplit__Pattern_3" ColumnName="Regular__Expressions_LineSplit__Pattern_3" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_IgnoreCase_5" ColumnName="Regular__Expressions_NameMatch__Regex__Options_IgnoreCase_5" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_Multiline_7" ColumnName="Regular__Expressions_NameMatch__Regex__Options_Multiline_7" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_ExplicitCapture_4" ColumnName="Regular__Expressions_NameMatch__Regex__Options_ExplicitCapture_4" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_Compiled_1" ColumnName="Regular__Expressions_NameMatch__Regex__Options_Compiled_1" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_SingleLine_9" ColumnName="Regular__Expressions_NameMatch__Regex__Options_SingleLine_9" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_IgnorePatternWhiteSpace_6" ColumnName="Regular__Expressions_NameMatch__Regex__Options_IgnorePatternWhiteSpace_6" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_RightToLeft_8" ColumnName="Regular__Expressions_NameMatch__Regex__Options_RightToLeft_8" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_ECMAScript_3" ColumnName="Regular__Expressions_NameMatch__Regex__Options_ECMAScript_3" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Regex__Options_CultureInvariant_2" ColumnName="Regular__Expressions_NameMatch__Regex__Options_CultureInvariant_2" />
+            <ScalarProperty Name="Regular__Expressions_NameMatch__Pattern_4" ColumnName="Regular__Expressions_NameMatch__Pattern_4" />
+            <ScalarProperty Name="Scripting__Options_SMO_AgentAlertJob_1" ColumnName="Scripting__Options_SMO_AgentAlertJob_1" />
+            <ScalarProperty Name="Scripting__Options_SMO_AgentJobId_2" ColumnName="Scripting__Options_SMO_AgentJobId_2" />
+            <ScalarProperty Name="Scripting__Options_SMO_AgentNotify_3" ColumnName="Scripting__Options_SMO_AgentNotify_3" />
+            <ScalarProperty Name="Scripting__Options_SMO_AllowSystemObjects_10" ColumnName="Scripting__Options_SMO_AllowSystemObjects_10" />
+            <ScalarProperty Name="Scripting__Options_SMO_AnsiFile_20" ColumnName="Scripting__Options_SMO_AnsiFile_20" />
+            <ScalarProperty Name="Scripting__Options_SMO_AnsiPadding_30" ColumnName="Scripting__Options_SMO_AnsiPadding_30" />
+            <ScalarProperty Name="Scripting__Options_SMO_BatchSize_35" ColumnName="Scripting__Options_SMO_BatchSize_35" />
+            <ScalarProperty Name="Scripting__Options_SMO_Bindings_40" ColumnName="Scripting__Options_SMO_Bindings_40" />
+            <ScalarProperty Name="Scripting__Options_SMO_ChangeTracking_45" ColumnName="Scripting__Options_SMO_ChangeTracking_45" />
+            <ScalarProperty Name="Scripting__Options_SMO_ClusteredIndexes_50" ColumnName="Scripting__Options_SMO_ClusteredIndexes_50" />
+            <ScalarProperty Name="Scripting__Options_SMO_ContinueScriptingOnError_60" ColumnName="Scripting__Options_SMO_ContinueScriptingOnError_60" />
+            <ScalarProperty Name="Scripting__Options_SMO_ConvertUserDefinedDataTypesToBaseType_70" ColumnName="Scripting__Options_SMO_ConvertUserDefinedDataTypesToBaseType_70" />
+            <ScalarProperty Name="Scripting__Options_SMO_DdlBodyOnly_80" ColumnName="Scripting__Options_SMO_DdlBodyOnly_80" />
+            <ScalarProperty Name="Scripting__Options_SMO_DdlHeaderOnly_90" ColumnName="Scripting__Options_SMO_DdlHeaderOnly_90" />
+            <ScalarProperty Name="Scripting__Options_SMO_Default_100" ColumnName="Scripting__Options_SMO_Default_100" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriAll_110" ColumnName="Scripting__Options_SMO_DriAll_110" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriAllConstraints_120" ColumnName="Scripting__Options_SMO_DriAllConstraints_120" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriAllKeys_130" ColumnName="Scripting__Options_SMO_DriAllKeys_130" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriChecks_140" ColumnName="Scripting__Options_SMO_DriChecks_140" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriClustered_150" ColumnName="Scripting__Options_SMO_DriClustered_150" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriDefaults_160" ColumnName="Scripting__Options_SMO_DriDefaults_160" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriForeignKeys_170" ColumnName="Scripting__Options_SMO_DriForeignKeys_170" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriIncludeSystemNames_180" ColumnName="Scripting__Options_SMO_DriIncludeSystemNames_180" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriIndexes_190" ColumnName="Scripting__Options_SMO_DriIndexes_190" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriNonClustered_200" ColumnName="Scripting__Options_SMO_DriNonClustered_200" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriPrimaryKey_210" ColumnName="Scripting__Options_SMO_DriPrimaryKey_210" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriUniqueKeys_220" ColumnName="Scripting__Options_SMO_DriUniqueKeys_220" />
+            <ScalarProperty Name="Scripting__Options_SMO_DriWithNoCheck_230" ColumnName="Scripting__Options_SMO_DriWithNoCheck_230" />
+            <ScalarProperty Name="Scripting__Options_SMO_Encoding_240" ColumnName="Scripting__Options_SMO_Encoding_240" />
+            <ScalarProperty Name="Scripting__Options_SMO_EnforceScriptingOptions_250" ColumnName="Scripting__Options_SMO_EnforceScriptingOptions_250" />
+            <ScalarProperty Name="Scripting__Options_SMO_ExtendedProperties_260" ColumnName="Scripting__Options_SMO_ExtendedProperties_260" />
+            <ScalarProperty Name="Scripting__Options_SMO_FullTextCatalogs_270" ColumnName="Scripting__Options_SMO_FullTextCatalogs_270" />
+            <ScalarProperty Name="Scripting__Options_SMO_FullTextindexes_280" ColumnName="Scripting__Options_SMO_FullTextindexes_280" />
+            <ScalarProperty Name="Scripting__Options_SMO_FullTextStopLists_285" ColumnName="Scripting__Options_SMO_FullTextStopLists_285" />
+            <ScalarProperty Name="Scripting__Options_SMO_IncludeDatabaseContext_290" ColumnName="Scripting__Options_SMO_IncludeDatabaseContext_290" />
+            <ScalarProperty Name="Scripting__Options_SMO_IncludeDatabaseRoleMemberships_291" ColumnName="Scripting__Options_SMO_IncludeDatabaseRoleMemberships_291" />
+            <ScalarProperty Name="Scripting__Options_SMO_IncludeFullTextCatalogRootPath_295" ColumnName="Scripting__Options_SMO_IncludeFullTextCatalogRootPath_295" />
+            <ScalarProperty Name="Scripting__Options_SMO_IncludeHeaders_300" ColumnName="Scripting__Options_SMO_IncludeHeaders_300" />
+            <ScalarProperty Name="Scripting__Options_SMO_IncludeIfNotExists_301" ColumnName="Scripting__Options_SMO_IncludeIfNotExists_301" />
+            <ScalarProperty Name="Scripting__Options_SMO_Indexes_310" ColumnName="Scripting__Options_SMO_Indexes_310" />
+            <ScalarProperty Name="Scripting__Options_SMO_LoginSID_320" ColumnName="Scripting__Options_SMO_LoginSID_320" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoAssemblies_330" ColumnName="Scripting__Options_SMO_NoAssemblies_330" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoCollation_340" ColumnName="Scripting__Options_SMO_NoCollation_340" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoCommandTerminator_350" ColumnName="Scripting__Options_SMO_NoCommandTerminator_350" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoExecuteAs_360" ColumnName="Scripting__Options_SMO_NoExecuteAs_360" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoFilegroup_370" ColumnName="Scripting__Options_SMO_NoFilegroup_370" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoFileStream_373" ColumnName="Scripting__Options_SMO_NoFileStream_373" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoFileStreamColumn_376" ColumnName="Scripting__Options_SMO_NoFileStreamColumn_376" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoIdentities_380" ColumnName="Scripting__Options_SMO_NoIdentities_380" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoIndexPartitioningSchemes_390" ColumnName="Scripting__Options_SMO_NoIndexPartitioningSchemes_390" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoMailProfileAccounts_400" ColumnName="Scripting__Options_SMO_NoMailProfileAccounts_400" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoMailProfilePrincipals_410" ColumnName="Scripting__Options_SMO_NoMailProfilePrincipals_410" />
+            <ScalarProperty Name="Scripting__Options_SMO_NonClusteredIndexes_420" ColumnName="Scripting__Options_SMO_NonClusteredIndexes_420" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoTablePartitioningSchemes_430" ColumnName="Scripting__Options_SMO_NoTablePartitioningSchemes_430" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoVarDecimal_431" ColumnName="Scripting__Options_SMO_NoVarDecimal_431" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoViewColumns_440" ColumnName="Scripting__Options_SMO_NoViewColumns_440" />
+            <ScalarProperty Name="Scripting__Options_SMO_NoXMLNameSpaces_450" ColumnName="Scripting__Options_SMO_NoXMLNameSpaces_450" />
+            <ScalarProperty Name="Scripting__Options_SMO_OptimizerData_460" ColumnName="Scripting__Options_SMO_OptimizerData_460" />
+            <ScalarProperty Name="Scripting__Options_SMO_Permissions_470" ColumnName="Scripting__Options_SMO_Permissions_470" />
+            <ScalarProperty Name="Scripting__Options_SMO_PrimaryObject_480" ColumnName="Scripting__Options_SMO_PrimaryObject_480" />
+            <ScalarProperty Name="Scripting__Options_SMO_SchemaQualify_490" ColumnName="Scripting__Options_SMO_SchemaQualify_490" />
+            <ScalarProperty Name="Scripting__Options_SMO_SchemaQualifyForeignKeysReferences_500" ColumnName="Scripting__Options_SMO_SchemaQualifyForeignKeysReferences_500" />
+            <ScalarProperty Name="Scripting__Options_SMO_ScriptBatchTerminator_502" ColumnName="Scripting__Options_SMO_ScriptBatchTerminator_502" />
+            <ScalarProperty Name="Scripting__Options_SMO_ScriptData_503" ColumnName="Scripting__Options_SMO_ScriptData_503" />
+            <ScalarProperty Name="Scripting__Options_SMO_ScriptDataCompression_505" ColumnName="Scripting__Options_SMO_ScriptDataCompression_505" />
+            <ScalarProperty Name="Scripting__Options_SMO_ScriptDrops_506" ColumnName="Scripting__Options_SMO_ScriptDrops_506" />
+            <ScalarProperty Name="Scripting__Options_SMO_ScriptOwner_508" ColumnName="Scripting__Options_SMO_ScriptOwner_508" />
+            <ScalarProperty Name="Scripting__Options_SMO_ScriptSchema_509" ColumnName="Scripting__Options_SMO_ScriptSchema_509" />
+            <ScalarProperty Name="Scripting__Options_SMO_Statistics_510" ColumnName="Scripting__Options_SMO_Statistics_510" />
+            <ScalarProperty Name="Scripting__Options_SMO_TimestampToBinary_520" ColumnName="Scripting__Options_SMO_TimestampToBinary_520" />
+            <ScalarProperty Name="Scripting__Options_SMO_TargetServerVersion_530" ColumnName="Scripting__Options_SMO_TargetServerVersion_530" />
+            <ScalarProperty Name="Scripting__Options_SMO_Triggers_540" ColumnName="Scripting__Options_SMO_Triggers_540" />
+            <ScalarProperty Name="Scripting__Options_SMO_WithDependencies_550" ColumnName="Scripting__Options_SMO_WithDependencies_550" />
+            <ScalarProperty Name="Scripting__Options_SMO_XMLIndexes_560" ColumnName="Scripting__Options_SMO_XMLIndexes_560" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tSQLCfgs"><EntityTypeMapping TypeName="SQLClueModel.tSQLCfg"><MappingFragment StoreEntitySet="tSQLCfg">
+            <ScalarProperty Name="LicensedCompany" ColumnName="LicensedCompany" />
+            <ScalarProperty Name="LicensedUser" ColumnName="LicensedUser" />
+            <ScalarProperty Name="LicenseCode" ColumnName="LicenseCode" />
+            <ScalarProperty Name="LicensedInstanceCount" ColumnName="LicensedInstanceCount" />
+            <ScalarProperty Name="LicenseDate" ColumnName="LicenseDate" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+            <ScalarProperty Name="RecCreatedUser" ColumnName="RecCreatedUser" />
+            <ScalarProperty Name="RecUpdatedDt" ColumnName="RecUpdatedDt" />
+            <ScalarProperty Name="RecUpdatedUser" ColumnName="RecUpdatedUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tSQLErrorLogs"><EntityTypeMapping TypeName="SQLClueModel.tSQLErrorLog"><MappingFragment StoreEntitySet="tSQLErrorLog">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="DBName" ColumnName="DBName" />
+            <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+            <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+            <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+            <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+            <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+            <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+            <ScalarProperty Name="TextData" ColumnName="TextData" />
+            <ScalarProperty Name="Notes" ColumnName="Notes" />
+            <ScalarProperty Name="RecCreatedDt" ColumnName="RecCreatedDt" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="vArchives"><EntityTypeMapping TypeName="SQLClueModel.vArchive"><MappingFragment StoreEntitySet="vArchive">
+            <ScalarProperty Name="ArchiveId" ColumnName="ArchiveId" />
+            <ScalarProperty Name="InstanceName" ColumnName="InstanceName" />
+            <ScalarProperty Name="Interval" ColumnName="Interval" />
+            <ScalarProperty Name="IntervalType" ColumnName="IntervalType" />
+            <ScalarProperty Name="NextRunDt" ColumnName="NextRunDt" />
+            <ScalarProperty Name="UseEventNotifications" ColumnName="UseEventNotifications" />
+            <ScalarProperty Name="IsScheduleActive" ColumnName="IsScheduleActive" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="tChangeLabel" TypeName="SQLClueModel.tChangeLabel" StoreEntitySet="tChangeLabel">
+            <EndProperty Name="tChange">
+              <ScalarProperty Name="Id" ColumnName="ChangeId" />
+            </EndProperty>
+            <EndProperty Name="tLabel">
+              <ScalarProperty Name="Id" ColumnName="LabelId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="SQLClueModel.tArchiveLog" Width="1.5" PointX="9.75" PointY="0.75" Height="3.518697916666667" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tChange" Width="1.5" PointX="7.75" PointY="9" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tConnection" Width="1.5" PointX="0.75" PointY="7.875" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tDb" Width="1.5" PointX="5.25" PointY="1.625" Height="8.3262337239583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tInstance" Width="1.5" PointX="3" PointY="4.5" Height="6.5955208333333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tJobServer" Width="1.5" PointX="5.25" PointY="10.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tLabel" Width="1.5" PointX="10" PointY="9" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tSchedule" Width="1.5" PointX="3" PointY="14.75" Height="3.3263964843749978" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tServiceBroker" Width="1.5" PointX="7.5" PointY="4" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tServiceSetting" Width="1.5" PointX="12.75" PointY="0.75" Height="23.325745442708332" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tSQLCfg" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.tSQLErrorLog" Width="1.5" PointX="7.75" PointY="12.75" Height="3.3263964843750031" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLClueModel.vArchive" Width="1.5" PointX="9.75" PointY="5.75" Height="2.3648893229166674" IsExpanded="true" />
+        <AssociationConnector Association="SQLClueModel.fk_tInstance__Name__to__tConnection__InstanceName" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.4852604166666659" />
+          <ConnectorPoint PointX="3" PointY="9.4852604166666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SQLClueModel.fk_tSchedule__InstanceName__to__tConnection__InstanceName" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="11.77830078125" />
+          <ConnectorPoint PointX="1.5" PointY="16.413198242187498" />
+          <ConnectorPoint PointX="3" PointY="16.413198242187498" />
+        </AssociationConnector>
+        <AssociationConnector Association="SQLClueModel.fk_tDb__Instance__to__tInstance__Name" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.2256168619791659" />
+          <ConnectorPoint PointX="5.25" PointY="7.2256168619791659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SQLClueModel.fk_tServiceBroker__to__tDB__InstanceName__DBName" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="5.8554996744791659" />
+          <ConnectorPoint PointX="7.5" PointY="5.8554996744791659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SQLClueModel.fk_tJobServer__to__tInstance__Name" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.922760416666666" />
+          <ConnectorPoint PointX="5.25" PointY="10.922760416666666" />
+        </AssociationConnector>
+        <AssociationConnector Association="SQLClueModel.tChangeLabel" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.25" PointY="10.278595377604166" />
+          <ConnectorPoint PointX="10" PointY="10.278595377604166" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

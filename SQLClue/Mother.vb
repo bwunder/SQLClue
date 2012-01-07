@@ -59,7 +59,6 @@ Public Class Mother
             SplashScreen1.CurrentStatusEventHandler(String.Format("Finding SQL Servers. {0} Search scope. See 'Tools' Menu to change.", My.Settings.ServerDiscoveryScope))
             SetServerList()
             _LoadRemoteRunbook = False
-            LicenseToolStripMenuItem.ToolTipText = "License SQLClue for full feature support"
             RepositoryToolStripMenuItem.ToolTipText = "Configure SQL Configuration Data Store"
             RunbookToolStripMenuItem.ToolTipText = "Configure the Data Center Runbook Data Store"
             ToolStripMenuItemDashboard.Enabled = My.Settings.RepositoryEnabled
@@ -556,7 +555,6 @@ Public Class Mother
             RepositoryConfigureMenuItem.Enabled = True
             RepositoryUninstallMenuItem.Enabled = True
             RepositoryArchiveAlertsMenuItem.Enabled = True
-            ArchiveTutorialToolStripMenuItem.Enabled = True
             ' once there is a repository the other componets are OK to install
             ' but don't mess with them if already installed  
             If Not (My.Settings.RunbookEnabled) Then
@@ -579,7 +577,6 @@ Public Class Mother
             RepositoryConfigureMenuItem.Enabled = False
             RepositoryUninstallMenuItem.Enabled = False
             RepositoryArchiveAlertsMenuItem.Enabled = False
-            ArchiveTutorialToolStripMenuItem.Enabled = False
             My.Settings.RunbookEnabled = False
             RunbookInstallMenuItem.Enabled = False
             ToolStripMenuItemConfigurationReports.Enabled = False
@@ -1090,8 +1087,8 @@ Public Class Mother
 
     End Sub
 
-    Private Sub LicenseToolStripMenuItem_Click(ByVal sender As Object, ByVal e As System.EventArgs) _
-    Handles LicenseToolStripMenuItem.Click
+    Private Sub LicenseToolStripMenuItem_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+
         Try
             For Each f As Form In My.Application.OpenForms
                 If f.Name = "LicenseForm" Then
@@ -2035,5 +2032,12 @@ Public Class Mother
         My.Settings.Save()
     End Sub
 
+    Private Sub RunbookToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RunbookToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ToolStripMenuItem12_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem12.Click
+
+    End Sub
 End Class
 

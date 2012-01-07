@@ -67,7 +67,7 @@ Public Class ReportViewerForm
                 ' get the admins friendly name if there is one
                 ' uses db collation so case insensitve is default
                 Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("dsSQLConfiguration_tSQLCfg", _
-                                                                   Mother.DAL.dsSQLCfg.tSQLCfg))
+                                                                   CType(Mother.DAL.dsSQLCfg.tSQLCfg, DataTable)))
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLClueConsole.rdlc"
                 Dim CurrentLicenseLevel As ReportParameter = New ReportParameter("CurrentInstanceCount", Mother.LicensedInstanceList.Count.ToString)
                 Me.ReportViewerSQLClue.LocalReport.SetParameters(New ReportParameter() {CurrentLicenseLevel, CurrentVersion})
@@ -134,7 +134,7 @@ Public Class ReportViewerForm
                     Dim dt As New cCommon.dsSQLConfiguration.tChangeDataTable
                     TableAdapterSQLCfgChanges.FillByInstance(dt, _
                                                              e.Report.GetParameters("SQLInstance").Values(0))
-                    rpt.DataSources.Add(New ReportDataSource("AllNodesForInstance", dt))
+                    rpt.DataSources.Add(New ReportDataSource("AllNodesForInstance", CType(dt, DataTable)))
                 End Using
                 ' works but loose 'back' link
                 'e.Cancel = True
@@ -148,7 +148,7 @@ Public Class ReportViewerForm
                                                     CInt(e.Report.GetParameters("ScheduleId").Values(0)), _
                                                     CDate(e.Report.GetParameters("BeginDt").Values(0)), _
                                                     CDate(e.Report.GetParameters("EndDt").Values(0)))
-                    rpt.DataSources.Add(New ReportDataSource("ArchiveHistoryList", dt))
+                    rpt.DataSources.Add(New ReportDataSource("ArchiveHistoryList", CType(dt, DataTable)))
                 End Using
             Case "SQLConfigurationArchiveHistoryBySQLInstanceByScheduleId"
                 Using TableAdapterArchiveHistory As New cCommon.dsSQLConfigurationTableAdapters.tArchiveLogTableAdapter
@@ -159,7 +159,7 @@ Public Class ReportViewerForm
                                                     CInt(e.Report.GetParameters("ScheduleId").Values(0)), _
                                                     CDate(e.Report.GetParameters("BeginDt").Values(0)), _
                                                     CDate(e.Report.GetParameters("EndDt").Values(0)))
-                    rpt.DataSources.Add(New ReportDataSource("ArchiveHistoryList", dt))
+                    rpt.DataSources.Add(New ReportDataSource("ArchiveHistoryList", CType(dt, DataTable)))
                 End Using
             Case "SQLConfigurationArchiveHistoryByInstanceName"
                 Using TableAdapterArchiveHistory As New cCommon.dsSQLConfigurationTableAdapters.tArchiveLogTableAdapter
@@ -170,7 +170,7 @@ Public Class ReportViewerForm
                                                     e.Report.GetParameters("SQLInstance").Values(0), _
                                                     CDate(e.Report.GetParameters("BeginDt").Values(0)), _
                                                     CDate(e.Report.GetParameters("EndDt").Values(0)))
-                    rpt.DataSources.Add(New ReportDataSource("ArchiveHistoryList", dt))
+                    rpt.DataSources.Add(New ReportDataSource("ArchiveHistoryList", CType(dt, DataTable)))
                 End Using
             Case "SQLConfigurationChangesForDate"
                 Dim ChangeDate As DateTime = CDate(e.Report.GetParameters("ChangeDate").Values(0))
@@ -184,7 +184,7 @@ Public Class ReportViewerForm
                                                     e.Report.GetParameters("SQLInstance").Values(0), _
                                                     e.Report.GetParameters("NodeType").Values(0), _
                                                     e.Report.GetParameters("Action").Values(0))
-                    rpt.DataSources.Add(New ReportDataSource("ChangeList", dt))
+                    rpt.DataSources.Add(New ReportDataSource("ChangeList", CType(dt, DataTable)))
                 End Using
             Case "SQLConfigurationChangesForArchive"
                 Using TableAdapterChangesForArchive As New cCommon.dsSQLConfigurationTableAdapters.pChangesForArchiveTableAdapter
@@ -194,7 +194,7 @@ Public Class ReportViewerForm
                     TableAdapterChangesForArchive.Fill(dt, _
                                                        CInt(e.Report.GetParameters("ArchiveLogId").Values(0)), _
                                                        e.Report.GetParameters("RootNode").Values(0))
-                    rpt.DataSources.Add(New ReportDataSource("ChangeList", dt))
+                    rpt.DataSources.Add(New ReportDataSource("ChangeList", CType(dt, DataTable)))
                 End Using
             Case "SQLConfigurationCatalog"
                 e.Cancel = True
@@ -346,16 +346,16 @@ Public Class ReportViewerForm
                     TableAdapterDocument.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocument.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("Categories", _
-                            TableAdapterDocument.GetDataByAddDateRange(CDate(e.Report.GetParameters("StartDt").Values(0)), _
-                                                                       CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterDocument.GetDataByAddDateRange(CDate(e.Report.GetParameters("StartDt").Values(0)), _
+                                                                       CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookCategoryTopicsAddedInDateRange"
                 Using TableAdapterDocument As New DataSetSQLRunbookTableAdapters.tDocumentTableAdapter
                     TableAdapterDocument.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocument.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("CategoryTopics", _
-                            TableAdapterDocument.GetDataByAddDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                       CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterDocument.GetDataByAddDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                       CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookContributor"
                 Dim Parms As ReportParameterInfoCollection = e.Report.GetParameters
@@ -383,54 +383,54 @@ Public Class ReportViewerForm
                     TableAdapterDocument.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocument.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("Documents", _
-                            TableAdapterDocument.GetDataByAddDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                       CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterDocument.GetDataByAddDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                       CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookDocumentsChangedInDateRange"
                 Using TableAdapterDocument As New DataSetSQLRunbookTableAdapters.tDocumentTableAdapter
                     TableAdapterDocument.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocument.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("Documents", _
-                            TableAdapterDocument.GetDataByChangedDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                           CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterDocument.GetDataByChangedDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                           CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookDocumentsReviewedInDateRange"
                 Using TableAdapterDocumentRating As New DataSetSQLRunbookTableAdapters.tDocumentRatingTableAdapter
                     TableAdapterDocumentRating.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocumentRating.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("DocumentRatings", _
-                            TableAdapterDocumentRating.GetDataByDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                          CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterDocumentRating.GetDataByDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                          CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookDocumentTypes"
                 Using TableAdapterIFilters As New DataSetSQLRunbookTableAdapters.fulltext_document_typesTableAdapter
                     TableAdapterIFilters.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     rpt.DataSources.Add(New ReportDataSource("iFilters", _
-                                                             TableAdapterIFilters.GetData(e.Report.GetParameters("DocumentType").Values(0))))
+                                                             CType(TableAdapterIFilters.GetData(e.Report.GetParameters("DocumentType").Values(0)), DataTable)))
                 End Using
             Case "SQLRunbookTopicsAddedInDateRange"
                 Using TableAdapterTopic As New DataSetSQLRunbookTableAdapters.tTopicTableAdapter
                     TableAdapterTopic.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterTopic.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("Topics", _
-                            TableAdapterTopic.GetDataByAddDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                    CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterTopic.GetDataByAddDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                    CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookTopicsChangedInDateRange"
                 Using TableAdapterTopic As New DataSetSQLRunbookTableAdapters.tTopicTableAdapter
                     TableAdapterTopic.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterTopic.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("Topics", _
-                            TableAdapterTopic.GetDataByChangedInDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                          CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterTopic.GetDataByChangedInDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                          CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case "SQLRunbookTopicsReviewedInDateRange"
                 Using TableAdapterTopicRating As New DataSetSQLRunbookTableAdapters.tTopicRatingTableAdapter
                     TableAdapterTopicRating.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterTopicRating.ClearBeforeFill = True
                     rpt.DataSources.Add(New ReportDataSource("TopicRatings", _
-                            TableAdapterTopicRating.GetDataByDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
-                                                                       CDate(e.Report.GetParameters("EndDt").Values(0)))))
+                            CType(TableAdapterTopicRating.GetDataByDateRange(CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                                                       CDate(e.Report.GetParameters("EndDt").Values(0))), DataTable)))
                 End Using
             Case Else
                 'no-op
@@ -475,8 +475,8 @@ Public Class ReportViewerForm
                     TableAdapterSQLCfgDefinition.Connection.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
                     TableAdapterSQLCfgDefinition.ClearBeforeFill = True
                     e.DataSources.Add(New ReportDataSource("DefinitionByVersion", _
-                                      TableAdapterSQLCfgDefinition.GetData(e.Parameters("Node").Values(0), _
-                                                                           CInt(e.Parameters("Version").Values(0)))))
+                                      CType(TableAdapterSQLCfgDefinition.GetData(e.Parameters("Node").Values(0), _
+                                                                           CInt(e.Parameters("Version").Values(0))), DataTable)))
                 End Using
             Case "SQLConfigurationChange"
                 e.DataSources.Add(New ReportDataSource("DailyChangeSummary", _
@@ -489,13 +489,13 @@ Public Class ReportViewerForm
                     Using taActivity As New DataSetSQLRunbookTableAdapters.pRunbookActivityTableAdapter
                         taActivity.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                         e.DataSources.Add(New ReportDataSource("RunbookActivity", _
-                                                               taActivity.GetData(CInt(e.Parameters("Level3Days").Values(0)), _
-                                                               Now)))
+                                                               CType(taActivity.GetData(CInt(e.Parameters("Level3Days").Values(0)), _
+                                                               Now), DataTable)))
                     End Using
                 Else
                     ' an empty data set to render dashboard without errors 
                     e.DataSources.Add(New ReportDataSource("RunbookActivity", _
-                                                           New DataSetSQLRunbook.pRunbookActivityDataTable))
+                                                           CType(New DataSetSQLRunbook.pRunbookActivityDataTable, DataTable)))
                 End If
             Case Else
                 'no-op
@@ -530,7 +530,7 @@ Public Class ReportViewerForm
                     TableAdapterSQLCfgChanges.Connection.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
                     TableAdapterSQLCfgChanges.ClearBeforeFill = True
                     ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("AllNodesForInstance", _
-                                                                    TableAdapterSQLCfgChanges.GetDataByInstance(SQLInstance)))
+                                                                    CType(TableAdapterSQLCfgChanges.GetDataByInstance(SQLInstance), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & _
                                                                 "\ReportViewerReports\SQLConfigurationArchiveByInstance.rdlc"
@@ -631,7 +631,7 @@ Public Class ReportViewerForm
                     TableAdapterSchedules.Connection.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
                     TableAdapterSchedules.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("ScheduledTasks", _
-                                                                                            TableAdapterSchedules.GetData()))
+                                                                                            CType(TableAdapterSchedules.GetData(), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLClueScheduledTasks.rdlc"
                 'this will refresh the report in the viewer with the above settings
@@ -669,7 +669,7 @@ Public Class ReportViewerForm
                     TableAdapterSQLCfgSummary.Connection.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
                     TableAdapterSQLCfgSummary.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("SummaryByNodeForDays", _
-                                                                                            TableAdapterSQLCfgSummary.GetData(NbrDays, node)))
+                                                                                            CType(TableAdapterSQLCfgSummary.GetData(NbrDays, node), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLConfigurationSummary.rdlc"
                 Dim Parms(0) As ReportParameter
@@ -748,7 +748,7 @@ Public Class ReportViewerForm
                     TableAdapterSettings.Connection.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
                     TableAdapterSettings.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("SQLConfigurationArchiveSettings", _
-                                                                                            TableAdapterSettings.GetData("Default")))
+                                                                                            CType(TableAdapterSettings.GetData("Default"), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLConfigurationArchiveSettings.rdlc"
                 'this will refresh the report in the viewer with the above settings
@@ -809,35 +809,35 @@ Public Class ReportViewerForm
             If My.Settings.RepositoryEnabled Then
                 Using taRunbookCatalog As New DataSetSQLRunbookTableAdapters.pRunbookCatalogTableAdapter
                     taRunbookCatalog.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("SQLRunbook", taRunbookCatalog.GetData()))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("SQLRunbook", CType(taRunbookCatalog.GetData(), DataTable)))
                 End Using
                 Using taCategory As New DataSetSQLRunbookTableAdapters.tCategoryTableAdapter
                     taCategory.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("GetCategory", taCategory.GetDataByCategoryName(Category)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("GetCategory", CType(taCategory.GetDataByCategoryName(Category), DataTable)))
                 End Using
                 Using taCategoryTopics As New DataSetSQLRunbookTableAdapters.tTopicTableAdapter
                     taCategoryTopics.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("TopicsByCategory", taCategoryTopics.GetDataByCategoryName(Category)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("TopicsByCategory", CType(taCategoryTopics.GetDataByCategoryName(Category), DataTable)))
                 End Using
                 Using taTopic As New DataSetSQLRunbookTableAdapters.tTopicTableAdapter
                     taTopic.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Topic", taTopic.GetDataByTopicName(Topic)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Topic", CType(taTopic.GetDataByTopicName(Topic), DataTable)))
                 End Using
                 Using taTopicRating As New DataSetSQLRunbookTableAdapters.tTopicRatingTableAdapter
                     taTopicRating.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("TopicRatingsByTopic", taTopicRating.GetDataByTopicName(Topic)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("TopicRatingsByTopic", CType(taTopicRating.GetDataByTopicName(Topic), DataTable)))
                 End Using
                 Using taTopicDocuments As New DataSetSQLRunbookTableAdapters.tDocumentTableAdapter
                     taTopicDocuments.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("DocumentsByTopic", taTopicDocuments.GetDataByTopicName(Topic)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("DocumentsByTopic", CType(taTopicDocuments.GetDataByTopicName(Topic), DataTable)))
                 End Using
                 Using taDocument As New DataSetSQLRunbookTableAdapters.tDocumentTableAdapter
                     taDocument.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Document", taDocument.GetDataByDocumentId(DocumentId)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Document", CType(taDocument.GetDataByDocumentId(DocumentId), DataTable)))
                 End Using
                 Using taDocumentRating As New DataSetSQLRunbookTableAdapters.tDocumentRatingTableAdapter
                     taDocumentRating.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
-                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("DocumentRatingsByDocument", taDocumentRating.GetDataByDocumentId(DocumentId)))
+                    Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("DocumentRatingsByDocument", CType(taDocumentRating.GetDataByDocumentId(DocumentId), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLRunbookCatalog.rdlc"
                 Dim Parms(3) As ReportParameter
@@ -872,7 +872,7 @@ Public Class ReportViewerForm
                 Using TableAdapterUsers As New DataSetSQLRunbookTableAdapters.pUserSelectAllWithContributorScoringTableAdapter
                     TableAdapterUsers.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Users", _
-                                                                                            TableAdapterUsers.GetData()))
+                                                                                            CType(TableAdapterUsers.GetData(), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLRunbookContributorScores.rdlc"
                 RemoveHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
@@ -905,31 +905,31 @@ Public Class ReportViewerForm
                 Using TableAdapterUser As New DataSetSQLRunbookTableAdapters.pUserSelectDetailsTableAdapter
                     TableAdapterUser.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("User", _
-                                                                                            TableAdapterUser.GetData(OriginalLogin)))
+                                                                                            CType(TableAdapterUser.GetData(OriginalLogin), DataTable)))
                 End Using
                 Using TableAdapterDocument As New DataSetSQLRunbookTableAdapters.tDocumentTableAdapter
                     TableAdapterDocument.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocument.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Documents", _
-                            TableAdapterDocument.GetDataByOwner(OriginalLogin)))
+                            CType(TableAdapterDocument.GetDataByOwner(OriginalLogin), DataTable)))
                 End Using
                 Using TableAdapterDocumentRating As New DataSetSQLRunbookTableAdapters.tDocumentRatingTableAdapter
                     TableAdapterDocumentRating.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterDocumentRating.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("ReviewedDocuments", _
-                            TableAdapterDocumentRating.GetDataByByReviewer(OriginalLogin)))
+                            CType(TableAdapterDocumentRating.GetDataByByReviewer(OriginalLogin), DataTable)))
                 End Using
                 Using TableAdapterTopicRating As New DataSetSQLRunbookTableAdapters.tTopicRatingTableAdapter
                     TableAdapterTopicRating.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterTopicRating.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("ReviewedTopics", _
-                            TableAdapterTopicRating.GetDataByReviewer(OriginalLogin)))
+                            CType(TableAdapterTopicRating.GetDataByReviewer(OriginalLogin), DataTable)))
                 End Using
                 Using TableAdapterTopic As New DataSetSQLRunbookTableAdapters.tTopicTableAdapter
                     TableAdapterTopic.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     TableAdapterTopic.ClearBeforeFill = True
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Topics", _
-                            TableAdapterTopic.GetDataByOwner(OriginalLogin)))
+                            CType(TableAdapterTopic.GetDataByOwner(OriginalLogin), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLRunbookContributor.rdlc"
                 Dim Parms(4) As ReportParameter
@@ -970,7 +970,7 @@ Public Class ReportViewerForm
                     Using TableAdapterTopics As New DataSetSQLRunbookTableAdapters.tTopicTableAdapter
                         TableAdapterTopics.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                         Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Topics", _
-                                             TableAdapterTopics.GetDataBySearchString(String.Format("""{0}""", SearchString))))
+                                             CType(TableAdapterTopics.GetDataBySearchString(String.Format("""{0}""", SearchString)), DataTable)))
                     End Using
                     Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLRunbookSimpleSearch.rdlc"
                     Dim Parms(0) As ReportParameter
@@ -1003,7 +1003,7 @@ Public Class ReportViewerForm
                 Using TableAdapterIFilters As New DataSetSQLRunbookTableAdapters.fulltext_document_typesTableAdapter
                     TableAdapterIFilters.Connection.ConnectionString = RunbookForm.sRunbookConnectionString
                     Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("iFilters", _
-                                                                                           TableAdapterIFilters.GetData(DocumentType)))
+                                                                                           CType(TableAdapterIFilters.GetData(DocumentType), DataTable)))
                 End Using
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLRunbookDocumentTypes.rdlc"
                 Dim DocType As ReportParameter = New ReportParameter("DocumentType", DocumentType)

@@ -103,6 +103,16 @@ Namespace My
                 Return CType(Me("SQLClueConnectionString1"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BILL764\RC0;Initial Catalog=SQLClue;Integrated Security=True")>  _
+        Public ReadOnly Property SQLClueConnectionString2() As String
+            Get
+                Return CType(Me("SQLClueConnectionString2"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

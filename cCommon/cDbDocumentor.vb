@@ -4,11 +4,11 @@ Public Class cDbDocumentor
 
     Public Event Status(ByVal Message As String)
 
-    Private _oSQLServer As Smo.Server
-    Private _oDatabase As Smo.Database
+    Private _oSQLServer As Server
+    Private _oDatabase As Database
     Private _script As New StringCollection
-    Private _oDropScripter As Smo.Scripter
-    Private _oScripter As Smo.Scripter
+    Private _oDropScripter As Scripter
+    Private _oScripter As Scripter
     Private _bIncludeDrop As Boolean
 
     Public _BatchSeparator As String
@@ -244,7 +244,7 @@ Public Class cDbDocumentor
                                 Case My.Resources.Users
                                     ScriptDbUser(.Users(ItemName))
                                 Case My.Resources.Views
-                                    _oSQLServer.SetDefaultInitFields(GetType(Smo.View), My.Resources.SMOIsSystemObject)
+                                    _oSQLServer.SetDefaultInitFields(GetType(View), My.Resources.SMOIsSystemObject)
                                     ScriptDbView(.Views(ItemName, SchemaName))
                                 Case My.Resources.XMLSchemaCollections
                                     ScriptDbXMLSchemaCollection(.XmlSchemaCollections(ItemName, SchemaName))
@@ -275,8 +275,9 @@ Public Class cDbDocumentor
 #Region " Database Documentation "
 
     Private Sub DocumentDbActiveDirectory()
+        ' DatabaseActiveDirectory is obsolete
         If Not _oDatabase.ActiveDirectory Is Nothing Then
-            For Each prop As Smo.Property In _oDatabase.ActiveDirectory.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oDatabase.ActiveDirectory.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format("{0} =", prop.Name))
                 Else
@@ -288,7 +289,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentDbAsymmetricKey(ByVal oAsymmetricKey As AsymmetricKey)
         If Not oAsymmetricKey Is Nothing Then
-            For Each prop As Smo.Property In oAsymmetricKey.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In oAsymmetricKey.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format(" {0} = {1}", prop.Name, ""))
                 ElseIf TypeOf prop.Value Is Byte() Then
@@ -304,7 +305,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentDbCertificate(ByVal oCertificate As Certificate)
         If Not oCertificate Is Nothing Then
-            For Each prop As Smo.Property In oCertificate.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In oCertificate.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format(" {0} = {1}", prop.Name, ""))
                 ElseIf TypeOf prop.Value Is Byte() Then
@@ -388,7 +389,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentDbSymmetricKey(ByVal oSymmetricKey As SymmetricKey)
         If Not oSymmetricKey Is Nothing Then
-            For Each prop As Smo.Property In oSymmetricKey.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In oSymmetricKey.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format(" {0} = {1}", prop.Name, ""))
                 ElseIf TypeOf prop.Value Is Byte() Then
@@ -410,7 +411,7 @@ Public Class cDbDocumentor
         ' no events for any of this except server event notifications
         Try
             If Not _oSQLServer.JobServer Is Nothing Then
-                For Each prop As Smo.Property In _oSQLServer.JobServer.Properties
+                For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.JobServer.Properties
                     If prop.Value Is Nothing Then
                         _script.Add(String.Format("{0} = {1)", prop.Name, ""))
                     Else
@@ -428,7 +429,7 @@ Public Class cDbDocumentor
     Private Sub DocumentSrvAlertSystem()
         ' no events for any of this except server event notifications
         If Not _oSQLServer.JobServer.AlertSystem Is Nothing Then
-            For Each prop As Smo.Property In _oSQLServer.JobServer.AlertSystem.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.JobServer.AlertSystem.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format("{0} =", prop.Name))
                 Else
@@ -440,7 +441,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentSrvActiveDirectory()
         If Not _oSQLServer.ActiveDirectory Is Nothing Then
-            For Each prop As Smo.Property In _oSQLServer.ActiveDirectory.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.ActiveDirectory.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format("{0} =", prop.Name))
                 Else
@@ -464,7 +465,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentSrvConfiguration()
         If Not _oSQLServer.Configuration Is Nothing Then
-            For Each prop As Smo.ConfigProperty In _oSQLServer.Configuration.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.ConfigProperty In _oSQLServer.Configuration.Properties
                 _script.Add(String.Format("{0} = {1}", _
                                                    prop.DisplayName, prop.ConfigValue))
             Next
@@ -505,7 +506,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentSrvFullTextService()
         If Not _oSQLServer.FullTextService Is Nothing Then
-            For Each prop As Smo.Property In _oSQLServer.FullTextService.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.FullTextService.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format("{0} =", prop.Name))
                 Else
@@ -517,7 +518,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentSrvInformation()
         If Not _oSQLServer.Information Is Nothing Then
-            For Each prop As Smo.Property In _oSQLServer.Information.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.Information.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format("{0} = {1}", prop.Name, ""))
                 Else
@@ -533,7 +534,7 @@ Public Class cDbDocumentor
             For Each oTargetServer As TargetServer In _oSQLServer.JobServer.TargetServers
                 If Not oTargetServer.Properties Is Nothing Then
                     _script.Add(String.Format("Target Server [{0}]", oTargetServer.Name))
-                    For Each prop As Smo.Property In oTargetServer.Properties
+                    For Each prop As Microsoft.SqlServer.Management.Smo.Property In oTargetServer.Properties
                         If prop.Value Is Nothing Then
                             _script.Add(String.Format("{0} = {1}", prop.Name, ""))
                         Else
@@ -582,8 +583,8 @@ Public Class cDbDocumentor
     Private Sub DocumentSrvPolicies()
         If Not _oSQLServer Is Nothing _
         AndAlso _oSQLServer.VersionMajor >= 10 Then
-            Dim sc As New Sdk.Sfc.SqlStoreConnection(_oSQLServer.ConnectionContext.SqlConnectionObject)
-            Dim ps As New Dmf.PolicyStore(sc)
+            Dim sc As New SqlStoreConnection(_oSQLServer.ConnectionContext.SqlConnectionObject)
+            Dim ps As New PolicyStore(sc)
             If ps.Policies.Count > 0 Then
                 _script.Add(String.Format(My.Resources.CommentBegin, My.Resources.Policies))
                 For Each pol As Dmf.Policy In ps.Policies
@@ -628,7 +629,7 @@ Public Class cDbDocumentor
 
     Private Sub DocumentSrvSettings()
         If Not _oSQLServer.Settings Is Nothing Then
-            For Each prop As Smo.Property In _oSQLServer.Settings.Properties
+            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.Settings.Properties
                 If prop.Value Is Nothing Then
                     _script.Add(String.Format("{0} = {1}", prop.Name, ""))
                 Else
@@ -655,7 +656,7 @@ Public Class cDbDocumentor
                     If ex.GetBaseException.Message = "To accomplish this action, set property EncryptionAlgorithm." Then
                         _script.Add(My.Resources.SMOBadState)
                         'put the properties in the file instead
-                        For Each prop As Smo.Property In _oDatabase.Properties
+                        For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oDatabase.Properties
                             Try
                                 If prop.Value Is Nothing Then
                                     _script.Add(String.Format("{0} = {1}", prop.Name, ""))
@@ -1053,7 +1054,7 @@ Public Class cDbDocumentor
         End Try
     End Sub
 
-    Private Sub ScriptDbRule(ByVal oRule As Smo.Rule)
+    Private Sub ScriptDbRule(ByVal oRule As Microsoft.SqlServer.Management.Smo.Rule)
         If Not oRule Is Nothing Then
             ScriptDrop(oRule.Urn)
             ScriptObject(oRule.Urn)
@@ -1418,7 +1419,7 @@ Public Class cDbDocumentor
         End Try
     End Sub
 
-    Private Sub ScriptDbView(ByVal oView As Smo.View)
+    Private Sub ScriptDbView(ByVal oView As View)
         Dim SavePrimaryObject As Boolean = _oScripter.Options.PrimaryObject
         Try
             If Not oView Is Nothing Then
@@ -2162,7 +2163,7 @@ Public Class cDbDocumentor
                     _script.Add("GO")
                 End If
             Next
-        Catch MayBeEncrypted As FailedOperationException
+        Catch MayBeEncrypted As Dmf.FailedOperationException
             'the VS help doc said in thread safety context that FailedOperationException was raised 
             ' only in debug mode and not when the IDE is not in use
             ' if that is true here may need to create a 'MustBeEncrypted' exception handler 

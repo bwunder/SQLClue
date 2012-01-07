@@ -36,10 +36,10 @@
     <IncludeSchemaNameInFileName>False</IncludeSchemaNameInFileName>
     <GenerateDatabaseFile>False</GenerateDatabaseFile>
     <GenerateCreateScript>False</GenerateCreateScript>
-    <ModelCollation>1033, CI</ModelCollation>
-    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>Undefined</DefaultFileStructure>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <DefaultSchema>dbo</DefaultSchema>
+    <DefaultSchema>SQLCfg</DefaultSchema>
     <SqlServerVerification>True</SqlServerVerification>
     <TargetLanguage>VB</TargetLanguage>
     <PostConversionRemoveFromScc>;My Project\AssemblyInfo.vb;C:\Users\bwunder\Documents\Visual Studio 2010\Projects\SQLClue\Node\SQLClueCLR.vbproj</PostConversionRemoveFromScc>
@@ -47,6 +47,11 @@
     </PostConversionAddToScc>
     <PreviousProjectVersion>4.0</PreviousProjectVersion>
     <ServiceBrokerOption>EnableBroker</ServiceBrokerOption>
+    <AssemblyOwner>dbo</AssemblyOwner>
+    <DacVersion>1.5.1.1</DacVersion>
+    <GenerateDac>False</GenerateDac>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,6 +65,7 @@
     <DocumentationFile>SQLClueCLR.xml</DocumentationFile>
     <NoWarn>42353,42354,42355</NoWarn>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -85,16 +91,20 @@
     <None Include="Test Scripts\Test1.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Test Scripts\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BuildContributorArgument Include="OutDir=$(OutDir)" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
-    <Folder Include="Test Scripts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BuildContributorArgument Include="OutDir=$(OutDir)" />
+    <Build Include="Security\SQLCfg.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

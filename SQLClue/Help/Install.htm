@@ -61,43 +61,51 @@ Planning Guide, Prerequisites & Requirements
         <td class="halfbox">
 <!--BEGIN ADD HIGH LEVEL DESCRIPTION-->
 <table width="90%" style="background-color: HighlightText; color:Highlight"><tr><td style="font-size:24px; font-weight:bold">&nbsp;!&nbsp;</td><td style="background-color: Highlight; color:HighlightText">
-<p><b><i>Please read this document before attempting to installing SQLClue</i></b></p>
+<p><b><i>Please read this document before installing SQLClue</i></b></p>
 <p>Verify all prerequisites listed below to assure trouble free installation and use.</p>
-<p>Review the installation SQL scripts is encouraged. Only execute scripts from the 
+<p>Review of the installation SQL scripts is encouraged. Only execute scripts from the 
     command line when instructed to do so. </p>
 </td></tr></table>
 
 <p>When SQLClue is initially installed, the application is always enabled at the Workstation level.</p>
 <ul>
-    <li>application files are copied to the user specified program folder.</li>
-    <li>&nbsp;Program group shortcuts to the SQLClue executable and to the SQLClue Resources folder 
+    <li>Application files are copied to the user specified program folder.</li>
+    <li>Program group shortcuts to the SQLClue executable and to the SQLClue Resources folder 
         are created.</li>
-    <li>the application is registered in Windows and can be uninstalled using the Windows Control Panel 
+    <li>Application is registered in Windows and can be uninstalled using the Windows Control Panel 
         at any time.</li>  
-    <li>Three of the five available tool tabs are enabled within the user interface: 
+    <li>Three of the six available tool tabs are enabled within the user interface: 
         <ul>
         <li><a href="Compare.htm"><b>Configuration Compare</b></a> - A comparison tool 
             intended for use with SQL Server Configuration and database objects.</li>
         <li><a href="Reports.htm"><b>Reports</b></a> - A ReportViewer control that renders 
             SQL Server Report Definition Language (RDL) reports.</li>
-        <li><b>Help</b></li>
+        <li><a href="home.htm"><b>Help</b></a></li>
         </ul>
     </li>    
 </ul>
-<p>There is no licensing requirement to use SQLClue Workstation.</p>
-<p>At the Workstation level the application can be connected to any existing remote Data Center Runbook. This allows 
-full team and/or data center Runbook collaboration within a single SQLClue administrative unit yet limits 
-the SQLClue licensing requirement to a single server for the team or data center. Authorized remote SQLClue Data Center 
-Runbook contributors are restricted from making any SQLClue configuration changes.</p>
+<p>When installing SQLClue you agree to the open source licensing terms.</p>
+<p>At the Workstation level the application can be connected to any existing remote 
+    Data Center Runbook. This allows full team and/or data center Runbook 
+    collaboration within a single SQLClue administrative unit yet limits the SQLClue 
+    server requirements to a single server for the team or data center. Authorized remote SQLClue Data Center 
+Runbook contributors are restricted from making any SQLClue configuration changes. 
+    <a href= "CommandLine.htm"><b>Command Line</b></a> compares are also available at the workstation station level. And the 
+    <a href="Reports.htm"><b>Reports</b></a> component is also available though without any underlying data there is 
+    not much to report. </p>
 <p>At any time after SQLClue Workstation is installed, the application can be promoted to 
-    a Server level by installing any
+    the Server level by installing any
 of the data stores available from the Tools menu. At the Server level the <a href= "Repository.htm">SQLClue Configuration Archive</a> 
-is always enabled and a SQL Configuration Repository data store is created on a user specified local SQL Server 
-    instance. 
-Two additional components can be installed, enabled and configured as desired:</p>
+    is always enabled and a SQL Configuration Repository data store is created on a 
+    user specified local SQL Server instance. The Automation Controller uses this 
+    database to store schedules. THREE additional components can be installed, enabled and configured as desired:</p>
 <ul>
     <li><a href="Runbook.htm"><b>Data Center Runbook</b></a> - A business continuity and strategic monitoring interface and data store.</li>
-    <li><a href="Service.htm"><b>SQLClue Automation Controller</b></a> - A Windows Service for schedule background processing.</li>
+<a id="top25" />
+    <li><a href="Runbook.htm"><b>En</b>cription Hierarchy Administrator</a> - Backup and 
+        Restore services for Master Keys and certificates </li>
+    <li><a href="Service.htm"><b>SQLClue Automation Controller</b></a> - A Windows Service for schedule background processing 
+        used by other services and scheduled Configuration Compare activity.</li>
 </ul>
 <p>The <a href="Reports.htm"><b>Reports</b></a> components are automatically extended to include powerful administrative views 
     as additional 
@@ -111,6 +119,7 @@ integrated security model is not possible. Windows Integrated Security is recomm
         </td>
         </tr>
         <tr><td align="right" valign="bottom"><a href="#top" class="index2">top&nbsp;&uarr;</a></td></tr>
+        <tr><td align="right" valign="bottom">&nbsp;</td></tr>
         </table>
     </td>
     </tr>
@@ -132,30 +141,32 @@ integrated security model is not possible. Windows Integrated Security is recomm
 
 <h5>SQL Servers supported</h5>
 
-<p>SQLClue can target SQL Server 2000, SQL Server 2005 and SQL Server 2008 Instances.
+<p>SQLClue can target SQL Server 2000/2005/2008/2012 Instances.
 <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;databases set for 6.0, 6.5 and 7.0 compatibility modes are not supported</p> 
 
-            <p>Whether using both the SQL Configuration Archive and the Data Center Runbook, or only one or the other of these two components that require a 
-repository database, the option of placing the repositories in one database or each in it's own database is 
-                at the discretion of
-the installer. In general, if security rights between the those that will access the SQL Configuration Archive and those that will access 
+            <p>When installing SQL Clue Server components,&nbsp; the option of placing the repositories in one database or each 
+                components schema in it's own - or at least different - database is at the 
+                discretion of the installer. In general, if security rights between those that will access the SQL Configuration Archive and those that will access 
 the Data Center Runbook are the same, placing both repositories in one physical database may be preferred. 
-                There are scenarios where placing each data store in its own database is of higher utility. For example, if SQL 
+                The Encryption Hierarchy can be placed with any other component schema, however 
+                SNAPSHOT isolation is not recommended for the FileTable based restore solution. 
+                There are other scenarios where placing each data store in its own database is of higher utility. For example, if SQL 
 Configuration Archive Repository will be routinely copied to an alternate location accessible by the development staff each night, 
                 consider placing the data stores in separate database to 
 avoid the added payload of the Data Center Runbook in those nightly copys and to avoid exposing 
                 sensitive operational information outside of the data center. Organizational security considerations will usually be the 
 determining factor in deciding to use one database for the SQL Configuration Archive and another for the Data Center Runbook or to place 
 both in a single database. SQLCLue works the same whether one database is configured for each repository or a single database is used to 
-hold both repositories. Both data stores must be located on the same instance when used in 
-                read/write mode. For read only use either data store can be moved to another 
+hold both repositories. All databases must be located on the same instance when used in 
+                read/write mode. For read only use any data store can be moved to another 
                 server.</p>
 <p></p>
 
 <h5>Workstation Prerequisites</h5>
     <ul>
-    <li>The <a href = "http://www.google.com/search?q=.NET+3.5+Service+Pack+1+download">.NET Framework 3.5 Service Pack 1</a>
-    <li>Microsoft SQL Server 2008 Management Objects (SMO) Assemblies from any of the following sources:
+    <li>The <a href = "http://www.google.com/search?q=.NET+4.1+download">.NET Framework 
+        4.1 </a>
+    <li>Microsoft SQL Server 2012 Management Objects (SMO) Assemblies from any of the following sources:
     <ul>
     <li>Any Editions of SQL Server 2008 SP1 installed on the local system.</li>
     <li>SQL Server 2008 SP1 Client Tools installed on the local system.</li>

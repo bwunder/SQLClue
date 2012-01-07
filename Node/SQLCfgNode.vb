@@ -124,7 +124,7 @@ Public Structure SQLCfgNode
                     u.m_Item = u.m_Strings(0)
                 Else
                     ' from here there is always a path|item
-                    If u.m_Strings(1) = "ActiveDirectory" _
+                    If u.m_Strings(1) = "AffinityInfo" _
                     Or u.m_Strings(1) = "Configuration" _
                     Or u.m_Strings(1) = "FullTextService" _
                     Or u.m_Strings(1) = "Information" _
@@ -136,12 +136,14 @@ Public Structure SQLCfgNode
                         ' only one possible level
                         u.m_Item = u.m_Strings(1)
                     ElseIf u.m_Strings(1) = "BackupDevices" _
+                    Or u.m_Strings(1) = "ActivationGroups" _
                     Or u.m_Strings(1) = "Audits" _
                     Or u.m_Strings(1) = "Credentials" _
                     Or u.m_Strings(1) = "CryptographicProviders" _
                     Or u.m_Strings(1) = "Endpoints" _
                     Or u.m_Strings(1) = "LinkedServers" _
                     Or u.m_Strings(1) = "Logins" _
+                    Or u.m_Strings(1) = "Policies" _
                     Or u.m_Strings(1) = "Roles" _
                     Or u.m_Strings(1) = "ServerAuditSpecifications" _
                     Or u.m_Strings(1) = "Triggers" _
