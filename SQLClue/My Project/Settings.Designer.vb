@@ -116,7 +116,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Open Source")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Evaluation")>  _
         Public Property LicenseCode() As String
             Get
                 Return CType(Me("LicenseCode"),String)

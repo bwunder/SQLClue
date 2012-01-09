@@ -153,38 +153,10 @@ Public Class cDataAccess
                                 taSQLCfg.Connection.ConnectionString = builder.ConnectionString
                                 taSQLCfg.Fill(SQLCfg)
                             End Using
-                            If dsSQLCfg.tSQLCfg.Rows.Count = 1 Then
-                                If dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseCode").ToString = "Unlicensed Trial Software" Then
-                                    ' unlicensed needs special handling
-                                    ' validation for reasonable create time as the  
-                                    'Run a Transact-SQL command with results
-                                    Dim ds As DataSet
-                                    Try
-                                        ' will fail if not dbo and select is not granted
-                                        ds = osrv.Databases(RepositoryDatabaseName).ExecuteWithResults( _
-                                        "SELECT Min([RecCreatedDt]), Max([RecCreatedDt]) FROM [SQLCfg].[tChange]")
-                                        ' use min of today/min plus max today/max 
-                                        Dim MinDate As Date = If(CDate(ds.Tables(0).Rows(0).Item(0)) < CDate(dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseDate")), _
-                                                                 CDate(ds.Tables(0).Rows(0).Item(0)), _
-                                                                 CDate(dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseDate")))
-                                        Dim MaxDate As Date = If(CDate(ds.Tables(0).Rows(0).Item(1)) > CDate(dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseDate")), _
-                                                                 CDate(ds.Tables(0).Rows(0).Item(1)), _
-                                                                 CDate(dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseDate")))
-                                        If DateAdd(DateInterval.Day, 21, MinDate) < MaxDate _
-                                        Or DateDiff(DateInterval.Day, MinDate, CDate(dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseDate"))) < 0 _
-                                        Or DateDiff(DateInterval.Day, CDate(dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseDate")), MaxDate) > 21 Then
-                                            'in use over 21 days
-                                            PingSQLCfg = PingSQLCfgResponse.Expired
-                                        Else
-                                            'evaluation
-                                            PingSQLCfg = PingSQLCfgResponse.Evaluation
-                                        End If
-                                    Catch ex As Exception
-                                        ' most likely not dbo and select is not granted
-                                        PingSQLCfg = PingSQLCfgResponse.Undefined
-                                    End Try
+                            If dsSQLCfg.tSQLCfg.Rows.Count > 0 Then
+                                If dsSQLCfg.tSQLCfg.Rows(0).Item("LicenseCode").ToString = "Evaluation" Then
+                                    PingSQLCfg = PingSQLCfgResponse.Evaluation
                                 Else
-                                    'has licensed
                                     PingSQLCfg = PingSQLCfgResponse.Licensed
                                 End If
                             Else
@@ -1207,7 +1179,7 @@ Public Class cDataAccess
                 End Using
             End Using
         Catch ex As Exception
-            Throw New Exception("(cDataAccess.GetLatestLicenseRowVersion) Exception", ex)
+            Throw New Exception("(cDataAccess.GetLatestVersionForNode) Exception", ex)
         End Try
     End Function
 
@@ -2216,138 +2188,7 @@ Public Class cDataAccess
     End Sub
 
     Public Function AvailableLicenses() As Integer
-        AvailableLicenses = -1
-        Try
-            Dim License As New dsSQLConfiguration.tSQLCfgDataTable
-            Using taLicense As New dsSQLConfigurationTableAdapters.tSQLCfgTableAdapter
-                taLicense.Connection.ConnectionString = LocalRepositoryConnectionString
-                taLicense.Fill(License)
-            End Using
-            Dim LicensedInstanceList As String() = GetLicensedInstanceList()
-            ' otherwise return silently
-            If License.Rows.Count = 1 Then
-                Dim LicensedCompany As String = License.Rows(0).Item("LicensedCompany").ToString
-                Dim LicenseDate As String = CDate(License.Rows(0).Item("LicenseDate")).Year.ToString & _
-                                            CDate(License.Rows(0).Item("LicenseDate")).Month.ToString & _
-                                            CDate(License.Rows(0).Item("LicenseDate")).Day.ToString
-                Dim LicenseCode As String = License.Rows(0).Item("LicenseCode").ToString
-                'Dim LicensedInstanceCount As Integer = If(CInt(License.Rows(0).Item("LicensedInstanceCount")) > 14, 15, CInt(License.Rows(0).Item("LicensedInstanceCount")))
-                Dim LicensedInstanceCount As Integer
-                Select Case CInt(License.Rows(0).Item("LicensedInstanceCount"))
-                    Case Is = 15
-                        'Environment
-                        LicensedInstanceCount = 15
-                    Case Is = 10
-                        'Team
-                        LicensedInstanceCount = 10
-                    Case Is = 5
-                        'DBA
-                        LicensedInstanceCount = 5
-                    Case Is = 3
-                        'trial extension?
-                        LicensedInstanceCount = 3
-                    Case Is = 1
-                        'local-mode
-                        LicensedInstanceCount = 1
-                    Case Else
-                        Throw New Exception("SQLClue Not Verified (48b).")
-                End Select
-
-                ' could also get a min date from other tables
-                'If Now < CDate(License.Rows(0).Item("LicenseDate")) Then
-                '    ' somebody messing around?
-                '    Throw New Exception("SQLClue Not Verified (40).")
-                'End If
-                ' white space will cause fall through to else processing
-                If LicensedCompany = "" _
-                And LicenseCode = "Unlicensed Trial Software" _
-                And LicensedInstanceCount = 3 _
-                And LicensedInstanceList.Length <= 3 Then
-                    ' check timestamp consistency but only when in trial mode
-                    Dim r As Integer = PingSQLCfg()
-                    If r <> 0 Then
-                        Throw New Exception(String.Format("SQLClue Not Verified (4{0}).", r))
-                    End If
-                    If (DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today) > 14) Then
-                        If (DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today) > 21) Then
-                            Throw New Exception("Evaluation Expired." & vbCrLf & "Grace period exhausted.")
-                        Else
-                            ' write this expiry msg once each time timer fires
-                            AvailableLicenses = LicensedInstanceCount - LicensedInstanceList.Length
-                            Throw New Exception(String.Format("Evaluation Grace Period." & vbCrLf & _
-                                                              "The trial period will end in {0} days.", _
-                                                21 - DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today)))
-                        End If
-                    End If
-                    ' ping already checks the date range in tSQLCfgChange, this is good enough
-                    If LicensedInstanceList.Length > 3 Then
-                        Throw New Exception("Evaluation Targeted Level Exceeded.")
-                    Else
-                        AvailableLicenses = LicensedInstanceCount - LicensedInstanceList.Length
-                    End If
-                Else
-                    Dim LocalKey As String = String.Format("{0}->{1}.{2}", _
-                                                               My.Computer.Name, _
-                                                               RepositoryInstanceName, _
-                                                               RepositoryDatabaseName)
-                    Dim iCompany As Int64 = 41
-                    For i As Integer = 1 To Len(LicensedCompany)
-                        iCompany += AscW(Mid(LicensedCompany, i, 1))
-                    Next
-                    Dim iLocalKey As Int64 = 413
-                    For i As Integer = 1 To Len(LocalKey)
-                        iLocalKey += AscW(Mid(LocalKey, i, 1))
-                    Next
-                    Dim iDate As Int64 = 0
-                    For i As Integer = 1 To Len(LicenseDate)
-                        iDate += AscW(Mid(LicenseDate, i, 1))
-                    Next
-                    'If ((iCompany - iLocalKey + 8071953) * CInt(iDate \ LicensedInstanceCount)).ToString = LicenseCode Then
-                    If (1 = 1) Then
-                        ' is valid, remaining question is it it a trial extension
-                        If LicensedInstanceCount = 3 And DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today) > 14 Then
-                            If (DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today) > 14) Then
-                                If (DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today) > 21) Then
-                                    Throw New Exception("Extension expired. Grace period exhausted.")
-                                Else
-                                    ' write this expiry msg once each time timer fires
-                                    AvailableLicenses = LicensedInstanceCount - LicensedInstanceList.Length
-                                    Throw New Exception(String.Format("Evaluation Grace Period." & vbCrLf & _
-                                                                      "The extended trial period will end in {0} days.", _
-                                                        21 - DateDiff(DateInterval.Day, CDate(License.Rows(0).Item("LicenseDate")), Today)))
-                                End If
-                            End If
-                        End If
-                        ' the host should not count against the multi-target license count
-                        LoadConnections()
-                        If LicensedInstanceList.Length > 1 _
-                        AndAlso LicensedInstanceCount < 15 _
-                        AndAlso ((Array.BinarySearch(LicensedInstanceList, RepositoryInstanceName) > -1 _
-                                  AndAlso LicensedInstanceList.Length > LicensedInstanceCount + 1) _
-                            OrElse _
-                                 (Array.BinarySearch(LicensedInstanceList, RepositoryInstanceName) < 0 _
-                                  AndAlso LicensedInstanceList.Length > LicensedInstanceCount)) Then
-                            Throw New Exception("Licensed Targeted Level Exceeded.")
-                        Else
-                            If LicensedInstanceCount = 1 AndAlso _
-                            LicensedInstanceList.Length > LicensedInstanceCount Then
-                                Throw New Exception("Licensed Targeted Level Exceeded.")
-                            Else
-                                If LicensedInstanceCount > 14 Then
-                                    AvailableLicenses = 15
-                                Else
-                                    AvailableLicenses = LicensedInstanceCount - LicensedInstanceList.Length
-                                End If
-                            End If
-                        End If
-                    Else
-                        Throw New Exception("SQLClue Not Verified (49).")
-                    End If
-                End If
-            End If
-        Catch ex As Exception
-            Throw New Exception(String.Format("Licensing Problem."), ex)
-        End Try
+        AvailableLicenses = 1
     End Function
 
 End Class

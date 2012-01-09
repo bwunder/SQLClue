@@ -330,7 +330,7 @@ Public Class CompareForm
                             MessageBoxButtons.OK, _
                             MessageBoxIcon.Stop)
             '            ElseIf Not CType(smoTreeView1.SelectedNode.Tag, cTreeView.structNodeTag).IsCollection.Equals(CType(smoTreeView2.SelectedNode.Tag, cTreeView.structNodeTag).IsCollection)Then Then
-            ' can't compare a collection and and item
+            ' can't compare a collection and an item
             '                MessageBox.Show(String.Format(My.Resources.InvalidCompare, _
             '                                              If(IsCollection1, Type1, Type2), _
             '                                              If(IsCollection2, smoTreeView1.SelectedNode.Text, smoTreeView2.SelectedNode.Text)), _

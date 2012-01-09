@@ -60,7 +60,7 @@ Public Class Mother
             SetServerList()
             _LoadRemoteRunbook = False
             RepositoryToolStripMenuItem.ToolTipText = "Configure SQL Configuration Data Store"
-            RunbookToolStripMenuItem.ToolTipText = "Configure the Data Center Runbook Data Store"
+            RunbookToolStripMenuItem.ToolTipText = "Configure the Runbook Data Store"
             ToolStripMenuItemDashboard.Enabled = My.Settings.RepositoryEnabled
             ToolStripMenuItemConfigurationReports.Enabled = My.Settings.RepositoryEnabled
             ToolStripMenuItemConfigurationReports.DropDown.Enabled = My.Settings.RepositoryEnabled
@@ -440,12 +440,11 @@ Public Class Mother
     Friend Function RepositoryLoad() As Boolean
         Try
             'need to make sure the config row is loaded now. This is one reason the
-            'this method needs to be called before other licensed features
+            'this method needs to be called before other configured instance features
             If My.Settings.RepositoryEnabled Then
                 ' set the repository connection string values
                 SyncRepositoryConnectionWithSettings()
 
-                ' DAL.AvailableLicenses only pings in unlicensed mod
                 Dim r As Integer = DAL.PingSQLCfg()
                 Select Case r
                     Case cCommon.cDataAccess.PingSQLCfgResponse.Licensed
@@ -1085,22 +1084,6 @@ Public Class Mother
             HandleException(ex)
         End Try
 
-    End Sub
-
-    Private Sub LicenseToolStripMenuItem_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-
-        Try
-            For Each f As Form In My.Application.OpenForms
-                If f.Name = "LicenseForm" Then
-                    f.Focus()
-                    Exit Sub
-                End If
-            Next
-            DialogLicense.StartPosition = FormStartPosition.CenterParent
-            DialogLicense.ShowDialog(Me)
-        Catch ex As Exception
-            HandleException(ex)
-        End Try
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _

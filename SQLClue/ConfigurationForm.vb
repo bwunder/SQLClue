@@ -144,57 +144,52 @@ Public Class ConfigurationForm
                             Dim cnResult As DialogResult = ConnectToTarget(InstanceName, "Archive Planning")
                             If cnResult = Windows.Forms.DialogResult.OK Then
                                 ' if new, need to check license level and add to configured drop down list
-                                'If Mother.DAL.AvailableLicenses >= 0 Then
-                                If Not Mother.ConfiguredInstanceList.Contains(InstanceName) Then
-                                    Mother.DAL.GetConfiguredInstanceList()
-                                End If
-                                'Else
-                                '    Exit Try
-                                'End If
-                            End If
-                            Me.ToolStripStatusLabelConfiguration.Text = String.Format(My.Resources.ConnectedToSQL, _
-                                                                                      "", _
-                                                                                      InstanceName)
-                            LoadPlan()
-                        Else 'cancel, abort, unknown...
-
-                            ' could work disconnected, use the host's SMO hieararchy
-                            If Not (ScheduleHasBeenChanged Or TreeHasBeenChanged) _
-                            OrElse ((ScheduleHasBeenChanged Or TreeHasBeenChanged) AndAlso AskAndSaveChanges()) Then
-                                ' this will change InstanceName if changed in dialog
-                                Dim cnResult As DialogResult = ConnectToTarget(InstanceName, "Archive Planning")
-                                If cnResult = Windows.Forms.DialogResult.OK Then
-                                    ' if new, need to check license level and add to configured drop down list
-                                    'If Mother.DAL.AvailableLicenses >= 0 Then
+                                If Mother.DAL.AvailableLicenses >= 0 Then
                                     If Not Mother.ConfiguredInstanceList.Contains(InstanceName) Then
                                         Mother.DAL.GetConfiguredInstanceList()
-                                        'End If
-                                        'Else
-                                        Exit Try
-                                        'End If
-                                        'End If
-                                        Me.ToolStripStatusLabelConfiguration.Text = String.Format(My.Resources.ConnectedToSQL, _
-                                                                                                  "", _
-                                                                                                  InstanceName)
-                                        LoadPlan()
-                                    Else 'cancel, abort, unknown...
-
-                                        ' could work disconnected, use the host's SMO hieararchy
-                                        If MsgBox("Continue with a limited planning sesssion without connecting to the target SQL Server?", MsgBoxStyle.YesNo, "") = MsgBoxResult.Yes Then
-                                            ' IsConnectedToTarget was set false in the connextion dialog 
-                                            LoadPlan()
-                                        Else
-                                            ClearSelection()
-                                            ' no fail msg if a cancel
-                                            If Not cnResult = Windows.Forms.DialogResult.Cancel Then
-
-                                                ' could be a raiserror here except that cancel/abort of login dialog sends you here
-                                                Me.ToolStripStatusLabelConfiguration.Text = String.Format(My.Resources.ConnectionToSQLFailed, _
-                                                                                                          "", _
-                                                                                                          InstanceName)
-                                            End If
-                                        End If
                                     End If
+                                Else
+                                    Exit Try
+                                End If
+                            End If
+                                Me.ToolStripStatusLabelConfiguration.Text = String.Format(My.Resources.ConnectedToSQL, _
+                                                                                          "", _
+                                                                                          InstanceName)
+                                LoadPlan()
+                            Else 'cancel, abort, unknown...
+                            ' could work disconnected, use the host's SMO hieararchy
+                                If Not (ScheduleHasBeenChanged Or TreeHasBeenChanged) _
+                                OrElse ((ScheduleHasBeenChanged Or TreeHasBeenChanged) AndAlso AskAndSaveChanges()) Then
+                                    ' this will change InstanceName if changed in dialog
+                                    Dim cnResult As DialogResult = ConnectToTarget(InstanceName, "Archive Planning")
+                                    If cnResult = Windows.Forms.DialogResult.OK Then
+                                        ' if new, need to check license level and add to configured drop down list
+                                    If Mother.DAL.AvailableLicenses >= 0 Then
+                                        If Not Mother.ConfiguredInstanceList.Contains(InstanceName) Then
+                                            Mother.DAL.GetConfiguredInstanceList()
+                                        End If
+                                    Else
+                                        Exit Try
+                                    End If
+                                End If
+                                Me.ToolStripStatusLabelConfiguration.Text = String.Format(My.Resources.ConnectedToSQL, _
+                                                                                          "", _
+                                                                                          InstanceName)
+                                LoadPlan()
+                            Else 'cancel, abort, unknown...
+
+                                ' could work disconnected, use the host's SMO hieararchy
+                                If MsgBox("Continue with a limited planning sesssion without connecting to the target SQL Server?", MsgBoxStyle.YesNo, "") = MsgBoxResult.Yes Then
+                                    ' IsConnectedToTarget was set false in the connextion dialog 
+                                    LoadPlan()
+                                Else
+                                    ClearSelection()
+                                    ' no fail msg if a cancel
+                                    'If Not cnResult = Windows.Forms.DialogResult.Cancel Then
+                                    ' could be a raiserror here except that cancel/abort of login dialog sends you here
+                                    Me.ToolStripStatusLabelConfiguration.Text = String.Format(My.Resources.ConnectionToSQLFailed, _
+                                                                                              "", _
+                                                                                             InstanceName)
                                 End If
                             End If
                         End If
@@ -317,16 +312,16 @@ Public Class ConfigurationForm
                         Next
                     End If
                     Mother.DAL.SaveConnections()
-                    'Try
-                    '    ' nothing to do unless it raises an error
-                    '    Mother.DAL.AvailableLicenses()
-                    'Catch ex As Exception
-                    '    Mother.DAL.dsSQLCfg.tConnection.FindByInstanceName(InstanceName).Delete()
-                    '    Mother.DAL.SaveConnections()
-                    '    ' the connection delete also deals with the related schedules 
-                    '    InstanceName = ""
-                    '    Throw ex
-                    'End Try
+                    Try
+                        ' nothing to do unless it raises an error
+                        Mother.DAL.AvailableLicenses()
+                    Catch ex As Exception
+                        Mother.DAL.dsSQLCfg.tConnection.FindByInstanceName(InstanceName).Delete()
+                        Mother.DAL.SaveConnections()
+                        ' the connection delete also deals with the related schedules 
+                        InstanceName = ""
+                        Throw ex
+                    End Try
                     If LnSecure = False Then
                         Mother.DAL.SetSQLAuthenticator(InstanceName, Ln, Pwd)
                     End If
