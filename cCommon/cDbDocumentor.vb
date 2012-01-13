@@ -101,11 +101,11 @@ Public Class cDbDocumentor
                                 ScriptSrvCryptographicProvider(.CryptographicProviders(ItemName))
                             Case My.Resources.Databases
                                 _oDatabase = .Databases(ItemName)
-                                If ItemName = My.Resources.ActiveDirectory Then
-                                    DocumentDbActiveDirectory()
-                                Else
-                                    ScriptDatabase(.Databases(ItemName))
-                                End If
+                                'If ItemName = My.Resources.ActiveDirectory Then
+                                '    DocumentDbActiveDirectory()
+                                'Else
+                                ScriptDatabase(.Databases(ItemName))
+                                'End If
                             Case My.Resources.Endpoints
                                 ScriptSrvEndpoint(.Endpoints(ItemName))
                             Case My.Resources.Jobs
@@ -251,8 +251,8 @@ Public Class cDbDocumentor
                             End Select
                         Else
                             Select Case ItemName
-                                Case My.Resources.ActiveDirectory
-                                    DocumentDbActiveDirectory()
+                                'Case My.Resources.ActiveDirectory
+                                '    DocumentDbActiveDirectory()
                                 Case My.Resources.DatabaseOptions
                                     DocumentDBOptions()
                                 Case My.Resources.ServiceBroker
@@ -274,18 +274,18 @@ Public Class cDbDocumentor
 
 #Region " Database Documentation "
 
-    Private Sub DocumentDbActiveDirectory()
-        ' DatabaseActiveDirectory is obsolete
-        If Not _oDatabase.ActiveDirectory Is Nothing Then
-            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oDatabase.ActiveDirectory.Properties
-                If prop.Value Is Nothing Then
-                    _script.Add(String.Format("{0} =", prop.Name))
-                Else
-                    _script.Add(String.Format("{0} = {1}", prop.Name, prop.Value))
-                End If
-            Next
-        End If
-    End Sub
+    'Private Sub DocumentDbActiveDirectory()
+    '    ' DatabaseActiveDirectory is obsolete
+    '    If Not _oDatabase.ActiveDirectory Is Nothing Then
+    '        For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oDatabase.ActiveDirectory.Properties
+    '            If prop.Value Is Nothing Then
+    '                _script.Add(String.Format("{0} =", prop.Name))
+    '            Else
+    '                _script.Add(String.Format("{0} = {1}", prop.Name, prop.Value))
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
 
     Private Sub DocumentDbAsymmetricKey(ByVal oAsymmetricKey As AsymmetricKey)
         If Not oAsymmetricKey Is Nothing Then
@@ -304,6 +304,9 @@ Public Class cDbDocumentor
     End Sub
 
     Private Sub DocumentDbCertificate(ByVal oCertificate As Certificate)
+
+        'oCertificate.Export(pubkeypath, privkeypath, filephrase, encryptionphrase)
+
         If Not oCertificate Is Nothing Then
             For Each prop As Microsoft.SqlServer.Management.Smo.Property In oCertificate.Properties
                 If prop.Value Is Nothing Then
@@ -562,6 +565,9 @@ Public Class cDbDocumentor
     End Sub
 
     Private Sub DocumentSrvServiceMasterKey()
+
+        ' _oSQLServer.ServiceMasterKey.Export(Path, password)
+
         If _oSQLServer.VersionMajor > 8 _
             AndAlso Not _oSQLServer.ServiceMasterKey Is Nothing Then
             _script.Add(String.Format(My.Resources.CommentBegin, My.Resources.ServiceMasterKey))

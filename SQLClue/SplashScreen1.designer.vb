@@ -23,13 +23,13 @@ Partial Class SplashScreen1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SplashScreen1))
-        Me.ApplicationTitle = New System.Windows.Forms.Label
-        Me.Version = New System.Windows.Forms.Label
-        Me.Copyright = New System.Windows.Forms.Label
-        Me.SplashMessage = New System.Windows.Forms.Label
-        Me.StatusStripSplash = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.ApplicationTitle = New System.Windows.Forms.Label()
+        Me.Version = New System.Windows.Forms.Label()
+        Me.Copyright = New System.Windows.Forms.Label()
+        Me.SplashMessage = New System.Windows.Forms.Label()
+        Me.StatusStripSplash = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.StatusStripSplash.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -37,11 +37,11 @@ Partial Class SplashScreen1
         'ApplicationTitle
         '
         Me.ApplicationTitle.BackColor = System.Drawing.Color.Transparent
-        Me.ApplicationTitle.Font = New System.Drawing.Font("Segoe UI", 32.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ApplicationTitle.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ApplicationTitle.ForeColor = System.Drawing.Color.SlateGray
-        Me.ApplicationTitle.Location = New System.Drawing.Point(239, 9)
+        Me.ApplicationTitle.Location = New System.Drawing.Point(267, 5)
         Me.ApplicationTitle.Name = "ApplicationTitle"
-        Me.ApplicationTitle.Size = New System.Drawing.Size(229, 72)
+        Me.ApplicationTitle.Size = New System.Drawing.Size(208, 72)
         Me.ApplicationTitle.TabIndex = 0
         Me.ApplicationTitle.Text = "SQLClue"
         Me.ApplicationTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -49,13 +49,13 @@ Partial Class SplashScreen1
         'Version
         '
         Me.Version.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Version.BackColor = System.Drawing.Color.Transparent
-        Me.Version.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Version.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Version.ForeColor = System.Drawing.Color.SlateGray
-        Me.Version.Location = New System.Drawing.Point(240, 219)
+        Me.Version.Location = New System.Drawing.Point(269, 232)
         Me.Version.Name = "Version"
-        Me.Version.Size = New System.Drawing.Size(228, 20)
+        Me.Version.Size = New System.Drawing.Size(206, 29)
         Me.Version.TabIndex = 1
         Me.Version.Text = "Version {0}.{1}.{2}.{3}"
         Me.Version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -63,13 +63,13 @@ Partial Class SplashScreen1
         'Copyright
         '
         Me.Copyright.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Copyright.BackColor = System.Drawing.Color.Transparent
-        Me.Copyright.Font = New System.Drawing.Font("Segoe UI", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Copyright.Font = New System.Drawing.Font("Segoe UI Light", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Copyright.ForeColor = System.Drawing.Color.SlateGray
-        Me.Copyright.Location = New System.Drawing.Point(237, 237)
+        Me.Copyright.Location = New System.Drawing.Point(267, 261)
         Me.Copyright.Name = "Copyright"
-        Me.Copyright.Size = New System.Drawing.Size(231, 20)
+        Me.Copyright.Size = New System.Drawing.Size(208, 20)
         Me.Copyright.TabIndex = 2
         Me.Copyright.Text = "Copyright Owner - assigned in code"
         Me.Copyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -77,13 +77,16 @@ Partial Class SplashScreen1
         'SplashMessage
         '
         Me.SplashMessage.BackColor = System.Drawing.Color.Transparent
-        Me.SplashMessage.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SplashMessage.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.SplashMessage.Font = New System.Drawing.Font("Segoe UI Semibold", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SplashMessage.ForeColor = System.Drawing.Color.SlateGray
-        Me.SplashMessage.Location = New System.Drawing.Point(236, 81)
+        Me.SplashMessage.Location = New System.Drawing.Point(267, 77)
         Me.SplashMessage.Name = "SplashMessage"
-        Me.SplashMessage.Size = New System.Drawing.Size(232, 126)
+        Me.SplashMessage.Size = New System.Drawing.Size(208, 168)
         Me.SplashMessage.TabIndex = 4
-        Me.SplashMessage.Text = "SQL Configuration " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Change Monitoring Tools" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Data Center Runbook"
+        Me.SplashMessage.Text = "SQL Configuration && DDL Compare " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "· " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SQL Configuration && DDL Archive " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "· " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Run" & _
+    "book " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "· " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SQL Encryption Hierarchy Backups " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "· " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Secure T-SQL Passphrase Manage" & _
+    "ment " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "· " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Open Source Software " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.SplashMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'StatusStripSplash

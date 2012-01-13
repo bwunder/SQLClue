@@ -64,4 +64,7 @@ Public NotInheritable Class SplashScreen1
         'SplashMessage.Text = My.Application.Info.Description
     End Sub
 
+    Private Sub SplashMessage_Click(sender As System.Object, e As System.EventArgs) Handles SplashMessage.Click
+
+    End Sub
 End Class

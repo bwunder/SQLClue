@@ -16,7 +16,7 @@ Public NotInheritable Class AboutBoxForm
         Me.LabelProductDescription.Text = My.Application.Info.Description
         Me.LabelVersion.Text = String.Format(CultureInfo.CurrentUICulture, "Version {0}", My.Application.Info.Version.ToString)
         Me.LabelCopyright.Text = My.Application.Info.Copyright
-        Me.TextBoxDescription.Text = My.Resources.ContactBillAt
+        Me.TextBoxDescription.Text = My.Resources.ContactBillAt & vbCrLf & My.Resources.License
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click

@@ -1,6 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
-  <InteractiveHeight>11in</InteractiveHeight>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="textbox1">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SQLClue Dashboard</Value>
+                <Style>
+                  <FontFamily>Tahoma</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <Color>SlateGray</Color>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox1</rd:DefaultName>
+        <Top>0.125in</Top>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Width>6.75in</Width>
+        <Style>
+          <Border>
+            <Color>SlateGray</Color>
+          </Border>
+          <TopBorder>
+            <Style>Solid</Style>
+          </TopBorder>
+          <LeftBorder>
+            <Style>Solid</Style>
+          </LeftBorder>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Subreport Name="subreport1">
+        <ReportName>SQLClueScheduledTasks</ReportName>
+        <NoRowsMessage>No Scheduled SQLClue Actions</NoRowsMessage>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.5in</Top>
+        <Left>0.125in</Left>
+        <Height>0.25in</Height>
+        <Width>9.75in</Width>
+        <ZIndex>1</ZIndex>
+        <Style />
+      </Subreport>
+      <Subreport Name="subreport2">
+        <ReportName>SQLClueServiceStatus</ReportName>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.125in</Top>
+        <Left>6.875in</Left>
+        <Height>0.25in</Height>
+        <Width>3in</Width>
+        <ZIndex>2</ZIndex>
+        <Style />
+      </Subreport>
+      <Subreport Name="subreport3">
+        <ReportName>SQLConfigurationChange</ReportName>
+        <Parameters>
+          <Parameter Name="Level1Days">
+            <Value>=Parameters!Level1Days.Value</Value>
+          </Parameter>
+          <Parameter Name="Level2Days">
+            <Value>=Parameters!Level2Days.Value</Value>
+          </Parameter>
+          <Parameter Name="Level3Days">
+            <Value>=Parameters!Level3Days.Value</Value>
+          </Parameter>
+          <Parameter Name="EndDt">
+            <Value>=Parameters!EndDt.Value</Value>
+          </Parameter>
+        </Parameters>
+        <NoRowsMessage>No SQL Configuration Archive Activity</NoRowsMessage>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.875in</Top>
+        <Left>0.125in</Left>
+        <Height>2.375in</Height>
+        <Width>6.625in</Width>
+        <ZIndex>3</ZIndex>
+        <Style />
+      </Subreport>
+      <Subreport Name="subreport6">
+        <ReportName>SQLRunbookChange</ReportName>
+        <Parameters>
+          <Parameter Name="Level1Days">
+            <Value>=Parameters!Level1Days.Value</Value>
+          </Parameter>
+          <Parameter Name="Level2Days">
+            <Value>=Parameters!Level2Days.Value</Value>
+          </Parameter>
+          <Parameter Name="Level3Days">
+            <Value>=Parameters!Level3Days.Value</Value>
+          </Parameter>
+          <Parameter Name="EndDt">
+            <Value>=Parameters!EndDt.Value</Value>
+          </Parameter>
+        </Parameters>
+        <NoRowsMessage>No Data Center Runbook Activity</NoRowsMessage>
+        <KeepTogether>true</KeepTogether>
+        <Top>0.875in</Top>
+        <Left>6.875in</Left>
+        <Height>2.375in</Height>
+        <Width>3in</Width>
+        <ZIndex>4</ZIndex>
+        <Style />
+      </Subreport>
+    </ReportItems>
+    <Height>3.25in</Height>
+    <Style />
+  </Body>
+  <Width>10in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
   <ReportParameters>
     <ReportParameter Name="Level1Days">
       <DataType>Integer</DataType>
@@ -43,108 +168,8 @@
       <Prompt>Last day of results to show</Prompt>
     </ReportParameter>
   </ReportParameters>
-  <rd:DrawGrid>true</rd:DrawGrid>
-  <InteractiveWidth>8.5in</InteractiveWidth>
-  <rd:SnapToGrid>true</rd:SnapToGrid>
-  <RightMargin>1in</RightMargin>
-  <LeftMargin>1in</LeftMargin>
-  <BottomMargin>1in</BottomMargin>
-  <rd:ReportID>7050b1fe-dee0-43ef-b90d-aca542eaea35</rd:ReportID>
-  <Width>10in</Width>
-  <Body>
-    <ReportItems>
-      <Subreport Name="subreport6">
-        <NoRows>No Data Center Runbook Activity</NoRows>
-        <Parameters>
-          <Parameter Name="Level1Days">
-            <Value>=Parameters!Level1Days.Value</Value>
-          </Parameter>
-          <Parameter Name="Level2Days">
-            <Value>=Parameters!Level2Days.Value</Value>
-          </Parameter>
-          <Parameter Name="Level3Days">
-            <Value>=Parameters!Level3Days.Value</Value>
-          </Parameter>
-          <Parameter Name="EndDt">
-            <Value>=Parameters!EndDt.Value</Value>
-          </Parameter>
-        </Parameters>
-        <Top>0.875in</Top>
-        <ReportName>SQLRunbookChange</ReportName>
-        <Width>3in</Width>
-        <ZIndex>4</ZIndex>
-        <Left>6.875in</Left>
-        <Height>2.375in</Height>
-      </Subreport>
-      <Subreport Name="subreport3">
-        <NoRows>No SQL Configuration Archive Activity</NoRows>
-        <Parameters>
-          <Parameter Name="Level1Days">
-            <Value>=Parameters!Level1Days.Value</Value>
-          </Parameter>
-          <Parameter Name="Level2Days">
-            <Value>=Parameters!Level2Days.Value</Value>
-          </Parameter>
-          <Parameter Name="Level3Days">
-            <Value>=Parameters!Level3Days.Value</Value>
-          </Parameter>
-          <Parameter Name="EndDt">
-            <Value>=Parameters!EndDt.Value</Value>
-          </Parameter>
-        </Parameters>
-        <Top>0.875in</Top>
-        <ReportName>SQLConfigurationChange</ReportName>
-        <Width>6.625in</Width>
-        <ZIndex>3</ZIndex>
-        <Left>0.125in</Left>
-        <Height>2.375in</Height>
-      </Subreport>
-      <Subreport Name="subreport2">
-        <Top>0.125in</Top>
-        <ReportName>SQLClueServiceStatus</ReportName>
-        <Width>3in</Width>
-        <ZIndex>2</ZIndex>
-        <Left>6.875in</Left>
-        <Height>0.25in</Height>
-      </Subreport>
-      <Subreport Name="subreport1">
-        <NoRows>No Scheduled SQLClue Actions</NoRows>
-        <Top>0.5in</Top>
-        <ReportName>SQLClueScheduledTasks</ReportName>
-        <Width>9.75in</Width>
-        <ZIndex>1</ZIndex>
-        <Left>0.125in</Left>
-        <Height>0.25in</Height>
-      </Subreport>
-      <Textbox Name="textbox1">
-        <rd:DefaultName>textbox1</rd:DefaultName>
-        <Top>0.125in</Top>
-        <Width>6.75in</Width>
-        <Style>
-          <Color>SlateGray</Color>
-          <BorderColor>
-            <Default>SlateGray</Default>
-          </BorderColor>
-          <BorderStyle>
-            <Left>Solid</Left>
-            <Top>Solid</Top>
-          </BorderStyle>
-          <FontFamily>Tahoma</FontFamily>
-          <FontSize>12pt</FontSize>
-          <FontWeight>700</FontWeight>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <CanGrow>true</CanGrow>
-        <Left>0.125in</Left>
-        <Height>0.25in</Height>
-        <Value>SQLClue Dashboard</Value>
-      </Textbox>
-    </ReportItems>
-    <Height>3.375in</Height>
-  </Body>
   <Language>en-US</Language>
-  <TopMargin>1in</TopMargin>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>7050b1fe-dee0-43ef-b90d-aca542eaea35</rd:ReportID>
 </Report>

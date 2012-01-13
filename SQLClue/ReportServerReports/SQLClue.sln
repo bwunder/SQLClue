@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "SQLClue", "SQLClue.rptproj", "{1DCB0DFB-DDC3-49BE-9516-34386870882E}"
 EndProject
 Global

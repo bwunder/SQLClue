@@ -108,18 +108,6 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\WPF Toolkit\v3.5.40320.1\WPFToolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="WPFToolkit.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\WPF Toolkit\v3.5.40320.1\WPFToolkit.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="WPFToolkit.VisualStudio.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\WPF Toolkit\v3.5.40320.1\WPFToolkit.VisualStudio.Design.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.Reporting.WinForms" />
@@ -311,6 +299,11 @@
     <Compile Include="DialogRunbookCategory.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="My Project\Resources1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RunbookForm.Designer.vb">
       <DependentUpon>RunbookForm.vb</DependentUpon>
     </Compile>
@@ -321,11 +314,6 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -410,6 +398,7 @@
       <DependentUpon>DialogViewQueue.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Help\License.htm" />
     <Content Include="ReportViewerReports\SQLClueConsole.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -546,9 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportViewerForm.resx">
       <SubType>Designer</SubType>
@@ -702,14 +691,6 @@
     <None Include="Images\arrow_forward.gif">
     </None>
     <None Include="My Project\DataSources\SQLClue.My.MySettings.datasource" />
-    <None Include="ReportServerReports\SQLClueDashboard.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLClueSchedule.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLClueScheduledTasks.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLClueServiceStatus.rdl">
-    </None>
     <Resource Include="Resources\holmes.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -731,83 +712,6 @@
     </Resource>
     <Resource Include="Resources\SQLClue96.bmp">
     </Resource>
-    <None Include="ReportServerReports\SQLConfigurationArchiveByInstance.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationArchiveHistory.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationArchiveHistoryByInstanceName.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationArchiveHistoryByScheduleId.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationArchiveHistoryForSQLInstanceByScheduleId.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationArchiveSettings.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationCatalog.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationCatalogIndex.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationChange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationChangeDefinitionByVersion.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationChangesForArchive.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationChangesForDate.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLConfigurationRecentSQLErrors.rdl" />
-    <None Include="ReportServerReports\SQLConfigurationSummary.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookCatalog.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookCategoriesAddedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookCategory.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookCategoryTopicsAddedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookChange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookContributor.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookContributorScores.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocument.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentsAddedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentsByOwner.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentsByTopic.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentsChangedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentsReviewedByOwner.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentsReviewedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookDocumentTypes.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookSimpleSearch.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookSummary.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopic.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicDocumentsAddedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicsAddedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicsByCategoryId.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicsByOwner.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicsChangedInDateRange.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicsReviewedByOwner.rdl">
-    </None>
-    <None Include="ReportServerReports\SQLRunbookTopicsReviewedInDateRange.rdl">
-    </None>
     <Content Include="ReportViewerReports\SQLConfigurationArchiveSimpleSearch.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -817,8 +721,6 @@
     <EmbeddedResource Include="ReportViewerReports\SQLRunbookSimpleSearch.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <None Include="ReportServerReports\SQLConfigurationArchiveSimpleSearch.rdl">
-    </None>
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
@@ -1137,7 +1039,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
-    <Folder Include="ReportServerReports\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

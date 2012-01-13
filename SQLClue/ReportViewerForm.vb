@@ -117,6 +117,37 @@ Public Class ReportViewerForm
         End Try
     End Sub
 
+    Friend Sub LoadDefaultTrace(ByVal SQLInstance As String, _
+                                ByVal BeginDt As DateTime, _
+                                ByVal EndDt As DateTime)
+        Try
+            If My.Settings.RepositoryEnabled Then
+                ReportViewerSQLClue.ZoomMode = ZoomMode.Percent
+                ReportViewerSQLClue.ZoomPercent = 100
+                Me.ReportViewerSQLClue.ShowToolBar = True
+                SplitContainerReportViewer.Panel1Collapsed = False
+                FlowLayoutPanelParms.Controls.Clear()
+                Me.ReportViewerSQLClue.Reset()
+                Me.ReportViewerSQLClue.ProcessingMode = ProcessingMode.Local
+                Me.ReportViewerSQLClue.LocalReport.DataSources.Clear()
+                Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SqlClueDefaultTrace.rdlc"
+                Dim Parms(3) As ReportParameter
+                Parms(0) = New ReportParameter("SQLInstance", SQLInstance)
+                Parms(1) = New ReportParameter("BeginDt", BeginDt.ToString)
+                Parms(2) = New ReportParameter("EndDt", EndDt.ToString)
+                Me.ReportViewerSQLClue.LocalReport.SetParameters(Parms)
+                RemoveHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
+                AddHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
+                RemoveHandler ReportViewerSQLClue.LocalReport.SubreportProcessing, AddressOf SQLClueSubreportProcessingEventHandler
+                AddHandler ReportViewerSQLClue.LocalReport.SubreportProcessing, AddressOf SQLClueSubreportProcessingEventHandler
+                Me.ReportViewerSQLClue.RefreshReport()
+            End If
+            ToolStripStatusLabel1.Text = My.Resources.Ready
+        Catch ex As Exception
+            Mother.HandleException(ex)
+        End Try
+    End Sub
+
     Public Sub SQLClueDrillthroughEventHandler(ByVal sender As Object, ByVal e As DrillthroughEventArgs)
         Dim rpt As LocalReport
         rpt = CType(e.Report, LocalReport)
@@ -127,6 +158,11 @@ Public Class ReportViewerForm
                               CInt(e.Report.GetParameters("Level2Days").Values(0)), _
                               CInt(e.Report.GetParameters("Level3Days").Values(0)), _
                               CDate(e.Report.GetParameters("EndDt").Values(0)))
+            Case "SQLClueDefaultTrace"
+                e.Cancel = True
+                LoadDefaultTrace(e.Report.GetParameters("SQLInstance").Values(0).ToString, _
+                                 CDate(e.Report.GetParameters("BeginDt").Values(0)), _
+                                 CDate(e.Report.GetParameters("EndDt").Values(0)))
             Case "SQLConfigurationArchiveByInstance"
                 Using TableAdapterSQLCfgChanges As New cCommon.dsSQLConfigurationTableAdapters.tChangeTableAdapter
                     TableAdapterSQLCfgChanges.Connection.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
@@ -241,7 +277,7 @@ Public Class ReportViewerForm
                     My.Settings.SQL__Repository__B_Trust__Server__Certificate_8 = Mother.DAL.RepositoryTrustServerCertificate
                     CompareForm.cCompare.Repository2.ConnectionContext.ConnectionString = Mother.DAL.LocalRepositoryConnectionString
                     CompareForm.Origin2.SelectedItem = My.Resources.OriginRepository
-                    'selecting the instance invoke tryloadtreeview
+                    'selecting the instance invokes tryloadtreeview
                     CompareForm.Instance2.SelectedItem = CompareForm.cCompare.CrackFullPath(e.Report.GetParameters("Node").Values(0))(0)
                     Dim Nodes2() As TreeNode = CompareForm.smoTreeView2.Nodes.Find(CompareForm.cCompare.CrackFullPath(e.Report.GetParameters("Node").Values(0))(3), True)
                     For Each n As TreeNode In Nodes2

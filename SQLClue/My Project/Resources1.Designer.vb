@@ -399,27 +399,6 @@ Namespace My.Resources
             End Get
         End Property
         
-        Friend ReadOnly Property bw() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("bw", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property bw2() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("bw2", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property bw75() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("bw75", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
         '''<summary>
         '''  Looks up a localized string similar to Cancelled.
         '''</summary>
@@ -1172,6 +1151,24 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to Copyright (c) 2007 - 2012 Bill Wunder
+        '''
+        '''Permission is hereby granted, free of charge, to any person obtaining a copy
+        '''of this software and associated documentation files (the &quot;Software&quot;), to deal
+        '''in the Software without restriction, including without limitation the rights
+        '''to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        '''copies of the Software, and to permit persons to whom the Software is
+        '''furnished to do so, subject to the following conditions:
+        '''
+        '''The above copyright notice and [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property License() As String
+            Get
+                Return ResourceManager.GetString("License", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to Fetching hierarchy for the most recent archive of SQL Instance [{0}].
         '''</summary>
         Friend ReadOnly Property LoadingRepositoryHierarchyForInstance() As String
@@ -1823,13 +1820,6 @@ Namespace My.Resources
             End Get
         End Property
         
-        Friend ReadOnly Property SQLClue961() As System.Drawing.Icon
-            Get
-                Dim obj As Object = ResourceManager.GetObject("SQLClue961", resourceCulture)
-                Return CType(obj,System.Drawing.Icon)
-            End Get
-        End Property
-        
         '''<summary>
         '''  Looks up a localized string similar to SQLClueSvc.
         '''</summary>
@@ -1933,6 +1923,13 @@ Namespace My.Resources
         Friend ReadOnly Property StringListAdvOptionsHelp() As String
             Get
                 Return ResourceManager.GetString("StringListAdvOptionsHelp", resourceCulture)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property TwoHeadedDB() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("TwoHeadedDB", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
             End Get
         End Property
         

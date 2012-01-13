@@ -1978,6 +1978,18 @@ Public Class Mother
         End Try
     End Sub
 
+    Private Sub ToolStripMenuItemDefaultTrace_Click(sender As Object, e As System.EventArgs) Handles ToolStripMenuItemDefaultTrace.Click
+        Dim csr As Cursor = Me.Cursor
+        Try
+            Me.Cursor = Cursors.WaitCursor
+            Me.TabForms.SelectTab(ReportViewerForm.Name & "Tab")
+            My.Forms.ReportViewerForm.LoadDefaultTrace(, , )
+        Catch ex As Exception
+            HandleException(ex)
+        Finally
+            Me.Cursor = csr
+        End Try
+    End Sub
 
 #End Region
 
@@ -2015,12 +2027,5 @@ Public Class Mother
         My.Settings.Save()
     End Sub
 
-    Private Sub RunbookToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RunbookToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub ToolStripMenuItem12_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem12.Click
-
-    End Sub
 End Class
 

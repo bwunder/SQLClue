@@ -29,12 +29,12 @@ Partial Class Mother
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RepositoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RepositoryInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RepositoryConfigureMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RepositoryUninstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
-        Me.RepositoryArchiveAlertsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunbookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunbookInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunbookConfigureMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -49,6 +49,12 @@ Partial Class Mother
         Me.ToolStripMenuItemFileWatcher = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator24 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItemConnectRemoteRunbook = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RepositoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RepositoryInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RepositoryConfigureMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RepositoryUninstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.RepositoryArchiveAlertsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ServiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ServiceInstallMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -64,10 +70,27 @@ Partial Class Mother
         Me.ToolStripMenuItemDocumentMonitorSleep = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemWaitBetweenDocumentsSeconds = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator20 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItemAdvancedSettings = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemDiscoveryScope = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripComboBoxDiscoveryScope = New System.Windows.Forms.ToolStripComboBox()
         Me.ReportsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemDashboard = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemScheduledTasks = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator16 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItemRunbookReports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemRunbookCatalog = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemRunbookUsers = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItemIFilters = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator17 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItemSearchRunbook = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator23 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator25 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemConfigurationReports = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemConfigurationCatalog = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemConfigurationSummary = New System.Windows.Forms.ToolStripMenuItem()
@@ -78,13 +101,6 @@ Partial Class Mother
         Me.ToolStripMenuItemSearchArchive = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator22 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItemArchiveErrors = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItemRunbookReports = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItemRunbookCatalog = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItemRunbookUsers = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator14 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItemIFilters = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator17 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItemSearchRunbook = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator19 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItemLastCompare = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
@@ -94,12 +110,17 @@ Partial Class Mother
         Me.HelpMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.IndexToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WalkthruToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CompareTutorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ArchiveTutorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator21 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem12 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator26 = New System.Windows.Forms.ToolStripSeparator()
         Me.RunbookContributorTutorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunbookRatingTotorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator21 = New System.Windows.Forms.ToolStripSeparator()
         Me.RunbookUserTutorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator27 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ArchiveTutorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CompareTutorialToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItemCheckforUpdates = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
@@ -117,27 +138,8 @@ Partial Class Mother
         Me.TabForms = New System.Windows.Forms.TabControl()
         Me.HelpProviderMother = New System.Windows.Forms.HelpProvider()
         Me.EventLogMother = New System.Diagnostics.EventLog()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem5 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem7 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem8 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator23 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem9 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator25 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator26 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator27 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem12 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripComboBoxDiscoveryScope = New System.Windows.Forms.ToolStripComboBox()
-        Me.ToolStripMenuItemDiscoveryScope = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItemAdvancedSettings = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItemDefaultTrace = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStripMother.SuspendLayout()
         Me.ToolStripMother.SuspendLayout()
         CType(Me.EventLogMother, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,7 +165,7 @@ Partial Class Mother
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'ToolsMenu
@@ -173,43 +175,43 @@ Partial Class Mother
         Me.ToolsMenu.Size = New System.Drawing.Size(48, 20)
         Me.ToolsMenu.Text = "&Tools"
         '
-        'RepositoryToolStripMenuItem
+        'ToolStripMenuItem2
         '
-        Me.RepositoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryInstallMenuItem, Me.RepositoryConfigureMenuItem, Me.RepositoryUninstallMenuItem, Me.ToolStripSeparator13, Me.RepositoryArchiveAlertsMenuItem})
-        Me.RepositoryToolStripMenuItem.Name = "RepositoryToolStripMenuItem"
-        Me.RepositoryToolStripMenuItem.Size = New System.Drawing.Size(273, 22)
-        Me.RepositoryToolStripMenuItem.Text = "SQL &Configuration Archive"
+        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripMenuItem5, Me.ToolStripSeparator3, Me.ToolStripMenuItem6})
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(273, 22)
+        Me.ToolStripMenuItem2.Text = "Encryption Hieararchy Administration"
         '
-        'RepositoryInstallMenuItem
+        'ToolStripMenuItem3
         '
-        Me.RepositoryInstallMenuItem.Name = "RepositoryInstallMenuItem"
-        Me.RepositoryInstallMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.RepositoryInstallMenuItem.Text = "&Install"
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItem3.Text = "&Install"
         '
-        'RepositoryConfigureMenuItem
+        'ToolStripMenuItem4
         '
-        Me.RepositoryConfigureMenuItem.Enabled = False
-        Me.RepositoryConfigureMenuItem.Name = "RepositoryConfigureMenuItem"
-        Me.RepositoryConfigureMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.RepositoryConfigureMenuItem.Text = "&Reconfigure Connection"
+        Me.ToolStripMenuItem4.Enabled = False
+        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
+        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItem4.Text = "&Reconfigure Connection"
         '
-        'RepositoryUninstallMenuItem
+        'ToolStripMenuItem5
         '
-        Me.RepositoryUninstallMenuItem.Enabled = False
-        Me.RepositoryUninstallMenuItem.Name = "RepositoryUninstallMenuItem"
-        Me.RepositoryUninstallMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.RepositoryUninstallMenuItem.Text = "&Uninstall"
+        Me.ToolStripMenuItem5.Enabled = False
+        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItem5.Text = "&Uninstall"
         '
-        'ToolStripSeparator13
+        'ToolStripSeparator3
         '
-        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(210, 6)
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(211, 6)
         '
-        'RepositoryArchiveAlertsMenuItem
+        'ToolStripMenuItem6
         '
-        Me.RepositoryArchiveAlertsMenuItem.Name = "RepositoryArchiveAlertsMenuItem"
-        Me.RepositoryArchiveAlertsMenuItem.Size = New System.Drawing.Size(213, 22)
-        Me.RepositoryArchiveAlertsMenuItem.Text = "Archive Alert Notifications"
+        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
+        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(214, 22)
+        Me.ToolStripMenuItem6.Text = "Catalog Alert Notifications"
         '
         'RunbookToolStripMenuItem
         '
@@ -303,6 +305,44 @@ Partial Class Mother
         Me.ToolStripMenuItemConnectRemoteRunbook.Size = New System.Drawing.Size(215, 22)
         Me.ToolStripMenuItemConnectRemoteRunbook.Text = "&Open Remote Runbook"
         '
+        'RepositoryToolStripMenuItem
+        '
+        Me.RepositoryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RepositoryInstallMenuItem, Me.RepositoryConfigureMenuItem, Me.RepositoryUninstallMenuItem, Me.ToolStripSeparator13, Me.RepositoryArchiveAlertsMenuItem})
+        Me.RepositoryToolStripMenuItem.Name = "RepositoryToolStripMenuItem"
+        Me.RepositoryToolStripMenuItem.Size = New System.Drawing.Size(273, 22)
+        Me.RepositoryToolStripMenuItem.Text = "SQL &Configuration Archive"
+        '
+        'RepositoryInstallMenuItem
+        '
+        Me.RepositoryInstallMenuItem.Name = "RepositoryInstallMenuItem"
+        Me.RepositoryInstallMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.RepositoryInstallMenuItem.Text = "&Install"
+        '
+        'RepositoryConfigureMenuItem
+        '
+        Me.RepositoryConfigureMenuItem.Enabled = False
+        Me.RepositoryConfigureMenuItem.Name = "RepositoryConfigureMenuItem"
+        Me.RepositoryConfigureMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.RepositoryConfigureMenuItem.Text = "&Reconfigure Connection"
+        '
+        'RepositoryUninstallMenuItem
+        '
+        Me.RepositoryUninstallMenuItem.Enabled = False
+        Me.RepositoryUninstallMenuItem.Name = "RepositoryUninstallMenuItem"
+        Me.RepositoryUninstallMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.RepositoryUninstallMenuItem.Text = "&Uninstall"
+        '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(210, 6)
+        '
+        'RepositoryArchiveAlertsMenuItem
+        '
+        Me.RepositoryArchiveAlertsMenuItem.Name = "RepositoryArchiveAlertsMenuItem"
+        Me.RepositoryArchiveAlertsMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.RepositoryArchiveAlertsMenuItem.Text = "Archive Alert Notifications"
+        '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
@@ -395,9 +435,28 @@ Partial Class Mother
         Me.ToolStripSeparator20.Name = "ToolStripSeparator20"
         Me.ToolStripSeparator20.Size = New System.Drawing.Size(270, 6)
         '
+        'ToolStripMenuItemAdvancedSettings
+        '
+        Me.ToolStripMenuItemAdvancedSettings.Name = "ToolStripMenuItemAdvancedSettings"
+        Me.ToolStripMenuItemAdvancedSettings.Size = New System.Drawing.Size(273, 22)
+        Me.ToolStripMenuItemAdvancedSettings.Text = "User &Options... "
+        '
+        'ToolStripMenuItemDiscoveryScope
+        '
+        Me.ToolStripMenuItemDiscoveryScope.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBoxDiscoveryScope})
+        Me.ToolStripMenuItemDiscoveryScope.Name = "ToolStripMenuItemDiscoveryScope"
+        Me.ToolStripMenuItemDiscoveryScope.Size = New System.Drawing.Size(273, 22)
+        Me.ToolStripMenuItemDiscoveryScope.Text = "Start-up Discovery Scope"
+        '
+        'ToolStripComboBoxDiscoveryScope
+        '
+        Me.ToolStripComboBoxDiscoveryScope.Items.AddRange(New Object() {"Network", "Local", "None"})
+        Me.ToolStripComboBoxDiscoveryScope.Name = "ToolStripComboBoxDiscoveryScope"
+        Me.ToolStripComboBoxDiscoveryScope.Size = New System.Drawing.Size(121, 23)
+        '
         'ReportsMenu
         '
-        Me.ReportsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemDashboard, Me.ToolStripMenuItemScheduledTasks, Me.ToolStripSeparator16, Me.ToolStripMenuItemRunbookReports, Me.ToolStripMenuItem1, Me.ToolStripMenuItemConfigurationReports, Me.ToolStripSeparator19, Me.ToolStripMenuItemLastCompare, Me.ToolStripSeparator8, Me.ToolStripMenuItemLocalReports})
+        Me.ReportsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemDashboard, Me.ToolStripMenuItemScheduledTasks, Me.ToolStripSeparator16, Me.ToolStripMenuItemRunbookReports, Me.ToolStripMenuItem1, Me.ToolStripMenuItemConfigurationReports, Me.ToolStripSeparator19, Me.ToolStripMenuItemDefaultTrace, Me.ToolStripSeparator7, Me.ToolStripMenuItemLastCompare, Me.ToolStripSeparator8, Me.ToolStripMenuItemLocalReports})
         Me.ReportsMenu.Name = "ReportsMenu"
         Me.ReportsMenu.Size = New System.Drawing.Size(59, 20)
         Me.ReportsMenu.Text = "&Reports"
@@ -420,6 +479,90 @@ Partial Class Mother
         '
         Me.ToolStripSeparator16.Name = "ToolStripSeparator16"
         Me.ToolStripSeparator16.Size = New System.Drawing.Size(258, 6)
+        '
+        'ToolStripMenuItemRunbookReports
+        '
+        Me.ToolStripMenuItemRunbookReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemRunbookCatalog, Me.ToolStripMenuItemRunbookUsers, Me.ToolStripSeparator14, Me.ToolStripMenuItemIFilters, Me.ToolStripSeparator17, Me.ToolStripMenuItemSearchRunbook})
+        Me.ToolStripMenuItemRunbookReports.Enabled = False
+        Me.ToolStripMenuItemRunbookReports.Name = "ToolStripMenuItemRunbookReports"
+        Me.ToolStripMenuItemRunbookReports.Size = New System.Drawing.Size(261, 22)
+        Me.ToolStripMenuItemRunbookReports.Text = "Encryption Hierarchy Administrator"
+        '
+        'ToolStripMenuItemRunbookCatalog
+        '
+        Me.ToolStripMenuItemRunbookCatalog.Name = "ToolStripMenuItemRunbookCatalog"
+        Me.ToolStripMenuItemRunbookCatalog.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItemRunbookCatalog.Text = "Catalog"
+        '
+        'ToolStripMenuItemRunbookUsers
+        '
+        Me.ToolStripMenuItemRunbookUsers.Name = "ToolStripMenuItemRunbookUsers"
+        Me.ToolStripMenuItemRunbookUsers.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItemRunbookUsers.Text = "Contributors"
+        '
+        'ToolStripSeparator14
+        '
+        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
+        Me.ToolStripSeparator14.Size = New System.Drawing.Size(157, 6)
+        '
+        'ToolStripMenuItemIFilters
+        '
+        Me.ToolStripMenuItemIFilters.Name = "ToolStripMenuItemIFilters"
+        Me.ToolStripMenuItemIFilters.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItemIFilters.Text = "Installed iFilters"
+        '
+        'ToolStripSeparator17
+        '
+        Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
+        Me.ToolStripSeparator17.Size = New System.Drawing.Size(157, 6)
+        '
+        'ToolStripMenuItemSearchRunbook
+        '
+        Me.ToolStripMenuItemSearchRunbook.Name = "ToolStripMenuItemSearchRunbook"
+        Me.ToolStripMenuItemSearchRunbook.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItemSearchRunbook.Text = "Search Runbook"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.ToolStripSeparator23, Me.ToolStripMenuItem9, Me.ToolStripSeparator25, Me.ToolStripMenuItem10})
+        Me.ToolStripMenuItem1.Enabled = False
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(261, 22)
+        Me.ToolStripMenuItem1.Text = "&Runbook"
+        '
+        'ToolStripMenuItem7
+        '
+        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItem7.Text = "Catalog"
+        '
+        'ToolStripMenuItem8
+        '
+        Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItem8.Text = "Contributors"
+        '
+        'ToolStripSeparator23
+        '
+        Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
+        Me.ToolStripSeparator23.Size = New System.Drawing.Size(157, 6)
+        '
+        'ToolStripMenuItem9
+        '
+        Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItem9.Text = "Installed iFilters"
+        '
+        'ToolStripSeparator25
+        '
+        Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
+        Me.ToolStripSeparator25.Size = New System.Drawing.Size(157, 6)
+        '
+        'ToolStripMenuItem10
+        '
+        Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
+        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(160, 22)
+        Me.ToolStripMenuItem10.Text = "Search Runbook"
         '
         'ToolStripMenuItemConfigurationReports
         '
@@ -480,48 +623,6 @@ Partial Class Mother
         Me.ToolStripMenuItemArchiveErrors.Size = New System.Drawing.Size(209, 22)
         Me.ToolStripMenuItemArchiveErrors.Text = "Recent Database Errors"
         '
-        'ToolStripMenuItemRunbookReports
-        '
-        Me.ToolStripMenuItemRunbookReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItemRunbookCatalog, Me.ToolStripMenuItemRunbookUsers, Me.ToolStripSeparator14, Me.ToolStripMenuItemIFilters, Me.ToolStripSeparator17, Me.ToolStripMenuItemSearchRunbook})
-        Me.ToolStripMenuItemRunbookReports.Enabled = False
-        Me.ToolStripMenuItemRunbookReports.Name = "ToolStripMenuItemRunbookReports"
-        Me.ToolStripMenuItemRunbookReports.Size = New System.Drawing.Size(261, 22)
-        Me.ToolStripMenuItemRunbookReports.Text = "Encryption Hierarchy Administrator"
-        '
-        'ToolStripMenuItemRunbookCatalog
-        '
-        Me.ToolStripMenuItemRunbookCatalog.Name = "ToolStripMenuItemRunbookCatalog"
-        Me.ToolStripMenuItemRunbookCatalog.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItemRunbookCatalog.Text = "Catalog"
-        '
-        'ToolStripMenuItemRunbookUsers
-        '
-        Me.ToolStripMenuItemRunbookUsers.Name = "ToolStripMenuItemRunbookUsers"
-        Me.ToolStripMenuItemRunbookUsers.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItemRunbookUsers.Text = "Contributors"
-        '
-        'ToolStripSeparator14
-        '
-        Me.ToolStripSeparator14.Name = "ToolStripSeparator14"
-        Me.ToolStripSeparator14.Size = New System.Drawing.Size(157, 6)
-        '
-        'ToolStripMenuItemIFilters
-        '
-        Me.ToolStripMenuItemIFilters.Name = "ToolStripMenuItemIFilters"
-        Me.ToolStripMenuItemIFilters.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItemIFilters.Text = "Installed iFilters"
-        '
-        'ToolStripSeparator17
-        '
-        Me.ToolStripSeparator17.Name = "ToolStripSeparator17"
-        Me.ToolStripSeparator17.Size = New System.Drawing.Size(157, 6)
-        '
-        'ToolStripMenuItemSearchRunbook
-        '
-        Me.ToolStripMenuItemSearchRunbook.Name = "ToolStripMenuItemSearchRunbook"
-        Me.ToolStripMenuItemSearchRunbook.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItemSearchRunbook.Text = "Search Runbook"
-        '
         'ToolStripSeparator19
         '
         Me.ToolStripSeparator19.Name = "ToolStripSeparator19"
@@ -579,22 +680,28 @@ Partial Class Mother
         Me.WalkthruToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.WalkthruToolStripMenuItem.Text = "Tutorials"
         '
-        'CompareTutorialToolStripMenuItem
+        'ToolStripMenuItem12
         '
-        Me.CompareTutorialToolStripMenuItem.Name = "CompareTutorialToolStripMenuItem"
-        Me.CompareTutorialToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.CompareTutorialToolStripMenuItem.Text = "Comparing SQL Server Configurations"
+        Me.ToolStripMenuItem12.Name = "ToolStripMenuItem12"
+        Me.ToolStripMenuItem12.Size = New System.Drawing.Size(285, 22)
+        Me.ToolStripMenuItem12.Text = "Incremental Backup of Keys &Certificates "
         '
-        'ArchiveTutorialToolStripMenuItem
+        'ToolStripMenuItem13
         '
-        Me.ArchiveTutorialToolStripMenuItem.Name = "ArchiveTutorialToolStripMenuItem"
-        Me.ArchiveTutorialToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.ArchiveTutorialToolStripMenuItem.Text = "Archiving SQL Server Configurations"
+        Me.ToolStripMenuItem13.Name = "ToolStripMenuItem13"
+        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(285, 22)
+        Me.ToolStripMenuItem13.Text = "Restore a Certificate "
         '
-        'ToolStripSeparator21
+        'ToolStripMenuItem11
         '
-        Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
-        Me.ToolStripSeparator21.Size = New System.Drawing.Size(282, 6)
+        Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
+        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(285, 22)
+        Me.ToolStripMenuItem11.Text = "Rotate a Database Master Key"
+        '
+        'ToolStripSeparator26
+        '
+        Me.ToolStripSeparator26.Name = "ToolStripSeparator26"
+        Me.ToolStripSeparator26.Size = New System.Drawing.Size(282, 6)
         '
         'RunbookContributorTutorialToolStripMenuItem
         '
@@ -608,11 +715,33 @@ Partial Class Mother
         Me.RunbookRatingTotorialToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.RunbookRatingTotorialToolStripMenuItem.Text = "Peer Reviews in the Runbook"
         '
+        'ToolStripSeparator21
+        '
+        Me.ToolStripSeparator21.Name = "ToolStripSeparator21"
+        Me.ToolStripSeparator21.Size = New System.Drawing.Size(282, 6)
+        '
         'RunbookUserTutorialToolStripMenuItem
         '
         Me.RunbookUserTutorialToolStripMenuItem.Name = "RunbookUserTutorialToolStripMenuItem"
         Me.RunbookUserTutorialToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
         Me.RunbookUserTutorialToolStripMenuItem.Text = "Runbook Lookup Criteria"
+        '
+        'ToolStripSeparator27
+        '
+        Me.ToolStripSeparator27.Name = "ToolStripSeparator27"
+        Me.ToolStripSeparator27.Size = New System.Drawing.Size(282, 6)
+        '
+        'ArchiveTutorialToolStripMenuItem
+        '
+        Me.ArchiveTutorialToolStripMenuItem.Name = "ArchiveTutorialToolStripMenuItem"
+        Me.ArchiveTutorialToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.ArchiveTutorialToolStripMenuItem.Text = "Archiving SQL Server Configurations"
+        '
+        'CompareTutorialToolStripMenuItem
+        '
+        Me.CompareTutorialToolStripMenuItem.Name = "CompareTutorialToolStripMenuItem"
+        Me.CompareTutorialToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.CompareTutorialToolStripMenuItem.Text = "Comparing SQL Server Configurations"
         '
         'AboutToolStripMenuItem
         '
@@ -733,132 +862,16 @@ Partial Class Mother
         Me.EventLogMother.Source = "SQLClue"
         Me.EventLogMother.SynchronizingObject = Me
         '
-        'ToolStripMenuItem2
+        'ToolStripMenuItemDefaultTrace
         '
-        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem3, Me.ToolStripMenuItem4, Me.ToolStripMenuItem5, Me.ToolStripSeparator3, Me.ToolStripMenuItem6})
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(273, 22)
-        Me.ToolStripMenuItem2.Text = "Encryption Hieararchy Administration"
+        Me.ToolStripMenuItemDefaultTrace.Name = "ToolStripMenuItemDefaultTrace"
+        Me.ToolStripMenuItemDefaultTrace.Size = New System.Drawing.Size(261, 22)
+        Me.ToolStripMenuItemDefaultTrace.Text = "Default Trace"
         '
-        'ToolStripMenuItem3
+        'ToolStripSeparator7
         '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(214, 22)
-        Me.ToolStripMenuItem3.Text = "&Install"
-        '
-        'ToolStripMenuItem4
-        '
-        Me.ToolStripMenuItem4.Enabled = False
-        Me.ToolStripMenuItem4.Name = "ToolStripMenuItem4"
-        Me.ToolStripMenuItem4.Size = New System.Drawing.Size(214, 22)
-        Me.ToolStripMenuItem4.Text = "&Reconfigure Connection"
-        '
-        'ToolStripMenuItem5
-        '
-        Me.ToolStripMenuItem5.Enabled = False
-        Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(214, 22)
-        Me.ToolStripMenuItem5.Text = "&Uninstall"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(211, 6)
-        '
-        'ToolStripMenuItem6
-        '
-        Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
-        Me.ToolStripMenuItem6.Size = New System.Drawing.Size(214, 22)
-        Me.ToolStripMenuItem6.Text = "Catalog Alert Notifications"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.ToolStripSeparator23, Me.ToolStripMenuItem9, Me.ToolStripSeparator25, Me.ToolStripMenuItem10})
-        Me.ToolStripMenuItem1.Enabled = False
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(261, 22)
-        Me.ToolStripMenuItem1.Text = "&Runbook"
-        '
-        'ToolStripMenuItem7
-        '
-        Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItem7.Text = "Catalog"
-        '
-        'ToolStripMenuItem8
-        '
-        Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItem8.Text = "Contributors"
-        '
-        'ToolStripSeparator23
-        '
-        Me.ToolStripSeparator23.Name = "ToolStripSeparator23"
-        Me.ToolStripSeparator23.Size = New System.Drawing.Size(157, 6)
-        '
-        'ToolStripMenuItem9
-        '
-        Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItem9.Text = "Installed iFilters"
-        '
-        'ToolStripSeparator25
-        '
-        Me.ToolStripSeparator25.Name = "ToolStripSeparator25"
-        Me.ToolStripSeparator25.Size = New System.Drawing.Size(157, 6)
-        '
-        'ToolStripMenuItem10
-        '
-        Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
-        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(160, 22)
-        Me.ToolStripMenuItem10.Text = "Search Runbook"
-        '
-        'ToolStripMenuItem11
-        '
-        Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
-        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(285, 22)
-        Me.ToolStripMenuItem11.Text = "Rotate a Database Master Key"
-        '
-        'ToolStripSeparator26
-        '
-        Me.ToolStripSeparator26.Name = "ToolStripSeparator26"
-        Me.ToolStripSeparator26.Size = New System.Drawing.Size(282, 6)
-        '
-        'ToolStripSeparator27
-        '
-        Me.ToolStripSeparator27.Name = "ToolStripSeparator27"
-        Me.ToolStripSeparator27.Size = New System.Drawing.Size(282, 6)
-        '
-        'ToolStripMenuItem12
-        '
-        Me.ToolStripMenuItem12.Name = "ToolStripMenuItem12"
-        Me.ToolStripMenuItem12.Size = New System.Drawing.Size(285, 22)
-        Me.ToolStripMenuItem12.Text = "Incremental Backup of Keys &Certificates "
-        '
-        'ToolStripMenuItem13
-        '
-        Me.ToolStripMenuItem13.Name = "ToolStripMenuItem13"
-        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(285, 22)
-        Me.ToolStripMenuItem13.Text = "Restore a Certificate "
-        '
-        'ToolStripComboBoxDiscoveryScope
-        '
-        Me.ToolStripComboBoxDiscoveryScope.Items.AddRange(New Object() {"Network", "Local", "None"})
-        Me.ToolStripComboBoxDiscoveryScope.Name = "ToolStripComboBoxDiscoveryScope"
-        Me.ToolStripComboBoxDiscoveryScope.Size = New System.Drawing.Size(121, 23)
-        '
-        'ToolStripMenuItemDiscoveryScope
-        '
-        Me.ToolStripMenuItemDiscoveryScope.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBoxDiscoveryScope})
-        Me.ToolStripMenuItemDiscoveryScope.Name = "ToolStripMenuItemDiscoveryScope"
-        Me.ToolStripMenuItemDiscoveryScope.Size = New System.Drawing.Size(273, 22)
-        Me.ToolStripMenuItemDiscoveryScope.Text = "Start-up Discovery Scope"
-        '
-        'ToolStripMenuItemAdvancedSettings
-        '
-        Me.ToolStripMenuItemAdvancedSettings.Name = "ToolStripMenuItemAdvancedSettings"
-        Me.ToolStripMenuItemAdvancedSettings.Size = New System.Drawing.Size(273, 22)
-        Me.ToolStripMenuItemAdvancedSettings.Text = "User &Options... "
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(258, 6)
         '
         'Mother
         '
@@ -996,5 +1009,7 @@ Partial Class Mother
     Friend WithEvents ToolStripMenuItemDiscoveryScope As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripComboBoxDiscoveryScope As System.Windows.Forms.ToolStripComboBox
     Friend WithEvents ToolStripMenuItem13 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItemDefaultTrace As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
 
 End Class
