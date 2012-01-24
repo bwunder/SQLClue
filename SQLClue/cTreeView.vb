@@ -227,7 +227,7 @@ Public Class cTreeView
                     End If
                 ElseIf TypeOf smoItem Is Server _
                 Or TypeOf smoItem Is Agent.JobServer _
-                Or TypeOf smoItem Is Database _
+                Or TypeOf smoItem Is Smo.Database _
                 Or TypeOf smoItem Is Broker.ServiceBroker Then
                     node.Nodes.Add(My.Resources.NodePlaceHolder)
                 End If

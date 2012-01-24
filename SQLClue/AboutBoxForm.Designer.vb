@@ -56,12 +56,12 @@ Partial Class AboutBoxForm
         Me.TableLayoutPanel.Name = "TableLayoutPanel"
         Me.TableLayoutPanel.Padding = New System.Windows.Forms.Padding(4)
         Me.TableLayoutPanel.RowCount = 5
-        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
+        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
-        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.0!))
-        Me.TableLayoutPanel.Size = New System.Drawing.Size(468, 362)
+        Me.TableLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel.Size = New System.Drawing.Size(468, 291)
         Me.TableLayoutPanel.TabIndex = 0
         '
         'LogoPictureBox
@@ -71,7 +71,7 @@ Partial Class AboutBoxForm
         Me.LogoPictureBox.Location = New System.Drawing.Point(7, 7)
         Me.LogoPictureBox.Name = "LogoPictureBox"
         Me.TableLayoutPanel.SetRowSpan(Me.LogoPictureBox, 4)
-        Me.LogoPictureBox.Size = New System.Drawing.Size(124, 222)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(124, 205)
         Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
@@ -92,12 +92,14 @@ Partial Class AboutBoxForm
         'LabelProductDescription
         '
         Me.LabelProductDescription.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelProductDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelProductDescription.Location = New System.Drawing.Point(137, 39)
+        Me.LabelProductDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
+        Me.LabelProductDescription.Location = New System.Drawing.Point(147, 60)
+        Me.LabelProductDescription.Margin = New System.Windows.Forms.Padding(13, 0, 3, 0)
         Me.LabelProductDescription.Name = "LabelProductDescription"
-        Me.LabelProductDescription.Size = New System.Drawing.Size(324, 123)
+        Me.LabelProductDescription.Size = New System.Drawing.Size(314, 99)
         Me.LabelProductDescription.TabIndex = 1
-        Me.LabelProductDescription.Text = "ProductDescription"
+        Me.LabelProductDescription.Text = "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SQL Configuration && DDL Compare " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SQL Configuration && DDL Archive " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Runbook " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "SQL Encryption Hierarchy Backups " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Secure T-SQL Passphrase Management " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Open So" & _
+    "urce Software " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'TextBoxDescription
         '
@@ -106,20 +108,20 @@ Partial Class AboutBoxForm
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBoxDescription.BackColor = System.Drawing.Color.White
         Me.TableLayoutPanel.SetColumnSpan(Me.TextBoxDescription, 2)
-        Me.TextBoxDescription.Location = New System.Drawing.Point(4, 232)
+        Me.TextBoxDescription.Location = New System.Drawing.Point(4, 215)
         Me.TextBoxDescription.Margin = New System.Windows.Forms.Padding(0)
         Me.TextBoxDescription.Multiline = True
         Me.TextBoxDescription.Name = "TextBoxDescription"
         Me.TextBoxDescription.ReadOnly = True
         Me.TextBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextBoxDescription.Size = New System.Drawing.Size(460, 126)
+        Me.TextBoxDescription.Size = New System.Drawing.Size(460, 72)
         Me.TextBoxDescription.TabIndex = 0
         Me.TextBoxDescription.TabStop = False
         '
         'LabelCopyright
         '
         Me.LabelCopyright.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelCopyright.Location = New System.Drawing.Point(140, 197)
+        Me.LabelCopyright.Location = New System.Drawing.Point(140, 187)
         Me.LabelCopyright.Margin = New System.Windows.Forms.Padding(6, 0, 3, 0)
         Me.LabelCopyright.MaximumSize = New System.Drawing.Size(0, 17)
         Me.LabelCopyright.Name = "LabelCopyright"
@@ -131,7 +133,7 @@ Partial Class AboutBoxForm
         'LabelVersion
         '
         Me.LabelVersion.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LabelVersion.Location = New System.Drawing.Point(140, 162)
+        Me.LabelVersion.Location = New System.Drawing.Point(140, 159)
         Me.LabelVersion.Margin = New System.Windows.Forms.Padding(6, 0, 3, 0)
         Me.LabelVersion.MaximumSize = New System.Drawing.Size(0, 17)
         Me.LabelVersion.Name = "LabelVersion"
@@ -143,7 +145,7 @@ Partial Class AboutBoxForm
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(378, 371)
+        Me.Button1.Location = New System.Drawing.Point(378, 300)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(95, 22)
         Me.Button1.TabIndex = 1
@@ -155,7 +157,7 @@ Partial Class AboutBoxForm
         Me.AcceptButton = Me.Button1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(478, 397)
+        Me.ClientSize = New System.Drawing.Size(478, 326)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TableLayoutPanel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

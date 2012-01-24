@@ -1,4 +1,3 @@
-
 Public Class ReportViewerForm
 
     Private Sub ReportingForm_Load(ByVal sender As System.Object, _
@@ -29,17 +28,17 @@ Public Class ReportViewerForm
                 LoadArchiveByInstance(ComboBoxSQLInstance.Text)
             ElseIf FlowLayoutPanelParms.Contains(PanelDays) Then
                 LoadSQLConfigurationSummary(CInt(NumericUpDownDays.Value), "All")
-            ElseIf FlowLayoutPanelParms.Contains(PanelUsers) Then
+            ElseIf FlowLayoutPanelParms.Contains(PanelLogins) Then
                 'LoadSQLRunbookUser(ComboBoxLoginNames.Text)
-            ElseIf FlowLayoutPanelParms.Contains(PanelCfgInstance) Then
+            ElseIf FlowLayoutPanelParms.Contains(PanelSQLInstance) Then
                 ' make sure the node exists else don't even bother
-                LoadConfigurationCatalog(ComboBoxCfgInstance.Text, ComboBoxCfgDatabase.Text, ComboBoxCfgType.Text, _
-                                         ComboBoxCfgSubType.Text, ComboBoxCfgCollection.Text, ComboBoxCfgItem.Text, _
-                                         ComboBoxCfgItem.Tag.ToString, ComboBoxCfgVersion.Text, "none")
-            ElseIf FlowLayoutPanelParms.Contains(PanelRunbookSearch) Then
-                LoadRunbookSearch(TextBoxRunbookSearchString.Text)
-            ElseIf FlowLayoutPanelParms.Contains(PanelArchiveSearch) Then
-                LoadArchiveSearch(TextBoxArchiveSearchString.Text, CBool(ComboBoxArchiveSearchLatest.Text), ComboBoxArchiveSearchType.Text)
+                LoadConfigurationCatalog(ComboBoxSQLInstance.Text, ComboBoxDatabase.Text, ComboBoxType.Text, _
+                                         ComboBoxSubType.Text, ComboBoxCollection.Text, ComboBoxItem.Text, _
+                                         ComboBoxItem.Tag.ToString, ComboBoxVersion.Text, "none")
+            ElseIf FlowLayoutPanelParms.Contains(PanelSearch) Then
+                LoadRunbookSearch(TextBoxSearchString.Text)
+            ElseIf FlowLayoutPanelParms.Contains(PanelSearch) Then
+                LoadArchiveSearch(TextBoxSearchString.Text, CBool(ComboBoxSearchLatest.Text), ComboBoxType.Text)
             End If
         Catch ex As Exception
             Mother.HandleException(ex)
@@ -121,32 +120,112 @@ Public Class ReportViewerForm
                                 ByVal BeginDt As DateTime, _
                                 ByVal EndDt As DateTime)
         Try
-            If My.Settings.RepositoryEnabled Then
-                ReportViewerSQLClue.ZoomMode = ZoomMode.Percent
-                ReportViewerSQLClue.ZoomPercent = 100
-                Me.ReportViewerSQLClue.ShowToolBar = True
-                SplitContainerReportViewer.Panel1Collapsed = False
-                FlowLayoutPanelParms.Controls.Clear()
-                Me.ReportViewerSQLClue.Reset()
-                Me.ReportViewerSQLClue.ProcessingMode = ProcessingMode.Local
-                Me.ReportViewerSQLClue.LocalReport.DataSources.Clear()
-                Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SqlClueDefaultTrace.rdlc"
-                Dim Parms(3) As ReportParameter
-                Parms(0) = New ReportParameter("SQLInstance", SQLInstance)
-                Parms(1) = New ReportParameter("BeginDt", BeginDt.ToString)
-                Parms(2) = New ReportParameter("EndDt", EndDt.ToString)
-                Me.ReportViewerSQLClue.LocalReport.SetParameters(Parms)
-                RemoveHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
-                AddHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
-                RemoveHandler ReportViewerSQLClue.LocalReport.SubreportProcessing, AddressOf SQLClueSubreportProcessingEventHandler
-                AddHandler ReportViewerSQLClue.LocalReport.SubreportProcessing, AddressOf SQLClueSubreportProcessingEventHandler
-                Me.ReportViewerSQLClue.RefreshReport()
+            ReportViewerSQLClue.ZoomMode = ZoomMode.Percent
+            ReportViewerSQLClue.ZoomPercent = 100
+            Me.ReportViewerSQLClue.ShowToolBar = True
+            SplitContainerReportViewer.Panel1Collapsed = False
+            FlowLayoutPanelParms.Controls.Clear()
+
+            ' select an instance 
+            Dim Target As Server = connSQLInstance()
+            If (Target.Configuration.DefaultTraceEnabled.ConfigValue = 0) Then
+                Throw New Exception("Default Trace not enabled on this SQL instance.")
             End If
+
+            Me.ReportViewerSQLClue.Reset()
+            Me.ReportViewerSQLClue.ProcessingMode = ProcessingMode.Local
+            Me.ReportViewerSQLClue.LocalReport.DataSources.Clear()
+            Dim db As New DefaultTraceContainer
+            db.Configuration.AutoDetectChangesEnabled = False
+
+            'needed only if SQLQuery element type omitted
+
+            db.Database.Connection.ConnectionString = Target.ConnectionContext.ConnectionString
+
+            Dim QueryParms(2) As Object
+            QueryParms(0) = New ReportParameter("BeginDt", BeginDt.ToString)
+            QueryParms(1) = New ReportParameter("EndDt", EndDt.ToString)
+
+            db.Database.Connection.Open()
+            db.TraceEvents.SqlQuery(My.Resources.DefaultTraceEventsQuery, QueryParms)
+            ' TODO - populate the lookups from the context not the db, keep work off target SQL
+            db.Databases.SqlQuery(String.Format(My.Resources.DefaultTraceDatabasesQuery, QueryParms))
+            db.Applications.SqlQuery(My.Resources.DefaultTraceApplicationsQuery, QueryParms)
+            db.Logins.SqlQuery(My.Resources.DefaultTraceLoginsQuery, QueryParms)
+            db.Hosts.SqlQuery(My.Resources.DefaultTraceHostsQuery, QueryParms)
+
+            Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Databases", db.Databases))
+            Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Logins", db.Logins))
+            Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Applications", db.Applications))
+            Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("Hosts", db.Hosts))
+            Me.ReportViewerSQLClue.LocalReport.DataSources.Add(New ReportDataSource("TraceEvents", db.TraceEvents))
+
+            Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SqlClueDefaultTrace.rdlc"
+            Dim Parms(3) As ReportParameter
+            Parms(0) = New ReportParameter("SQLInstance", Target.ConnectionContext.TrueName)
+            Parms(1) = New ReportParameter("BeginDt", BeginDt.ToString)
+            Parms(2) = New ReportParameter("EndDt", EndDt.ToString)
+            Me.ReportViewerSQLClue.LocalReport.SetParameters(Parms)
+            RemoveHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
+            AddHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
+            RemoveHandler ReportViewerSQLClue.LocalReport.SubreportProcessing, AddressOf SQLClueSubreportProcessingEventHandler
+            AddHandler ReportViewerSQLClue.LocalReport.SubreportProcessing, AddressOf SQLClueSubreportProcessingEventHandler
+            Me.ReportViewerSQLClue.RefreshReport()
             ToolStripStatusLabel1.Text = My.Resources.Ready
         Catch ex As Exception
             Mother.HandleException(ex)
         End Try
     End Sub
+
+    Private Function connSQLInstance() As Server
+        Try
+            connSQLInstance = New Server()
+            Dim cn As DialogConnect = New DialogConnect
+            ' a bit hokey to use the compare connection as default, but still must click OK before connection
+            Dim result As DialogResult = cn.ShowDialog(connSQLInstance, _
+                          My.Settings.SQL__Instance__A_Name_1, _
+                          My.Settings.SQL__Instance__A_Use__Trusted__Connection_2, _
+                          My.Settings.SQL__Instance__A_SQL__Login__Name_3, _
+                          My.Settings.SQL__Instance__A_SQL__Login__Password_4, _
+                          My.Settings.SQL__Instance__A_Connection__Timeout_5, _
+                          My.Settings.SQL__Instance__A_Network__Protocol_8, _
+                          My.Settings.SQL__Instance__A_Encrypted__Connection_6, _
+                          My.Settings.SQL__Instance__A_Trust__Server__Certificate_7, _
+                          Me)
+            If result = Windows.Forms.DialogResult.OK Then
+                ' if the server just connected is not in the InstanceList, add it
+                If Not Mother.InstanceList.Contains(UCase(My.Settings.SQL__Instance__A_Name_1)) Then
+                    ' the array is 0 based, so redim to the length is perfect for add one
+                    ReDim Preserve Mother.InstanceList(Mother.InstanceList.Length)
+                    Mother.InstanceList(Mother.InstanceList.Length - 1) = UCase(My.Settings.SQL__Instance__A_Name_1)
+                    ' reload the combo drop down
+                    ComboBoxSQLInstance.Items.Clear()
+                End If
+                ' no need to reload if already identical
+                If ComboBoxSQLInstance.Items.Count = 0 Then
+                    ComboBoxSQLInstance.Items.AddRange(Mother.InstanceList)
+                    ComboBoxSQLInstance.Sorted = True
+                End If
+                '? in compare this fires the Instance1.SelectedIndexChanged will it need to do that here?
+                ComboBoxSQLInstance.Text = My.Settings.SQL__Instance__A_Name_1
+                Me.ToolStripStatusLabel1.Text = String.Format(My.Resources.ConnectedToSQL, _
+                                                              ToolStripStatusLabel1.Tag, _
+                                                              My.Settings.SQL__Instance__A_Name_1)
+            Else
+                Me.ToolStripStatusLabel1.Text = String.Format(My.Resources.ConnectionToSQLFailed, _
+                                                              ToolStripStatusLabel1.Tag, _
+                                                              ComboBoxSQLInstance.Text)
+            End If
+            Return connSQLInstance
+        Catch ex As Exception
+            Me.ToolStripStatusLabel1.Text = String.Format(My.Resources.ConnectionToSQLFailed, _
+                                                          ToolStripStatusLabel1.Tag, _
+                                                          ComboBoxSQLInstance.Text)
+            Mother.HandleException(ex)
+            Return Nothing
+        End Try
+    End Function
+
 
     Public Sub SQLClueDrillthroughEventHandler(ByVal sender As Object, ByVal e As DrillthroughEventArgs)
         Dim rpt As LocalReport
@@ -158,7 +237,7 @@ Public Class ReportViewerForm
                               CInt(e.Report.GetParameters("Level2Days").Values(0)), _
                               CInt(e.Report.GetParameters("Level3Days").Values(0)), _
                               CDate(e.Report.GetParameters("EndDt").Values(0)))
-            Case "SQLClueDefaultTrace"
+            Case "DefaultTrace"
                 e.Cancel = True
                 LoadDefaultTrace(e.Report.GetParameters("SQLInstance").Values(0).ToString, _
                                  CDate(e.Report.GetParameters("BeginDt").Values(0)), _
@@ -628,14 +707,14 @@ Public Class ReportViewerForm
             If My.Settings.RepositoryEnabled Then
                 Me.ReportViewerSQLClue.LocalReport.ReportPath = My.Application.Info.DirectoryPath & "\ReportViewerReports\SQLConfigurationCatalog.rdlc"
                 Dim Parms(8) As ReportParameter
-                Parms(0) = New ReportParameter("SQLInstance", ComboBoxCfgInstance.Text)
-                Parms(1) = New ReportParameter("Database", ComboBoxCfgDatabase.Text)
-                Parms(2) = New ReportParameter("Type", ComboBoxCfgType.Text)
-                Parms(3) = New ReportParameter("SubType", ComboBoxCfgSubType.Text)
-                Parms(4) = New ReportParameter("Collection", ComboBoxCfgCollection.Text)
-                Parms(5) = New ReportParameter("Item", ComboBoxCfgItem.Text)
-                Parms(6) = New ReportParameter("Node", ComboBoxCfgItem.Tag.ToString)
-                Parms(7) = New ReportParameter("Version", ComboBoxCfgVersion.Text)
+                Parms(0) = New ReportParameter("SQLInstance", ComboBoxSQLInstance.Text)
+                Parms(1) = New ReportParameter("Database", ComboBoxDatabase.Text)
+                Parms(2) = New ReportParameter("Type", ComboBoxType.Text)
+                Parms(3) = New ReportParameter("SubType", ComboBoxSubType.Text)
+                Parms(4) = New ReportParameter("Collection", ComboBoxCollection.Text)
+                Parms(5) = New ReportParameter("Item", ComboBoxItem.Text)
+                Parms(6) = New ReportParameter("Node", ComboBoxItem.Tag.ToString)
+                Parms(7) = New ReportParameter("Version", ComboBoxVersion.Text)
                 Parms(8) = New ReportParameter("DrillThroughAction", DrillThroughAction)
                 Me.ReportViewerSQLClue.LocalReport.SetParameters(Parms)
                 RemoveHandler ReportViewerSQLClue.Drillthrough, AddressOf SQLClueDrillthroughEventHandler
@@ -733,13 +812,13 @@ Public Class ReportViewerForm
             Me.ReportViewerSQLClue.ShowToolBar = True
 
             FlowLayoutPanelParms.Controls.Clear()
-            FlowLayoutPanelParms.Controls.Add(PanelArchiveSearch)
-            FlowLayoutPanelParms.Controls.Add(PanelArchiveSearchLatest)
-            FlowLayoutPanelParms.Controls.Add(PanelArchiveSearchType)
+            FlowLayoutPanelParms.Controls.Add(PanelSearch)
+            FlowLayoutPanelParms.Controls.Add(PanelSearch)
+            FlowLayoutPanelParms.Controls.Add(PanelType)
 
-            TextBoxArchiveSearchString.Text = SearchString
-            ComboBoxArchiveSearchLatest.SelectedItem = LatestVersionOnly.ToString
-            ComboBoxArchiveSearchType.SelectedItem = Type
+            TextBoxSearchString.Text = SearchString
+            ComboBoxSearchLatest.SelectedItem = LatestVersionOnly.ToString
+            ComboBoxType.SelectedItem = Type
 
             SplitContainerReportViewer.Panel1Collapsed = False
             SplitContainerReportViewer.SplitterDistance = FlowLayoutPanelParms.Height
@@ -995,7 +1074,7 @@ Public Class ReportViewerForm
                 Me.ReportViewerSQLClue.ShowToolBar = True
 
                 FlowLayoutPanelParms.Controls.Clear()
-                FlowLayoutPanelParms.Controls.Add(PanelRunbookSearch)
+                FlowLayoutPanelParms.Controls.Add(PanelSearch)
                 SplitContainerReportViewer.Panel1Collapsed = False
                 SplitContainerReportViewer.SplitterDistance = FlowLayoutPanelParms.Height
 
@@ -1070,88 +1149,88 @@ Public Class ReportViewerForm
                                  ByVal CfgVersion As String)
         ' if the node and version are known, get the other attribs from the db
 
-        If ComboBoxCfgInstance.Tag Is Nothing Then
-            ComboBoxCfgInstance.Tag = ""
+        If ComboBoxSQLInstance.Tag Is Nothing Then
+            ComboBoxSQLInstance.Tag = ""
         End If
 
-        If ComboBoxCfgDatabase.Tag Is Nothing Then
-            ComboBoxCfgDatabase.Tag = ""
+        If ComboBoxDatabase.Tag Is Nothing Then
+            ComboBoxDatabase.Tag = ""
         End If
 
-        If ComboBoxCfgType.Tag Is Nothing Then
-            ComboBoxCfgType.Tag = ""
+        If ComboBoxType.Tag Is Nothing Then
+            ComboBoxType.Tag = ""
         End If
 
-        If ComboBoxCfgSubType.Tag Is Nothing Then
-            ComboBoxCfgSubType.Tag = ""
+        If ComboBoxSubType.Tag Is Nothing Then
+            ComboBoxSubType.Tag = ""
         End If
 
-        If ComboBoxCfgCollection.Tag Is Nothing Then
-            ComboBoxCfgCollection.Tag = ""
+        If ComboBoxCollection.Tag Is Nothing Then
+            ComboBoxCollection.Tag = ""
         End If
 
-        If ComboBoxCfgItem.Tag Is Nothing Then
-            ComboBoxCfgItem.Tag = ""
+        If ComboBoxItem.Tag Is Nothing Then
+            ComboBoxItem.Tag = ""
         End If
 
-        If ComboBoxCfgVersion.Tag Is Nothing Then
-            ComboBoxCfgVersion.Tag = ""
+        If ComboBoxVersion.Tag Is Nothing Then
+            ComboBoxVersion.Tag = ""
         End If
 
-        If ComboBoxCfgInstance.Items.Count = 0 Then
+        If ComboBoxSQLInstance.Items.Count = 0 Then
             ' should only get here first time loaded  
             ' this will include a blank instance
-            ComboBoxCfgInstance.Items.AddRange(Mother.ConfiguredInstanceList)
+            ComboBoxSQLInstance.Items.AddRange(Mother.ConfiguredInstanceList)
             ' in the session of console install, the cfgInstList is empty
-            If ComboBoxCfgInstance.Items.Count = 1 Then
-                ComboBoxCfgInstance.Items.AddRange(Mother.DAL.GetLicensedInstanceList())
+            If ComboBoxSQLInstance.Items.Count = 1 Then
+                ComboBoxSQLInstance.Items.AddRange(Mother.DAL.GetLicensedInstanceList())
             End If
         End If
 
         ' get the list of databases for the selected instance
 
-        If ComboBoxCfgInstance.Tag.ToString <> CfgSQLInstance Then
-            ComboBoxCfgDatabase.Items.Clear()
+        If ComboBoxSQLInstance.Tag.ToString <> CfgSQLInstance Then
+            ComboBoxDatabase.Items.Clear()
             If CfgSQLInstance <> "" Then
-                ComboBoxCfgDatabase.Items.AddRange(Mother.DAL.GetArchivedDatabasesList(CfgSQLInstance))
+                ComboBoxDatabase.Items.AddRange(Mother.DAL.GetArchivedDatabasesList(CfgSQLInstance))
             End If
         End If
 
-        If ComboBoxCfgType.Items.Count = 0 Then
+        If ComboBoxType.Items.Count = 0 Then
             ' the initial load should show the license record 
-            ComboBoxCfgType.Items.Add("")
-            ComboBoxCfgType.Items.Add("Metadata")
-            ComboBoxCfgType.Items.Add("SQLInstance")
+            ComboBoxType.Items.Add("")
+            ComboBoxType.Items.Add("Metadata")
+            ComboBoxType.Items.Add("SQLInstance")
         End If
 
-        If ComboBoxCfgType.Tag.ToString <> CfgType _
+        If ComboBoxType.Tag.ToString <> CfgType _
         Or CfgType = "Metadata" Then
-            ComboBoxCfgSubType.Items.Clear()
+            ComboBoxSubType.Items.Clear()
         End If
-        If ComboBoxCfgSubType.Items.Count = 0 Then
+        If ComboBoxSubType.Items.Count = 0 Then
             If CfgType <> "" Then
                 If CfgType = "Metadata" Then
-                    ComboBoxCfgSubType.Items.Add("")
+                    ComboBoxSubType.Items.Add("")
                     If CfgSQLInstance = "" Then
-                        ComboBoxCfgSubType.Items.Add("License")
+                        ComboBoxSubType.Items.Add("License")
                     Else
                         If CfgDatabase = "" Then
-                            ComboBoxCfgSubType.Items.Add("Connection")
-                            ComboBoxCfgSubType.Items.Add("JobServer")
-                            ComboBoxCfgSubType.Items.Add("Schedule")
-                            ComboBoxCfgSubType.Items.Add("Server")
+                            ComboBoxSubType.Items.Add("Connection")
+                            ComboBoxSubType.Items.Add("JobServer")
+                            ComboBoxSubType.Items.Add("Schedule")
+                            ComboBoxSubType.Items.Add("Server")
                         Else
-                            ComboBoxCfgSubType.Items.Add("Database")
-                            ComboBoxCfgSubType.Items.Add("ServiceBroker")
+                            ComboBoxSubType.Items.Add("Database")
+                            ComboBoxSubType.Items.Add("ServiceBroker")
                         End If
                     End If
                 Else
                     If CfgDatabase = "" Then
-                        ComboBoxCfgSubType.Items.Add("JobServer")
-                        ComboBoxCfgSubType.Items.Add("Server")
+                        ComboBoxSubType.Items.Add("JobServer")
+                        ComboBoxSubType.Items.Add("Server")
                     Else
-                        ComboBoxCfgSubType.Items.Add("Database")
-                        ComboBoxCfgSubType.Items.Add("ServiceBroker")
+                        ComboBoxSubType.Items.Add("Database")
+                        ComboBoxSubType.Items.Add("ServiceBroker")
                     End If
                 End If
             End If
@@ -1160,11 +1239,11 @@ Public Class ReportViewerForm
         ' for metadata only 
         Dim CfgPath As String = ""
 
-        If ComboBoxCfgSubType.Tag.ToString <> CfgSubType _
-        Or ComboBoxCfgType.Tag.ToString <> CfgType Then
-            ComboBoxCfgCollection.Items.Clear()
+        If ComboBoxSubType.Tag.ToString <> CfgSubType _
+        Or ComboBoxType.Tag.ToString <> CfgType Then
+            ComboBoxCollection.Items.Clear()
         End If
-        If ComboBoxCfgCollection.Items.Count = 0 Then
+        If ComboBoxCollection.Items.Count = 0 Then
             If CfgSubType <> "" Then
                 Select Case CfgType
                     Case "Metadata"
@@ -1200,8 +1279,8 @@ Public Class ReportViewerForm
                                         CfgNode = Replace(CfgItem, "|ScheduleId=", "|" & CfgSQLInstance & "|ScheduleId=")
                                         CfgPath = CfgItem
                                         CfgItem = CfgSQLInstance
-                                        ComboBoxCfgItem.Items.Clear()
-                                        ComboBoxCfgItem.Items.Add(CfgSQLInstance)
+                                        ComboBoxItem.Items.Clear()
+                                        ComboBoxItem.Items.Add(CfgSQLInstance)
                                     Else
                                         CfgItem = ""
                                     End If
@@ -1215,7 +1294,7 @@ Public Class ReportViewerForm
                                 CfgPath = "SQLCfgMetadata|" & CfgCollection & "|" & CfgSQLInstance
                                 CfgItem = CfgDatabase
                         End Select
-                        ComboBoxCfgCollection.Items.Add(CfgCollection)
+                        ComboBoxCollection.Items.Add(CfgCollection)
                         If CfgItem <> "" Then
                             If CfgItem = "License" Then
                                 ' special case where they are the same
@@ -1228,61 +1307,67 @@ Public Class ReportViewerForm
                         End If
                     Case "SQLInstance"
                         ' only SQLInstance needs a blank collection
-                        ComboBoxCfgCollection.Items.Add("")
+                        ComboBoxCollection.Items.Add("")
                         Select Case CfgSubType
                             Case "Database"
-                                ComboBoxCfgCollection.Items.Add("Assemblies")
-                                ComboBoxCfgCollection.Items.Add("AsymmetricKeys")
-                                ComboBoxCfgCollection.Items.Add("Certificates")
-                                ComboBoxCfgCollection.Items.Add("DatabaseAuditSpecifications")
-                                ComboBoxCfgCollection.Items.Add("FullTextCatalogs")
-                                ComboBoxCfgCollection.Items.Add("Roles")
-                                ComboBoxCfgCollection.Items.Add("Schemas")
-                                ComboBoxCfgCollection.Items.Add("StoredProcedures")
-                                ComboBoxCfgCollection.Items.Add("SymmetricKeys")
-                                ComboBoxCfgCollection.Items.Add("Tables")
-                                ComboBoxCfgCollection.Items.Add("Triggers")
-                                ComboBoxCfgCollection.Items.Add("UserDefinedDataTypes")
-                                ComboBoxCfgCollection.Items.Add("UserDefinedFunctions")
-                                ComboBoxCfgCollection.Items.Add("UserDefinedTypes")
-                                ComboBoxCfgCollection.Items.Add("Users")
-                                ComboBoxCfgCollection.Items.Add("Views")
-                                ComboBoxCfgCollection.Items.Add("XMLSchemaCollections")
+                                ComboBoxCollection.Items.Add("Assemblies")
+                                ComboBoxCollection.Items.Add("AsymmetricKeys")
+                                ComboBoxCollection.Items.Add("Certificates")
+                                ComboBoxCollection.Items.Add("DatabaseAuditSpecifications")
+                                ComboBoxCollection.Items.Add("FullTextCatalogs")
+                                ComboBoxCollection.Items.Add("Roles")
+                                ComboBoxCollection.Items.Add("Schemas")
+                                ComboBoxCollection.Items.Add("StoredProcedures")
+                                ComboBoxCollection.Items.Add("SymmetricKeys")
+                                ComboBoxCollection.Items.Add("Tables")
+                                ComboBoxCollection.Items.Add("Triggers")
+                                ComboBoxCollection.Items.Add("UserDefinedAggregates")
+                                ComboBoxCollection.Items.Add("UserDefinedDataTypes")
+                                ComboBoxCollection.Items.Add("UserDefinedFunctions")
+                                ComboBoxCollection.Items.Add("UserDefinedTypes")
+                                ComboBoxCollection.Items.Add("Users")
+                                ComboBoxCollection.Items.Add("Views")
+                                ComboBoxCollection.Items.Add("XMLSchemaCollections")
                             Case "JobServer"
-                                ComboBoxCfgCollection.Items.Add("Alerts")
-                                ComboBoxCfgCollection.Items.Add("Jobs")
-                                ComboBoxCfgCollection.Items.Add("Operators")
-                                ComboBoxCfgCollection.Items.Add("ProxyAccounts")
+                                ComboBoxCollection.Items.Add("Alerts")
+                                ComboBoxCollection.Items.Add("Categories")
+                                ComboBoxCollection.Items.Add("Jobs")
+                                ComboBoxCollection.Items.Add("Operators")
+                                ComboBoxCollection.Items.Add("ProxyAccounts")
                             Case "Server"
-                                ComboBoxCfgCollection.Items.Add("Audits")
-                                ComboBoxCfgCollection.Items.Add("BackupDevices")
-                                ComboBoxCfgCollection.Items.Add("Credentials")
-                                ComboBoxCfgCollection.Items.Add("Databases")
-                                ComboBoxCfgCollection.Items.Add("Endpoints")
-                                ComboBoxCfgCollection.Items.Add("LinkedServers")
-                                ComboBoxCfgCollection.Items.Add("Logins")
-                                ComboBoxCfgCollection.Items.Add("Roles")
-                                ComboBoxCfgCollection.Items.Add("ServerAuditSpecifications")
-                                ComboBoxCfgCollection.Items.Add("UserDefinedMessages")
+                                ComboBoxCollection.Items.Add("Attributes")
+                                ComboBoxCollection.Items.Add("Audits")
+                                ComboBoxCollection.Items.Add("BackupDevices")
+                                ComboBoxCollection.Items.Add("Configuration")
+                                ComboBoxCollection.Items.Add("Credentials")
+                                ComboBoxCollection.Items.Add("Databases")
+                                ComboBoxCollection.Items.Add("Endpoints")
+                                ComboBoxCollection.Items.Add("ExtendedEvents")
+                                ComboBoxCollection.Items.Add("LinkedServers")
+                                ComboBoxCollection.Items.Add("Logins")
+                                ComboBoxCollection.Items.Add("Policies")
+                                ComboBoxCollection.Items.Add("Roles")
+                                ComboBoxCollection.Items.Add("ServerAuditSpecifications")
+                                ComboBoxCollection.Items.Add("UserDefinedMessages")
                             Case "ServiceBroker"
-                                ComboBoxCfgCollection.Items.Add("MessageTypes")
-                                ComboBoxCfgCollection.Items.Add("Queues")
-                                ComboBoxCfgCollection.Items.Add("Routes")
-                                ComboBoxCfgCollection.Items.Add("ServiceContracts")
-                                ComboBoxCfgCollection.Items.Add("Services")
+                                ComboBoxCollection.Items.Add("MessageTypes")
+                                ComboBoxCollection.Items.Add("Queues")
+                                ComboBoxCollection.Items.Add("Routes")
+                                ComboBoxCollection.Items.Add("ServiceContracts")
+                                ComboBoxCollection.Items.Add("Services")
                         End Select
                 End Select
             End If
         End If
 
-        If ComboBoxCfgSubType.Tag.ToString <> CfgSubType _
-        Or ComboBoxCfgCollection.Tag.ToString <> CfgCollection Then
-            ComboBoxCfgItem.Items.Clear()
+        If ComboBoxSubType.Tag.ToString <> CfgSubType _
+        Or ComboBoxCollection.Tag.ToString <> CfgCollection Then
+            ComboBoxItem.Items.Clear()
         End If
-        If ComboBoxCfgItem.Items.Count = 0 Then
+        If ComboBoxItem.Items.Count = 0 Then
             If CfgSubType <> "" Then
                 If CfgType = "SQLInstance" Then
-                    ComboBoxCfgItem.Items.AddRange(Mother.DAL.GetItemList(CompareForm.cCompare.MakeNode(CfgSQLInstance, _
+                    ComboBoxItem.Items.AddRange(Mother.DAL.GetItemList(CompareForm.cCompare.MakeNode(CfgSQLInstance, _
                                                                                                         CfgDatabase, _
                                                                                                         CfgCollection, _
                                                                                                         "")))
@@ -1293,33 +1378,33 @@ Public Class ReportViewerForm
                         ' but the item must be only the instance and the node must identify the scheduleId
                         ' The next pass through the logic above will fix the item 
                         If CfgItem = "" Then
-                            ComboBoxCfgItem.Items.AddRange(Mother.DAL.GetSchedulePathList(CfgSQLInstance))
+                            ComboBoxItem.Items.AddRange(Mother.DAL.GetSchedulePathList(CfgSQLInstance))
                         Else
-                            ComboBoxCfgItem.Items.Add(CfgItem)
+                            ComboBoxItem.Items.Add(CfgItem)
                         End If
                     Else
-                        ComboBoxCfgItem.Items.AddRange(Mother.DAL.GetItemList(CfgPath))
+                        ComboBoxItem.Items.AddRange(Mother.DAL.GetItemList(CfgPath))
                     End If
                 End If
             End If
         End If
 
-        If ComboBoxCfgItem.Tag.ToString <> CfgNode Then
-            ComboBoxCfgVersion.Items.Clear()
+        If ComboBoxItem.Tag.ToString <> CfgNode Then
+            ComboBoxVersion.Items.Clear()
         End If
-        If ComboBoxCfgVersion.Items.Count = 0 Then
+        If ComboBoxVersion.Items.Count = 0 Then
             If CfgItem <> "" Then
                 ' the tag is the latest version
-                ComboBoxCfgVersion.Tag = Mother.DAL.GetLatestVersionForNode(CfgNode).ToString
-                For i As Int32 = CInt(ComboBoxCfgVersion.Tag) To 1 Step -1
-                    ComboBoxCfgVersion.Items.Add(i.ToString)
+                ComboBoxVersion.Tag = Mother.DAL.GetLatestVersionForNode(CfgNode).ToString
+                For i As Int32 = CInt(ComboBoxVersion.Tag) To 1 Step -1
+                    ComboBoxVersion.Items.Add(i.ToString)
                 Next
             End If
         End If
 
         ' use the latest if a version is not specified
         If CfgItem <> "" And CfgVersion = "" Then
-            CfgVersion = ComboBoxCfgVersion.Tag.ToString
+            CfgVersion = ComboBoxVersion.Tag.ToString
         End If
 
         If CfgVersion = "" Then
@@ -1328,38 +1413,38 @@ Public Class ReportViewerForm
             ButtonViewReport.Enabled = True
         End If
 
-        ComboBoxCfgVersion.Text = CfgVersion
-        ComboBoxCfgItem.Text = CfgItem
-        ComboBoxCfgCollection.Text = CfgCollection
-        ComboBoxCfgSubType.Text = CfgSubType
-        ComboBoxCfgType.Text = CfgType
-        ComboBoxCfgDatabase.Text = CfgDatabase
-        ComboBoxCfgInstance.Text = CfgSQLInstance
+        ComboBoxVersion.Text = CfgVersion
+        ComboBoxItem.Text = CfgItem
+        ComboBoxCollection.Text = CfgCollection
+        ComboBoxSubType.Text = CfgSubType
+        ComboBoxType.Text = CfgType
+        ComboBoxDatabase.Text = CfgDatabase
+        ComboBoxSQLInstance.Text = CfgSQLInstance
 
-        ComboBoxCfgItem.Tag = CfgNode
-        ComboBoxCfgCollection.Tag = CfgCollection
-        ComboBoxCfgSubType.Tag = CfgSubType
-        ComboBoxCfgType.Tag = CfgType
-        ComboBoxCfgDatabase.Tag = CfgDatabase
-        ComboBoxCfgInstance.Tag = CfgSQLInstance
+        ComboBoxItem.Tag = CfgNode
+        ComboBoxCollection.Tag = CfgCollection
+        ComboBoxSubType.Tag = CfgSubType
+        ComboBoxType.Tag = CfgType
+        ComboBoxDatabase.Tag = CfgDatabase
+        ComboBoxSQLInstance.Tag = CfgSQLInstance
 
-        SetComboBoxWidth(ComboBoxCfgInstance)
-        SetComboBoxWidth(ComboBoxCfgDatabase)
-        SetComboBoxWidth(ComboBoxCfgType)
-        SetComboBoxWidth(ComboBoxCfgSubType)
-        SetComboBoxWidth(ComboBoxCfgCollection)
-        SetComboBoxWidth(ComboBoxCfgItem)
-        SetComboBoxWidth(ComboBoxCfgVersion)
+        SetComboBoxWidth(ComboBoxSQLInstance)
+        SetComboBoxWidth(ComboBoxDatabase)
+        SetComboBoxWidth(ComboBoxType)
+        SetComboBoxWidth(ComboBoxSubType)
+        SetComboBoxWidth(ComboBoxCollection)
+        SetComboBoxWidth(ComboBoxItem)
+        SetComboBoxWidth(ComboBoxVersion)
 
         FlowLayoutPanelParms.Controls.Clear()
 
-        FlowLayoutPanelParms.Controls.Add(PanelCfgInstance)
-        FlowLayoutPanelParms.Controls.Add(PanelCfgDatabase)
-        FlowLayoutPanelParms.Controls.Add(PanelCfgType)
-        FlowLayoutPanelParms.Controls.Add(PanelCfgSubType)
-        FlowLayoutPanelParms.Controls.Add(PanelCfgCollection)
-        FlowLayoutPanelParms.Controls.Add(PanelCfgItem)
-        FlowLayoutPanelParms.Controls.Add(PanelCfgVersion)
+        FlowLayoutPanelParms.Controls.Add(PanelSQLInstance)
+        FlowLayoutPanelParms.Controls.Add(PanelDatabase)
+        FlowLayoutPanelParms.Controls.Add(PanelType)
+        FlowLayoutPanelParms.Controls.Add(PanelSubType)
+        FlowLayoutPanelParms.Controls.Add(PanelCollection)
+        FlowLayoutPanelParms.Controls.Add(PanelItem)
+        FlowLayoutPanelParms.Controls.Add(PanelVersion)
 
         SplitContainerParms.Height = FlowLayoutPanelParms.Size.Height + HeightInPixels()
         SplitContainerReportViewer.Panel1Collapsed = False
@@ -1397,8 +1482,8 @@ Public Class ReportViewerForm
         cb.Width = WidthInPixels(Longest) + 50
     End Sub
 
-    Private Sub ComboBoxCfgInstance_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCfgInstance.SelectionChangeCommitted
-        InitCfgItemLists(ComboBoxCfgInstance.SelectedItem.ToString, _
+    Private Sub ComboBoxSQLInstance_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs)
+        InitCfgItemLists(ComboBoxSQLInstance.SelectedItem.ToString, _
                          "", _
                          "", _
                          "", _
@@ -1408,9 +1493,9 @@ Public Class ReportViewerForm
                          "")
     End Sub
 
-    Private Sub ComboBoxCfgDatabase_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCfgDatabase.SelectionChangeCommitted
-        InitCfgItemLists(ComboBoxCfgInstance.Text, _
-                         ComboBoxCfgDatabase.SelectedItem.ToString, _
+    Private Sub ComboBoxDatabase_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxDatabase.SelectionChangeCommitted
+        InitCfgItemLists(ComboBoxSQLInstance.Text, _
+                         ComboBoxDatabase.SelectedItem.ToString, _
                          "", _
                          "", _
                          "", _
@@ -1419,10 +1504,10 @@ Public Class ReportViewerForm
                          "")
     End Sub
 
-    Private Sub ComboBoxCfgType_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCfgType.SelectionChangeCommitted
-        InitCfgItemLists(ComboBoxCfgInstance.Text, _
-                         ComboBoxCfgDatabase.Text, _
-                         ComboBoxCfgType.SelectedItem.ToString, _
+    Private Sub ComboBoxType_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxType.SelectionChangeCommitted
+        InitCfgItemLists(ComboBoxSQLInstance.Text, _
+                         ComboBoxDatabase.Text, _
+                         ComboBoxType.SelectedItem.ToString, _
                          "", _
                          "", _
                          "", _
@@ -1430,45 +1515,45 @@ Public Class ReportViewerForm
                          "")
     End Sub
 
-    Private Sub ComboBoxCfgSubType_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCfgSubType.SelectionChangeCommitted
-        InitCfgItemLists(ComboBoxCfgInstance.Text, _
-                         ComboBoxCfgDatabase.Text, _
-                         ComboBoxCfgType.Text, _
-                         ComboBoxCfgSubType.SelectedItem.ToString, _
+    Private Sub ComboBoxSubType_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxSubType.SelectionChangeCommitted
+        InitCfgItemLists(ComboBoxSQLInstance.Text, _
+                         ComboBoxDatabase.Text, _
+                         ComboBoxType.Text, _
+                         ComboBoxSubType.SelectedItem.ToString, _
                          "", _
                          "", _
                          "", _
                          "")
     End Sub
 
-    Private Sub ComboBoxCfgCollection_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCfgCollection.SelectionChangeCommitted
-        InitCfgItemLists(ComboBoxCfgInstance.Text, _
-                         ComboBoxCfgDatabase.Text, _
-                         ComboBoxCfgType.Text, _
-                         ComboBoxCfgSubType.Text, _
-                         ComboBoxCfgCollection.SelectedItem.ToString, _
+    Private Sub ComboBoxCollection_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCollection.SelectionChangeCommitted
+        InitCfgItemLists(ComboBoxSQLInstance.Text, _
+                         ComboBoxDatabase.Text, _
+                         ComboBoxType.Text, _
+                         ComboBoxSubType.Text, _
+                         ComboBoxCollection.SelectedItem.ToString, _
                          "", _
                          "", _
                          "")
     End Sub
 
-    Private Sub ComboBoxCfgItem_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxCfgItem.SelectionChangeCommitted
+    Private Sub ComboBoxItem_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBoxItem.SelectionChangeCommitted
         Dim CfgNode As String
-        If ComboBoxCfgType.Text = "Metadata" Then
+        If ComboBoxType.Text = "Metadata" Then
             CfgNode = ""
         Else
-            CfgNode = My.Forms.CompareForm.cCompare.MakeNode(ComboBoxCfgInstance.Text, _
-                                                             ComboBoxCfgDatabase.Text, _
-                                                             ComboBoxCfgCollection.Text, _
-                                                             ComboBoxCfgItem.Text)
+            CfgNode = My.Forms.CompareForm.cCompare.MakeNode(ComboBoxSQLInstance.Text, _
+                                                             ComboBoxDatabase.Text, _
+                                                             ComboBoxCollection.Text, _
+                                                             ComboBoxItem.Text)
         End If
 
-        InitCfgItemLists(ComboBoxCfgInstance.Text, _
-                         ComboBoxCfgDatabase.Text, _
-                         ComboBoxCfgType.Text, _
-                         ComboBoxCfgSubType.Text, _
-                         ComboBoxCfgCollection.Text, _
-                         ComboBoxCfgItem.SelectedItem.ToString, _
+        InitCfgItemLists(ComboBoxSQLInstance.Text, _
+                         ComboBoxDatabase.Text, _
+                         ComboBoxType.Text, _
+                         ComboBoxSubType.Text, _
+                         ComboBoxCollection.Text, _
+                         ComboBoxItem.SelectedItem.ToString, _
                          CfgNode, _
                          "")
     End Sub

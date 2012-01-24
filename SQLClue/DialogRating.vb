@@ -47,7 +47,7 @@
         ' otherwise blank slate for rating
         Try
             RichTextBoxNewNote.Text = ""
-            Using cn As New SqlClient.SqlConnection(_cnString)
+            Using cn As New SqlConnection(_cnString)
                 If cn.State <> ConnectionState.Open Then
                     cn.Open()
                 End If
@@ -189,7 +189,7 @@
             End With
             ' not even a note change if the rating is unchanged, you had your chance
             If PeerReview.Rating <> PeerReview.NewRating Or Trim(RichTextBoxNewNote.Text) <> "" Then
-                Using cn As New SqlClient.SqlConnection(_cnString)
+                Using cn As New SqlConnection(_cnString)
                     If cn.State <> ConnectionState.Open Then
                         cn.Open()
                     End If

@@ -370,12 +370,12 @@ Public Class DialogSetup
 
     Private Sub RunScript(ByVal TargetMaster As Server)
 
-        Dim Db As Database
+        Dim Db As Smo.Database
         If Not TargetMaster.Databases.Contains(TargetDatabaseName.Text) Then
             Dim s As String = InputBox("Enter numeric value for database data file size (MB)." & vbCrLf & _
                                        "Database will be created at server default location.", "Enter Database Size", "100")
             If IsNumeric(s) Then
-                Db = New Database(TargetMaster, TargetDatabaseName.Text)
+                Db = New Smo.Database(TargetMaster, TargetDatabaseName.Text)
                 Db.DatabaseOptions.AutoClose = False
                 Db.DatabaseOptions.RecoveryModel = RecoveryModel.Simple
                 Db.DatabaseOptions.BrokerEnabled = True
@@ -524,7 +524,7 @@ Public Class DialogSetup
                                 MessageBoxButtons.OK)
             End If
             VerifyEncryptionHierarchy = True
-        Catch exSQL As SqlClient.SqlException
+        Catch exSQL As SqlException
             Throw exSQL
         Finally
             If Not (srvcon Is Nothing) Then
@@ -546,7 +546,7 @@ Public Class DialogSetup
                 Dim smoSrv As New Server
                 smoSrv.ConnectionContext.ConnectionString = sDbDropDownConnectionString
                 smoSrv.ConnectionContext.Connect()
-                For Each db As Database In smoSrv.Databases
+                For Each db As Smo.Database In smoSrv.Databases
                     If Not db.IsSystemObject And db.IsAccessible Then
                         TargetDatabaseName.Items.Add(db.Name)
                     End If

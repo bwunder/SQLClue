@@ -48,7 +48,7 @@ Public Class DialogViewQueue
 
         Try
 
-            Using cn As New SqlClient.SqlConnection(sConnectionString)
+            Using cn As New SqlConnection(sConnectionString)
 
                 If Not (cn Is Nothing) AndAlso (cn.State = ConnectionState.Closed) Then
                     cn.Open()
@@ -86,7 +86,7 @@ Public Class DialogViewQueue
                 Case 0 ' Queue item
                     'show the EventData xml for the event
 
-                    Using cn As New SqlClient.SqlConnection(sConnectionString)
+                    Using cn As New SqlConnection(sConnectionString)
 
                         If Not (cn Is Nothing) AndAlso (cn.State = ConnectionState.Closed) Then
                             cn.Open()

@@ -134,7 +134,7 @@ Public Class RunbookForm
 
     Private Sub LoadRunbookMenuItems()
         Try
-            Using cn As New SqlClient.SqlConnection(sRunbookConnectionString)
+            Using cn As New SqlConnection(sRunbookConnectionString)
                 cn.Open()
                 Using cm As New System.Data.SqlClient.SqlCommand
                     cm.Connection = cn
@@ -170,7 +170,7 @@ Public Class RunbookForm
 
     Friend Sub SetRunbookOptionFromMenuItems()
         Try
-            Using cn As New SqlClient.SqlConnection(sRunbookConnectionString)
+            Using cn As New SqlConnection(sRunbookConnectionString)
                 cn.Open()
                 Using cm As New System.Data.SqlClient.SqlCommand
                     cm.Connection = cn
@@ -492,7 +492,7 @@ Public Class RunbookForm
                                ByVal TargetTypeId As Integer) As StructRating
         Dim Existing = New StructRating
         Try
-            Using cn As New SqlClient.SqlConnection(sRunbookConnectionString)
+            Using cn As New SqlConnection(sRunbookConnectionString)
                 cn.Open()
                 Using cm As New System.Data.SqlClient.SqlCommand
                     Dim LastDefinition As String = Nothing
@@ -571,7 +571,7 @@ Public Class RunbookForm
 
     Private Function GetDocument(ByVal DocumentId As Integer) As Byte()
         Try
-            Using cn As New SqlClient.SqlConnection(sRunbookConnectionString)
+            Using cn As New SqlConnection(sRunbookConnectionString)
                 cn.Open()
                 Using cm As SqlCommand = cn.CreateCommand
                     cm.CommandText = "SQLRunbook.pDocumentGet"
@@ -603,7 +603,7 @@ Public Class RunbookForm
 
     Private Function GetSavedFileInfo(ByVal FileName As String) As StructDocInfo
         Try
-            Using cn As New SqlClient.SqlConnection(sRunbookConnectionString)
+            Using cn As New SqlConnection(sRunbookConnectionString)
                 cn.Open()
                 Using cm As SqlCommand = cn.CreateCommand
                     cm.CommandText = "SQLRunbook.pDocumentGetByFile"
@@ -1378,7 +1378,7 @@ Public Class RunbookForm
                             End Using
                         End If
                     End If
-                    Using cn As New SqlClient.SqlConnection(sRunbookConnectionString)
+                    Using cn As New SqlConnection(sRunbookConnectionString)
                         cn.Open()
                         Using cm As New System.Data.SqlClient.SqlCommand
                             cm.Connection = cn

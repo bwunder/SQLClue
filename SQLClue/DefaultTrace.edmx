@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="DefaultTrace.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DefaultTraceTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DefaultTrace" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="DefaultTraceContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Databases" EntityType="DefaultTrace.Databases" />
+          <EntitySet Name="Logins" EntityType="DefaultTrace.Logins" />
+          <EntitySet Name="Applications" EntityType="DefaultTrace.Applications" />
+          <EntitySet Name="Hosts" EntityType="DefaultTrace.Hosts" />
+          <EntitySet Name="TraceEvents" EntityType="DefaultTrace.TraceEvents" />
+        </EntityContainer>
+        <EntityType Name="Databases">
+          <Key>
+            <PropertyRef Name="DatabaseName" />
+          </Key>
+          <Property Type="String" Name="DatabaseName" Nullable="false" annotation:StoreGeneratedPattern="Identity" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Type="Int32" Name="rows" Nullable="false" />
+          <Property Type="Int32" Name="rank" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Logins">
+          <Key>
+            <PropertyRef Name="LoginName" />
+          </Key>
+          <Property Type="String" Name="LoginName" Nullable="false" annotation:StoreGeneratedPattern="Identity" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="rows" Nullable="false" />
+          <Property Type="Int32" Name="rank" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ApplicationName" />
+          </Key>
+          <Property Type="String" Name="ApplicationName" Nullable="false" annotation:StoreGeneratedPattern="Identity" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="rows" Nullable="false" />
+          <Property Type="Int32" Name="rank" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hosts">
+          <Key>
+            <PropertyRef Name="HostName" />
+          </Key>
+          <Property Type="String" Name="HostName" Nullable="false" annotation:StoreGeneratedPattern="Identity" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="rows" Nullable="false" />
+          <Property Type="Int32" Name="rank" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TraceEvents">
+          <Key>
+            <PropertyRef Name="EventCategory" />
+            <PropertyRef Name="EventClass" />
+            <PropertyRef Name="SubClass" />
+          </Key>
+          <Property Type="String" Name="EventCategory" Nullable="false" annotation:StoreGeneratedPattern="Identity" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Type="String" Name="EventClass" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Type="String" Name="SubClass" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Type="String" Name="Database" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Type="String" Name="Login" Nullable="false" FixedLength="false" MaxLength="128" Unicode="true" />
+          <Property Type="String" Name="Application" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Type="DateTime" Name="StartTime" Nullable="false" />
+          <Property Type="String" Name="Host" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="ObjectType" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="ExtendedInfo" Nullable="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DefaultTrace" />
+        <Alias Key="Target" Value="DefaultTrace.Store" />
+        <EntityContainerMapping CdmEntityContainer="DefaultTraceContainer" StorageEntityContainer="DefaultTraceTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DefaultTrace" >
+        <EntityTypeShape EntityType="DefaultTrace.Databases" Width="1.5" PointX="0.625" PointY="0.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="DefaultTrace.Logins" Width="1.5" PointX="2.5" PointY="0.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="DefaultTrace.Applications" Width="1.5" PointX="4.25" PointY="0.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="DefaultTrace.Hosts" Width="1.5" PointX="6.125" PointY="0.625" Height="1.59568359375" />
+        <EntityTypeShape EntityType="DefaultTrace.TraceEvents" Width="1.5" PointX="3.625" PointY="2.5" Height="2.9417936197916656" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

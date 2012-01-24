@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ToolsVersion="2.0">
-  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkZGwzMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAiIHhtbG5zOmRkbDMwMF8zMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDExL2VuZ2luZS8zMDAvMzAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
   <DataSources>
     <ProjectItem>
       <Name>SQLConfiguration.rds</Name>
@@ -14,8 +14,8 @@
   <DataSets />
   <Reports>
     <ProjectItem>
-      <Name>SQLClueConsole.rdl</Name>
-      <FullPath>SQLClueConsole.rdl</FullPath>
+      <Name>DefaultTrace.rdl</Name>
+      <FullPath>DefaultTrace.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLClueDashboard.rdl</Name>
@@ -34,12 +34,16 @@
       <FullPath>SQLClueServiceStatus.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>SQLClueWorkstation.rdl</Name>
-      <FullPath>SQLClueWorkstation.rdl</FullPath>
+      <Name>SQLConfigurationArchiveByInstance - Backup.rdl</Name>
+      <FullPath>SQLConfigurationArchiveByInstance - Backup.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLConfigurationArchiveByInstance.rdl</Name>
       <FullPath>SQLConfigurationArchiveByInstance.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SQLConfigurationArchiveHistory.rdl</Name>
+      <FullPath>SQLConfigurationArchiveHistory.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLConfigurationArchiveHistoryByInstanceName.rdl</Name>
@@ -56,6 +60,10 @@
     <ProjectItem>
       <Name>SQLConfigurationArchiveSettings.rdl</Name>
       <FullPath>SQLConfigurationArchiveSettings.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SQLConfigurationArchiveSimpleSearch.rdl</Name>
+      <FullPath>SQLConfigurationArchiveSimpleSearch.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLConfigurationCatalog.rdl</Name>
@@ -82,16 +90,16 @@
       <FullPath>SQLConfigurationChangesForDate.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>SQLConfigurationRecentSQLErrors.rdl</Name>
+      <FullPath>SQLConfigurationRecentSQLErrors.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>SQLConfigurationSummary.rdl</Name>
       <FullPath>SQLConfigurationSummary.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLRunbookCatalog.rdl</Name>
       <FullPath>SQLRunbookCatalog.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SQLRunbookCatalogIndex.rdl</Name>
-      <FullPath>SQLRunbookCatalogIndex.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLRunbookCategoriesAddedInDateRange.rdl</Name>
@@ -154,6 +162,14 @@
       <FullPath>SQLRunbookDocumentTypes.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>SQLRunbookRecentSQLErrors.rdl</Name>
+      <FullPath>SQLRunbookRecentSQLErrors.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SQLRunbookSimpleSearch.rdl</Name>
+      <FullPath>SQLRunbookSimpleSearch.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>SQLRunbookSummary.rdl</Name>
       <FullPath>SQLRunbookSummary.rdl</FullPath>
     </ProjectItem>
@@ -174,10 +190,6 @@
       <FullPath>SQLRunbookTopicsByCategoryId.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>SQLRunbookTopicsByCategoryName.rdl</Name>
-      <FullPath>SQLRunbookTopicsByCategoryName.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>SQLRunbookTopicsByOwner.rdl</Name>
       <FullPath>SQLRunbookTopicsByOwner.rdl</FullPath>
     </ProjectItem>
@@ -190,10 +202,6 @@
       <FullPath>SQLRunbookTopicsReviewedByOwner.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>SQLRunbookTopicsReviewedByTopicId.rdl</Name>
-      <FullPath>SQLRunbookTopicsReviewedByTopicId.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
       <Name>SQLRunbookTopicsReviewedInDateRange.rdl</Name>
       <FullPath>SQLRunbookTopicsReviewedInDateRange.rdl</FullPath>
     </ProjectItem>
@@ -204,10 +212,11 @@
       <Platform>Win32</Platform>
       <Options>
         <OutputPath>bin\Debug</OutputPath>
-        <TargetServerVersion>SSRS2008</TargetServerVersion>
-        <TargetServerURL>http://bill_vu/ReportServer_ATE</TargetServerURL>
-        <TargetFolder>SQLClue</TargetFolder>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>ReportServerReports</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
       </Options>
     </Configuration>
     <Configuration>
@@ -215,19 +224,23 @@
       <Platform>Win32</Platform>
       <Options>
         <OutputPath>bin\DebugLocal</OutputPath>
-        <TargetServerVersion>SSRS2008</TargetServerVersion>
-        <TargetFolder>SQLClue</TargetFolder>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>ReportServerReports</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
       </Options>
     </Configuration>
     <Configuration>
-      <Name>Production</Name>
+      <Name>Release</Name>
       <Platform>Win32</Platform>
       <Options>
-        <OutputPath>bin\Production</OutputPath>
-        <TargetServerVersion>SSRS2008</TargetServerVersion>
-        <TargetFolder>SQLClue</TargetFolder>
+        <OutputPath>bin\Release</OutputPath>
+        <TargetServerVersion>SSRS2008R2</TargetServerVersion>
+        <TargetFolder>ReportServerReports</TargetFolder>
         <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+        <TargetDatasetFolder>Datasets</TargetDatasetFolder>
+        <TargetReportPartFolder>Report Parts</TargetReportPartFolder>
       </Options>
     </Configuration>
   </Configurations>

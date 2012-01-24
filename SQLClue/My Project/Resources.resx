@@ -1002,4 +1002,124 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</value>
   </data>
+  <data name="DefaultTraceApplicationsQuery" xml:space="preserve">
+    <value>SELECT ISNULL(ApplicationName, '&lt;none&gt;') AS ApplicationName
+     , Count(*) As [rows]
+     , RANK() OVER(ORDER BY Count(*) DESC) AS [rank]
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path], LEN(t.[path]) - PATINDEX( '%\%', REVERSE(t.[path]) ) ) + '\log.trc', DEFAULT ) As trc 
+WHERE t.is_default = 1
+AND trc.StartTime BETWEEN '{0}' AND '{1}'
+GROUP BY ISNULL(ApplicationName, '&lt;none&gt;')
+ORDER BY ApplicationName</value>
+  </data>
+  <data name="DefaultTraceCategoriesQuery" xml:space="preserve">
+    <value>SELECT cat.name, COUNT(*) as rows
+    , RANK() OVER(ORDER BY Count(*) DESC) AS [rank]
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path], LEN(t.[path]) - PATINDEX( '%\%', REVERSE(t.[path]) ) ) + '\log.trc', DEFAULT ) As trc 
+JOIN sys.trace_events evt
+ON trc.EventClass = evt.trace_event_id
+JOIN sys.trace_categories cat
+ON evt.category_id = cat.category_id
+WHERE t.is_default = 1
+AND trc.StartTime BETWEEN  '{0}' AND '{1}'
+GROUP BY cat.name
+ORDER BY cat.name;</value>
+  </data>
+  <data name="DefaultTraceDatabasesQuery" xml:space="preserve">
+    <value>SELECT COALESCE( trc.DatabaseName
+               , DB_NAME(trc.DatabaseID)
+               ,'&lt;none&gt;') AS DatabaseName
+               , Count(*) As [rows]
+               , RANK() OVER(ORDER BY Count(*) DESC) AS [rank]
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path]
+                                       , LEN(t.[path]) 
+                                       - PATINDEX( '%\%'
+                                                 , REVERSE(t.[path]) ) ) 
+                                       + '\log.trc'
+                                       , DEFAULT ) As trc 
+WHERE(t.is_default = 1)
+AND trc.StartTime BETWEEN  '{0}' AND '{1}'
+GROUP BY COALESCE( trc.DatabaseName, DB_NAME(trc.DatabaseID),'&lt;none&gt;')
+ORDER BY DatabaseName</value>
+  </data>
+  <data name="DefaultTraceEventsQuery" xml:space="preserve">
+    <value>SELECT cat.name AS [EventCategory]
+     , evt.name AS [EventClass]
+		 , ISNULL( sub.subclass_name, '&lt;none&gt;') AS [EventSubClass]
+		 , COALESCE( trc.DatabaseName, DB_NAME(trc.DatabaseID), '&lt;none&gt;' ) as [Database]
+		 , COALESCE( SUSER_SNAME(trc.LoginSid), trc.NtUserName, '&lt;none&gt;' ) AS [Login]
+     , ISNULL( trc.ApplicationName, '&lt;none&gt;') As Application
+     , trc.StartTime
+     , ISNULL( trc.HostName, '&lt;none&gt;') AS Host
+     , ISNULL( type.ObjectType, '' ) AS ObjType
+		 , ISNULL( ' || Severity: ' + CAST( trc.Severity AS NVARCHAR(16) ), '' ) 
+     + ISNULL( ' || State: ' + CAST( trc.State AS NVARCHAR(3) ), '' ) 
+     + ISNULL( ' || Error: ' + CAST( trc.Error AS NVARCHAR(11) ), '' )
+     + ISNULL( ' || Txt: ' + CAST( trc.TextData AS NVARCHAR(MAX) ), '')
+     + ISNULL( ' || Parent: ' + trc.ParentName, '' )
+     + ISNULL( CASE WHEN trc.EventClass = 55 
+                    THEN ' || Plan Node: ' ELSE ' || Object Id: ' END
+               + CAST( trc.ObjectId AS NVARCHAR(11) ), '')
+     + ISNULL( ' || ObjectName: ' + trc.ObjectName, '')
+     + ISNULL( ' || IndexId: ' + CAST( trc.IndexId AS NVARCHAR(11) ) + CHAR(32), '' )
+     + CASE WHEN trc.Permissions IS NULL
+            THEN '' 
+            ELSE ' || Permissions Checked: ' 
+                + CASE WHEN trc.Permissions &amp; 1 = 1 THEN N'SELECT ALL' ELSE CHAR(32) END 
+                + CASE WHEN trc.Permissions &amp; 2 = 2 THEN N'UPDATE ALL' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 4 = 4 THEN N'REFERENCES ALL' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 8 = 8 THEN N'INSERT' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 16 = 16 THEN N'DELETE' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 32 = 32 THEN N'EXECUTE' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 4096 = 4096 THEN N'SELECT ANY' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 8192 = 8192 THEN N'UPDATE ANY' ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 16384 = 16384 THEN N'REFERENCES ANY' ELSE CHAR(32) END 
+            END AS [ExtendedInfo] 
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path], LEN(t.[path]) - PATINDEX( '%\%', REVERSE(t.[path]) ) ) + '\log.trc', DEFAULT ) As trc 
+JOIN sys.trace_events evt
+ON trc.EventClass = evt.trace_event_id
+JOIN sys.trace_categories cat
+ON evt.category_id = cat.category_id
+LEFT JOIN sys.trace_subclass_values As sub
+ON trc.EventClass = sub.trace_event_id
+AND trc.EventSubClass = sub.subclass_value 
+LEFT JOIN ( SELECT DISTINCT sub.subclass_name AS ObjectType
+                          , sub.subclass_value 
+            FROM sys.trace_events AS evt 
+            JOIN sys.trace_subclass_values AS sub 
+            ON evt.trace_event_id = sub.trace_event_id 
+            JOIN sys.trace_columns AS col 
+            ON sub.trace_column_id = col.trace_column_id 
+            WHERE col.[name] = 'ObjectType' ) AS type
+ON trc.ObjectType = type.subclass_value
+WHERE t.is_default = 1
+AND trc.StartTime BETWEEN  '{0}' AND '{1}'
+ORDER BY StartTime;</value>
+  </data>
+  <data name="DefaultTraceHostsQuery" xml:space="preserve">
+    <value>SELECT ISNULL(trc.HostName, '&lt;none&gt;') AS HostName
+     , Count(*) As [rows]
+     , RANK() OVER(ORDER BY Count(*)) AS [rank]
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path], LEN(t.[path]) - PATINDEX( '%\%', REVERSE(t.[path]) ) ) + '\log.trc', DEFAULT ) As trc 
+WHERE t.is_default = 1
+AND trc.StartTime BETWEEN '{0}' AND '{1}'
+GROUP BY ISNULL(trc.HostName, '&lt;none&gt;')
+ORDER BY HostName</value>
+  </data>
+  <data name="DefaultTraceLoginsQuery" xml:space="preserve">
+    <value>SELECT ISNULL(LoginName, '&lt;none&gt;') AS LoginName
+     , Count(*) As [rows]
+     , RANK() OVER(ORDER BY Count(*) DESC) AS [rank]
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path], LEN(t.[path]) - PATINDEX( '%\%', REVERSE(t.[path]) ) ) + '\log.trc', DEFAULT ) As trc 
+WHERE t.is_default = 1
+AND trc.StartTime BETWEEN '{0}' AND '{1}'
+GROUP BY ISNULL(LoginName,'&lt;none&gt;')
+ORDER BY LoginName</value>
+  </data>
 </root>

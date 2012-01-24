@@ -80,6 +80,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ExceptionMessageBox, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -97,11 +98,14 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -129,8 +133,14 @@
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Collections.Specialized" />
     <Import Include="System.ComponentModel" />
+    <Import Include="System.ComponentModel.DataAnnotations" />
     <Import Include="System.Configuration" />
     <Import Include="System.Data" />
+    <Import Include="System.Data.Entity" />
+    <Import Include="System.Data.Entity.Infrastructure" />
+    <Import Include="System.Data.Linq" />
+    <Import Include="System.Data.Metadata.Edm" />
+    <Import Include="System.Data.Objects" />
     <Import Include="System.Data.SqlClient" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
@@ -153,7 +163,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Applications.vb">
+      <DependentUpon>DefaultTrace.tt</DependentUpon>
+    </Compile>
     <Compile Include="cTreeView.vb" />
+    <Compile Include="Databases.vb">
+      <DependentUpon>DefaultTrace.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSetQueuedChanges.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -166,6 +182,21 @@
     </Compile>
     <Compile Include="DataSetSQLRunbook.vb">
       <DependentUpon>DataSetSQLRunbook.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultTrace.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultTrace.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultTrace.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultTrace.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultTrace.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultTrace.tt</DependentUpon>
     </Compile>
     <Compile Include="DialogArchiveNotifications.Designer.vb">
       <DependentUpon>DialogArchiveNotifications.vb</DependentUpon>
@@ -281,6 +312,12 @@
     <Compile Include="HelpForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Hosts.vb">
+      <DependentUpon>DefaultTrace.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logins.vb">
+      <DependentUpon>DefaultTrace.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mother.Designer.vb">
       <DependentUpon>Mother.vb</DependentUpon>
     </Compile>
@@ -360,6 +397,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SQLRunbookDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TraceEvents.vb">
+      <DependentUpon>DefaultTrace.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutBoxForm.resx">
@@ -399,8 +439,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Help\License.htm" />
+    <Content Include="ReportServerReports\ReportServerReports\ReportServerReports.rptproj.user" />
+    <Content Include="ReportServerReports\ReportServerReports\ReportServerReports.sln" />
+    <Content Include="ReportServerReports\ReportServerReports\SQLClueReports.sln" />
     <Content Include="ReportViewerReports\SQLClueConsole.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <EmbeddedResource Include="DialogViewEventData.resx">
       <DependentUpon>DialogViewEventData.vb</DependentUpon>
@@ -529,6 +573,7 @@
     <Content Include="ReportViewerReports\SQLConfigurationArchiveHistoryByScheduleId.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="ReportViewerReports\DefaultTrace.rdlc" />
     <EmbeddedResource Include="RunbookForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>RunbookForm.vb</DependentUpon>
@@ -574,6 +619,18 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="DefaultTrace.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DefaultTrace.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DefaultTrace.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DefaultTrace.Context.vb</LastGenOutput>
+    </None>
+    <None Include="DefaultTrace.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DefaultTrace.vb</LastGenOutput>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -721,6 +778,71 @@
     <EmbeddedResource Include="ReportViewerReports\SQLRunbookSimpleSearch.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="ReportServerReports\ReportServerReports\DefaultTrace.rdl">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ReportServerReports\ReportServerReports\DefaultTrace.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\ReportServerReports.rptproj" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueDashboard - Backup.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueDashboard.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueDashboard.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueSchedule.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueScheduledTasks.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueScheduledTasks.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLClueServiceStatus.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfiguration.rds" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveByInstance - Backup.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveByInstance.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistory.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistoryByInstanceName.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistoryByInstanceName.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistoryByScheduleId.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistoryByScheduleId.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistoryForSQLInstanceByScheduleId.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveHistoryForSQLInstanceByScheduleId.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveSettings.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationArchiveSimpleSearch.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationCatalog.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationCatalogIndex.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationChange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationChangeDefinitionByVersion.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationChangesForArchive.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationChangesForDate.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationRecentSQLErrors.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLConfigurationSummary.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbook.rds" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookCatalog.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookCategoriesAddedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookCategory.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookCategoryTopicsAddedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookChange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookChange.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookContributor.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookContributorScores.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocument.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsAddedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsByOwner.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsByTopic.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsChangedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsChangedInDateRange.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsReviewedByDocumentId.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsReviewedByOwner.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsReviewedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentsReviewedInDateRange.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookDocumentTypes.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookRecentSQLErrors.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookRecentSQLErrors.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookSimpleSearch.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookSummary.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopic.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicDocumentsAddedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicDocumentsAddedInDateRange.rdl.data" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicsAddedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicsByCategoryId.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicsByOwner.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicsChangedInDateRange.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicsReviewedByOwner.rdl" />
+    <None Include="ReportServerReports\ReportServerReports\SQLRunbookTopicsReviewedInDateRange.rdl" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
@@ -1033,6 +1155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />

@@ -1172,7 +1172,7 @@ Public Class Mother
             Else
                 HandleException(New ApplicationException(My.Resources.ArchiveNotificationNoSQLExpress))
             End If
-        Catch exSQL As SqlClient.SqlException
+        Catch exSQL As SqlException
             HandleException(exSQL)
         Finally
             If Not (srvcon Is Nothing) Then
@@ -1841,7 +1841,7 @@ Public Class Mother
             If ToolStripMenuItemDashboard.Enabled Then
                 Me.TabForms.SelectTab(ReportViewerForm.Name & "Tab")
                 ' could make the parms settings to allow user to choose default load
-                My.Forms.ReportViewerForm.ComboBoxCfgInstance.Items.Clear()
+                My.Forms.ReportViewerForm.ComboBoxSQLInstance.Items.Clear()
                 My.Forms.ReportViewerForm.LoadConfigurationCatalog("", "", "Metadata", "License", "SQLCfg.tSQLCfg", "License", "SQLCfgMetadata|SQLCfg.tSQLCfg", "", "none")
             End If
         Catch ex As Exception
@@ -1983,7 +1983,7 @@ Public Class Mother
         Try
             Me.Cursor = Cursors.WaitCursor
             Me.TabForms.SelectTab(ReportViewerForm.Name & "Tab")
-            My.Forms.ReportViewerForm.LoadDefaultTrace(, , )
+            My.Forms.ReportViewerForm.LoadDefaultTrace(Nothing, DateAdd(DateInterval.Day, -1, Now), Now)
         Catch ex As Exception
             HandleException(ex)
         Finally

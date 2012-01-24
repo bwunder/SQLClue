@@ -319,7 +319,7 @@ Public Class DialogConnect
                 MessageBoxButtons.OK)
             End If
             VerifyEncryptionHierarchy = True
-        Catch exSQL As SqlClient.SqlException
+        Catch exSQL As SqlException
             Throw New Exception(String.Format("({0}.VerifyEncryptionHierarchy) Exception.", Me.Name), exSQL)
         Finally
             If Not (srvcon Is Nothing) Then
@@ -336,7 +336,7 @@ Public Class DialogConnect
                 Dim srvcon As New ServerConnection
                 srvcon.ConnectionString = sConnectionString
                 TargetSQLServer = New Server(srvcon)
-                For Each db As Database In TargetSQLServer.Databases
+                For Each db As Smo.Database In TargetSQLServer.Databases
                     If db.IsAccessible Then
                         TargetDatabaseName.Items.Add(db.Name)
                     End If

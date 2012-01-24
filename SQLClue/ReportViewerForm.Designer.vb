@@ -23,89 +23,91 @@ Partial Class ReportViewerForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ReportViewerForm))
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.LocalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.RVFile = New System.Windows.Forms.ToolStripComboBox
-        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem
-        Me.ServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.StatusStripReportViewer = New System.Windows.Forms.StatusStrip
-        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel
-        Me.ToolStripContainerRV = New System.Windows.Forms.ToolStripContainer
-        Me.SplitContainerReportViewer = New System.Windows.Forms.SplitContainer
-        Me.SplitContainerParms = New System.Windows.Forms.SplitContainer
-        Me.FlowLayoutPanelParms = New System.Windows.Forms.FlowLayoutPanel
-        Me.PanelSQLInstance = New System.Windows.Forms.Panel
-        Me.LabelSQLInstance = New System.Windows.Forms.Label
-        Me.ComboBoxSQLInstance = New System.Windows.Forms.ComboBox
-        Me.PanelUsers = New System.Windows.Forms.Panel
-        Me.ComboBoxLoginNames = New System.Windows.Forms.ComboBox
-        Me.LabelLogin = New System.Windows.Forms.Label
-        Me.PanelDays = New System.Windows.Forms.Panel
-        Me.LabelDays = New System.Windows.Forms.Label
-        Me.NumericUpDownDays = New System.Windows.Forms.NumericUpDown
-        Me.PanelCfgInstance = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgInstance = New System.Windows.Forms.ComboBox
-        Me.LabelCfgInstance = New System.Windows.Forms.Label
-        Me.PanelCfgDatabase = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgDatabase = New System.Windows.Forms.ComboBox
-        Me.LabelCfgDatabase = New System.Windows.Forms.Label
-        Me.PanelCfgType = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgType = New System.Windows.Forms.ComboBox
-        Me.LabelCfgType = New System.Windows.Forms.Label
-        Me.PanelCfgSubType = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgSubType = New System.Windows.Forms.ComboBox
-        Me.LabelCfgSubType = New System.Windows.Forms.Label
-        Me.PanelCfgCollection = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgCollection = New System.Windows.Forms.ComboBox
-        Me.LabelCfgCollection = New System.Windows.Forms.Label
-        Me.PanelCfgItem = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgItem = New System.Windows.Forms.ComboBox
-        Me.LabelCfgItem = New System.Windows.Forms.Label
-        Me.PanelCfgVersion = New System.Windows.Forms.Panel
-        Me.ComboBoxCfgVersion = New System.Windows.Forms.ComboBox
-        Me.LabelCfgVersion = New System.Windows.Forms.Label
-        Me.PanelRunbookSearch = New System.Windows.Forms.Panel
-        Me.TextBoxRunbookSearchString = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.PanelArchiveSearch = New System.Windows.Forms.Panel
-        Me.TextBoxArchiveSearchString = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.PanelArchiveSearchType = New System.Windows.Forms.Panel
-        Me.ComboBoxArchiveSearchType = New System.Windows.Forms.ComboBox
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.PanelArchiveSearchLatest = New System.Windows.Forms.Panel
-        Me.ComboBoxArchiveSearchLatest = New System.Windows.Forms.ComboBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.ButtonViewReport = New System.Windows.Forms.Button
-        Me.ReportViewerSQLClue = New Microsoft.Reporting.WinForms.ReportViewer
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.LocalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RVFile = New System.Windows.Forms.ToolStripComboBox()
+        Me.ToolStripMenuItem4 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStripReportViewer = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripContainerRV = New System.Windows.Forms.ToolStripContainer()
+        Me.SplitContainerReportViewer = New System.Windows.Forms.SplitContainer()
+        Me.SplitContainerParms = New System.Windows.Forms.SplitContainer()
+        Me.FlowLayoutPanelParms = New System.Windows.Forms.FlowLayoutPanel()
+        Me.PanelSQLInstance = New System.Windows.Forms.Panel()
+        Me.LabelSQLInstance = New System.Windows.Forms.Label()
+        Me.ComboBoxSQLInstance = New System.Windows.Forms.ComboBox()
+        Me.PanelLogins = New System.Windows.Forms.Panel()
+        Me.ComboBoxLoginNames = New System.Windows.Forms.ComboBox()
+        Me.LabelLogin = New System.Windows.Forms.Label()
+        Me.PanelDays = New System.Windows.Forms.Panel()
+        Me.LabelDays = New System.Windows.Forms.Label()
+        Me.NumericUpDownDays = New System.Windows.Forms.NumericUpDown()
+        Me.PanelDatabase = New System.Windows.Forms.Panel()
+        Me.ComboBoxDatabase = New System.Windows.Forms.ComboBox()
+        Me.LabelDatabase = New System.Windows.Forms.Label()
+        Me.PanelType = New System.Windows.Forms.Panel()
+        Me.ComboBoxType = New System.Windows.Forms.ComboBox()
+        Me.LabelType = New System.Windows.Forms.Label()
+        Me.PanelSubType = New System.Windows.Forms.Panel()
+        Me.ComboBoxSubType = New System.Windows.Forms.ComboBox()
+        Me.LabelSubType = New System.Windows.Forms.Label()
+        Me.PanelCollection = New System.Windows.Forms.Panel()
+        Me.ComboBoxCollection = New System.Windows.Forms.ComboBox()
+        Me.LabelCollection = New System.Windows.Forms.Label()
+        Me.PanelItem = New System.Windows.Forms.Panel()
+        Me.ComboBoxItem = New System.Windows.Forms.ComboBox()
+        Me.LabelItem = New System.Windows.Forms.Label()
+        Me.PanelVersion = New System.Windows.Forms.Panel()
+        Me.ComboBoxVersion = New System.Windows.Forms.ComboBox()
+        Me.LabelVersion = New System.Windows.Forms.Label()
+        Me.PanelSearch = New System.Windows.Forms.Panel()
+        Me.TextBoxSearchString = New System.Windows.Forms.TextBox()
+        Me.LabelSearchString = New System.Windows.Forms.Label()
+        Me.PanelSearchLatest = New System.Windows.Forms.Panel()
+        Me.ComboBoxSearchLatest = New System.Windows.Forms.ComboBox()
+        Me.LabelSearchLatest = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ButtonViewReport = New System.Windows.Forms.Button()
+        Me.ReportViewerSQLClue = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.PanelBeginDt = New System.Windows.Forms.Panel()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.LabelBeginDt = New System.Windows.Forms.Label()
+        Me.PanelEndDt = New System.Windows.Forms.Panel()
+        Me.LabelEndDt = New System.Windows.Forms.Label()
+        Me.DateTimePickerEndDt = New System.Windows.Forms.DateTimePicker()
+        Me.PanelCategory = New System.Windows.Forms.Panel()
+        Me.ComboBoxCategory = New System.Windows.Forms.ComboBox()
+        Me.LabelCategory = New System.Windows.Forms.Label()
         Me.StatusStripReportViewer.SuspendLayout()
         Me.ToolStripContainerRV.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainerRV.ContentPanel.SuspendLayout()
         Me.ToolStripContainerRV.SuspendLayout()
+        CType(Me.SplitContainerReportViewer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerReportViewer.Panel1.SuspendLayout()
         Me.SplitContainerReportViewer.Panel2.SuspendLayout()
         Me.SplitContainerReportViewer.SuspendLayout()
+        CType(Me.SplitContainerParms, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainerParms.Panel1.SuspendLayout()
         Me.SplitContainerParms.Panel2.SuspendLayout()
         Me.SplitContainerParms.SuspendLayout()
         Me.FlowLayoutPanelParms.SuspendLayout()
         Me.PanelSQLInstance.SuspendLayout()
-        Me.PanelUsers.SuspendLayout()
+        Me.PanelLogins.SuspendLayout()
         Me.PanelDays.SuspendLayout()
         CType(Me.NumericUpDownDays, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelCfgInstance.SuspendLayout()
-        Me.PanelCfgDatabase.SuspendLayout()
-        Me.PanelCfgType.SuspendLayout()
-        Me.PanelCfgSubType.SuspendLayout()
-        Me.PanelCfgCollection.SuspendLayout()
-        Me.PanelCfgItem.SuspendLayout()
-        Me.PanelCfgVersion.SuspendLayout()
-        Me.PanelRunbookSearch.SuspendLayout()
-        Me.PanelArchiveSearch.SuspendLayout()
-        Me.PanelArchiveSearchType.SuspendLayout()
-        Me.PanelArchiveSearchLatest.SuspendLayout()
+        Me.PanelDatabase.SuspendLayout()
+        Me.PanelType.SuspendLayout()
+        Me.PanelSubType.SuspendLayout()
+        Me.PanelCollection.SuspendLayout()
+        Me.PanelItem.SuspendLayout()
+        Me.PanelVersion.SuspendLayout()
+        Me.PanelSearch.SuspendLayout()
+        Me.PanelSearchLatest.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.PanelBeginDt.SuspendLayout()
+        Me.PanelEndDt.SuspendLayout()
+        Me.PanelCategory.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripStatusLabel1
@@ -190,8 +192,8 @@ Partial Class ReportViewerForm
         'SplitContainerReportViewer
         '
         Me.SplitContainerReportViewer.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SplitContainerReportViewer.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
         Me.SplitContainerReportViewer.Location = New System.Drawing.Point(4, 4)
         Me.SplitContainerReportViewer.Name = "SplitContainerReportViewer"
@@ -212,7 +214,7 @@ Partial Class ReportViewerForm
         'SplitContainerParms
         '
         Me.SplitContainerParms.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SplitContainerParms.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.SplitContainerParms.FixedPanel = System.Windows.Forms.FixedPanel.Panel2
         Me.SplitContainerParms.IsSplitterFixed = True
@@ -227,7 +229,7 @@ Partial Class ReportViewerForm
         '
         Me.SplitContainerParms.Panel2.Controls.Add(Me.Panel1)
         Me.SplitContainerParms.Size = New System.Drawing.Size(715, 218)
-        Me.SplitContainerParms.SplitterDistance = 629
+        Me.SplitContainerParms.SplitterDistance = 632
         Me.SplitContainerParms.SplitterWidth = 1
         Me.SplitContainerParms.TabIndex = 12
         '
@@ -237,23 +239,23 @@ Partial Class ReportViewerForm
         Me.FlowLayoutPanelParms.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.FlowLayoutPanelParms.BackColor = System.Drawing.SystemColors.Control
         Me.FlowLayoutPanelParms.Controls.Add(Me.PanelSQLInstance)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelUsers)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelLogins)
         Me.FlowLayoutPanelParms.Controls.Add(Me.PanelDays)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgInstance)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgDatabase)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgType)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgSubType)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgCollection)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgItem)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCfgVersion)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelRunbookSearch)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelArchiveSearch)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelArchiveSearchType)
-        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelArchiveSearchLatest)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelDatabase)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelType)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelSubType)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCollection)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelItem)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelVersion)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelSearchLatest)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelBeginDt)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelSearch)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelEndDt)
+        Me.FlowLayoutPanelParms.Controls.Add(Me.PanelCategory)
         Me.FlowLayoutPanelParms.Dock = System.Windows.Forms.DockStyle.Top
         Me.FlowLayoutPanelParms.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanelParms.Name = "FlowLayoutPanelParms"
-        Me.FlowLayoutPanelParms.Size = New System.Drawing.Size(629, 218)
+        Me.FlowLayoutPanelParms.Size = New System.Drawing.Size(632, 187)
         Me.FlowLayoutPanelParms.TabIndex = 0
         '
         'PanelSQLInstance
@@ -286,16 +288,16 @@ Partial Class ReportViewerForm
         Me.ComboBoxSQLInstance.Size = New System.Drawing.Size(131, 21)
         Me.ComboBoxSQLInstance.TabIndex = 0
         '
-        'PanelUsers
+        'PanelLogins
         '
-        Me.PanelUsers.AutoSize = True
-        Me.PanelUsers.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelUsers.Controls.Add(Me.ComboBoxLoginNames)
-        Me.PanelUsers.Controls.Add(Me.LabelLogin)
-        Me.PanelUsers.Location = New System.Drawing.Point(221, 3)
-        Me.PanelUsers.Name = "PanelUsers"
-        Me.PanelUsers.Size = New System.Drawing.Size(289, 25)
-        Me.PanelUsers.TabIndex = 9
+        Me.PanelLogins.AutoSize = True
+        Me.PanelLogins.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelLogins.Controls.Add(Me.ComboBoxLoginNames)
+        Me.PanelLogins.Controls.Add(Me.LabelLogin)
+        Me.PanelLogins.Location = New System.Drawing.Point(221, 3)
+        Me.PanelLogins.Name = "PanelLogins"
+        Me.PanelLogins.Size = New System.Drawing.Size(289, 25)
+        Me.PanelLogins.TabIndex = 9
         '
         'ComboBoxLoginNames
         '
@@ -344,343 +346,249 @@ Partial Class ReportViewerForm
         Me.NumericUpDownDays.TabIndex = 7
         Me.NumericUpDownDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'PanelCfgInstance
-        '
-        Me.PanelCfgInstance.AutoSize = True
-        Me.PanelCfgInstance.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgInstance.Controls.Add(Me.ComboBoxCfgInstance)
-        Me.PanelCfgInstance.Controls.Add(Me.LabelCfgInstance)
-        Me.PanelCfgInstance.Location = New System.Drawing.Point(3, 34)
-        Me.PanelCfgInstance.Name = "PanelCfgInstance"
-        Me.PanelCfgInstance.Size = New System.Drawing.Size(220, 25)
-        Me.PanelCfgInstance.TabIndex = 0
-        '
-        'ComboBoxCfgInstance
-        '
-        Me.ComboBoxCfgInstance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgInstance.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgInstance.FormattingEnabled = True
-        Me.ComboBoxCfgInstance.Location = New System.Drawing.Point(78, 1)
-        Me.ComboBoxCfgInstance.Name = "ComboBoxCfgInstance"
-        Me.ComboBoxCfgInstance.Size = New System.Drawing.Size(139, 21)
-        Me.ComboBoxCfgInstance.TabIndex = 1
-        '
-        'LabelCfgInstance
-        '
-        Me.LabelCfgInstance.AutoSize = True
-        Me.LabelCfgInstance.Location = New System.Drawing.Point(4, 5)
-        Me.LabelCfgInstance.Name = "LabelCfgInstance"
-        Me.LabelCfgInstance.Size = New System.Drawing.Size(72, 13)
-        Me.LabelCfgInstance.TabIndex = 0
-        Me.LabelCfgInstance.Text = "SQL Instance"
-        '
-        'PanelCfgDatabase
-        '
-        Me.PanelCfgDatabase.AutoSize = True
-        Me.PanelCfgDatabase.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgDatabase.Controls.Add(Me.ComboBoxCfgDatabase)
-        Me.PanelCfgDatabase.Controls.Add(Me.LabelCfgDatabase)
-        Me.PanelCfgDatabase.Location = New System.Drawing.Point(229, 34)
-        Me.PanelCfgDatabase.Name = "PanelCfgDatabase"
-        Me.PanelCfgDatabase.Size = New System.Drawing.Size(203, 25)
-        Me.PanelCfgDatabase.TabIndex = 0
-        '
-        'ComboBoxCfgDatabase
-        '
-        Me.ComboBoxCfgDatabase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgDatabase.FormattingEnabled = True
-        Me.ComboBoxCfgDatabase.Location = New System.Drawing.Point(61, 1)
-        Me.ComboBoxCfgDatabase.Name = "ComboBoxCfgDatabase"
-        Me.ComboBoxCfgDatabase.Size = New System.Drawing.Size(139, 21)
-        Me.ComboBoxCfgDatabase.TabIndex = 2
-        '
-        'LabelCfgDatabase
-        '
-        Me.LabelCfgDatabase.AutoSize = True
-        Me.LabelCfgDatabase.Location = New System.Drawing.Point(4, 5)
-        Me.LabelCfgDatabase.Name = "LabelCfgDatabase"
-        Me.LabelCfgDatabase.Size = New System.Drawing.Size(53, 13)
-        Me.LabelCfgDatabase.TabIndex = 0
-        Me.LabelCfgDatabase.Text = "Database"
-        '
-        'PanelCfgType
-        '
-        Me.PanelCfgType.AutoSize = True
-        Me.PanelCfgType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgType.Controls.Add(Me.ComboBoxCfgType)
-        Me.PanelCfgType.Controls.Add(Me.LabelCfgType)
-        Me.PanelCfgType.Location = New System.Drawing.Point(438, 34)
-        Me.PanelCfgType.Name = "PanelCfgType"
-        Me.PanelCfgType.Size = New System.Drawing.Size(136, 25)
-        Me.PanelCfgType.TabIndex = 0
-        '
-        'ComboBoxCfgType
-        '
-        Me.ComboBoxCfgType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgType.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgType.FormattingEnabled = True
-        Me.ComboBoxCfgType.Location = New System.Drawing.Point(39, 1)
-        Me.ComboBoxCfgType.Name = "ComboBoxCfgType"
-        Me.ComboBoxCfgType.Size = New System.Drawing.Size(94, 21)
-        Me.ComboBoxCfgType.TabIndex = 3
-        '
-        'LabelCfgType
-        '
-        Me.LabelCfgType.AutoSize = True
-        Me.LabelCfgType.Location = New System.Drawing.Point(4, 5)
-        Me.LabelCfgType.Name = "LabelCfgType"
-        Me.LabelCfgType.Size = New System.Drawing.Size(31, 13)
-        Me.LabelCfgType.TabIndex = 0
-        Me.LabelCfgType.Text = "Type"
-        '
-        'PanelCfgSubType
-        '
-        Me.PanelCfgSubType.AutoSize = True
-        Me.PanelCfgSubType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgSubType.Controls.Add(Me.ComboBoxCfgSubType)
-        Me.PanelCfgSubType.Controls.Add(Me.LabelCfgSubType)
-        Me.PanelCfgSubType.Location = New System.Drawing.Point(3, 65)
-        Me.PanelCfgSubType.Name = "PanelCfgSubType"
-        Me.PanelCfgSubType.Size = New System.Drawing.Size(164, 26)
-        Me.PanelCfgSubType.TabIndex = 0
-        '
-        'ComboBoxCfgSubType
-        '
-        Me.ComboBoxCfgSubType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgSubType.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgSubType.FormattingEnabled = True
-        Me.ComboBoxCfgSubType.Location = New System.Drawing.Point(54, 2)
-        Me.ComboBoxCfgSubType.Name = "ComboBoxCfgSubType"
-        Me.ComboBoxCfgSubType.Size = New System.Drawing.Size(107, 21)
-        Me.ComboBoxCfgSubType.TabIndex = 4
-        '
-        'LabelCfgSubType
-        '
-        Me.LabelCfgSubType.AutoSize = True
-        Me.LabelCfgSubType.Location = New System.Drawing.Point(4, 5)
-        Me.LabelCfgSubType.Name = "LabelCfgSubType"
-        Me.LabelCfgSubType.Size = New System.Drawing.Size(50, 13)
-        Me.LabelCfgSubType.TabIndex = 0
-        Me.LabelCfgSubType.Text = "SubType"
-        '
-        'PanelCfgCollection
-        '
-        Me.PanelCfgCollection.AutoSize = True
-        Me.PanelCfgCollection.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgCollection.Controls.Add(Me.ComboBoxCfgCollection)
-        Me.PanelCfgCollection.Controls.Add(Me.LabelCfgCollection)
-        Me.PanelCfgCollection.Location = New System.Drawing.Point(173, 65)
-        Me.PanelCfgCollection.Name = "PanelCfgCollection"
-        Me.PanelCfgCollection.Size = New System.Drawing.Size(185, 25)
-        Me.PanelCfgCollection.TabIndex = 0
-        '
-        'ComboBoxCfgCollection
-        '
-        Me.ComboBoxCfgCollection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgCollection.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgCollection.FormattingEnabled = True
-        Me.ComboBoxCfgCollection.Location = New System.Drawing.Point(62, 1)
-        Me.ComboBoxCfgCollection.Name = "ComboBoxCfgCollection"
-        Me.ComboBoxCfgCollection.Size = New System.Drawing.Size(120, 21)
-        Me.ComboBoxCfgCollection.TabIndex = 5
-        '
-        'LabelCfgCollection
-        '
-        Me.LabelCfgCollection.AutoSize = True
-        Me.LabelCfgCollection.Location = New System.Drawing.Point(4, 7)
-        Me.LabelCfgCollection.Name = "LabelCfgCollection"
-        Me.LabelCfgCollection.Size = New System.Drawing.Size(53, 13)
-        Me.LabelCfgCollection.TabIndex = 0
-        Me.LabelCfgCollection.Text = "Collection"
-        '
-        'PanelCfgItem
-        '
-        Me.PanelCfgItem.AutoSize = True
-        Me.PanelCfgItem.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgItem.Controls.Add(Me.ComboBoxCfgItem)
-        Me.PanelCfgItem.Controls.Add(Me.LabelCfgItem)
-        Me.PanelCfgItem.Location = New System.Drawing.Point(3, 97)
-        Me.PanelCfgItem.Name = "PanelCfgItem"
-        Me.PanelCfgItem.Size = New System.Drawing.Size(287, 25)
-        Me.PanelCfgItem.TabIndex = 0
-        '
-        'ComboBoxCfgItem
-        '
-        Me.ComboBoxCfgItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgItem.FormattingEnabled = True
-        Me.ComboBoxCfgItem.Location = New System.Drawing.Point(33, 1)
-        Me.ComboBoxCfgItem.Name = "ComboBoxCfgItem"
-        Me.ComboBoxCfgItem.Size = New System.Drawing.Size(251, 21)
-        Me.ComboBoxCfgItem.TabIndex = 6
-        '
-        'LabelCfgItem
-        '
-        Me.LabelCfgItem.AutoSize = True
-        Me.LabelCfgItem.Location = New System.Drawing.Point(4, 5)
-        Me.LabelCfgItem.Name = "LabelCfgItem"
-        Me.LabelCfgItem.Size = New System.Drawing.Size(27, 13)
-        Me.LabelCfgItem.TabIndex = 0
-        Me.LabelCfgItem.Text = "Item"
-        '
-        'PanelCfgVersion
-        '
-        Me.PanelCfgVersion.AutoSize = True
-        Me.PanelCfgVersion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelCfgVersion.Controls.Add(Me.ComboBoxCfgVersion)
-        Me.PanelCfgVersion.Controls.Add(Me.LabelCfgVersion)
-        Me.PanelCfgVersion.Location = New System.Drawing.Point(296, 97)
-        Me.PanelCfgVersion.Name = "PanelCfgVersion"
-        Me.PanelCfgVersion.Size = New System.Drawing.Size(96, 25)
-        Me.PanelCfgVersion.TabIndex = 0
-        '
-        'ComboBoxCfgVersion
-        '
-        Me.ComboBoxCfgVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxCfgVersion.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxCfgVersion.FormattingEnabled = True
-        Me.ComboBoxCfgVersion.Location = New System.Drawing.Point(52, 1)
-        Me.ComboBoxCfgVersion.Name = "ComboBoxCfgVersion"
-        Me.ComboBoxCfgVersion.Size = New System.Drawing.Size(41, 21)
-        Me.ComboBoxCfgVersion.TabIndex = 7
-        '
-        'LabelCfgVersion
-        '
-        Me.LabelCfgVersion.AutoSize = True
-        Me.LabelCfgVersion.Location = New System.Drawing.Point(7, 5)
-        Me.LabelCfgVersion.Name = "LabelCfgVersion"
-        Me.LabelCfgVersion.Size = New System.Drawing.Size(42, 13)
-        Me.LabelCfgVersion.TabIndex = 0
-        Me.LabelCfgVersion.Text = "Version"
-        '
-        'PanelRunbookSearch
-        '
-        Me.PanelRunbookSearch.AutoSize = True
-        Me.PanelRunbookSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelRunbookSearch.Controls.Add(Me.TextBoxRunbookSearchString)
-        Me.PanelRunbookSearch.Controls.Add(Me.Label1)
-        Me.PanelRunbookSearch.Location = New System.Drawing.Point(3, 128)
-        Me.PanelRunbookSearch.Name = "PanelRunbookSearch"
-        Me.PanelRunbookSearch.Size = New System.Drawing.Size(574, 25)
-        Me.PanelRunbookSearch.TabIndex = 10
-        '
-        'TextBoxRunbookSearchString
-        '
-        Me.TextBoxRunbookSearchString.AllowDrop = True
-        Me.TextBoxRunbookSearchString.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBoxRunbookSearchString.Location = New System.Drawing.Point(81, 2)
-        Me.TextBoxRunbookSearchString.Multiline = True
-        Me.TextBoxRunbookSearchString.Name = "TextBoxRunbookSearchString"
-        Me.TextBoxRunbookSearchString.Size = New System.Drawing.Size(490, 20)
-        Me.TextBoxRunbookSearchString.TabIndex = 7
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(4, 5)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(71, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Search String"
-        '
-        'PanelArchiveSearch
-        '
-        Me.PanelArchiveSearch.AutoSize = True
-        Me.PanelArchiveSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelArchiveSearch.Controls.Add(Me.TextBoxArchiveSearchString)
-        Me.PanelArchiveSearch.Controls.Add(Me.Label2)
-        Me.PanelArchiveSearch.Location = New System.Drawing.Point(3, 159)
-        Me.PanelArchiveSearch.Name = "PanelArchiveSearch"
-        Me.PanelArchiveSearch.Size = New System.Drawing.Size(574, 25)
-        Me.PanelArchiveSearch.TabIndex = 14
-        '
-        'TextBoxArchiveSearchString
-        '
-        Me.TextBoxArchiveSearchString.AllowDrop = True
-        Me.TextBoxArchiveSearchString.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBoxArchiveSearchString.Location = New System.Drawing.Point(81, 2)
-        Me.TextBoxArchiveSearchString.Multiline = True
-        Me.TextBoxArchiveSearchString.Name = "TextBoxArchiveSearchString"
-        Me.TextBoxArchiveSearchString.Size = New System.Drawing.Size(490, 20)
-        Me.TextBoxArchiveSearchString.TabIndex = 7
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(4, 5)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(71, 13)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Search String"
-        '
-        'PanelArchiveSearchType
-        '
-        Me.PanelArchiveSearchType.AutoSize = True
-        Me.PanelArchiveSearchType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelArchiveSearchType.Controls.Add(Me.ComboBoxArchiveSearchType)
-        Me.PanelArchiveSearchType.Controls.Add(Me.Label3)
-        Me.PanelArchiveSearchType.Location = New System.Drawing.Point(3, 190)
-        Me.PanelArchiveSearchType.Name = "PanelArchiveSearchType"
-        Me.PanelArchiveSearchType.Size = New System.Drawing.Size(155, 25)
-        Me.PanelArchiveSearchType.TabIndex = 15
-        '
-        'ComboBoxArchiveSearchType
-        '
-        Me.ComboBoxArchiveSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxArchiveSearchType.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxArchiveSearchType.FormattingEnabled = True
-        Me.ComboBoxArchiveSearchType.Items.AddRange(New Object() {"Metadata", "SQLInstance"})
-        Me.ComboBoxArchiveSearchType.Location = New System.Drawing.Point(52, 1)
-        Me.ComboBoxArchiveSearchType.MaxDropDownItems = 2
-        Me.ComboBoxArchiveSearchType.Name = "ComboBoxArchiveSearchType"
-        Me.ComboBoxArchiveSearchType.Size = New System.Drawing.Size(100, 21)
-        Me.ComboBoxArchiveSearchType.TabIndex = 7
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(7, 5)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(31, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Type"
-        '
-        'PanelArchiveSearchLatest
-        '
-        Me.PanelArchiveSearchLatest.AutoSize = True
-        Me.PanelArchiveSearchLatest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.PanelArchiveSearchLatest.Controls.Add(Me.ComboBoxArchiveSearchLatest)
-        Me.PanelArchiveSearchLatest.Controls.Add(Me.Label4)
-        Me.PanelArchiveSearchLatest.Location = New System.Drawing.Point(164, 190)
-        Me.PanelArchiveSearchLatest.Name = "PanelArchiveSearchLatest"
-        Me.PanelArchiveSearchLatest.Size = New System.Drawing.Size(177, 25)
-        Me.PanelArchiveSearchLatest.TabIndex = 16
-        '
-        'ComboBoxArchiveSearchLatest
-        '
-        Me.ComboBoxArchiveSearchLatest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBoxArchiveSearchLatest.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBoxArchiveSearchLatest.FormattingEnabled = True
-        Me.ComboBoxArchiveSearchLatest.Items.AddRange(New Object() {"False", "True"})
-        Me.ComboBoxArchiveSearchLatest.Location = New System.Drawing.Point(114, 1)
-        Me.ComboBoxArchiveSearchLatest.MaxDropDownItems = 2
-        Me.ComboBoxArchiveSearchLatest.Name = "ComboBoxArchiveSearchLatest"
-        Me.ComboBoxArchiveSearchLatest.Size = New System.Drawing.Size(60, 21)
-        Me.ComboBoxArchiveSearchLatest.TabIndex = 7
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 5)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(98, 13)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Latest Version Only"
+        'PanelDatabase
+        '
+        Me.PanelDatabase.AutoSize = True
+        Me.PanelDatabase.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelDatabase.Controls.Add(Me.ComboBoxDatabase)
+        Me.PanelDatabase.Controls.Add(Me.LabelDatabase)
+        Me.PanelDatabase.Location = New System.Drawing.Point(3, 34)
+        Me.PanelDatabase.Name = "PanelDatabase"
+        Me.PanelDatabase.Size = New System.Drawing.Size(203, 25)
+        Me.PanelDatabase.TabIndex = 0
+        '
+        'ComboBoxDatabase
+        '
+        Me.ComboBoxDatabase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxDatabase.FormattingEnabled = True
+        Me.ComboBoxDatabase.Location = New System.Drawing.Point(61, 1)
+        Me.ComboBoxDatabase.Name = "ComboBoxDatabase"
+        Me.ComboBoxDatabase.Size = New System.Drawing.Size(139, 21)
+        Me.ComboBoxDatabase.TabIndex = 2
+        '
+        'LabelDatabase
+        '
+        Me.LabelDatabase.AutoSize = True
+        Me.LabelDatabase.Location = New System.Drawing.Point(4, 5)
+        Me.LabelDatabase.Name = "LabelDatabase"
+        Me.LabelDatabase.Size = New System.Drawing.Size(53, 13)
+        Me.LabelDatabase.TabIndex = 0
+        Me.LabelDatabase.Text = "Database"
+        '
+        'PanelType
+        '
+        Me.PanelType.AutoSize = True
+        Me.PanelType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelType.Controls.Add(Me.ComboBoxType)
+        Me.PanelType.Controls.Add(Me.LabelType)
+        Me.PanelType.Location = New System.Drawing.Point(212, 34)
+        Me.PanelType.Name = "PanelType"
+        Me.PanelType.Size = New System.Drawing.Size(136, 25)
+        Me.PanelType.TabIndex = 0
+        '
+        'ComboBoxType
+        '
+        Me.ComboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxType.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxType.FormattingEnabled = True
+        Me.ComboBoxType.Location = New System.Drawing.Point(39, 1)
+        Me.ComboBoxType.Name = "ComboBoxType"
+        Me.ComboBoxType.Size = New System.Drawing.Size(94, 21)
+        Me.ComboBoxType.TabIndex = 3
+        '
+        'LabelType
+        '
+        Me.LabelType.AutoSize = True
+        Me.LabelType.Location = New System.Drawing.Point(4, 5)
+        Me.LabelType.Name = "LabelType"
+        Me.LabelType.Size = New System.Drawing.Size(31, 13)
+        Me.LabelType.TabIndex = 0
+        Me.LabelType.Text = "Type"
+        '
+        'PanelSubType
+        '
+        Me.PanelSubType.AutoSize = True
+        Me.PanelSubType.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelSubType.Controls.Add(Me.ComboBoxSubType)
+        Me.PanelSubType.Controls.Add(Me.LabelSubType)
+        Me.PanelSubType.Location = New System.Drawing.Point(354, 34)
+        Me.PanelSubType.Name = "PanelSubType"
+        Me.PanelSubType.Size = New System.Drawing.Size(164, 26)
+        Me.PanelSubType.TabIndex = 0
+        '
+        'ComboBoxSubType
+        '
+        Me.ComboBoxSubType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxSubType.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxSubType.FormattingEnabled = True
+        Me.ComboBoxSubType.Location = New System.Drawing.Point(54, 2)
+        Me.ComboBoxSubType.Name = "ComboBoxSubType"
+        Me.ComboBoxSubType.Size = New System.Drawing.Size(107, 21)
+        Me.ComboBoxSubType.TabIndex = 4
+        '
+        'LabelSubType
+        '
+        Me.LabelSubType.AutoSize = True
+        Me.LabelSubType.Location = New System.Drawing.Point(4, 5)
+        Me.LabelSubType.Name = "LabelSubType"
+        Me.LabelSubType.Size = New System.Drawing.Size(50, 13)
+        Me.LabelSubType.TabIndex = 0
+        Me.LabelSubType.Text = "SubType"
+        '
+        'PanelCollection
+        '
+        Me.PanelCollection.AutoSize = True
+        Me.PanelCollection.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelCollection.Controls.Add(Me.ComboBoxCollection)
+        Me.PanelCollection.Controls.Add(Me.LabelCollection)
+        Me.PanelCollection.Location = New System.Drawing.Point(3, 66)
+        Me.PanelCollection.Name = "PanelCollection"
+        Me.PanelCollection.Size = New System.Drawing.Size(185, 25)
+        Me.PanelCollection.TabIndex = 0
+        '
+        'ComboBoxCollection
+        '
+        Me.ComboBoxCollection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxCollection.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxCollection.FormattingEnabled = True
+        Me.ComboBoxCollection.Location = New System.Drawing.Point(62, 1)
+        Me.ComboBoxCollection.Name = "ComboBoxCollection"
+        Me.ComboBoxCollection.Size = New System.Drawing.Size(120, 21)
+        Me.ComboBoxCollection.TabIndex = 5
+        '
+        'LabelCollection
+        '
+        Me.LabelCollection.AutoSize = True
+        Me.LabelCollection.Location = New System.Drawing.Point(4, 7)
+        Me.LabelCollection.Name = "LabelCollection"
+        Me.LabelCollection.Size = New System.Drawing.Size(53, 13)
+        Me.LabelCollection.TabIndex = 0
+        Me.LabelCollection.Text = "Collection"
+        '
+        'PanelItem
+        '
+        Me.PanelItem.AutoSize = True
+        Me.PanelItem.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelItem.Controls.Add(Me.ComboBoxItem)
+        Me.PanelItem.Controls.Add(Me.LabelItem)
+        Me.PanelItem.Location = New System.Drawing.Point(194, 66)
+        Me.PanelItem.Name = "PanelItem"
+        Me.PanelItem.Size = New System.Drawing.Size(287, 25)
+        Me.PanelItem.TabIndex = 0
+        '
+        'ComboBoxItem
+        '
+        Me.ComboBoxItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxItem.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxItem.FormattingEnabled = True
+        Me.ComboBoxItem.Location = New System.Drawing.Point(33, 1)
+        Me.ComboBoxItem.Name = "ComboBoxItem"
+        Me.ComboBoxItem.Size = New System.Drawing.Size(251, 21)
+        Me.ComboBoxItem.TabIndex = 6
+        '
+        'LabelItem
+        '
+        Me.LabelItem.AutoSize = True
+        Me.LabelItem.Location = New System.Drawing.Point(4, 5)
+        Me.LabelItem.Name = "LabelItem"
+        Me.LabelItem.Size = New System.Drawing.Size(27, 13)
+        Me.LabelItem.TabIndex = 0
+        Me.LabelItem.Text = "Item"
+        '
+        'PanelVersion
+        '
+        Me.PanelVersion.AutoSize = True
+        Me.PanelVersion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelVersion.Controls.Add(Me.ComboBoxVersion)
+        Me.PanelVersion.Controls.Add(Me.LabelVersion)
+        Me.PanelVersion.Location = New System.Drawing.Point(487, 66)
+        Me.PanelVersion.Name = "PanelVersion"
+        Me.PanelVersion.Size = New System.Drawing.Size(96, 25)
+        Me.PanelVersion.TabIndex = 0
+        '
+        'ComboBoxVersion
+        '
+        Me.ComboBoxVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxVersion.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxVersion.FormattingEnabled = True
+        Me.ComboBoxVersion.Location = New System.Drawing.Point(52, 1)
+        Me.ComboBoxVersion.Name = "ComboBoxVersion"
+        Me.ComboBoxVersion.Size = New System.Drawing.Size(41, 21)
+        Me.ComboBoxVersion.TabIndex = 7
+        '
+        'LabelVersion
+        '
+        Me.LabelVersion.AutoSize = True
+        Me.LabelVersion.Location = New System.Drawing.Point(7, 5)
+        Me.LabelVersion.Name = "LabelVersion"
+        Me.LabelVersion.Size = New System.Drawing.Size(42, 13)
+        Me.LabelVersion.TabIndex = 0
+        Me.LabelVersion.Text = "Version"
+        '
+        'PanelSearch
+        '
+        Me.PanelSearch.AutoSize = True
+        Me.PanelSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelSearch.Controls.Add(Me.TextBoxSearchString)
+        Me.PanelSearch.Controls.Add(Me.LabelSearchString)
+        Me.PanelSearch.Location = New System.Drawing.Point(3, 128)
+        Me.PanelSearch.Name = "PanelSearch"
+        Me.PanelSearch.Size = New System.Drawing.Size(574, 25)
+        Me.PanelSearch.TabIndex = 14
+        '
+        'TextBoxSearchString
+        '
+        Me.TextBoxSearchString.AllowDrop = True
+        Me.TextBoxSearchString.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextBoxSearchString.Location = New System.Drawing.Point(81, 2)
+        Me.TextBoxSearchString.Multiline = True
+        Me.TextBoxSearchString.Name = "TextBoxSearchString"
+        Me.TextBoxSearchString.Size = New System.Drawing.Size(490, 20)
+        Me.TextBoxSearchString.TabIndex = 7
+        '
+        'LabelSearchString
+        '
+        Me.LabelSearchString.AutoSize = True
+        Me.LabelSearchString.Location = New System.Drawing.Point(4, 5)
+        Me.LabelSearchString.Name = "LabelSearchString"
+        Me.LabelSearchString.Size = New System.Drawing.Size(71, 13)
+        Me.LabelSearchString.TabIndex = 0
+        Me.LabelSearchString.Text = "Search String"
+        '
+        'PanelSearchLatest
+        '
+        Me.PanelSearchLatest.AutoSize = True
+        Me.PanelSearchLatest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelSearchLatest.Controls.Add(Me.ComboBoxSearchLatest)
+        Me.PanelSearchLatest.Controls.Add(Me.LabelSearchLatest)
+        Me.PanelSearchLatest.Location = New System.Drawing.Point(3, 97)
+        Me.PanelSearchLatest.Name = "PanelSearchLatest"
+        Me.PanelSearchLatest.Size = New System.Drawing.Size(177, 25)
+        Me.PanelSearchLatest.TabIndex = 16
+        '
+        'ComboBoxSearchLatest
+        '
+        Me.ComboBoxSearchLatest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxSearchLatest.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxSearchLatest.FormattingEnabled = True
+        Me.ComboBoxSearchLatest.Items.AddRange(New Object() {"False", "True"})
+        Me.ComboBoxSearchLatest.Location = New System.Drawing.Point(114, 1)
+        Me.ComboBoxSearchLatest.MaxDropDownItems = 2
+        Me.ComboBoxSearchLatest.Name = "ComboBoxSearchLatest"
+        Me.ComboBoxSearchLatest.Size = New System.Drawing.Size(60, 21)
+        Me.ComboBoxSearchLatest.TabIndex = 7
+        '
+        'LabelSearchLatest
+        '
+        Me.LabelSearchLatest.AutoSize = True
+        Me.LabelSearchLatest.Location = New System.Drawing.Point(7, 5)
+        Me.LabelSearchLatest.Name = "LabelSearchLatest"
+        Me.LabelSearchLatest.Size = New System.Drawing.Size(98, 13)
+        Me.LabelSearchLatest.TabIndex = 0
+        Me.LabelSearchLatest.Text = "Latest Version Only"
         '
         'Panel1
         '
@@ -689,14 +597,14 @@ Partial Class ReportViewerForm
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(85, 218)
+        Me.Panel1.Size = New System.Drawing.Size(82, 218)
         Me.Panel1.TabIndex = 0
         '
         'ButtonViewReport
         '
-        Me.ButtonViewReport.Location = New System.Drawing.Point(8, 3)
+        Me.ButtonViewReport.Location = New System.Drawing.Point(4, 3)
         Me.ButtonViewReport.Name = "ButtonViewReport"
-        Me.ButtonViewReport.Size = New System.Drawing.Size(75, 23)
+        Me.ButtonViewReport.Size = New System.Drawing.Size(75, 25)
         Me.ButtonViewReport.TabIndex = 8
         Me.ButtonViewReport.Text = "View &Report"
         Me.ButtonViewReport.UseVisualStyleBackColor = True
@@ -709,6 +617,87 @@ Partial Class ReportViewerForm
         Me.ReportViewerSQLClue.Name = "ReportViewerSQLClue"
         Me.ReportViewerSQLClue.Size = New System.Drawing.Size(722, 151)
         Me.ReportViewerSQLClue.TabIndex = 9
+        '
+        'PanelBeginDt
+        '
+        Me.PanelBeginDt.Controls.Add(Me.LabelBeginDt)
+        Me.PanelBeginDt.Controls.Add(Me.DateTimePicker1)
+        Me.PanelBeginDt.Location = New System.Drawing.Point(186, 97)
+        Me.PanelBeginDt.Name = "PanelBeginDt"
+        Me.PanelBeginDt.Size = New System.Drawing.Size(259, 25)
+        Me.PanelBeginDt.TabIndex = 17
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(56, 2)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 0
+        '
+        'LabelBeginDt
+        '
+        Me.LabelBeginDt.AutoSize = True
+        Me.LabelBeginDt.Location = New System.Drawing.Point(6, 6)
+        Me.LabelBeginDt.Name = "LabelBeginDt"
+        Me.LabelBeginDt.Size = New System.Drawing.Size(45, 13)
+        Me.LabelBeginDt.TabIndex = 1
+        Me.LabelBeginDt.Text = "BeginDt"
+        '
+        'PanelEndDt
+        '
+        Me.PanelEndDt.Controls.Add(Me.LabelEndDt)
+        Me.PanelEndDt.Controls.Add(Me.DateTimePickerEndDt)
+        Me.PanelEndDt.Location = New System.Drawing.Point(3, 159)
+        Me.PanelEndDt.Name = "PanelEndDt"
+        Me.PanelEndDt.Size = New System.Drawing.Size(259, 25)
+        Me.PanelEndDt.TabIndex = 18
+        '
+        'LabelEndDt
+        '
+        Me.LabelEndDt.AutoSize = True
+        Me.LabelEndDt.Location = New System.Drawing.Point(6, 6)
+        Me.LabelEndDt.Name = "LabelEndDt"
+        Me.LabelEndDt.Size = New System.Drawing.Size(37, 13)
+        Me.LabelEndDt.TabIndex = 1
+        Me.LabelEndDt.Text = "EndDt"
+        '
+        'DateTimePickerEndDt
+        '
+        Me.DateTimePickerEndDt.Location = New System.Drawing.Point(56, 2)
+        Me.DateTimePickerEndDt.Name = "DateTimePickerEndDt"
+        Me.DateTimePickerEndDt.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePickerEndDt.TabIndex = 0
+        Me.DateTimePickerEndDt.Value = New Date(2012, 1, 14, 12, 7, 43, 0)
+        '
+        'PanelCategory
+        '
+        Me.PanelCategory.AutoSize = True
+        Me.PanelCategory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.PanelCategory.Controls.Add(Me.ComboBoxCategory)
+        Me.PanelCategory.Controls.Add(Me.LabelCategory)
+        Me.PanelCategory.Location = New System.Drawing.Point(268, 159)
+        Me.PanelCategory.Name = "PanelCategory"
+        Me.PanelCategory.Size = New System.Drawing.Size(185, 25)
+        Me.PanelCategory.TabIndex = 19
+        '
+        'ComboBoxCategory
+        '
+        Me.ComboBoxCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBoxCategory.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.ComboBoxCategory.FormattingEnabled = True
+        Me.ComboBoxCategory.Location = New System.Drawing.Point(62, 1)
+        Me.ComboBoxCategory.Name = "ComboBoxCategory"
+        Me.ComboBoxCategory.Size = New System.Drawing.Size(120, 21)
+        Me.ComboBoxCategory.TabIndex = 5
+        '
+        'LabelCategory
+        '
+        Me.LabelCategory.AutoSize = True
+        Me.LabelCategory.Location = New System.Drawing.Point(4, 7)
+        Me.LabelCategory.Name = "LabelCategory"
+        Me.LabelCategory.Size = New System.Drawing.Size(49, 13)
+        Me.LabelCategory.TabIndex = 0
+        Me.LabelCategory.Text = "Category"
         '
         'ReportViewerForm
         '
@@ -733,43 +722,45 @@ Partial Class ReportViewerForm
         Me.ToolStripContainerRV.PerformLayout()
         Me.SplitContainerReportViewer.Panel1.ResumeLayout(False)
         Me.SplitContainerReportViewer.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainerReportViewer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainerReportViewer.ResumeLayout(False)
         Me.SplitContainerParms.Panel1.ResumeLayout(False)
         Me.SplitContainerParms.Panel1.PerformLayout()
         Me.SplitContainerParms.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainerParms, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainerParms.ResumeLayout(False)
         Me.FlowLayoutPanelParms.ResumeLayout(False)
         Me.FlowLayoutPanelParms.PerformLayout()
         Me.PanelSQLInstance.ResumeLayout(False)
         Me.PanelSQLInstance.PerformLayout()
-        Me.PanelUsers.ResumeLayout(False)
-        Me.PanelUsers.PerformLayout()
+        Me.PanelLogins.ResumeLayout(False)
+        Me.PanelLogins.PerformLayout()
         Me.PanelDays.ResumeLayout(False)
         Me.PanelDays.PerformLayout()
         CType(Me.NumericUpDownDays, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelCfgInstance.ResumeLayout(False)
-        Me.PanelCfgInstance.PerformLayout()
-        Me.PanelCfgDatabase.ResumeLayout(False)
-        Me.PanelCfgDatabase.PerformLayout()
-        Me.PanelCfgType.ResumeLayout(False)
-        Me.PanelCfgType.PerformLayout()
-        Me.PanelCfgSubType.ResumeLayout(False)
-        Me.PanelCfgSubType.PerformLayout()
-        Me.PanelCfgCollection.ResumeLayout(False)
-        Me.PanelCfgCollection.PerformLayout()
-        Me.PanelCfgItem.ResumeLayout(False)
-        Me.PanelCfgItem.PerformLayout()
-        Me.PanelCfgVersion.ResumeLayout(False)
-        Me.PanelCfgVersion.PerformLayout()
-        Me.PanelRunbookSearch.ResumeLayout(False)
-        Me.PanelRunbookSearch.PerformLayout()
-        Me.PanelArchiveSearch.ResumeLayout(False)
-        Me.PanelArchiveSearch.PerformLayout()
-        Me.PanelArchiveSearchType.ResumeLayout(False)
-        Me.PanelArchiveSearchType.PerformLayout()
-        Me.PanelArchiveSearchLatest.ResumeLayout(False)
-        Me.PanelArchiveSearchLatest.PerformLayout()
+        Me.PanelDatabase.ResumeLayout(False)
+        Me.PanelDatabase.PerformLayout()
+        Me.PanelType.ResumeLayout(False)
+        Me.PanelType.PerformLayout()
+        Me.PanelSubType.ResumeLayout(False)
+        Me.PanelSubType.PerformLayout()
+        Me.PanelCollection.ResumeLayout(False)
+        Me.PanelCollection.PerformLayout()
+        Me.PanelItem.ResumeLayout(False)
+        Me.PanelItem.PerformLayout()
+        Me.PanelVersion.ResumeLayout(False)
+        Me.PanelVersion.PerformLayout()
+        Me.PanelSearch.ResumeLayout(False)
+        Me.PanelSearch.PerformLayout()
+        Me.PanelSearchLatest.ResumeLayout(False)
+        Me.PanelSearchLatest.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.PanelBeginDt.ResumeLayout(False)
+        Me.PanelBeginDt.PerformLayout()
+        Me.PanelEndDt.ResumeLayout(False)
+        Me.PanelEndDt.PerformLayout()
+        Me.PanelCategory.ResumeLayout(False)
+        Me.PanelCategory.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -790,43 +781,43 @@ Partial Class ReportViewerForm
     Friend WithEvents PanelDays As System.Windows.Forms.Panel
     Friend WithEvents LabelDays As System.Windows.Forms.Label
     Friend WithEvents NumericUpDownDays As System.Windows.Forms.NumericUpDown
-    Friend WithEvents PanelUsers As System.Windows.Forms.Panel
+    Friend WithEvents PanelLogins As System.Windows.Forms.Panel
     Friend WithEvents ComboBoxLoginNames As System.Windows.Forms.ComboBox
     Friend WithEvents LabelLogin As System.Windows.Forms.Label
-    Friend WithEvents ComboBoxCfgInstance As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelCfgInstance As System.Windows.Forms.Label
-    Friend WithEvents ComboBoxCfgDatabase As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelCfgDatabase As System.Windows.Forms.Label
-    Friend WithEvents PanelCfgType As System.Windows.Forms.Panel
-    Friend WithEvents ComboBoxCfgType As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelCfgType As System.Windows.Forms.Label
-    Friend WithEvents PanelCfgSubType As System.Windows.Forms.Panel
-    Friend WithEvents ComboBoxCfgSubType As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelCfgSubType As System.Windows.Forms.Label
-    Friend WithEvents PanelCfgCollection As System.Windows.Forms.Panel
-    Friend WithEvents ComboBoxCfgCollection As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelCfgCollection As System.Windows.Forms.Label
-    Friend WithEvents PanelCfgItem As System.Windows.Forms.Panel
-    Friend WithEvents ComboBoxCfgItem As System.Windows.Forms.ComboBox
-    Friend WithEvents LabelCfgItem As System.Windows.Forms.Label
-    Friend WithEvents PanelCfgVersion As System.Windows.Forms.Panel
-    Friend WithEvents LabelCfgVersion As System.Windows.Forms.Label
-    Friend WithEvents ComboBoxCfgVersion As System.Windows.Forms.ComboBox
+    Friend WithEvents ComboBoxDatabase As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelDatabase As System.Windows.Forms.Label
+    Friend WithEvents PanelType As System.Windows.Forms.Panel
+    Friend WithEvents ComboBoxType As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelType As System.Windows.Forms.Label
+    Friend WithEvents PanelSubType As System.Windows.Forms.Panel
+    Friend WithEvents ComboBoxSubType As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelSubType As System.Windows.Forms.Label
+    Friend WithEvents PanelCollection As System.Windows.Forms.Panel
+    Friend WithEvents ComboBoxCollection As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelCollection As System.Windows.Forms.Label
+    Friend WithEvents PanelItem As System.Windows.Forms.Panel
+    Friend WithEvents ComboBoxItem As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelItem As System.Windows.Forms.Label
+    Friend WithEvents PanelVersion As System.Windows.Forms.Panel
+    Friend WithEvents LabelVersion As System.Windows.Forms.Label
+    Friend WithEvents ComboBoxVersion As System.Windows.Forms.ComboBox
     Friend WithEvents SplitContainerParms As System.Windows.Forms.SplitContainer
-    Friend WithEvents PanelCfgInstance As System.Windows.Forms.Panel
-    Friend WithEvents PanelCfgDatabase As System.Windows.Forms.Panel
+    Friend WithEvents PanelDatabase As System.Windows.Forms.Panel
     Friend WithEvents FlowLayoutPanelParms As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents PanelRunbookSearch As System.Windows.Forms.Panel
-    Friend WithEvents TextBoxRunbookSearchString As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents PanelArchiveSearch As System.Windows.Forms.Panel
-    Friend WithEvents TextBoxArchiveSearchString As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents PanelArchiveSearchType As System.Windows.Forms.Panel
-    Friend WithEvents ComboBoxArchiveSearchType As System.Windows.Forms.ComboBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents PanelArchiveSearchLatest As System.Windows.Forms.Panel
-    Friend WithEvents ComboBoxArchiveSearchLatest As System.Windows.Forms.ComboBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents PanelSearch As System.Windows.Forms.Panel
+    Friend WithEvents TextBoxSearchString As System.Windows.Forms.TextBox
+    Friend WithEvents LabelSearchString As System.Windows.Forms.Label
+    Friend WithEvents PanelSearchLatest As System.Windows.Forms.Panel
+    Friend WithEvents ComboBoxSearchLatest As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelSearchLatest As System.Windows.Forms.Label
+    Friend WithEvents PanelBeginDt As System.Windows.Forms.Panel
+    Friend WithEvents LabelBeginDt As System.Windows.Forms.Label
+    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents PanelEndDt As System.Windows.Forms.Panel
+    Friend WithEvents LabelEndDt As System.Windows.Forms.Label
+    Friend WithEvents DateTimePickerEndDt As System.Windows.Forms.DateTimePicker
+    Friend WithEvents PanelCategory As System.Windows.Forms.Panel
+    Friend WithEvents ComboBoxCategory As System.Windows.Forms.ComboBox
+    Friend WithEvents LabelCategory As System.Windows.Forms.Label
 End Class

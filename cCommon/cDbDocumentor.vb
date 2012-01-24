@@ -139,8 +139,8 @@ Public Class cDbDocumentor
                                 ScriptSrvStartupProcedures()
                             Case My.Resources.AlertSystem
                                 DocumentSrvAlertSystem()
-                            Case My.Resources.ActiveDirectory
-                                DocumentSrvActiveDirectory()
+                                'Case My.Resources.ActiveDirectory
+                                '    DocumentSrvActiveDirectory()
                             Case My.Resources.Configuration
                                 DocumentSrvConfiguration()
                             Case My.Resources.FullTextService
@@ -442,17 +442,17 @@ Public Class cDbDocumentor
         End If
     End Sub
 
-    Private Sub DocumentSrvActiveDirectory()
-        If Not _oSQLServer.ActiveDirectory Is Nothing Then
-            For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.ActiveDirectory.Properties
-                If prop.Value Is Nothing Then
-                    _script.Add(String.Format("{0} =", prop.Name))
-                Else
-                    _script.Add(String.Format("{0} = {1}", prop.Name, prop.Value))
-                End If
-            Next
-        End If
-    End Sub
+    'Private Sub DocumentSrvActiveDirectory()
+    '    If Not _oSQLServer.ActiveDirectory Is Nothing Then
+    '        For Each prop As Microsoft.SqlServer.Management.Smo.Property In _oSQLServer.ActiveDirectory.Properties
+    '            If prop.Value Is Nothing Then
+    '                _script.Add(String.Format("{0} =", prop.Name))
+    '            Else
+    '                _script.Add(String.Format("{0} = {1}", prop.Name, prop.Value))
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
 
     Private Sub DocumentSrvAttributes()
         ' will write startup procs to same record so may as well make it a usable script
@@ -2041,9 +2041,9 @@ Public Class cDbDocumentor
         Try
             If Not oRole Is Nothing Then
                 _oScripter.Options.WithDependencies = False
-                If oRole.EnumServerRoleMembers.Count > 0 Then
+                If oRole.EnumMemberNames.Count > 0 Then
                     Try
-                        For Each mem As String In oRole.EnumServerRoleMembers
+                        For Each mem As String In oRole.EnumMemberNames
                             _script.Add("Exec sp_addsrvrolemember @loginName = '" & mem & "', @rolename = '" & oRole.Name & "'" & _
                                         If(_oScripter.Options.NoCommandTerminator, "", ";"))
 

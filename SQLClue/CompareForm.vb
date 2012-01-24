@@ -349,7 +349,7 @@ Public Class CompareForm
         AndAlso Not (IsDatabase1 And IsDatabase2) _
         AndAlso Not Type1.Equals(Type2) Then
             ' special case for server - node(0),node(0)
-            ' special case for databases - because both item and collection
+            ' same special case for databases - because both item and collection
             ' not for two collections of different type only for items of different types
             MessageBox.Show(String.Format(My.Resources.InvalidCollectionCompare, _
                                           CType(smoTreeView1.SelectedNode.Tag, cTreeView.structNodeTag).obj.GetType.Name, _
@@ -377,7 +377,6 @@ Public Class CompareForm
         Else
             IsValidCompare = True
         End If
-        'My.Resources.CompareDBAdvice
     End Function
 
 
