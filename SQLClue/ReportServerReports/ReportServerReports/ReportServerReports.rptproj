@@ -14,8 +14,16 @@
   <DataSets />
   <Reports>
     <ProjectItem>
-      <Name>DefaultTrace.rdl</Name>
-      <FullPath>DefaultTrace.rdl</FullPath>
+      <Name>DefaultTrace10.rdl</Name>
+      <FullPath>DefaultTrace10.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DefaultTraceRC0.rdl</Name>
+      <FullPath>DefaultTraceRC0.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>DefaultTraceSSMSRC0.rdl</Name>
+      <FullPath>DefaultTraceSSMSRC0.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLClueDashboard.rdl</Name>
@@ -32,10 +40,6 @@
     <ProjectItem>
       <Name>SQLClueServiceStatus.rdl</Name>
       <FullPath>SQLClueServiceStatus.rdl</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>SQLConfigurationArchiveByInstance - Backup.rdl</Name>
-      <FullPath>SQLConfigurationArchiveByInstance - Backup.rdl</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>SQLConfigurationArchiveByInstance.rdl</Name>
@@ -204,6 +208,10 @@
     <ProjectItem>
       <Name>SQLRunbookTopicsReviewedInDateRange.rdl</Name>
       <FullPath>SQLRunbookTopicsReviewedInDateRange.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>SSMSObjectMode10.rdl</Name>
+      <FullPath>SSMSObjectMode10.rdl</FullPath>
     </ProjectItem>
   </Reports>
   <Configurations>

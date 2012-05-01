@@ -573,7 +573,6 @@
     <Content Include="ReportViewerReports\SQLConfigurationArchiveHistoryByScheduleId.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="ReportViewerReports\DefaultTrace.rdlc" />
     <EmbeddedResource Include="RunbookForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>RunbookForm.vb</DependentUpon>

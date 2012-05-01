@@ -1,0 +1,1615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Rectangle Name="Rectangle1">
+        <ReportItems>
+          <Tablix Name="matrix1">
+            <TablixCorner>
+              <TablixCornerRows>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Heading">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Parameters!SQLInstance.Value &amp; VbCrLf &amp; "Default Trace Events"</Value>
+                                <Style>
+                                  <FontFamily>Tahoma</FontFamily>
+                                  <FontSize>12pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>SteelBlue</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <ZIndex>1</ZIndex>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>White</BackgroundColor>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                      <ColSpan>4</ColSpan>
+                    </CellContents>
+                  </TablixCornerCell>
+                  <TablixCornerCell />
+                  <TablixCornerCell />
+                  <TablixCornerCell />
+                </TablixCornerRow>
+              </TablixCornerRows>
+            </TablixCorner>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.40075in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.432in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>3.05701in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.29659in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.64034in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.21983in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox15">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Database</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox10</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>SlateGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox16">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Login</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox11</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>SlateGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox17">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Application</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>SlateGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox18">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Host</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <BackgroundColor>SlateGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox19">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>oType</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox14</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>SlateGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.21983in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Database">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Database.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Database</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#8fa0b0</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Login">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Login.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Login</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#8fa0b0</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Application">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Application.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Application</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>#8fa0b0</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Host">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Host.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Host</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#8fa0b0</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ObjType">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ObjType.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ObjType</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#8fa0b0</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.20067in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExtendedInfo">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>= Iif( Len(Replace(Replace(Fields!ExtendedInfo.Value, VbCrLf, Space(1)),  "	", Space(1))) &gt; 88
+     , Left(Replace(Replace(Fields!ExtendedInfo.Value, VbCrLf, Space(1)), "	" , Space(1)), 85) + "..."
+     , Replace(Fields!ExtendedInfo.Value, VbCrLf, Space(1)))</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExtendedInfo</rd:DefaultName>
+                          <Visibility>
+                            <ToggleItem>MoreInfo</ToggleItem>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <RightBorder>
+                              <Style>None</Style>
+                            </RightBorder>
+                            <BackgroundColor>GhostWhite</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>3</ColSpan>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="StartTime1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!StartTime.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>StartTime1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <LeftBorder>
+                              <Style>None</Style>
+                            </LeftBorder>
+                            <BackgroundColor>GhostWhite</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>2</ColSpan>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.21983in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExtendedInfo1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!ExtendedInfo.Value</Value>
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExtendedInfo1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                        <ColSpan>4</ColSpan>
+                      </CellContents>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>AliceBlue</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="matrix1_SQLInstance">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Database.Value</GroupExpression>
+                      <GroupExpression>=Fields!Login.Value</GroupExpression>
+                      <GroupExpression>=Fields!Application.Value</GroupExpression>
+                      <GroupExpression>=Fields!Host.Value</GroupExpression>
+                      <GroupExpression>=Fields!StartTime.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!StartTime.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Database.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Login.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Application.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Host.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!ObjType.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>0.9315in</Size>
+                        <CellContents>
+                          <Chart Name="Timeline">
+                            <ChartCategoryHierarchy>
+                              <ChartMembers>
+                                <ChartMember>
+                                  <Group Name="Timeline_CategoryGroup">
+                                    <GroupExpressions>
+                                      <GroupExpression>=Fields!EventClass.Value</GroupExpression>
+                                      <GroupExpression>=Fields!EventSubClass.Value</GroupExpression>
+                                      <GroupExpression>=Fields!Database.Value</GroupExpression>
+                                      <GroupExpression>=Fields!Login.Value</GroupExpression>
+                                      <GroupExpression>=Fields!Application.Value</GroupExpression>
+                                      <GroupExpression>=Fields!Host.Value</GroupExpression>
+                                      <GroupExpression>=Fields!ObjType.Value</GroupExpression>
+                                    </GroupExpressions>
+                                  </Group>
+                                  <SortExpressions>
+                                    <SortExpression>
+                                      <Value>=Fields!StartTime.Value</Value>
+                                    </SortExpression>
+                                  </SortExpressions>
+                                  <Label>=Fields!StartTime.Value</Label>
+                                </ChartMember>
+                              </ChartMembers>
+                            </ChartCategoryHierarchy>
+                            <ChartSeriesHierarchy>
+                              <ChartMembers>
+                                <ChartMember>
+                                  <Group Name="Chart8_SeriesGroup">
+                                    <GroupExpressions>
+                                      <GroupExpression>=Fields!EventCategory.Value</GroupExpression>
+                                    </GroupExpressions>
+                                  </Group>
+                                  <SortExpressions>
+                                    <SortExpression>
+                                      <Value>=Fields!EventCategory.Value</Value>
+                                    </SortExpression>
+                                  </SortExpressions>
+                                  <Label>=Fields!EventCategory.Value</Label>
+                                </ChartMember>
+                              </ChartMembers>
+                            </ChartSeriesHierarchy>
+                            <ChartData>
+                              <ChartSeriesCollection>
+                                <ChartSeries Name="EventCategory">
+                                  <ChartDataPoints>
+                                    <ChartDataPoint>
+                                      <ChartDataPointValues>
+                                        <X>=Fields!StartTime.Value</X>
+                                        <Y>=Count(Fields!EventCategory.Value)</Y>
+                                      </ChartDataPointValues>
+                                      <ChartDataLabel>
+                                        <Style />
+                                      </ChartDataLabel>
+                                      <ToolTip>=String.Format("{0}  ({1})",Fields!EventCategory.Value, Count(Fields!EventCategory.Value))</ToolTip>
+                                      <Style>
+                                        <Border>
+                                          <Style>None</Style>
+                                        </Border>
+                                      </Style>
+                                      <ChartMarker>
+                                        <Type>Auto</Type>
+                                        <Size>6pt</Size>
+                                        <Style />
+                                      </ChartMarker>
+                                      <DataElementOutput>Output</DataElementOutput>
+                                    </ChartDataPoint>
+                                  </ChartDataPoints>
+                                  <Type>Line</Type>
+                                  <Style />
+                                  <ChartEmptyPoints>
+                                    <Style />
+                                    <ChartMarker>
+                                      <Style />
+                                    </ChartMarker>
+                                    <ChartDataLabel>
+                                      <Style />
+                                    </ChartDataLabel>
+                                  </ChartEmptyPoints>
+                                  <ValueAxisName>Primary</ValueAxisName>
+                                  <CategoryAxisName>Primary</CategoryAxisName>
+                                  <ChartSmartLabel>
+                                    <CalloutLineColor>Black</CalloutLineColor>
+                                    <MinMovingDistance>0pt</MinMovingDistance>
+                                  </ChartSmartLabel>
+                                </ChartSeries>
+                              </ChartSeriesCollection>
+                            </ChartData>
+                            <ChartAreas>
+                              <ChartArea Name="Default">
+                                <ChartCategoryAxes>
+                                  <ChartAxis Name="Primary">
+                                    <Style>
+                                      <FontSize>6.25pt</FontSize>
+                                      <Format>t</Format>
+                                    </Style>
+                                    <ChartAxisTitle>
+                                      <Caption />
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </ChartAxisTitle>
+                                    <Interval>=Floor(DateDiff(DateInterval.Minute,DateAdd(DateInterval.Day, -1, Now), Now)/4)</Interval>
+                                    <IntervalType>Minutes</IntervalType>
+                                    <ChartMajorGridLines>
+                                      <Style>
+                                        <Border>
+                                          <Color>DarkGray</Color>
+                                        </Border>
+                                      </Style>
+                                    </ChartMajorGridLines>
+                                    <ChartMinorGridLines>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                          <Style>Dotted</Style>
+                                        </Border>
+                                      </Style>
+                                    </ChartMinorGridLines>
+                                    <ChartMajorTickMarks>
+                                      <Type>Cross</Type>
+                                      <Length>2</Length>
+                                    </ChartMajorTickMarks>
+                                    <ChartMinorTickMarks>
+                                      <Length>0.5</Length>
+                                    </ChartMinorTickMarks>
+                                    <CrossAt>NaN</CrossAt>
+                                    <Scalar>true</Scalar>
+                                    <Minimum>=DateAdd("d", -1, Now)</Minimum>
+                                    <Maximum>=Now</Maximum>
+                                    <PreventWordWrap>true</PreventWordWrap>
+                                    <AllowLabelRotation>None</AllowLabelRotation>
+                                    <IncludeZero>false</IncludeZero>
+                                    <LabelsAutoFitDisabled>true</LabelsAutoFitDisabled>
+                                    <MaxFontSize>6pt</MaxFontSize>
+                                    <ChartAxisScaleBreak>
+                                      <Style />
+                                    </ChartAxisScaleBreak>
+                                  </ChartAxis>
+                                  <ChartAxis Name="Secondary">
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                    </Style>
+                                    <ChartAxisTitle>
+                                      <Caption>Axis Title</Caption>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </ChartAxisTitle>
+                                    <ChartMajorGridLines>
+                                      <Enabled>False</Enabled>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                        </Border>
+                                      </Style>
+                                    </ChartMajorGridLines>
+                                    <ChartMinorGridLines>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                          <Style>Dotted</Style>
+                                        </Border>
+                                      </Style>
+                                    </ChartMinorGridLines>
+                                    <ChartMinorTickMarks>
+                                      <Length>0.5</Length>
+                                    </ChartMinorTickMarks>
+                                    <CrossAt>NaN</CrossAt>
+                                    <Location>Opposite</Location>
+                                    <Minimum>NaN</Minimum>
+                                    <Maximum>NaN</Maximum>
+                                    <ChartAxisScaleBreak>
+                                      <Style />
+                                    </ChartAxisScaleBreak>
+                                  </ChartAxis>
+                                </ChartCategoryAxes>
+                                <ChartValueAxes>
+                                  <ChartAxis Name="Primary">
+                                    <Style>
+                                      <FontSize>6.25pt</FontSize>
+                                      <Format>0;(0)</Format>
+                                    </Style>
+                                    <ChartAxisTitle>
+                                      <Caption />
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </ChartAxisTitle>
+                                    <IntervalType>Number</IntervalType>
+                                    <ChartMajorGridLines>
+                                      <Enabled>False</Enabled>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                        </Border>
+                                      </Style>
+                                    </ChartMajorGridLines>
+                                    <ChartMinorGridLines>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                          <Style>Dotted</Style>
+                                        </Border>
+                                      </Style>
+                                    </ChartMinorGridLines>
+                                    <ChartMinorTickMarks>
+                                      <Length>0.5</Length>
+                                    </ChartMinorTickMarks>
+                                    <CrossAt>NaN</CrossAt>
+                                    <Interlaced>true</Interlaced>
+                                    <Minimum>0</Minimum>
+                                    <Maximum>NaN</Maximum>
+                                    <LogScale>true</LogScale>
+                                    <PreventFontShrink>true</PreventFontShrink>
+                                    <PreventFontGrow>true</PreventFontGrow>
+                                    <PreventLabelOffset>true</PreventLabelOffset>
+                                    <PreventWordWrap>true</PreventWordWrap>
+                                    <AllowLabelRotation>None</AllowLabelRotation>
+                                    <IncludeZero>false</IncludeZero>
+                                    <MaxFontSize>6pt</MaxFontSize>
+                                    <ChartAxisScaleBreak>
+                                      <Style />
+                                    </ChartAxisScaleBreak>
+                                  </ChartAxis>
+                                  <ChartAxis Name="Secondary">
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                    </Style>
+                                    <ChartAxisTitle>
+                                      <Caption>Axis Title</Caption>
+                                      <Style>
+                                        <FontSize>8pt</FontSize>
+                                      </Style>
+                                    </ChartAxisTitle>
+                                    <ChartMajorGridLines>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                        </Border>
+                                      </Style>
+                                    </ChartMajorGridLines>
+                                    <ChartMinorGridLines>
+                                      <Style>
+                                        <Border>
+                                          <Color>Gainsboro</Color>
+                                          <Style>Dotted</Style>
+                                        </Border>
+                                      </Style>
+                                    </ChartMinorGridLines>
+                                    <ChartMinorTickMarks>
+                                      <Length>0.5</Length>
+                                    </ChartMinorTickMarks>
+                                    <CrossAt>NaN</CrossAt>
+                                    <Location>Opposite</Location>
+                                    <Minimum>NaN</Minimum>
+                                    <Maximum>NaN</Maximum>
+                                    <ChartAxisScaleBreak>
+                                      <Style />
+                                    </ChartAxisScaleBreak>
+                                  </ChartAxis>
+                                </ChartValueAxes>
+                                <ChartThreeDProperties>
+                                  <ProjectionMode>Perspective</ProjectionMode>
+                                  <DepthRatio>50</DepthRatio>
+                                  <WallThickness>0</WallThickness>
+                                </ChartThreeDProperties>
+                                <Style>
+                                  <BackgroundColor>#00ffffff</BackgroundColor>
+                                  <BackgroundGradientType>None</BackgroundGradientType>
+                                  <ShadowOffset>0pt</ShadowOffset>
+                                </Style>
+                              </ChartArea>
+                            </ChartAreas>
+                            <ChartLegends>
+                              <ChartLegend Name="Legend1">
+                                <Style>
+                                  <BackgroundGradientType>None</BackgroundGradientType>
+                                  <FontSize>8pt</FontSize>
+                                </Style>
+                                <ChartLegendTitle>
+                                  <Caption />
+                                  <Style>
+                                    <FontSize>8pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </ChartLegendTitle>
+                                <AutoFitTextDisabled>true</AutoFitTextDisabled>
+                                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+                                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+                              </ChartLegend>
+                            </ChartLegends>
+                            <ChartBorderSkin>
+                              <Style>
+                                <BackgroundColor>Gray</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <Color>White</Color>
+                              </Style>
+                            </ChartBorderSkin>
+                            <ChartNoDataMessage Name="NoDataMessage">
+                              <Caption>No Data Available</Caption>
+                              <Style>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <TextAlign>General</TextAlign>
+                                <VerticalAlign>Top</VerticalAlign>
+                              </Style>
+                            </ChartNoDataMessage>
+                            <DataSetName>DataSet1</DataSetName>
+                            <ZIndex>1</ZIndex>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>White</BackgroundColor>
+                              <BackgroundGradientType>None</BackgroundGradientType>
+                            </Style>
+                          </Chart>
+                          <rd:Selected>true</rd:Selected>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember />
+                        <TablixMember>
+                          <KeepTogether>true</KeepTogether>
+                        </TablixMember>
+                        <TablixMember />
+                        <TablixMember>
+                          <KeepTogether>true</KeepTogether>
+                        </TablixMember>
+                        <TablixMember>
+                          <KeepTogether>true</KeepTogether>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="matrix1_EventCategory">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!EventCategory.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!EventCategory.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>3.28792in</Size>
+                        <CellContents>
+                          <Textbox Name="EventCategory">
+                            <CanGrow>true</CanGrow>
+                            <ToggleImage>
+                              <InitialState>true</InitialState>
+                            </ToggleImage>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Label>Category</Label>
+                                    <Value>=Fields!EventCategory.Value</Value>
+                                    <Style>
+                                      <FontFamily>Tahoma</FontFamily>
+                                      <FontSize>8pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                      <Color>White</Color>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>EventCategory</rd:DefaultName>
+                            <ToolTip>=Count(Fields!EventCategory.Value).ToString</ToolTip>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <BackgroundColor>#6e9eca</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>0.32784in</Size>
+                        <CellContents>
+                          <Textbox Name="TextBox106">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value />
+                                    <Style>
+                                      <FontFamily>Tahoma</FontFamily>
+                                      <FontSize>6.25pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                      <Color>White</Color>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Right</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <ToolTip>Expand Entended Inofrmation</ToolTip>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Dotted</Style>
+                              </Border>
+                              <TopBorder>
+                                <Style>None</Style>
+                              </TopBorder>
+                              <BottomBorder>
+                                <Width>1pt</Width>
+                              </BottomBorder>
+                              <RightBorder>
+                                <Style>None</Style>
+                              </RightBorder>
+                              <VerticalAlign>Bottom</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <Group Name="matrix1_EventClass">
+                            <GroupExpressions>
+                              <GroupExpression>=Fields!EventClass.Value</GroupExpression>
+                            </GroupExpressions>
+                          </Group>
+                          <SortExpressions>
+                            <SortExpression>
+                              <Value>=Fields!EventClass.Value</Value>
+                            </SortExpression>
+                            <SortExpression>
+                              <Value>=Fields!EventSubClass.Value</Value>
+                            </SortExpression>
+                          </SortExpressions>
+                          <TablixMembers>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>2.96008in</Size>
+                                <CellContents>
+                                  <Textbox Name="EventClass">
+                                    <CanGrow>true</CanGrow>
+                                    <ToggleImage>
+                                      <InitialState>true</InitialState>
+                                    </ToggleImage>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>=Fields!EventClass.Value</Value>
+                                            <Style>
+                                              <FontFamily>Tahoma</FontFamily>
+                                              <FontSize>8pt</FontSize>
+                                              <FontWeight>Bold</FontWeight>
+                                              <Color>White</Color>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>EventClass</rd:DefaultName>
+                                    <ToolTip>=Count(Fields!EventClass.Value).ToString</ToolTip>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <BackgroundColor>SlateGray</BackgroundColor>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <Visibility>
+                                <ToggleItem>EventCategory</ToggleItem>
+                              </Visibility>
+                            </TablixMember>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>0.32783in</Size>
+                                <CellContents>
+                                  <Textbox Name="Textbox117">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value />
+                                            <Style>
+                                              <FontFamily>Tahoma</FontFamily>
+                                              <FontWeight>Bold</FontWeight>
+                                              <Color>White</Color>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style>
+                                          <TextAlign>Right</TextAlign>
+                                        </Style>
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>Textbox117</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Dotted</Style>
+                                      </Border>
+                                      <TopBorder>
+                                        <Style>None</Style>
+                                      </TopBorder>
+                                      <RightBorder>
+                                        <Style>None</Style>
+                                      </RightBorder>
+                                      <VerticalAlign>Bottom</VerticalAlign>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember>
+                                  <Group Name="matrix1_EventSubClass" />
+                                  <SortExpressions>
+                                    <SortExpression>
+                                      <Value>=Fields!EventSubClass.Value</Value>
+                                    </SortExpression>
+                                  </SortExpressions>
+                                  <TablixMembers>
+                                    <TablixMember>
+                                      <TablixHeader>
+                                        <Size>2.41118in</Size>
+                                        <CellContents>
+                                          <Textbox Name="EventSubClass">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value>=Fields!EventSubClass.Value</Value>
+                                                    <Style>
+                                                      <FontFamily>Tahoma</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>EventSubClass</rd:DefaultName>
+                                            <ToolTip>=Count(Fields!EventSubClass.Value).ToString</ToolTip>
+                                            <Style>
+                                              <Border>
+                                                <Color>LightGrey</Color>
+                                                <Style>Solid</Style>
+                                              </Border>
+                                              <RightBorder>
+                                                <Style>None</Style>
+                                              </RightBorder>
+                                              <BackgroundColor>#8fa0b0</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixHeader>
+                                      <TablixMembers>
+                                        <TablixMember>
+                                          <TablixHeader>
+                                            <Size>0.22107in</Size>
+                                            <CellContents>
+                                              <Textbox Name="MoreInfo">
+                                                <CanGrow>true</CanGrow>
+                                                <KeepTogether>true</KeepTogether>
+                                                <Paragraphs>
+                                                  <Paragraph>
+                                                    <TextRuns>
+                                                      <TextRun>
+                                                        <Value />
+                                                        <Style>
+                                                          <FontFamily>Tahoma</FontFamily>
+                                                          <FontSize>8pt</FontSize>
+                                                          <Color>White</Color>
+                                                        </Style>
+                                                      </TextRun>
+                                                    </TextRuns>
+                                                    <Style />
+                                                  </Paragraph>
+                                                </Paragraphs>
+                                                <ToolTip>More Information</ToolTip>
+                                                <Style>
+                                                  <Border>
+                                                    <Color>LightGrey</Color>
+                                                    <Style>Solid</Style>
+                                                  </Border>
+                                                  <LeftBorder>
+                                                    <Style>None</Style>
+                                                  </LeftBorder>
+                                                  <BackgroundColor>#8fa0b0</BackgroundColor>
+                                                  <PaddingLeft>2pt</PaddingLeft>
+                                                  <PaddingRight>2pt</PaddingRight>
+                                                  <PaddingTop>2pt</PaddingTop>
+                                                  <PaddingBottom>2pt</PaddingBottom>
+                                                </Style>
+                                              </Textbox>
+                                            </CellContents>
+                                          </TablixHeader>
+                                          <TablixMembers>
+                                            <TablixMember />
+                                          </TablixMembers>
+                                        </TablixMember>
+                                      </TablixMembers>
+                                      <Visibility>
+                                        <ToggleItem>EventClass</ToggleItem>
+                                      </Visibility>
+                                    </TablixMember>
+                                    <TablixMember>
+                                      <TablixHeader>
+                                        <Size>2.63225in</Size>
+                                        <CellContents>
+                                          <Textbox Name="Textbox6">
+                                            <CanGrow>true</CanGrow>
+                                            <KeepTogether>true</KeepTogether>
+                                            <Paragraphs>
+                                              <Paragraph>
+                                                <TextRuns>
+                                                  <TextRun>
+                                                    <Value />
+                                                    <Style>
+                                                      <FontFamily>Tahoma</FontFamily>
+                                                      <FontSize>8pt</FontSize>
+                                                      <FontWeight>Bold</FontWeight>
+                                                      <Color>White</Color>
+                                                    </Style>
+                                                  </TextRun>
+                                                </TextRuns>
+                                                <Style />
+                                              </Paragraph>
+                                            </Paragraphs>
+                                            <rd:DefaultName>Textbox6</rd:DefaultName>
+                                            <Style>
+                                              <Border>
+                                                <Style>None</Style>
+                                              </Border>
+                                              <BottomBorder>
+                                                <Color>LightGrey</Color>
+                                                <Style>Solid</Style>
+                                              </BottomBorder>
+                                              <BackgroundColor>AliceBlue</BackgroundColor>
+                                              <PaddingLeft>2pt</PaddingLeft>
+                                              <PaddingRight>2pt</PaddingRight>
+                                              <PaddingTop>2pt</PaddingTop>
+                                              <PaddingBottom>2pt</PaddingBottom>
+                                            </Style>
+                                          </Textbox>
+                                        </CellContents>
+                                      </TablixHeader>
+                                      <Visibility>
+                                        <Hidden>true</Hidden>
+                                        <ToggleItem>MoreInfo</ToggleItem>
+                                      </Visibility>
+                                    </TablixMember>
+                                  </TablixMembers>
+                                  <DataElementOutput>Output</DataElementOutput>
+                                  <KeepTogether>true</KeepTogether>
+                                </TablixMember>
+                              </TablixMembers>
+                              <Visibility>
+                                <ToggleItem>EventClass</ToggleItem>
+                              </Visibility>
+                            </TablixMember>
+                          </TablixMembers>
+                          <DataElementOutput>Output</DataElementOutput>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementOutput>Output</DataElementOutput>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <FixedColumnHeaders>true</FixedColumnHeaders>
+            <KeepTogether>true</KeepTogether>
+            <DataSetName>DataSet1</DataSetName>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!EventCategory.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!EventClass.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!Database.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!Login.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!Application.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!Host.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!EventSubClass.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!ObjType.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!StartTime.Value</Value>
+              </SortExpression>
+            </SortExpressions>
+            <Top>0.00174in</Top>
+            <Height>1.79166in</Height>
+            <Width>11.11461in</Width>
+            <Style>
+              <FontSize>8pt</FontSize>
+            </Style>
+          </Tablix>
+          <Image Name="Image1">
+            <Source>Embedded</Source>
+            <Value>SQLism</Value>
+            <Sizing>Fit</Sizing>
+            <Top>1.80729in</Top>
+            <Left>5.02479in</Left>
+            <Height>0.3889in</Height>
+            <Width>0.29167in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+        </ReportItems>
+        <KeepTogether>true</KeepTogether>
+        <Height>2.19619in</Height>
+        <Width>11.11981in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Rectangle>
+    </ReportItems>
+    <Height>2.58161in</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
+  </Body>
+  <Width>11.11981in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=.\RCO;Application Name=SQLClue Default Trace Report;</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>c0f25bab-02ae-4fb5-8206-5423c434d37c</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandText>SELECT cat.name AS [EventCategory]
+     , evt.name AS [EventClass]
+		 , ISNULL( sub.subclass_name, '&lt;n/a&gt;') AS [EventSubClass]
+		 , COALESCE( trc.DatabaseName, DB_NAME(trc.DatabaseID), '&lt;n/a&gt;' ) as [Database]
+		 , COALESCE( SUSER_SNAME(trc.LoginSid), trc.NtUserName, '&lt;n/a&gt;' ) AS [Login]
+     , ISNULL( trc.ApplicationName, '&lt;n/a&gt;') As Application
+     , trc.StartTime
+     , ISNULL( trc.HostName, '&lt;n/a&gt;') AS Host
+     , ISNULL( type.ObjectType, '' ) AS ObjType
+     , ISNULL( 'Severity: ' + CAST( trc.Severity AS NCHAR(4) ), '' ) 
+     + ISNULL( 'State: ' + CAST( trc.State AS NCHAR(4) ), '' ) 
+     + ISNULL( 'Line: ' + CAST( trc.LineNumber AS NVARCHAR(11) ), '' ) 
+     + ISNULL( ' Error: ' + CAST( trc.Error AS NCHAR(11) ) + CHAR(10) + CHAR(13), '' )
+     + ISNULL( 'TextData: ' + CAST( trc.TextData AS NVARCHAR(MAX) ) + CHAR(10) + CHAR(13), '')
+     + ISNULL( 'Parent Object: ' + trc.ParentName + CHAR(10) + CHAR(13), '' )
+     + ISNULL( CASE WHEN trc.EventClass = 55 
+                    THEN 'Plan Node: ' ELSE 'Object Id: ' END
+               + CAST( trc.ObjectId AS NVARCHAR(11) ) + CHAR(10) + CHAR(13), '')
+     + ISNULL( 'Object: ' + ISNULL( OBJECT_SCHEMA_NAME( trc.ObjectId, trc.DatabaseId ) + '.', '' )
+     + ISNULL(trc.ObjectName, OBJECT_NAME( trc.ObjectId, trc.DatabaseId ) ) + CHAR(10) + CHAR(13), '')
+     + ISNULL( 'IndexId: ' + CAST( trc.IndexId AS NCHAR(11) ) + CHAR(32) + CHAR(10) + CHAR(13), '' )
+     + CASE WHEN trc.Permissions IS NOT NULL
+            THEN 'Permissions Checked: ' 
+                + CASE WHEN trc.Permissions &amp; 1 = 1 THEN CHAR(9) + N'SELECT ALL' + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 2 = 2 THEN CHAR(9) + N'UPDATE ALL'  + CHAR(10) + CHAR(13) ELSE CHAR(32) END 
+                + CASE WHEN trc.Permissions &amp; 4 = 4 THEN CHAR(9) + N'REFERENCES ALL' + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 8 = 8 THEN CHAR(9) + N'INSERT' + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 16 = 16 THEN CHAR(9) + N'DELETE'  + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 32 = 32 THEN CHAR(9) + N'EXECUTE'  + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 4096 = 4096 THEN CHAR(9) + N'SELECT ANY' + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 8192 = 8192 THEN CHAR(9) + N'UPDATE ANY' + CHAR(10) + CHAR(13) ELSE CHAR(32) END
+                + CASE WHEN trc.Permissions &amp; 16384 = 16384 THEN CHAR(9) + N'REFERENCES ANY' + CHAR(10) + CHAR(13) ELSE CHAR(32) END 
+            ELSE ''
+            END 
++ ISNULL( 'SPID: ' + CAST(trc.SPID AS NCHAR(10)) + CHAR(10) + CHAR(13), '')
++ ISNULL( 'PID: ' + CAST(trc.ClientProcessId AS NCHAR(10)) + CHAR(10) + CHAR(13), '') AS [ExtendedInfo]
+FROM sys.traces t
+CROSS APPLY sys.fn_trace_gettable( LEFT( t.[path], LEN(t.[path]) - PATINDEX( '%\%', REVERSE(t.[path]) ) ) + '\log.trc', DEFAULT ) As trc 
+JOIN sys.trace_events evt
+ON trc.EventClass = evt.trace_event_id
+JOIN sys.trace_categories cat
+ON evt.category_id = cat.category_id
+LEFT JOIN sys.trace_subclass_values As sub
+ON trc.EventClass = sub.trace_event_id
+AND trc.EventSubClass = sub.subclass_value 
+LEFT JOIN ( SELECT DISTINCT sub.subclass_name AS ObjectType
+                          , sub.subclass_value 
+            FROM sys.trace_events AS evt 
+            JOIN sys.trace_subclass_values AS sub 
+            ON evt.trace_event_id = sub.trace_event_id 
+            JOIN sys.trace_columns AS col 
+            ON sub.trace_column_id = col.trace_column_id 
+            WHERE col.[name] = 'ObjectType' ) AS type
+ON trc.ObjectType = type.subclass_value
+WHERE t.is_default = 1
+AND trc.StartTime BETWEEN GETDATE() - 1 
+                                 AND GETDATE()
+ORDER BY StartTime;</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="EventCategory">
+          <DataField>EventCategory</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EventClass">
+          <DataField>EventClass</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EventSubClass">
+          <DataField>EventSubClass</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Database">
+          <DataField>Database</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Login">
+          <DataField>Login</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Application">
+          <DataField>Application</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StartTime">
+          <DataField>StartTime</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Host">
+          <DataField>Host</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ObjType">
+          <DataField>ObjType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExtendedInfo">
+          <DataField>ExtendedInfo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SQLInstance">
+          <DataField>ServerName</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="SQLInstance">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>SQL Instance</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="SQLism">
+      <MIMEType>image/gif</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>b61a34af-dfad-4baa-a798-c33030d56295</rd:ReportID>
+</Report>

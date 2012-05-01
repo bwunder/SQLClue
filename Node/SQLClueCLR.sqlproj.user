@@ -4,7 +4,8 @@
     <StartupScript>(Blank)</StartupScript>
     <StartAction>StartNone</StartAction>
     <DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>True</DoNotUseAlterAssemblyStatementsToUpdateCLRTypes>
-    <TargetConnectionString>Data Source=BILL764\RC0;Initial Catalog=testdb;Integrated Security=True;Pooling=False</TargetConnectionString>
-    <TargetDatabase>testdb</TargetDatabase>
+    <TargetConnectionString>Data Source=(localdb)\v11.0;Initial Catalog=SQLClueCLR;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetDatabase>
+    </TargetDatabase>
   </PropertyGroup>
 </Project>
