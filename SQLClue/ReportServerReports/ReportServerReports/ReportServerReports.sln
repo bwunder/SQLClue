@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ReportServerReports", "ReportServerReports.rptproj", "{F09F0E6C-4091-485F-B28B-02E2EA891C4E}"
 EndProject
 Global

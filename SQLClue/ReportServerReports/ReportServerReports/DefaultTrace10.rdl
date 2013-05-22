@@ -1197,7 +1197,7 @@
             <DataSetName>DefaultTraceList</DataSetName>
             <Top>0.7175in</Top>
             <Height>1.25in</Height>
-            <Width>10.125in</Width>
+            <Width>10.12501in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1208,7 +1208,7 @@
         </ReportItems>
         <KeepTogether>true</KeepTogether>
         <Height>3.63417in</Height>
-        <Width>10.125in</Width>
+        <Width>10.12501in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1219,7 +1219,7 @@
     <Height>5.29299in</Height>
     <Style />
   </Body>
-  <Width>10.125in</Width>
+  <Width>10.12501in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -1232,7 +1232,7 @@
     <DataSource Name="DataSource1">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=.\SQLEXPRESS;</ConnectString>
+        <ConnectString>Data Source=.;</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
